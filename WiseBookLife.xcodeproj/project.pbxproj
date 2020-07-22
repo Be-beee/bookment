@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
+		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
+		B572CE8824A0830100702C6E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8724A0830100702C6E /* SearchViewController.swift */; };
+		B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* RecordViewController.swift */; };
+		B572CE8C24A08BB300702C6E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8B24A08BB300702C6E /* Common.swift */; };
+		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
+		B572CE9224A0983000702C6E /* No_Img.png in Resources */ = {isa = PBXBuildFile; fileRef = B572CE9124A0983000702C6E /* No_Img.png */; };
+		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
+		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
+		B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A431724C6E666009A86DA /* AlarmCell.swift */; };
+		B59D832024C01AF600797D5F /* RecBookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */; };
+		B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */; };
+		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
+		B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecVC.storyboard */; };
+		B5AFB9E724A346FA0072DAD8 /* NewbookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */; };
+		B5AFB9E924A351830072DAD8 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9E824A351830072DAD8 /* RecommendView.swift */; };
+		B5AFB9EB24A351EC0072DAD8 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */; };
+		B5AFB9ED24A3520D0072DAD8 /* AlarmListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */; };
+		B5AFB9EF24A3579A0072DAD8 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */; };
+		B5AFB9F124A357A90072DAD8 /* NewListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */; };
+		B5AFB9F324A35E780072DAD8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F224A35E780072DAD8 /* SettingViewController.swift */; };
+		B5AFB9F524A35E840072DAD8 /* SettingVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F424A35E840072DAD8 /* SettingVC.storyboard */; };
+		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
+		B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */; };
+		B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */; };
+		B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */; };
+		B5D190AF24A4AC6200F1DCDB /* RecommendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */; };
+		B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DA8249F666B0009B24B /* AppDelegate.swift */; };
+		B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */; };
+		B5FA8DAD249F666B0009B24B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAC249F666B0009B24B /* MainViewController.swift */; };
+		B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FA8DAE249F666B0009B24B /* Main.storyboard */; };
+		B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5FA8DB1249F666B0009B24B /* Assets.xcassets */; };
+		B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
+		B572CE8724A0830100702C6E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B572CE8924A0831D00702C6E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		B572CE8B24A08BB300702C6E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		B572CE9124A0983000702C6E /* No_Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No_Img.png; sourceTree = "<group>"; };
+		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
+		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
+		B58A431724C6E666009A86DA /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecBookSearchViewController.swift; sourceTree = "<group>"; };
+		B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecBookSearchVC.storyboard; sourceTree = "<group>"; };
+		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
+		B59D832524C0215F00797D5F /* DetailRecVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecVC.storyboard; sourceTree = "<group>"; };
+		B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewbookCell.swift; sourceTree = "<group>"; };
+		B5AFB9E824A351830072DAD8 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmListVC.storyboard; sourceTree = "<group>"; };
+		B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
+		B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewListVC.storyboard; sourceTree = "<group>"; };
+		B5AFB9F224A35E780072DAD8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B5AFB9F424A35E840072DAD8 /* SettingVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingVC.storyboard; sourceTree = "<group>"; };
+		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
+		B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeartListVC.storyboard; sourceTree = "<group>"; };
+		B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
+		B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordVC.storyboard; sourceTree = "<group>"; };
+		B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendView.xib; sourceTree = "<group>"; };
+		B5FA8DA5249F666B0009B24B /* WiseBookLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseBookLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5FA8DA8249F666B0009B24B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B5FA8DAC249F666B0009B24B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5FA8DAF249F666B0009B24B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B5FA8DB1249F666B0009B24B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5FA8DB4249F666B0009B24B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B5FA8DB6249F666B0009B24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5FA8DA2249F666B0009B24B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5AFB9E524A341AA0072DAD8 /* MainView_sub */ = {
+			isa = PBXGroup;
+			children = (
+				B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */,
+				B5AFB9E824A351830072DAD8 /* RecommendView.swift */,
+				B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */,
+				B58A431724C6E666009A86DA /* AlarmCell.swift */,
+				B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */,
+				B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */,
+				B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */,
+				B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */,
+				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
+				B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */,
+				B5AFB9F224A35E780072DAD8 /* SettingViewController.swift */,
+				B5AFB9F424A35E840072DAD8 /* SettingVC.storyboard */,
+			);
+			path = MainView_sub;
+			sourceTree = "<group>";
+		};
+		B5D190A924A4A72E00F1DCDB /* RecordView_sub */ = {
+			isa = PBXGroup;
+			children = (
+				B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */,
+				B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */,
+				B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */,
+				B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */,
+				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
+				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
+				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
+				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
+			);
+			path = RecordView_sub;
+			sourceTree = "<group>";
+		};
+		B5FA8D9C249F666A0009B24B = {
+			isa = PBXGroup;
+			children = (
+				B5FA8DA7249F666B0009B24B /* WiseBookLife */,
+				B5FA8DA6249F666B0009B24B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5FA8DA6249F666B0009B24B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5FA8DA5249F666B0009B24B /* WiseBookLife.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5FA8DA7249F666B0009B24B /* WiseBookLife */ = {
+			isa = PBXGroup;
+			children = (
+				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
+				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
+				B572CE9124A0983000702C6E /* No_Img.png */,
+				B572CE8B24A08BB300702C6E /* Common.swift */,
+				B5FA8DAC249F666B0009B24B /* MainViewController.swift */,
+				B572CE8724A0830100702C6E /* SearchViewController.swift */,
+				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
+				B572CE8D24A0908200702C6E /* RecordCell.swift */,
+				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
+				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
+				B5AFB9E524A341AA0072DAD8 /* MainView_sub */,
+				B5D190A924A4A72E00F1DCDB /* RecordView_sub */,
+				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
+				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
+				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
+				B5FA8DB6249F666B0009B24B /* Info.plist */,
+			);
+			path = WiseBookLife;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5FA8DA4249F666B0009B24B /* WiseBookLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5FA8DB9249F666B0009B24B /* Build configuration list for PBXNativeTarget "WiseBookLife" */;
+			buildPhases = (
+				B5FA8DA1249F666B0009B24B /* Sources */,
+				B5FA8DA2249F666B0009B24B /* Frameworks */,
+				B5FA8DA3249F666B0009B24B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WiseBookLife;
+			productName = WiseBookLife;
+			productReference = B5FA8DA5249F666B0009B24B /* WiseBookLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5FA8D9D249F666A0009B24B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "서보경";
+				TargetAttributes = {
+					B5FA8DA4249F666B0009B24B = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = B5FA8DA0249F666A0009B24B /* Build configuration list for PBXProject "WiseBookLife" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B5FA8D9C249F666A0009B24B;
+			productRefGroup = B5FA8DA6249F666B0009B24B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5FA8DA4249F666B0009B24B /* WiseBookLife */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5FA8DA3249F666B0009B24B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
+				B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */,
+				B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */,
+				B5AFB9ED24A3520D0072DAD8 /* AlarmListVC.storyboard in Resources */,
+				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,
+				B5AFB9F124A357A90072DAD8 /* NewListVC.storyboard in Resources */,
+				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
+				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
+				B5AFB9F524A35E840072DAD8 /* SettingVC.storyboard in Resources */,
+				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
+				B572CE9224A0983000702C6E /* No_Img.png in Resources */,
+				B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */,
+				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
+				B5D190AF24A4AC6200F1DCDB /* RecommendView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5FA8DA1249F666B0009B24B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5AFB9EF24A3579A0072DAD8 /* NewListViewController.swift in Sources */,
+				B5FA8DAD249F666B0009B24B /* MainViewController.swift in Sources */,
+				B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */,
+				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
+				B5AFB9E924A351830072DAD8 /* RecommendView.swift in Sources */,
+				B5AFB9E724A346FA0072DAD8 /* NewbookCell.swift in Sources */,
+				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
+				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
+				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
+				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
+				B5AFB9EB24A351EC0072DAD8 /* AlarmListViewController.swift in Sources */,
+				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
+				B572CE8C24A08BB300702C6E /* Common.swift in Sources */,
+				B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */,
+				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
+				B59D832024C01AF600797D5F /* RecBookSearchViewController.swift in Sources */,
+				B572CE8824A0830100702C6E /* SearchViewController.swift in Sources */,
+				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,
+				B5AFB9F324A35E780072DAD8 /* SettingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B5FA8DAE249F666B0009B24B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5FA8DAF249F666B0009B24B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5FA8DB4249F666B0009B24B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5FA8DB7249F666B0009B24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B5FA8DB8249F666B0009B24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5FA8DBA249F666B0009B24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sbk.WiseBookLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5FA8DBB249F666B0009B24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sbk.WiseBookLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5FA8DA0249F666A0009B24B /* Build configuration list for PBXProject "WiseBookLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5FA8DB7249F666B0009B24B /* Debug */,
+				B5FA8DB8249F666B0009B24B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5FA8DB9249F666B0009B24B /* Build configuration list for PBXNativeTarget "WiseBookLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5FA8DBA249F666B0009B24B /* Debug */,
+				B5FA8DBB249F666B0009B24B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5FA8D9D249F666A0009B24B /* Project object */;
+}
