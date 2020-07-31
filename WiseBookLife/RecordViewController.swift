@@ -60,16 +60,6 @@ extension RecordViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-//        if let url = URL(string: records[indexPath.row].bookData.TITLE_URL) {
-//            if let imgData = try? Data(contentsOf: url) {
-//                cell.bookImage.image = UIImage(data: imgData)
-//            } else {
-//                cell.bookImage.image = UIImage(named: "No_Img.png")
-//            }
-//        } else {
-//            cell.bookImage.image = UIImage(named: "No_Img.png")
-//        }
-        
         cell.bookImage.image = urlToImage(from: records[indexPath.row].bookData.TITLE_URL)
         
         return cell

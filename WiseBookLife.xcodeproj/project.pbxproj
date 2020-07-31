@@ -154,12 +154,12 @@
 				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
+				B5FA8DB6249F666B0009B24B /* Info.plist */,
 				B5AFB9E524A341AA0072DAD8 /* MainView_sub */,
 				B5D190A924A4A72E00F1DCDB /* RecordView_sub */,
-				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
 				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
+				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
 				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
-				B5FA8DB6249F666B0009B24B /* Info.plist */,
 			);
 			path = WiseBookLife;
 			sourceTree = "<group>";

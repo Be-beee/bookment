@@ -9,10 +9,12 @@
 import UIKit
 
 class KeywordModel {
+    var keywordTitle: String
     var kind: String // Title, Author
     var content: String // 내용, kind로 content의 종류를 구별한다
     
-    init(kind: String, content: String) {
+    init(keywordTitle: String, kind: String, content: String) {
+        self.keywordTitle = keywordTitle
         self.kind = kind
         self.content = content
     }

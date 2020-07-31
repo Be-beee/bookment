@@ -11,7 +11,7 @@ import UIKit
 class AddRecordViewController: UIViewController {
 
     var recordModel: RecordModel = RecordModel()
-    var searchedData: SeojiData = SeojiData()
+    var searchedData: SeojiData = SeojiData() // 불필요한 변수
     
     @IBOutlet var todayDate: UILabel!
     @IBOutlet var recordTitle: UITextField!
@@ -27,20 +27,27 @@ class AddRecordViewController: UIViewController {
         let today = df.string(from: Date())
         
         todayDate.text = today
+        recordModel.date = today
         
     }
     
     @IBAction func unwindSearchView(sender: UIStoryboardSegue) {
         searchBtn.isHidden = true
         
-        print(searchedData)
-        selectedBookView.bookCoverView.image = urlToImage(from: searchedData.TITLE_URL)
-        selectedBookView.bookTitle.text = searchedData.TITLE
-        selectedBookView.bookAuthor.text =  searchedData.AUTHOR
-        selectedBookView.bookPublisher.text = searchedData.PUBLISHER
-        selectedBookView.bookDate.text = searchedData.PUBLISH_PREDATE
-        selectedBookView.bookISBN.text = searchedData.EA_ISBN
+        guard let searchresultVC = sender.source as? RecBookSearchViewController else {
+            return
+        }
+        self.searchedData = searchresultVC.selected
+        recordModel.bookData = searchresultVC.selected
+//        print(searchedData)
+        selectedBookView.bookCoverView.image = urlToImage(from: searchresultVC.selected.TITLE_URL)
+        selectedBookView.bookTitle.text = searchresultVC.selected.TITLE
+        selectedBookView.bookAuthor.text =  searchresultVC.selected.AUTHOR
+        selectedBookView.bookPublisher.text = searchresultVC.selected.PUBLISHER
+        selectedBookView.bookDate.text = searchresultVC.selected.PUBLISH_PREDATE
+        selectedBookView.bookISBN.text = searchresultVC.selected.EA_ISBN
         
+        // 선택된 책 정보가 표시되지 않음
     }
     
     @IBAction func searchBook(_ sender: UIButton) {
@@ -56,20 +63,21 @@ class AddRecordViewController: UIViewController {
             recordModel.recordTitle = title
             recordModel.recordContents = recordContents.text
             
-//            if recordModel.bookData.EA_ISBN != "" {
+            print(recordModel.bookData)
+            if !recordModel.bookData.EA_ISBN.isEmpty {
 //                recordModel.bookData = searchedData
-//                // book data 불러오기
-//                self.performSegue(withIdentifier: "toRecordView", sender: self)
-//                // perform segue
-//            } else {
-//                let bookAlert = UIAlertController(title: "에러", message: "기록을 작성할 책을 선택해주세요!", preferredStyle: .alert)
-//                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-//
-//                bookAlert.addAction(ok)
-//                self.present(bookAlert, animated: true, completion: nil)
-//            } // 이 주석 나중에 살리고 밑에거 지우기
-            recordModel.bookData = searchedData
-            self.performSegue(withIdentifier: "toRecordView", sender: self)
+                // book data 불러오기
+                self.performSegue(withIdentifier: "toRecordView", sender: self)
+                // perform segue
+            } else {
+                let bookAlert = UIAlertController(title: "에러", message: "기록을 작성할 책을 선택해주세요!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+
+                bookAlert.addAction(ok)
+                self.present(bookAlert, animated: true, completion: nil)
+            } // 이 주석 나중에 살리고 밑에거 지우기
+//            recordModel.bookData = searchedData
+//            self.performSegue(withIdentifier: "toRecordView", sender: self)
             
         } else {
             let titleAlert = UIAlertController(title: "앗!", message: "타이틀을 입력해주세요!", preferredStyle: .alert)

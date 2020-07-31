@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,24 +16,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aeg-Mk-Bv3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tWL-zy-G0T" id="DQk-Ip-2BG"/>
                                     <outlet property="delegate" destination="tWL-zy-G0T" id="H9f-YU-SdB"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qm4-4s-1DY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tWL-zy-G0T" id="YBg-2K-PPE"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qm4-4s-1DY" firstAttribute="top" secondItem="9Gv-7O-SEG" secondAttribute="top" id="G53-T4-Eeg"/>
                             <constraint firstItem="9Gv-7O-SEG" firstAttribute="trailing" secondItem="aeg-Mk-Bv3" secondAttribute="trailing" id="Hl7-P6-HbM"/>
+                            <constraint firstItem="qm4-4s-1DY" firstAttribute="leading" secondItem="9Gv-7O-SEG" secondAttribute="leading" id="SvG-XD-EIf"/>
                             <constraint firstItem="aeg-Mk-Bv3" firstAttribute="leading" secondItem="9Gv-7O-SEG" secondAttribute="leading" id="W6V-JI-yYt"/>
                             <constraint firstItem="9Gv-7O-SEG" firstAttribute="bottom" secondItem="aeg-Mk-Bv3" secondAttribute="bottom" id="WFj-cD-2P5"/>
-                            <constraint firstItem="aeg-Mk-Bv3" firstAttribute="top" secondItem="9Gv-7O-SEG" secondAttribute="top" id="iPg-gP-pd0"/>
+                            <constraint firstItem="qm4-4s-1DY" firstAttribute="trailing" secondItem="9Gv-7O-SEG" secondAttribute="trailing" id="egb-Py-EcK"/>
+                            <constraint firstItem="aeg-Mk-Bv3" firstAttribute="top" secondItem="qm4-4s-1DY" secondAttribute="bottom" id="vVo-om-Pnu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Gv-7O-SEG"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="qm4-4s-1DY" id="ht2-u2-eFd"/>
                         <outlet property="searchResultView" destination="aeg-Mk-Bv3" id="q9C-mW-x09"/>
                         <segue destination="Y8g-J6-CsI" kind="unwind" identifier="toAddView" unwindAction="unwindSearchViewWithSender:" id="gtY-Lq-12o"/>
                     </connections>
