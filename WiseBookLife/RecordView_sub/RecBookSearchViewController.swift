@@ -36,7 +36,7 @@ class RecBookSearchViewController: UIViewController {
             "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
             "result_style" : "json",
             "page_no" : "1",
-            "page_size" : "10",
+            "page_size" : "50",
             method : text
         ]
         
@@ -98,7 +98,7 @@ extension RecBookSearchViewController: UITableViewDataSource {
         cell.bookCover.image = urlToImage(from: searchResult[indexPath.row].TITLE_URL)
         cell.titleLabel.text = searchResult[indexPath.row].TITLE
         cell.authorLabel.text = searchResult[indexPath.row].AUTHOR
-        cell.publisherLabel.text = searchResult[indexPath.row].PUBLISHER
+//        cell.publisherLabel.text = searchResult[indexPath.row].PUBLISHER
         cell.heartBtn.isHidden = true
         cell.bellBtn.isHidden = true
         

@@ -75,7 +75,7 @@ extension HeartListViewController: UITableViewDataSource {
         }
         
         cell.authorLabel.text = heartList[indexPath.row].AUTHOR
-        cell.publisherLabel.text = heartList[indexPath.row].PUBLISHER
+//        cell.publisherLabel.text = heartList[indexPath.row].PUBLISHER
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)

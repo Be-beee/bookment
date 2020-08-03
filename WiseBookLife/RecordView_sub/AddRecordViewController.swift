@@ -11,7 +11,6 @@ import UIKit
 class AddRecordViewController: UIViewController {
 
     var recordModel: RecordModel = RecordModel()
-    var searchedData: SeojiData = SeojiData() // 불필요한 변수
     
     @IBOutlet var todayDate: UILabel!
     @IBOutlet var recordTitle: UITextField!
@@ -37,17 +36,15 @@ class AddRecordViewController: UIViewController {
         guard let searchresultVC = sender.source as? RecBookSearchViewController else {
             return
         }
-        self.searchedData = searchresultVC.selected
         recordModel.bookData = searchresultVC.selected
-//        print(searchedData)
         selectedBookView.bookCoverView.image = urlToImage(from: searchresultVC.selected.TITLE_URL)
         selectedBookView.bookTitle.text = searchresultVC.selected.TITLE
         selectedBookView.bookAuthor.text =  searchresultVC.selected.AUTHOR
-        selectedBookView.bookPublisher.text = searchresultVC.selected.PUBLISHER
-        selectedBookView.bookDate.text = searchresultVC.selected.PUBLISH_PREDATE
-        selectedBookView.bookISBN.text = searchresultVC.selected.EA_ISBN
+        selectedBookView.bookPublisher.text = "출판사: " + searchresultVC.selected.PUBLISHER
         
-        // 선택된 책 정보가 표시되지 않음
+        selectedBookView.bookDate.text = "출간(예정)일: " +  searchresultVC.selected.PUBLISH_PREDATE
+        selectedBookView.bookISBN.text = "ISBN: "+searchresultVC.selected.EA_ISBN
+        
     }
     
     @IBAction func searchBook(_ sender: UIButton) {
@@ -65,8 +62,6 @@ class AddRecordViewController: UIViewController {
             
             print(recordModel.bookData)
             if !recordModel.bookData.EA_ISBN.isEmpty {
-//                recordModel.bookData = searchedData
-                // book data 불러오기
                 self.performSegue(withIdentifier: "toRecordView", sender: self)
                 // perform segue
             } else {
@@ -75,9 +70,7 @@ class AddRecordViewController: UIViewController {
 
                 bookAlert.addAction(ok)
                 self.present(bookAlert, animated: true, completion: nil)
-            } // 이 주석 나중에 살리고 밑에거 지우기
-//            recordModel.bookData = searchedData
-//            self.performSegue(withIdentifier: "toRecordView", sender: self)
+            }
             
         } else {
             let titleAlert = UIAlertController(title: "앗!", message: "타이틀을 입력해주세요!", preferredStyle: .alert)

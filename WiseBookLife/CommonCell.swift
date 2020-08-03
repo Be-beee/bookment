@@ -13,7 +13,7 @@ class CommonCell: UITableViewCell {
     @IBOutlet var bookCover: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var publisherLabel: UILabel!
+//    @IBOutlet var publisherLabel: UILabel!
     
     @IBOutlet var heartBtn: UIButton!
     @IBOutlet var bellBtn: UIButton!

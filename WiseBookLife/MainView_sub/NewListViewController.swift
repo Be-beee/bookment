@@ -124,7 +124,7 @@ extension NewListViewController: UITableViewDataSource {
         
         cell.titleLabel.text = newbooksList[indexPath.row].TITLE
         cell.authorLabel.text = newbooksList[indexPath.row].AUTHOR
-        cell.publisherLabel.text = newbooksList[indexPath.row].PUBLISHER
+//        cell.publisherLabel.text = newbooksList[indexPath.row].PUBLISHER
         
         
         cell.heartBtn.tag = indexPath.row
