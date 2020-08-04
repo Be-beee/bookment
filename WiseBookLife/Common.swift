@@ -44,11 +44,6 @@ class RecordModel {
     
 }
 
-// 도서 정보(ISBN, 도서이미지, 도서명, 저자, 역자?, 출간일), 기록 제목, 작성일, 내용, 공감 글귀?
-
-// 검색 결과 모델도 만들어야 할듯(BookDataModel에 살만 붙이면 될 것 같다)
-
-
 struct SeojiData: Codable {
     var TITLE: String
     var VOL: String
@@ -172,6 +167,53 @@ extension Dictionary {
     
 }
 
+class SearchBook {
+    var results: [SeojiData] = []
+    
+    func callAPI(page_no: String, page_size: String, additional_param: [String:String], completion: @escaping (() -> Void)) {
+        let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
+        var mustParam: [String:String] = [
+            "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
+            "result_style" : "json",
+            "page_no" : page_no,
+            "page_size" : page_size
+        ]
+        for (key, value) in additional_param {
+            mustParam.updateValue(value, forKey: key)
+        }
+        // query
+        
+        var urlComponents = URLComponents(string: seojiURL)
+        urlComponents?.query = mustParam.queryString
+        
+        guard let hasURL = urlComponents?.url else {
+            return
+        }
+        
+        
+        URLSession.shared.dataTask(with: hasURL) { (data, response, error) in
+            guard let data = data else{
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let user = try decoder.decode(SearchData.self, from: data)
+                self.results = user.docs
+                DispatchQueue.main.async {
+                    completion()
+                }
+                
+            } catch {
+                // error 처리
+                print("error ==> \(error)")
+            }
+        }.resume()
+            
+    }
+}
+
 extension UIViewController {
     func urlToImage(from url: String) -> UIImage? {
         if let url = URL(string: url) {
@@ -184,6 +226,10 @@ extension UIViewController {
             return UIImage(named: "No_Img.png")
         }
     }
+    
+    
 }
 
 var heartDic: [String: SeojiData] = [:]
+
+

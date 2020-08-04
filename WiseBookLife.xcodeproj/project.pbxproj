@@ -22,7 +22,6 @@
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
 		B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecVC.storyboard */; };
 		B5AFB9E724A346FA0072DAD8 /* NewbookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */; };
-		B5AFB9E924A351830072DAD8 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9E824A351830072DAD8 /* RecommendView.swift */; };
 		B5AFB9EB24A351EC0072DAD8 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */; };
 		B5AFB9ED24A3520D0072DAD8 /* AlarmListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */; };
 		B5AFB9EF24A3579A0072DAD8 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */; };
@@ -33,7 +32,6 @@
 		B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */; };
 		B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */; };
-		B5D190AF24A4AC6200F1DCDB /* RecommendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */; };
 		B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DA8249F666B0009B24B /* AppDelegate.swift */; };
 		B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */; };
 		B5FA8DAD249F666B0009B24B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAC249F666B0009B24B /* MainViewController.swift */; };
@@ -58,7 +56,6 @@
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
 		B59D832524C0215F00797D5F /* DetailRecVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecVC.storyboard; sourceTree = "<group>"; };
 		B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewbookCell.swift; sourceTree = "<group>"; };
-		B5AFB9E824A351830072DAD8 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
 		B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmListVC.storyboard; sourceTree = "<group>"; };
 		B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeartListVC.storyboard; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordVC.storyboard; sourceTree = "<group>"; };
-		B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendView.xib; sourceTree = "<group>"; };
 		B5FA8DA5249F666B0009B24B /* WiseBookLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseBookLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FA8DA8249F666B0009B24B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,8 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */,
-				B5AFB9E824A351830072DAD8 /* RecommendView.swift */,
-				B5D190AE24A4AC6200F1DCDB /* RecommendView.xib */,
 				B58A431724C6E666009A86DA /* AlarmCell.swift */,
 				B5AFB9EA24A351EC0072DAD8 /* AlarmListViewController.swift */,
 				B5AFB9EC24A3520D0072DAD8 /* AlarmListVC.storyboard */,
@@ -235,7 +229,6 @@
 				B572CE9224A0983000702C6E /* No_Img.png in Resources */,
 				B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
-				B5D190AF24A4AC6200F1DCDB /* RecommendView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +243,6 @@
 				B5FA8DAD249F666B0009B24B /* MainViewController.swift in Sources */,
 				B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
-				B5AFB9E924A351830072DAD8 /* RecommendView.swift in Sources */,
 				B5AFB9E724A346FA0072DAD8 /* NewbookCell.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,

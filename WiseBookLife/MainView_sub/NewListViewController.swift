@@ -13,86 +13,32 @@ class NewListViewController: UIViewController {
     var newbooksList:[SeojiData] = []
     @IBOutlet var newbooksView: UITableView!
     
-    let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
+    var searchTool = SearchBook()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "오늘의 신간 😎"
         newbooksView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        viewApiCall()
-    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        let df = DateFormatter()
-//        df.dateFormat = "yyyyMMdd"
-//        let param: [String:String] = [
-//            "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
-//            "result_style" : "json",
-//            "page_no" : "1",
-//            "page_size" : "1000",
-//            "start_publish_date" : df.string(from: Date()),
-//            "end_publish_date" : df.string(from: Date())
-//        ]
-//
-//        newbooksList = apiCall(param: param) ?? []
-//        print(newbooksList.count)
-//        newbooksView.reloadData()
-//    }
-    
-    
-    
-    // MARK:- URL Session
-    func viewApiCall() { // function -> UIViewController extension?
         let df = DateFormatter()
         df.dateFormat = "yyyyMMdd"
         
-        let param: [String:String] = [
-            "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
-            "result_style" : "json",
-            "page_no" : "1",
-            "page_size" : "1000",
+        let param: [String: String] = [
             "start_publish_date" : df.string(from: Date()),
             "end_publish_date" : df.string(from: Date())
         ]
-        // query
         
-        var urlComponents = URLComponents(string: seojiURL)
-        urlComponents?.query = param.queryString
-        
-        guard let hasURL = urlComponents?.url else {
-            return
+        searchTool.callAPI(page_no: "1", page_size: "1000", additional_param: param) {
+            for item in self.searchTool.results {
+                self.newbooksList.append(item)
+            }
+            self.newbooksView.reloadData()
         }
-        
-        // model
-        // codable
-        
-        URLSession.shared.dataTask(with: hasURL) { (data, response, error) in
-            guard let data = data else{
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let user = try decoder.decode(SearchData.self, from: data)
-                let result = user.docs
-                print(user.TOTAL_COUNT)
-                DispatchQueue.main.async {
-                    for item in result {
-                        self.newbooksList.append(item)
-                    }
-                    self.newbooksView.reloadData()
-                }
-                
-            } catch {
-                // error 처리
-                print("error ==> \(error)")
-            }
-            //Sign in 4_8부터
-        }.resume()
     }
     
     
+    
+    // MARK:- Cell button action
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)

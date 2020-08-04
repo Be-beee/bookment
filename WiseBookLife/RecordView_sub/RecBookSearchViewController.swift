@@ -14,6 +14,7 @@ class RecBookSearchViewController: UIViewController {
     var searchResult: [SeojiData] = []
     var isSearched = false
     
+    var searchTool = SearchBook()
     
     let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
     
@@ -28,56 +29,6 @@ class RecBookSearchViewController: UIViewController {
 //        selectedView <- take selected data, and view
 //        searchApiCall(method: "title", text: "sample")
         
-    }
-    
-    
-    func searchApiCall(method: String, text: String) {
-        let param: [String: String] = [
-            "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
-            "result_style" : "json",
-            "page_no" : "1",
-            "page_size" : "50",
-            method : text
-        ]
-        
-        
-        // title: text, author: text
-        // isSearched = true
-        // remove method param
-        
-        var urlComponents = URLComponents(string: seojiURL)
-        urlComponents?.query = param.queryString
-        
-        guard let hasURL = urlComponents?.url else {
-            return
-        }
-        
-        // model
-        // codable
-        
-        
-        
-        URLSession.shared.dataTask(with: hasURL) { (data, response, error) in
-            guard let dataFromTitle = data else{
-                return
-            }
-            let decoder = JSONDecoder()
-            
-            do {
-                let user = try decoder.decode(SearchData.self, from: dataFromTitle)
-                let result = user.docs
-                DispatchQueue.main.async {
-                    for item in result {
-                        self.searchResult.append(item)
-                    }
-                    self.searchResultView.reloadData()
-                }
-                
-            } catch {
-                // error 처리
-                print("error ==> \(error)")
-            }
-        }.resume()
     }
 
 }
@@ -115,19 +66,36 @@ extension RecBookSearchViewController: UITableViewDataSource {
 }
 
 extension RecBookSearchViewController: UISearchBarDelegate {
+    
     @objc func dismissKeyboard() {
         searchBar.resignFirstResponder()
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         
         if !searchBar.text!.isEmpty {
             self.searchResult = []
-            self.searchApiCall(method: "title", text: searchBar.text!)
-            self.searchApiCall(method: "author", text: searchBar.text!)
+            self.searchTool.callAPI(page_no: "1", page_size: "50", additional_param: ["title" : searchBar.text!]) {
+                DispatchQueue.main.async {
+                    for item in self.searchTool.results {
+                        self.searchResult.append(item)
+                    }
+                    self.searchResultView.reloadData()
+                }
+            }
+            self.searchTool.callAPI(page_no: "1", page_size: "50", additional_param: ["author" : searchBar.text!]) {
+                DispatchQueue.main.async {
+                    for item in self.searchTool.results {
+                        self.searchResult.append(item)
+                    }
+                    self.searchResultView.reloadData()
+                }
+            }
             
         } else {
             // 그냥 searchResult 비워두기
+            self.searchResult = []
         }
     }
 }

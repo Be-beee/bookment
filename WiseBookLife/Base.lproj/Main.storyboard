@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgN-rf-6uD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgN-rf-6uD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,42 +8,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--오늘의 책-->
+        <!--메인-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="910"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rM-ve-gLu">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="678.5"/>
+                                <rect key="frame" x="0.0" y="148.5" width="414" height="768.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7q-j5-q6y">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="679"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtP-AP-v0P" customClass="RecommendView" customModule="WiseBookLife" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="15" width="414" height="200"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="obd-XE-f7n"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나의 찜리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wF-Qp-A82">
-                                                <rect key="frame" x="20" y="255" width="120" height="27"/>
+                                                <rect key="frame" x="20" y="116" width="120" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTF-ob-KGy">
-                                                <rect key="frame" x="351" y="252.5" width="43" height="30"/>
+                                                <rect key="frame" x="351" y="116" width="43" height="30"/>
                                                 <state key="normal" title="MORE"/>
                                                 <connections>
                                                     <action selector="toMyList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hF3-zR-Lch"/>
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7dQ-Af-IHk">
-                                                <rect key="frame" x="20" y="302" width="374" height="180"/>
+                                                <rect key="frame" x="20" y="163" width="374" height="180"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="z4r-WE-Uan"/>
@@ -84,52 +77,116 @@
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Ib3-lC-D9r"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3od-on-X1Y">
-                                                <rect key="frame" x="20" y="522" width="374" height="70"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="u6I-Dk-VM6"/>
-                                                </constraints>
-                                                <state key="normal" title="오늘의 신간 훑어보기"/>
-                                                <connections>
-                                                    <action selector="toNewbookList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjD-9c-SQk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sD-sY-L8T">
-                                                <rect key="frame" x="179" y="612" width="56" height="30"/>
-                                                <state key="normal" title="메인 설정"/>
-                                                <connections>
-                                                    <action selector="toSettingView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Atw-xC-Wox"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 찜리스트에 저장된 책이 없습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emf-bj-VGQ">
-                                                <rect key="frame" x="93" y="383" width="228.5" height="18"/>
+                                                <rect key="frame" x="93" y="244" width="228.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="도서명, 작가명으로 검색" translatesAutoresizingMaskIntoConstraints="NO" id="nBE-HQ-Kqc">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </searchBar>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzu-4r-upt">
+                                                <rect key="frame" x="334" y="56" width="60" height="30"/>
+                                                <state key="normal" title="상세 검색 "/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 신간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGd-hp-QBW">
+                                                <rect key="frame" x="20" y="378" width="100.5" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGH-Y5-Jth">
+                                                <rect key="frame" x="351" y="378" width="43" height="30"/>
+                                                <state key="normal" title="MORE"/>
+                                                <connections>
+                                                    <action selector="toNewbookList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="USo-RI-b3p"/>
+                                                </connections>
+                                            </button>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-KK-wxm">
+                                                <rect key="frame" x="20" y="425" width="374" height="180"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="sj6-Gt-8Yl"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dAV-gy-c4f">
+                                                    <size key="itemSize" width="103" height="155"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newbookCell" id="F9T-01-0i7" customClass="NewbookCell" customModule="WiseBookLife" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="12.5" width="103" height="155"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2kV-ou-All">
+                                                            <rect key="frame" x="0.0" y="0.0" width="103" height="155"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Img.png" translatesAutoresizingMaskIntoConstraints="NO" id="GCr-UL-Jsd">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="103" height="155"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="GCr-UL-Jsd" firstAttribute="top" secondItem="2kV-ou-All" secondAttribute="top" id="Pi9-Zl-prF"/>
+                                                                <constraint firstAttribute="bottom" secondItem="GCr-UL-Jsd" secondAttribute="bottom" id="Xfm-Hh-oh1"/>
+                                                                <constraint firstItem="GCr-UL-Jsd" firstAttribute="leading" secondItem="2kV-ou-All" secondAttribute="leading" id="cfZ-sW-yFe"/>
+                                                                <constraint firstAttribute="trailing" secondItem="GCr-UL-Jsd" secondAttribute="trailing" id="m6a-FC-vtE"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="103" height="155"/>
+                                                        <connections>
+                                                            <outlet property="bookImgView" destination="GCr-UL-Jsd" id="xJ2-Tm-Lbg"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Vig-Rh-F6u"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5cg-KO-Hd9"/>
+                                                </connections>
+                                            </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-mk-CKV">
+                                                <rect key="frame" x="20" y="635" width="374" height="70"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="6z1-zI-OwE"/>
+                                                </constraints>
+                                                <state key="normal" title="키워드 알림 설정"/>
+                                                <connections>
+                                                    <action selector="toSettingView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PfT-S5-GZq"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="JtP-AP-v0P" secondAttribute="trailing" id="0QN-rt-eO5"/>
-                                            <constraint firstItem="3od-on-X1Y" firstAttribute="top" secondItem="7dQ-Af-IHk" secondAttribute="bottom" constant="40" id="1ks-wv-SQm"/>
-                                            <constraint firstItem="3sD-sY-L8T" firstAttribute="centerX" secondItem="X7q-j5-q6y" secondAttribute="centerX" id="81e-fj-KTS"/>
+                                            <constraint firstAttribute="trailing" secondItem="Re5-KK-wxm" secondAttribute="trailing" constant="20" id="8HC-56-z0G"/>
+                                            <constraint firstAttribute="trailing" secondItem="nBE-HQ-Kqc" secondAttribute="trailing" id="Byb-lv-DdH"/>
+                                            <constraint firstAttribute="trailing" secondItem="fkG-mk-CKV" secondAttribute="trailing" constant="20" id="EmC-mD-eYO"/>
+                                            <constraint firstItem="nBE-HQ-Kqc" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" id="FQ0-Fk-l9b"/>
                                             <constraint firstItem="emf-bj-VGQ" firstAttribute="centerX" secondItem="X7q-j5-q6y" secondAttribute="centerX" id="J0k-I7-peK"/>
                                             <constraint firstItem="emf-bj-VGQ" firstAttribute="centerY" secondItem="7dQ-Af-IHk" secondAttribute="centerY" id="K0G-s1-7zD"/>
-                                            <constraint firstItem="JtP-AP-v0P" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" id="LLe-eN-XEL"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qzu-4r-upt" secondAttribute="trailing" constant="20" id="KUW-uE-1oS"/>
                                             <constraint firstItem="cTF-ob-KGy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4wF-Qp-A82" secondAttribute="trailing" constant="20" id="NXB-NK-oUU"/>
+                                            <constraint firstItem="Re5-KK-wxm" firstAttribute="top" secondItem="XGd-hp-QBW" secondAttribute="bottom" constant="20" id="OFd-LU-lhI"/>
                                             <constraint firstItem="7dQ-Af-IHk" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="QoL-9K-zJF"/>
-                                            <constraint firstItem="JtP-AP-v0P" firstAttribute="top" secondItem="X7q-j5-q6y" secondAttribute="top" constant="15" id="Qpw-wS-bbU"/>
-                                            <constraint firstItem="3od-on-X1Y" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="TZq-lw-sUg"/>
-                                            <constraint firstItem="cTF-ob-KGy" firstAttribute="top" secondItem="JtP-AP-v0P" secondAttribute="bottom" constant="37.5" id="TcU-S3-MGb"/>
-                                            <constraint firstItem="4wF-Qp-A82" firstAttribute="top" secondItem="JtP-AP-v0P" secondAttribute="bottom" constant="40" id="bBj-nf-dTK"/>
-                                            <constraint firstAttribute="bottom" secondItem="3sD-sY-L8T" secondAttribute="bottom" constant="37" id="bJe-y8-7rW"/>
+                                            <constraint firstItem="Re5-KK-wxm" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="Sia-gX-tx0"/>
+                                            <constraint firstItem="WGH-Y5-Jth" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XGd-hp-QBW" secondAttribute="trailing" constant="20" id="VNL-e7-Par"/>
+                                            <constraint firstItem="XGd-hp-QBW" firstAttribute="top" secondItem="7dQ-Af-IHk" secondAttribute="bottom" constant="35" id="WUU-Li-km7"/>
+                                            <constraint firstItem="XGd-hp-QBW" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="caL-U0-W2J"/>
+                                            <constraint firstItem="Qzu-4r-upt" firstAttribute="top" secondItem="nBE-HQ-Kqc" secondAttribute="bottom" id="e6E-gb-459"/>
                                             <constraint firstAttribute="trailing" secondItem="7dQ-Af-IHk" secondAttribute="trailing" constant="20" id="f6n-zz-Eph"/>
                                             <constraint firstItem="7dQ-Af-IHk" firstAttribute="top" secondItem="4wF-Qp-A82" secondAttribute="bottom" constant="20" id="ffw-kp-GjO"/>
                                             <constraint firstItem="4wF-Qp-A82" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="gYw-DC-Pwh"/>
+                                            <constraint firstItem="cTF-ob-KGy" firstAttribute="top" secondItem="nBE-HQ-Kqc" secondAttribute="bottom" constant="60" id="jBq-Z5-hyp"/>
+                                            <constraint firstAttribute="bottom" secondItem="fkG-mk-CKV" secondAttribute="bottom" constant="69" id="npv-ly-UtA"/>
+                                            <constraint firstAttribute="trailing" secondItem="WGH-Y5-Jth" secondAttribute="trailing" constant="20" id="oWo-Af-ghv"/>
+                                            <constraint firstItem="4wF-Qp-A82" firstAttribute="top" secondItem="nBE-HQ-Kqc" secondAttribute="bottom" constant="60" id="qDu-sh-g9y"/>
                                             <constraint firstAttribute="trailing" secondItem="cTF-ob-KGy" secondAttribute="trailing" constant="20" id="qFY-zF-azl"/>
-                                            <constraint firstItem="3sD-sY-L8T" firstAttribute="top" secondItem="3od-on-X1Y" secondAttribute="bottom" constant="20" id="qym-6J-myp"/>
-                                            <constraint firstAttribute="trailing" secondItem="3od-on-X1Y" secondAttribute="trailing" constant="20" id="zim-b5-mgg"/>
+                                            <constraint firstItem="fkG-mk-CKV" firstAttribute="leading" secondItem="X7q-j5-q6y" secondAttribute="leading" constant="20" id="qvC-eG-fKO"/>
+                                            <constraint firstItem="nBE-HQ-Kqc" firstAttribute="top" secondItem="X7q-j5-q6y" secondAttribute="top" id="vh4-i8-6xe"/>
+                                            <constraint firstItem="fkG-mk-CKV" firstAttribute="top" secondItem="Re5-KK-wxm" secondAttribute="bottom" constant="30" id="wN3-zB-s7f"/>
+                                            <constraint firstItem="WGH-Y5-Jth" firstAttribute="top" secondItem="7dQ-Af-IHk" secondAttribute="bottom" constant="35" id="yo9-aN-tDv"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -151,16 +208,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="오늘의 책" id="qFw-AX-fzv">
+                    <navigationItem key="navigationItem" title="메인" id="qFw-AX-fzv">
                         <barButtonItem key="rightBarButtonItem" image="bell" catalog="system" id="16t-E2-prz">
                             <connections>
                                 <action selector="toAlarmList:" destination="BYZ-38-t0r" id="Byh-RB-zPr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="414" height="910"/>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
-                        <outlet property="newbookView" destination="7dQ-Af-IHk" id="0IM-mE-OUh"/>
+                        <outlet property="heartbookView" destination="7dQ-Af-IHk" id="5VY-fx-t0u"/>
+                        <outlet property="newbookView" destination="Re5-KK-wxm" id="LXc-X0-Ijh"/>
                         <outlet property="noBookLabel" destination="emf-bj-VGQ" id="eU8-nO-ueu"/>
                     </connections>
                 </viewController>
@@ -380,7 +438,7 @@
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="ioR-8I-lGg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bXT-8d-QzJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -399,7 +457,7 @@
                     <tabBarItem key="tabBarItem" title="" image="book.fill" catalog="system" id="PgH-oV-IeG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iTE-1B-eeR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

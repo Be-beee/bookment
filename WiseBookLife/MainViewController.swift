@@ -10,19 +10,35 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    
     var heartImgList: [String] = []
-    @IBOutlet var newbookView: UICollectionView!
+    @IBOutlet var heartbookView: UICollectionView!
     @IBOutlet var noBookLabel: UILabel!
     
-    let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
+    var newImgList: [String] = []
+    @IBOutlet var newbookView: UICollectionView!
+    
+    var searchTool = SearchBook()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyyMMdd"
+        
+        let param: [String: String] = [
+            "start_publish_date" : df.string(from: Date()),
+            "end_publish_date" : df.string(from: Date())
+        ]
+        searchTool.callAPI(page_no: "1", page_size: "10", additional_param: param) {
+            for item in self.searchTool.results {
+                self.newImgList.append(item.TITLE_URL)
+            }
+            self.newbookView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewImgList()
+        viewHeartImgList()
         if heartImgList.count == 0 {
             noBookLabel.isHidden = false
         } else {
@@ -30,18 +46,17 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK:- Image URL
+    // MARK:- Create Image List
     
-    func viewImgList() {
+    func viewHeartImgList() {
 //        heartList[index].TITLE_URL -> UIImage / count: MAX 3 ~ 6
 //        Append newbookList
         heartImgList = []
         for (_, value) in heartDic {
             heartImgList.append(value.TITLE_URL)
         }
-        newbookView.reloadData()
+        heartbookView.reloadData()
     }
-    
     
     // MARK:- Action
     @IBAction func toAlarmList(_ sender: UIBarButtonItem) {
@@ -83,14 +98,30 @@ extension MainViewController: UICollectionViewDelegate {}
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return heartImgList.count
+        
+        switch collectionView {
+        case self.heartbookView:
+            return heartImgList.count
+        default:
+            return newImgList.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = newbookView.dequeueReusableCell(withReuseIdentifier: "newbookCell", for: indexPath) as! NewbookCell
-        cell.bookImgView.image = urlToImage(from: heartImgList[indexPath.row])
+        if collectionView == self.heartbookView {
+            let heartCell = heartbookView.dequeueReusableCell(withReuseIdentifier: "newbookCell", for: indexPath) as! NewbookCell
+            heartCell.bookImgView.image = urlToImage(from: heartImgList[indexPath.row])
+            
+            return heartCell
+        } else {
+            let newbookCell = newbookView.dequeueReusableCell(withReuseIdentifier: "newbookCell", for: indexPath) as! NewbookCell
+            
+            newbookCell.bookImgView.image = urlToImage(from: newImgList[indexPath.row])
+            
+            return newbookCell
+        }
         
-        return cell
     }
     
     
