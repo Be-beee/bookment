@@ -8,6 +8,9 @@
 
 import UIKit
 
+// 이미 발행된 도서(오늘의 신간 포함), 기록 작성 시 검색창에 나타나는 도서의 경우 네이버 책 API를 사용하여 정보를 가져오도록 한다.
+// 발행 예정작의 경우만 서지정보유통시스템의 데이터를 가져온다.
+
 class MainViewController: UIViewController {
 
     var heartImgList: [String] = []
@@ -18,6 +21,9 @@ class MainViewController: UIViewController {
     @IBOutlet var newbookView: UICollectionView!
     
     var searchTool = SearchBook()
+    
+    @IBOutlet var searchBar: UISearchBar!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +45,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         viewHeartImgList()
+        searchBar.text = ""
         if heartImgList.count == 0 {
             noBookLabel.isHidden = false
         } else {
@@ -63,6 +70,13 @@ class MainViewController: UIViewController {
         let alarmListVC = UIStoryboard(name: "AlarmListVC", bundle: nil).instantiateViewController(withIdentifier: "alarmListVC") as! AlarmListViewController
         self.navigationController?.pushViewController(alarmListVC, animated: true)
     }
+    
+    @IBAction func toDetailSearchView(_ sender: UIButton) {
+        let detailSearchVC = UIStoryboard(name: "DetailSearchVC", bundle: nil).instantiateViewController(withIdentifier: "detailSearchVC") as! DetailSearchViewController
+        self.navigationController?.pushViewController(detailSearchVC, animated: true)
+        
+    }
+    
     
     @IBAction func toMyList(_ sender: UIButton) {
         let heartListVC = UIStoryboard(name: "HeartListVC", bundle: nil).instantiateViewController(withIdentifier: "heartListVC") as! HeartListViewController
@@ -127,5 +141,23 @@ extension MainViewController: UICollectionViewDataSource {
     
 }
 
+extension MainViewController: UISearchBarDelegate {
+    @objc func dismissKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+        
+        if !searchBar.text!.isEmpty {
+            let mainSearchResultVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as! MainSearchResultViewController
+            
+            mainSearchResultVC.searchedWord = searchBar.text!
+            
+            self.navigationController?.pushViewController(mainSearchResultVC, animated: true)
+            
+        }
+    }
+}
 
 

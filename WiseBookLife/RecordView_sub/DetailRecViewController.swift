@@ -19,7 +19,8 @@ class DetailRecViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = selectedItem.date
         self.navigationItem.largeTitleDisplayMode = .never
-        
+        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editThisRecord))
+        self.navigationItem.rightBarButtonItem = editButton
         presentData()
     }
     
@@ -34,5 +35,9 @@ class DetailRecViewController: UIViewController {
         bookInfoView.bookDate.text = selectedItem.bookData.PUBLISH_PREDATE
         bookInfoView.bookPublisher.text = selectedItem.bookData.PUBLISHER
         bookInfoView.bookISBN.text = selectedItem.bookData.EA_ISBN
+    }
+    
+    @objc func editThisRecord() {
+        print("수정")
     }
 }

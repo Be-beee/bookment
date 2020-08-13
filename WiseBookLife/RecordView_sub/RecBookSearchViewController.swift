@@ -16,7 +16,6 @@ class RecBookSearchViewController: UIViewController {
     
     var searchTool = SearchBook()
     
-    let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchResultView: UITableView!
@@ -77,20 +76,16 @@ extension RecBookSearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             self.searchResult = []
             self.searchTool.callAPI(page_no: "1", page_size: "50", additional_param: ["title" : searchBar.text!]) {
-                DispatchQueue.main.async {
-                    for item in self.searchTool.results {
-                        self.searchResult.append(item)
-                    }
-                    self.searchResultView.reloadData()
+                for item in self.searchTool.results {
+                    self.searchResult.append(item)
                 }
+                self.searchResultView.reloadData()
             }
             self.searchTool.callAPI(page_no: "1", page_size: "50", additional_param: ["author" : searchBar.text!]) {
-                DispatchQueue.main.async {
-                    for item in self.searchTool.results {
-                        self.searchResult.append(item)
-                    }
-                    self.searchResultView.reloadData()
+                for item in self.searchTool.results {
+                    self.searchResult.append(item)
                 }
+                self.searchResultView.reloadData()
             }
             
         } else {

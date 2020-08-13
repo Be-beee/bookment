@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UbC-Tq-m6t">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UbC-Tq-m6t">
                     <rect key="frame" x="10" y="20" width="135" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="135" id="0aV-bR-cUR"/>
@@ -59,7 +59,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="UbC-Tq-m6t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="2RL-GY-EcB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mqi-xs-VCf" secondAttribute="trailing" constant="20" id="5VU-TY-PpY"/>
