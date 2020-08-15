@@ -28,7 +28,7 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         
-        searchTool.callAPI(page_no: "1", page_size: "1000", additional_param: param) {
+        searchTool.callAPI(page_no: 1, page_size: 1000, additional_param: param) {
             for item in self.searchTool.results {
                 self.newbooksList.append(item)
             }
@@ -47,6 +47,7 @@ class NewListViewController: UIViewController {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartDic.updateValue(newbooksList[sender.tag], forKey: newbooksList[sender.tag].EA_ISBN)
         }
+        saveHeartList()
     }
 }
 

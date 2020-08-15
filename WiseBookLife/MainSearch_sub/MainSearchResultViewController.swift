@@ -34,18 +34,30 @@ class MainSearchResultViewController: UIViewController {
         let authorParam = [
             "author" : searchedWord
         ]
-        searchTool.callAPI(page_no: "1", page_size: "50", additional_param: titleParam) {
+        searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
             for item in self.searchTool.results {
                 self.resultList.append(item)
             }
+            self.resultView.reloadData()
         }
-        searchTool.callAPI(page_no: "1", page_size: "100", additional_param: authorParam) {
+        searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
             for item in self.searchTool.results {
                 self.resultList.append(item)
             }
             self.resultView.reloadData()
         }
         
+    }
+    
+    @objc func onOffHeartBtn(_ sender: UIButton!) {
+        if sender.imageView?.image == UIImage(systemName: "heart.fill") {
+            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+            heartDic.removeValue(forKey: resultList[sender.tag].EA_ISBN)
+        } else {
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartDic.updateValue(resultList[sender.tag], forKey: resultList[sender.tag].EA_ISBN)
+        }
+        saveHeartList()
     }
 
 }
@@ -75,7 +87,14 @@ extension MainSearchResultViewController: UITableViewDataSource {
         cell.authorLabel.text = resultList[indexPath.row].AUTHOR
         
         //heart button, bell button -> add Target
+        cell.heartBtn.tag = indexPath.row
+        cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
+        if heartDic[resultList[indexPath.row].EA_ISBN] != nil {
+            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
         
         return cell
     }

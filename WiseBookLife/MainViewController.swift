@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
             "start_publish_date" : df.string(from: Date()),
             "end_publish_date" : df.string(from: Date())
         ]
-        searchTool.callAPI(page_no: "1", page_size: "10", additional_param: param) {
+        searchTool.callAPI(page_no: 1, page_size: 10, additional_param: param) {
             for item in self.searchTool.results {
                 self.newImgList.append(item.TITLE_URL)
             }
@@ -58,6 +58,9 @@ class MainViewController: UIViewController {
     func viewHeartImgList() {
 //        heartList[index].TITLE_URL -> UIImage / count: MAX 3 ~ 6
 //        Append newbookList
+        if let loadedData = loadHeartList() {
+            heartDic = loadedData
+        }
         heartImgList = []
         for (_, value) in heartDic {
             heartImgList.append(value.TITLE_URL)

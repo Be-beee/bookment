@@ -14,15 +14,56 @@ class RecordViewController: UIViewController {
     @IBOutlet var recordView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        if let loadedRecords = loadRecords() {
+            self.records = loadedRecords
+        }
     }
     
 
+    // MARK:- Archive
+    
+    func saveRecords() {
+        DispatchQueue.global().async {
+            let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+            
+            guard let archivedURL = documentDirectory?.appendingPathComponent("records") else {
+                return
+            }
+            
+            do {
+                let archivedData = try NSKeyedArchiver.archivedData(withRootObject: self.records, requiringSecureCoding: true)
+                try archivedData.write(to: archivedURL)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func loadRecords() -> [RecordModel]? {
+        let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        guard let archiveURL = documentDirectory?.appendingPathComponent("records") else {
+            return nil
+        }
+        
+        guard let codedData = try? Data(contentsOf: archiveURL) else {
+            return nil
+        }
+        
+        guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
+            return nil
+        }
+        
+        return unarchivedData as? [RecordModel]
+    }
+    
+    
+    // MARK:- Action Methods
+    
     @IBAction func toAddView(_ sender: UIBarButtonItem) {
         let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
         
-//        self.navigationController?.pushViewController(addRecordVC, animated: true)
         addRecordVC.modalPresentationStyle = .fullScreen
         present(addRecordVC, animated: true, completion: nil)
     }
@@ -32,11 +73,15 @@ class RecordViewController: UIViewController {
             return
         }
         records.append(addRecordVC.recordModel)
+        saveRecords()
         recordView.reloadData()
     }
     
 
 }
+
+
+// MARK:- Extensions
 
 extension RecordViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

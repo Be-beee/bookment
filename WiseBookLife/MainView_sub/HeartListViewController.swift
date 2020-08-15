@@ -25,6 +25,9 @@ class HeartListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let loadedData = loadHeartList() {
+            heartDic = loadedData
+        }
         for (_, value) in heartDic {
             heartList.append(value)
         }
@@ -37,6 +40,7 @@ class HeartListViewController: UIViewController {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
             heartDic.removeValue(forKey: heartList[sender.tag].EA_ISBN)
+            saveHeartList()
             refreshData()
         }
 //        print("selector function executed")
