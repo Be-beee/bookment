@@ -47,8 +47,6 @@ class NewListViewController: UIViewController {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartDic.updateValue(newbooksList[sender.tag], forKey: newbooksList[sender.tag].EA_ISBN)
         }
-        
-        // 다시 들어갈 때 찜리스트에 추가된 도서 정보도 그대로 표시 되도록 설정하기
     }
 }
 
@@ -70,7 +68,6 @@ extension NewListViewController: UITableViewDataSource {
         
         cell.titleLabel.text = newbooksList[indexPath.row].TITLE
         cell.authorLabel.text = newbooksList[indexPath.row].AUTHOR
-//        cell.publisherLabel.text = newbooksList[indexPath.row].PUBLISHER
         
         
         cell.heartBtn.tag = indexPath.row

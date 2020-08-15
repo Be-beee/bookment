@@ -39,7 +39,7 @@ class MainSearchResultViewController: UIViewController {
                 self.resultList.append(item)
             }
         }
-        searchTool.callAPI(page_no: "1", page_size: "50", additional_param: authorParam) {
+        searchTool.callAPI(page_no: "1", page_size: "100", additional_param: authorParam) {
             for item in self.searchTool.results {
                 self.resultList.append(item)
             }
