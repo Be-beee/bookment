@@ -20,6 +20,20 @@ class RecordViewController: UIViewController {
         }
     }
     
+    // MARK:- Unwind Segue
+    
+    @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
+        if let selected = self.recordView.indexPathsForSelectedItems {
+            if selected.count != 0 {
+                records.remove(at: selected[0].item)
+                saveRecords()
+            }
+            self.recordView.reloadData()
+        }
+        
+        
+    }
+    
 
     // MARK:- Archive
     

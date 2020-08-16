@@ -20,6 +20,7 @@ class DetailRecViewController: UIViewController {
         self.navigationItem.title = selectedItem.date
         self.navigationItem.largeTitleDisplayMode = .never
         let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editThisRecord))
+//        editButton.setBackgroundImage(UIImage(systemName: ""), for: .normal, barMetrics: .default)
         self.navigationItem.rightBarButtonItem = editButton
         presentData()
     }
@@ -38,6 +39,32 @@ class DetailRecViewController: UIViewController {
     }
     
     @objc func editThisRecord() {
-        print("수정")
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let edit = UIAlertAction(title: "수정", style: .default) { (action) in
+            let editVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
+
+            editVC.modalPresentationStyle = .fullScreen
+            self.present(editVC, animated: true, completion: nil)
+        }
+        
+        let delete = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+            let deleteAlert = UIAlertController(title: "경고", message: "정말 삭제하시겠습니까?\n삭제된 기록은 복구할 수 없습니다.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let ok = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+                self.performSegue(withIdentifier: "toRecordListByDeleting", sender: self)
+            }
+            deleteAlert.addAction(cancel)
+            deleteAlert.addAction(ok)
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(edit)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

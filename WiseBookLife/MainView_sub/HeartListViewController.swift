@@ -25,15 +25,17 @@ class HeartListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let loadedData = loadHeartList() {
-            heartDic = loadedData
-        }
+//        if let loadedData = loadHeartList() {
+//            heartDic = loadedData
+//        }
         for (_, value) in heartDic {
             heartList.append(value)
         }
         heartView.reloadData()
     }
 
+    
+    // MARK:- cell button action methods
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
 //        sender.isSelected = !sender.isSelected
@@ -43,7 +45,6 @@ class HeartListViewController: UIViewController {
             saveHeartList()
             refreshData()
         }
-//        print("selector function executed")
     }
     
     func refreshData() {
@@ -54,8 +55,23 @@ class HeartListViewController: UIViewController {
         
         heartView.reloadData()
     }
+    
+    
+    @objc func onOffBellBtn(_ sender: UIButton!) {
+        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
+            sender.setImage(UIImage(systemName: "bell"), for: .normal)
+            bellDic.removeValue(forKey: heartList[sender.tag].EA_ISBN)
+        } else {
+            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+            bellDic.updateValue(heartList[sender.tag].TITLE, forKey: heartList[sender.tag].EA_ISBN)
+        }
+        print(bellDic.count)
+        saveBellList()
+    }
 }
 
+
+// MARK:- Extensions
 extension HeartListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
@@ -79,11 +95,20 @@ extension HeartListViewController: UITableViewDataSource {
         }
         
         cell.authorLabel.text = heartList[indexPath.row].AUTHOR
-//        cell.publisherLabel.text = heartList[indexPath.row].PUBLISHER
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
-        cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal) // 필요시 삭제할 것
+        cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        
+        
+        cell.bellBtn.tag = indexPath.row
+        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
+        
+        if bellDic[heartList[indexPath.row].EA_ISBN] != nil {
+            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+        } else {
+            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
+        }
 
         return cell
     }

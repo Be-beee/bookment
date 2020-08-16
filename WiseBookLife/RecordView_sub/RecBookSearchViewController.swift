@@ -76,15 +76,11 @@ extension RecBookSearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             self.searchResult = []
             self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: ["title" : searchBar.text!]) {
-                for item in self.searchTool.results {
-                    self.searchResult.append(item)
-                }
+                self.searchResult.append(contentsOf: self.searchTool.results)
                 self.searchResultView.reloadData()
             }
             self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: ["author" : searchBar.text!]) {
-                for item in self.searchTool.results {
-                    self.searchResult.append(item)
-                }
+                self.searchResult.append(contentsOf: self.searchTool.results)
                 self.searchResultView.reloadData()
             }
             

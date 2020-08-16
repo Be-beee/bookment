@@ -29,9 +29,7 @@ class NewListViewController: UIViewController {
         ]
         
         searchTool.callAPI(page_no: 1, page_size: 1000, additional_param: param) {
-            for item in self.searchTool.results {
-                self.newbooksList.append(item)
-            }
+            self.newbooksList = self.searchTool.results
             self.newbooksView.reloadData()
         }
     }
@@ -48,6 +46,18 @@ class NewListViewController: UIViewController {
             heartDic.updateValue(newbooksList[sender.tag], forKey: newbooksList[sender.tag].EA_ISBN)
         }
         saveHeartList()
+    }
+    
+    @objc func onOffBellBtn(_ sender: UIButton!) {
+        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
+            sender.setImage(UIImage(systemName: "bell"), for: .normal)
+            bellDic.removeValue(forKey: newbooksList[sender.tag].EA_ISBN)
+        } else {
+            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+            bellDic.updateValue(newbooksList[sender.tag].TITLE, forKey: newbooksList[sender.tag].EA_ISBN)
+        }
+        print(bellDic.count)
+        saveBellList()
     }
 }
 
@@ -74,12 +84,22 @@ extension NewListViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        
         if heartDic[newbooksList[indexPath.row].EA_ISBN] != nil {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
+        
+        
+        cell.bellBtn.tag = indexPath.row
+        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
+        
+        if bellDic[newbooksList[indexPath.row].EA_ISBN] != nil {
+            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+        } else {
+            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
+        }
+        
         return cell
     }
 }

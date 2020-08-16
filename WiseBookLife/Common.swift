@@ -271,6 +271,9 @@ extension UIViewController {
     
 }
 
+
+// MARK:- Heart List Dictionary
+
 var heartDic: [String: SeojiData] = [:]
 
 func saveHeartList() {
@@ -305,4 +308,43 @@ func loadHeartList() -> [String: SeojiData]? {
     }
     
     return unarchivedData as? [String: SeojiData]
+}
+
+
+// MARK:- Bell List Dictionary
+
+var bellDic: [String: String] = [:]
+// ISBN: Title
+
+func saveBellList() {
+    DispatchQueue.global().async {
+        let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+        guard let archivedURL = documentDirectory?.appendingPathComponent("bell") else {
+            return
+        }
+        do {
+            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: bellDic, requiringSecureCoding: true)
+            try archivedData.write(to: archivedURL)
+        } catch {
+            print(error)
+        }
+    }
+}
+
+func loadBellList() -> [String: String]? {
+    let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+    
+    guard let archiveURL = documentDirectory?.appendingPathComponent("bell") else {
+        return nil
+    }
+    
+    guard let codedData = try? Data(contentsOf: archiveURL) else {
+        return nil
+    }
+    
+    guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
+        return nil
+    }
+    
+    return unarchivedData as? [String: String]
 }

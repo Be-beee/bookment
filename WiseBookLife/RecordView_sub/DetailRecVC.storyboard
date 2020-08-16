@@ -55,9 +55,11 @@
                         <outlet property="bookInfoView" destination="S8c-kI-5xY" id="zfB-WJ-m4y"/>
                         <outlet property="recContents" destination="KP0-uo-kf3" id="f56-9P-Uvr"/>
                         <outlet property="recTitle" destination="ROc-DF-bVa" id="evb-D9-gql"/>
+                        <segue destination="aSG-Ft-Kle" kind="unwind" identifier="toRecordListByDeleting" unwindAction="unwindToRecordListWithSender:" id="Ouc-UJ-hnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSV-wZ-AmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="aSG-Ft-Kle" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="149" y="171"/>
         </scene>

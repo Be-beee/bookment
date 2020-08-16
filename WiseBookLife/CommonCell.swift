@@ -13,7 +13,6 @@ class CommonCell: UITableViewCell {
     @IBOutlet var bookCover: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
-//    @IBOutlet var publisherLabel: UILabel!
     
     @IBOutlet var heartBtn: UIButton!
     @IBOutlet var bellBtn: UIButton!
@@ -30,22 +29,5 @@ class CommonCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-//    @IBAction func onOffHeart(_ sender: UIButton) {
-//        isHeartOn.toggle()
-//        if isHeartOn {
-//            heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//        } else {
-//            heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-//        }
-//    }
-    @IBAction func onOffBell(_ sender: UIButton) {
-        isBellOn.toggle()
-        if isBellOn {
-            bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-        } else {
-            bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
-        }
     }
 }

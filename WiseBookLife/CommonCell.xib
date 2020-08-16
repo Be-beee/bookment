@@ -41,9 +41,6 @@
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-g5-fT7">
                         <rect key="frame" x="384" y="10" width="20" height="22"/>
                         <state key="normal" image="bell" catalog="system"/>
-                        <connections>
-                            <action selector="onOffBell:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7i2-N2-rIe"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -76,7 +73,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="No_Img.png" width="300" height="300"/>
+        <image name="No_Img.png" width="300" height="450"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="heart" catalog="system" width="128" height="109"/>
     </resources>

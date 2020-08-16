@@ -128,10 +128,10 @@
 			children = (
 				B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */,
 				B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */,
-				B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */,
-				B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */,
 				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
 				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
+				B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */,
+				B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */,
 				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
 				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
 			);

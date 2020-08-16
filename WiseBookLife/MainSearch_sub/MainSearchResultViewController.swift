@@ -16,6 +16,8 @@ class MainSearchResultViewController: UIViewController {
     var searchTool = SearchBook()
     var searchedWord = "Sample"
     
+    var isSearched = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,15 +37,11 @@ class MainSearchResultViewController: UIViewController {
             "author" : searchedWord
         ]
         searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
-            for item in self.searchTool.results {
-                self.resultList.append(item)
-            }
+            self.resultList.append(contentsOf: self.searchTool.results)
             self.resultView.reloadData()
         }
         searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
-            for item in self.searchTool.results {
-                self.resultList.append(item)
-            }
+            self.resultList.append(contentsOf: self.searchTool.results)
             self.resultView.reloadData()
         }
         
@@ -59,9 +57,23 @@ class MainSearchResultViewController: UIViewController {
         }
         saveHeartList()
     }
+    
+    @objc func onOffBellBtn(_ sender: UIButton!) {
+        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
+            sender.setImage(UIImage(systemName: "bell"), for: .normal)
+            bellDic.removeValue(forKey: resultList[sender.tag].EA_ISBN)
+        } else {
+            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+            bellDic.updateValue(resultList[sender.tag].TITLE, forKey: resultList[sender.tag].EA_ISBN)
+        }
+        print(bellDic.count)
+        saveBellList()
+    }
 
 }
 
+
+// MARK: - Extensions
 extension MainSearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
@@ -96,6 +108,16 @@ extension MainSearchResultViewController: UITableViewDataSource {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         
+        cell.bellBtn.tag = indexPath.row
+        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
+        
+        if bellDic[resultList[indexPath.row].EA_ISBN] != nil {
+            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+        } else {
+            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
+        }
+        
+        
         return cell
     }
     
@@ -104,11 +126,40 @@ extension MainSearchResultViewController: UITableViewDataSource {
 
 extension MainSearchResultViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if let hasText = searchController.searchBar.text, !hasText.isEmpty {
-//            let param: [String: String] = [:]
-//            self.searchTool.callAPI(page_no: "1", page_size: "50", additional_param: param) {
-//                <#code#>
+//        if searchController.searchBar {
+//            if let hasText = searchController.searchBar.text, !hasText.isEmpty {
+//                let titleParam: [String: String] = [
+//                    "title" : hasText
+//                ]
+//                let authorParam: [String: String] = [
+//                    "author": hasText
+//                ]
+//                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
+//                    self.resultList = self.searchTool.results
+//                    self.resultView.reloadData()
+//                }
 //            }
+//        }
+        if let hasText = searchController.searchBar.text {
+            self.resultList = []
+            self.resultView.reloadData()
+            if !hasText.isEmpty {
+                let titleParam: [String: String] = [
+                    "title" : hasText
+                ]
+                let authorParam: [String: String] = [
+                    "author": hasText
+                ]
+                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
+                    self.resultList.append(contentsOf: self.searchTool.results)
+                    self.resultView.reloadData()
+                }
+                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
+                    self.resultList.append(contentsOf: self.searchTool.results)
+                    self.resultView.reloadData()
+                }
+            }
+            
         }
     }
     
