@@ -85,7 +85,7 @@ extension RecBookSearchViewController: UISearchBarDelegate {
             }
             
         } else {
-            // 그냥 searchResult 비워두기
+            // searchResult 비워두기
             self.searchResult = []
         }
     }

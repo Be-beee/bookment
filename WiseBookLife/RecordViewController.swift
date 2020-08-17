@@ -34,7 +34,32 @@ class RecordViewController: UIViewController {
         
     }
     
-
+    @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
+        guard let addRecordVC = sender.source as? AddRecordViewController else {
+            return
+        }
+        guard let selected = self.recordView.indexPathsForSelectedItems else {
+            return
+        }
+        
+        if addRecordVC.editmode {
+            records[selected[0].item] = addRecordVC.recordModel
+        } else {
+            records.append(addRecordVC.recordModel)
+        }
+        saveRecords()
+        recordView.reloadData()
+    }
+    
+    // MARK:- Action Methods
+    
+    @IBAction func toAddView(_ sender: UIBarButtonItem) {
+        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
+        
+        addRecordVC.modalPresentationStyle = .fullScreen
+        present(addRecordVC, animated: true, completion: nil)
+    }
+    
     // MARK:- Archive
     
     func saveRecords() {
@@ -70,25 +95,6 @@ class RecordViewController: UIViewController {
         }
         
         return unarchivedData as? [RecordModel]
-    }
-    
-    
-    // MARK:- Action Methods
-    
-    @IBAction func toAddView(_ sender: UIBarButtonItem) {
-        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-        
-        addRecordVC.modalPresentationStyle = .fullScreen
-        present(addRecordVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
-        guard let addRecordVC = sender.source as? AddRecordViewController else {
-            return
-        }
-        records.append(addRecordVC.recordModel)
-        saveRecords()
-        recordView.reloadData()
     }
     
 

@@ -14,7 +14,9 @@ class MainSearchResultViewController: UIViewController {
     @IBOutlet var resultView: UITableView!
     
     var searchTool = SearchBook()
-    var searchedWord = "Sample"
+    var searchedWord = ""
+    
+    var detailSearchQuery: [String: String] = [:]
     
     var isSearched = false
     
@@ -30,19 +32,26 @@ class MainSearchResultViewController: UIViewController {
         searchController.searchBar.text = searchedWord
         self.navigationItem.searchController = searchController
         
-        let titleParam = [
-            "title" : searchedWord
-        ]
-        let authorParam = [
-            "author" : searchedWord
-        ]
-        searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
-            self.resultList.append(contentsOf: self.searchTool.results)
-            self.resultView.reloadData()
-        }
-        searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
-            self.resultList.append(contentsOf: self.searchTool.results)
-            self.resultView.reloadData()
+        if searchedWord.isEmpty, detailSearchQuery.count != 0 {
+            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: detailSearchQuery) {
+                self.resultList.append(contentsOf: self.searchTool.results)
+                self.resultView.reloadData()
+            }
+        } else {
+            let titleParam = [
+                "title" : searchedWord
+            ]
+            let authorParam = [
+                "author" : searchedWord
+            ]
+            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
+                self.resultList.append(contentsOf: self.searchTool.results)
+                self.resultView.reloadData()
+            }
+            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
+                self.resultList.append(contentsOf: self.searchTool.results)
+                self.resultView.reloadData()
+            }
         }
         
     }

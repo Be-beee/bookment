@@ -18,6 +18,8 @@ class AddRecordViewController: UIViewController {
     @IBOutlet var searchBtn: UIButton!
     @IBOutlet var selectedBookView: SelectView!
     
+    var editmode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,10 +27,32 @@ class AddRecordViewController: UIViewController {
         df.dateFormat = "yyyy.MM.dd"
         let today = df.string(from: Date())
         
-        todayDate.text = today
-        recordModel.date = today
+        
+        switch editmode {
+        case true:
+            searchBtn.isHidden = true
+            presentSelectView()
+            recordTitle.text = recordModel.recordTitle
+            recordContents.text = recordModel.recordContents
+            todayDate.text = recordModel.date
+        default:
+            todayDate.text = today
+            recordModel.date = today
+        }
         
     }
+    
+    func presentSelectView() {
+        selectedBookView.bookCoverView.image = urlToImage(from: recordModel.bookData.TITLE_URL)
+        selectedBookView.bookTitle.text = recordModel.bookData.TITLE
+        selectedBookView.bookAuthor.text =  recordModel.bookData.AUTHOR
+        selectedBookView.bookPublisher.text = "출판사: " + recordModel.bookData.PUBLISHER
+        
+        selectedBookView.bookDate.text = "출간(예정)일: " +  recordModel.bookData.PUBLISH_PREDATE
+        selectedBookView.bookISBN.text = "ISBN: "+recordModel.bookData.EA_ISBN
+    }
+    
+    // MARK:- Unwind Segue
     
     @IBAction func unwindSearchView(sender: UIStoryboardSegue) {
         searchBtn.isHidden = true
@@ -37,16 +61,11 @@ class AddRecordViewController: UIViewController {
             return
         }
         recordModel.bookData = searchresultVC.selected
-        selectedBookView.bookCoverView.image = urlToImage(from: searchresultVC.selected.TITLE_URL)
-        selectedBookView.bookTitle.text = searchresultVC.selected.TITLE
-        selectedBookView.bookAuthor.text =  searchresultVC.selected.AUTHOR
-        selectedBookView.bookPublisher.text = "출판사: " + searchresultVC.selected.PUBLISHER
-        
-        selectedBookView.bookDate.text = "출간(예정)일: " +  searchresultVC.selected.PUBLISH_PREDATE
-        selectedBookView.bookISBN.text = "ISBN: "+searchresultVC.selected.EA_ISBN
-        
+        presentSelectView()
     }
     
+    
+    // MARK:- Action Methods
     @IBAction func searchBook(_ sender: UIButton) {
         let recBookSearchVC = UIStoryboard(name: "RecBookSearchVC", bundle: nil).instantiateViewController(withIdentifier: "recBookSearchVC") as! RecBookSearchViewController
         
@@ -60,10 +79,10 @@ class AddRecordViewController: UIViewController {
             recordModel.recordTitle = title
             recordModel.recordContents = recordContents.text
             
-            print(recordModel.bookData)
             if !recordModel.bookData.EA_ISBN.isEmpty {
                 self.performSegue(withIdentifier: "toRecordView", sender: self)
-                // perform segue
+                // Unbalanced calls to begin/end appearance transitions
+                
             } else {
                 let bookAlert = UIAlertController(title: "에러", message: "기록을 작성할 책을 선택해주세요!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default, handler: nil)

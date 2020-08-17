@@ -49,9 +49,9 @@ class RecordModel: NSObject, NSCoding, NSSecureCoding {
     override init() {
         let voidData = SeojiData()
         bookData = voidData
-        recordTitle = "None"
+        recordTitle = ""
         date = "yyyy.MM.dd"
-        recordContents = "None"
+        recordContents = ""
         
     }
     

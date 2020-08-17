@@ -14,9 +14,66 @@
                     <view key="view" contentMode="scaleToFill" id="ebQ-od-Zs3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDF-OS-xER">
+                                <rect key="frame" x="20" y="84" width="374" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="저자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="va7-Jd-oYK">
+                                <rect key="frame" x="20" y="146" width="374" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="발행처" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E05-Tm-csS">
+                                <rect key="frame" x="20" y="208" width="374" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ISBN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6w-d0-vdI">
+                                <rect key="frame" x="20" y="270" width="374" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판 예정일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku3-Hh-sRi">
+                                <rect key="frame" x="20" y="332" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ucP-p4-NEj">
+                                <rect key="frame" x="0.0" y="373" width="414" height="216"/>
+                                <locale key="locale" localeIdentifier="ko"/>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="E05-Tm-csS" secondAttribute="trailing" constant="20" id="BN3-XA-riM"/>
+                            <constraint firstItem="SDF-OS-xER" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="BWZ-qy-Ld7"/>
+                            <constraint firstItem="ucP-p4-NEj" firstAttribute="trailing" secondItem="McL-t3-oKK" secondAttribute="trailing" id="IEc-pe-iv6"/>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="va7-Jd-oYK" secondAttribute="trailing" constant="20" id="LGl-Di-ANY"/>
+                            <constraint firstItem="SDF-OS-xER" firstAttribute="top" secondItem="McL-t3-oKK" secondAttribute="top" constant="40" id="T7p-T6-7ay"/>
+                            <constraint firstItem="ucP-p4-NEj" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" id="UZE-eq-g08"/>
+                            <constraint firstItem="va7-Jd-oYK" firstAttribute="top" secondItem="SDF-OS-xER" secondAttribute="bottom" constant="40" id="VvG-pP-XA2"/>
+                            <constraint firstItem="ucP-p4-NEj" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="20" id="aqx-Xi-Ztf"/>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="V6w-d0-vdI" secondAttribute="trailing" constant="20" id="cPW-qq-vyI"/>
+                            <constraint firstItem="ku3-Hh-sRi" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="ecT-iz-q7I"/>
+                            <constraint firstItem="E05-Tm-csS" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fCU-Ws-qDZ"/>
+                            <constraint firstItem="va7-Jd-oYK" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fW1-j8-M4Y"/>
+                            <constraint firstItem="V6w-d0-vdI" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="g42-1Z-sAd"/>
+                            <constraint firstItem="ku3-Hh-sRi" firstAttribute="top" secondItem="V6w-d0-vdI" secondAttribute="bottom" constant="40" id="ifH-qD-RSb"/>
+                            <constraint firstItem="V6w-d0-vdI" firstAttribute="top" secondItem="E05-Tm-csS" secondAttribute="bottom" constant="40" id="nyt-Jc-ry3"/>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="SDF-OS-xER" secondAttribute="trailing" constant="20" id="prd-89-ntt"/>
+                            <constraint firstItem="E05-Tm-csS" firstAttribute="top" secondItem="va7-Jd-oYK" secondAttribute="bottom" constant="40" id="z1w-jK-q8g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="McL-t3-oKK"/>
                     </view>
+                    <connections>
+                        <outlet property="authorField" destination="va7-Jd-oYK" id="VlB-bu-nSv"/>
+                        <outlet property="isbnField" destination="V6w-d0-vdI" id="09h-LR-RsE"/>
+                        <outlet property="publisherField" destination="E05-Tm-csS" id="BUG-Fd-j5b"/>
+                        <outlet property="titleField" destination="SDF-OS-xER" id="uNC-Bz-o4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6G9-U2-jaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

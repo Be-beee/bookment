@@ -20,7 +20,6 @@ class DetailRecViewController: UIViewController {
         self.navigationItem.title = selectedItem.date
         self.navigationItem.largeTitleDisplayMode = .never
         let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editThisRecord))
-//        editButton.setBackgroundImage(UIImage(systemName: ""), for: .normal, barMetrics: .default)
         self.navigationItem.rightBarButtonItem = editButton
         presentData()
     }
@@ -44,6 +43,8 @@ class DetailRecViewController: UIViewController {
             let editVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
 
             editVC.modalPresentationStyle = .fullScreen
+            editVC.recordModel = self.selectedItem
+            editVC.editmode = true
             self.present(editVC, animated: true, completion: nil)
         }
         
@@ -52,6 +53,7 @@ class DetailRecViewController: UIViewController {
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
             let ok = UIAlertAction(title: "삭제", style: .destructive) { (action) in
                 self.performSegue(withIdentifier: "toRecordListByDeleting", sender: self)
+                return
             }
             deleteAlert.addAction(cancel)
             deleteAlert.addAction(ok)

@@ -297,7 +297,7 @@
                     <navigationItem key="navigationItem" title="내 서재" id="kJy-oF-2fP">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="tRN-AS-F3l">
                             <connections>
-                                <action selector="toAddView:" destination="7eK-Rz-JvR" id="9Ae-Gt-DSN"/>
+                                <action selector="toAddView:" destination="7eK-Rz-JvR" id="Fo9-fB-gU1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -335,7 +335,7 @@
                     <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="eBd-eR-pUF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cCL-dV-m1i">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
