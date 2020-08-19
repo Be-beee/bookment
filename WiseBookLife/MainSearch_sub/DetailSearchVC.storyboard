@@ -36,48 +36,84 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판 예정일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku3-Hh-sRi">
-                                <rect key="frame" x="20" y="332" width="78" height="21"/>
+                                <rect key="frame" x="20" y="332" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ucP-p4-NEj">
-                                <rect key="frame" x="0.0" y="373" width="414" height="216"/>
-                                <locale key="locale" localeIdentifier="ko"/>
-                            </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Opa-Vr-rfX">
+                                <rect key="frame" x="40" y="383" width="104" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1h-ej-PJB">
+                                <rect key="frame" x="270" y="383" width="104" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjZ-Vb-3c4">
+                                <rect key="frame" x="201" y="382.5" width="12" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYk-oS-kjk">
+                                <rect key="frame" x="164" y="485.5" width="86" height="30"/>
+                                <state key="normal" title="검색 조건 저장"/>
+                                <connections>
+                                    <action selector="saveSearchDetails:" destination="hI3-xa-qez" eventType="touchUpInside" id="hHZ-jj-S6w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60v-lm-DxJ">
+                                <rect key="frame" x="142.5" y="555.5" width="129" height="30"/>
+                                <state key="normal" title="검색 조건 리스트 보기"/>
+                                <connections>
+                                    <action selector="showSearchDetailList:" destination="hI3-xa-qez" eventType="touchUpInside" id="oHY-pE-yBk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Opa-Vr-rfX" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="30" id="3bp-ye-ojF"/>
                             <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="E05-Tm-csS" secondAttribute="trailing" constant="20" id="BN3-XA-riM"/>
                             <constraint firstItem="SDF-OS-xER" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="BWZ-qy-Ld7"/>
-                            <constraint firstItem="ucP-p4-NEj" firstAttribute="trailing" secondItem="McL-t3-oKK" secondAttribute="trailing" id="IEc-pe-iv6"/>
+                            <constraint firstItem="Opa-Vr-rfX" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="40" id="GWu-Wh-pY7"/>
                             <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="va7-Jd-oYK" secondAttribute="trailing" constant="20" id="LGl-Di-ANY"/>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="G1h-ej-PJB" secondAttribute="trailing" constant="40" id="Qa5-vZ-C79"/>
                             <constraint firstItem="SDF-OS-xER" firstAttribute="top" secondItem="McL-t3-oKK" secondAttribute="top" constant="40" id="T7p-T6-7ay"/>
-                            <constraint firstItem="ucP-p4-NEj" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" id="UZE-eq-g08"/>
+                            <constraint firstItem="LjZ-Vb-3c4" firstAttribute="centerY" secondItem="Opa-Vr-rfX" secondAttribute="centerY" id="TWu-l0-XCR"/>
                             <constraint firstItem="va7-Jd-oYK" firstAttribute="top" secondItem="SDF-OS-xER" secondAttribute="bottom" constant="40" id="VvG-pP-XA2"/>
-                            <constraint firstItem="ucP-p4-NEj" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="20" id="aqx-Xi-Ztf"/>
+                            <constraint firstItem="60v-lm-DxJ" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="YNg-uq-ESC"/>
+                            <constraint firstItem="LjZ-Vb-3c4" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="ZOq-tQ-ucb"/>
+                            <constraint firstItem="G1h-ej-PJB" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="30" id="bFq-pm-F5g"/>
                             <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="V6w-d0-vdI" secondAttribute="trailing" constant="20" id="cPW-qq-vyI"/>
+                            <constraint firstItem="bYk-oS-kjk" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="dON-uS-Cwj"/>
                             <constraint firstItem="ku3-Hh-sRi" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="ecT-iz-q7I"/>
                             <constraint firstItem="E05-Tm-csS" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fCU-Ws-qDZ"/>
                             <constraint firstItem="va7-Jd-oYK" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fW1-j8-M4Y"/>
                             <constraint firstItem="V6w-d0-vdI" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="g42-1Z-sAd"/>
+                            <constraint firstItem="60v-lm-DxJ" firstAttribute="top" secondItem="bYk-oS-kjk" secondAttribute="bottom" constant="40" id="iLW-bY-WVa"/>
                             <constraint firstItem="ku3-Hh-sRi" firstAttribute="top" secondItem="V6w-d0-vdI" secondAttribute="bottom" constant="40" id="ifH-qD-RSb"/>
+                            <constraint firstItem="bYk-oS-kjk" firstAttribute="top" secondItem="LjZ-Vb-3c4" secondAttribute="bottom" constant="80" id="nwu-si-4gZ"/>
                             <constraint firstItem="V6w-d0-vdI" firstAttribute="top" secondItem="E05-Tm-csS" secondAttribute="bottom" constant="40" id="nyt-Jc-ry3"/>
                             <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="SDF-OS-xER" secondAttribute="trailing" constant="20" id="prd-89-ntt"/>
                             <constraint firstItem="E05-Tm-csS" firstAttribute="top" secondItem="va7-Jd-oYK" secondAttribute="bottom" constant="40" id="z1w-jK-q8g"/>
+                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="ku3-Hh-sRi" secondAttribute="trailing" constant="20" id="zws-uT-tM7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="McL-t3-oKK"/>
                     </view>
                     <connections>
                         <outlet property="authorField" destination="va7-Jd-oYK" id="VlB-bu-nSv"/>
+                        <outlet property="endPubDate" destination="G1h-ej-PJB" id="6mU-dw-Xnz"/>
                         <outlet property="isbnField" destination="V6w-d0-vdI" id="09h-LR-RsE"/>
                         <outlet property="publisherField" destination="E05-Tm-csS" id="BUG-Fd-j5b"/>
+                        <outlet property="startPubDate" destination="Opa-Vr-rfX" id="VcB-pz-uEz"/>
                         <outlet property="titleField" destination="SDF-OS-xER" id="uNC-Bz-o4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6G9-U2-jaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="122"/>
+            <point key="canvasLocation" x="140.57971014492756" y="121.875"/>
         </scene>
     </scenes>
 </document>

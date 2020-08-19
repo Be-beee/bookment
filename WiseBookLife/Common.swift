@@ -348,3 +348,5 @@ func loadBellList() -> [String: String]? {
     
     return unarchivedData as? [String: String]
 }
+
+// save/load archiving할 때 불필요한 코드 수를 줄이는 게 나을 것 같음.

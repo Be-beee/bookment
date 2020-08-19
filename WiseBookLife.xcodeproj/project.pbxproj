@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
+		B55F601524ED5AFC00D363A7 /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */; };
+		B55F601724ED5B1000D363A7 /* SearchListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55F601624ED5B1000D363A7 /* SearchListVC.storyboard */; };
 		B56B972224DFB50100347D11 /* DetailSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972124DFB50100347D11 /* DetailSearchViewController.swift */; };
 		B56B972424DFB51100347D11 /* DetailSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972324DFB51100347D11 /* DetailSearchVC.storyboard */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
+		B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
+		B55F601624ED5B1000D363A7 /* SearchListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchListVC.storyboard; sourceTree = "<group>"; };
 		B56B972124DFB50100347D11 /* DetailSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchViewController.swift; sourceTree = "<group>"; };
 		B56B972324DFB51100347D11 /* DetailSearchVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailSearchVC.storyboard; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				B56B972324DFB51100347D11 /* DetailSearchVC.storyboard */,
 				B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */,
 				B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */,
+				B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */,
+				B55F601624ED5B1000D363A7 /* SearchListVC.storyboard */,
 			);
 			path = MainSearch_sub;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				B5AFB9F124A357A90072DAD8 /* NewListVC.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
+				B55F601724ED5B1000D363A7 /* SearchListVC.storyboard in Resources */,
 				B5AFB9F524A35E840072DAD8 /* SettingVC.storyboard in Resources */,
 				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
 				B572CE9224A0983000702C6E /* No_Img.png in Resources */,
@@ -274,6 +281,7 @@
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B5AFB9EB24A351EC0072DAD8 /* AlarmListViewController.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
+				B55F601524ED5AFC00D363A7 /* SearchListViewController.swift in Sources */,
 				B572CE8C24A08BB300702C6E /* Common.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
