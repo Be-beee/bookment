@@ -15,8 +15,8 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let loadedRecords = loadRecords() {
-            self.records = loadedRecords
+        if let loadedRecords = loadData(at: "records") {
+            self.records = loadedRecords as! [RecordModel]
         }
     }
     
@@ -26,7 +26,7 @@ class RecordViewController: UIViewController {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
                 records.remove(at: selected[0].item)
-                saveRecords()
+                saveData(data: self.records, at: "records")
             }
             self.recordView.reloadData()
         }
@@ -47,7 +47,7 @@ class RecordViewController: UIViewController {
         } else {
             records.append(addRecordVC.recordModel)
         }
-        saveRecords()
+        saveData(data: self.records, at: "records")
         recordView.reloadData()
     }
     
@@ -59,45 +59,6 @@ class RecordViewController: UIViewController {
         addRecordVC.modalPresentationStyle = .fullScreen
         present(addRecordVC, animated: true, completion: nil)
     }
-    
-    // MARK:- Archive
-    
-    func saveRecords() {
-        DispatchQueue.global().async {
-            let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-            
-            guard let archivedURL = documentDirectory?.appendingPathComponent("records") else {
-                return
-            }
-            
-            do {
-                let archivedData = try NSKeyedArchiver.archivedData(withRootObject: self.records, requiringSecureCoding: true)
-                try archivedData.write(to: archivedURL)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func loadRecords() -> [RecordModel]? {
-        let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        guard let archiveURL = documentDirectory?.appendingPathComponent("records") else {
-            return nil
-        }
-        
-        guard let codedData = try? Data(contentsOf: archiveURL) else {
-            return nil
-        }
-        
-        guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
-            return nil
-        }
-        
-        return unarchivedData as? [RecordModel]
-    }
-    
-
 }
 
 

@@ -64,19 +64,7 @@ class MainSearchResultViewController: UIViewController {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartDic.updateValue(resultList[sender.tag], forKey: resultList[sender.tag].EA_ISBN)
         }
-        saveHeartList()
-    }
-    
-    @objc func onOffBellBtn(_ sender: UIButton!) {
-        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
-            sender.setImage(UIImage(systemName: "bell"), for: .normal)
-            bellDic.removeValue(forKey: resultList[sender.tag].EA_ISBN)
-        } else {
-            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-            bellDic.updateValue(resultList[sender.tag].TITLE, forKey: resultList[sender.tag].EA_ISBN)
-        }
-        print(bellDic.count)
-        saveBellList()
+        saveData(data: heartDic, at: "heart")
     }
 
 }
@@ -117,17 +105,21 @@ extension MainSearchResultViewController: UITableViewDataSource {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         
-        cell.bellBtn.tag = indexPath.row
-        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         
-        if bellDic[resultList[indexPath.row].EA_ISBN] != nil {
-            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+        detailVC.bookData = resultList[indexPath.row]
+        detailVC.modalPresentationStyle = .fullScreen
+        if heartDic[resultList[indexPath.row].EA_ISBN] != nil {
+            detailVC.isHeartBtnSelected = true
         } else {
-            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
+            detailVC.isHeartBtnSelected = false
         }
         
-        
-        return cell
+        present(detailVC, animated: true, completion: nil)
     }
     
     
@@ -135,20 +127,6 @@ extension MainSearchResultViewController: UITableViewDataSource {
 
 extension MainSearchResultViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-//        if searchController.searchBar {
-//            if let hasText = searchController.searchBar.text, !hasText.isEmpty {
-//                let titleParam: [String: String] = [
-//                    "title" : hasText
-//                ]
-//                let authorParam: [String: String] = [
-//                    "author": hasText
-//                ]
-//                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
-//                    self.resultList = self.searchTool.results
-//                    self.resultView.reloadData()
-//                }
-//            }
-//        }
         if let hasText = searchController.searchBar.text {
             self.resultList = []
             self.resultView.reloadData()

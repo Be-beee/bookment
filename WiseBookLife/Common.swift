@@ -8,18 +8,6 @@
 
 import UIKit
 
-class KeywordModel {
-    var keywordTitle: String
-    var kind: String // Title, Author
-    var content: String // 내용, kind로 content의 종류를 구별한다
-    
-    init(keywordTitle: String, kind: String, content: String) {
-        self.keywordTitle = keywordTitle
-        self.kind = kind
-        self.content = content
-    }
-}
-
 class RecordModel: NSObject, NSCoding, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(bookData, forKey: "bookData")
@@ -81,9 +69,6 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         coder.encode(SET_EXPRESSION, forKey: "SET_EXPRESSION")
         coder.encode(PUBLISHER, forKey: "PUBLISHER")
         coder.encode(PRE_PRICE, forKey: "PRE_PRICE")
-        coder.encode(PAGE, forKey: "PAGE")
-        coder.encode(BOOK_SIZE, forKey: "BOOK_SIZE")
-        coder.encode(FORM, forKey: "FORM")
         coder.encode(PUBLISH_PREDATE, forKey: "PUBLISH_PREDATE")
         coder.encode(EBOOK_YN, forKey: "EBOOK_YN")
         coder.encode(TITLE_URL, forKey: "TITLE_URL")
@@ -104,9 +89,6 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         let SET_EXPRESSION = coder.decodeObject(forKey: "SET_EXPRESSION") as! String
         let PUBLISHER = coder.decodeObject(forKey: "PUBLISHER") as! String
         let PRE_PRICE = coder.decodeObject(forKey: "PRE_PRICE") as! String
-        let PAGE = coder.decodeObject(forKey: "PAGE") as! String
-        let BOOK_SIZE = coder.decodeObject(forKey: "BOOK_SIZE") as! String
-        let FORM = coder.decodeObject(forKey: "FORM") as! String
         let PUBLISH_PREDATE = coder.decodeObject(forKey: "PUBLISH_PREDATE") as! String
         let EBOOK_YN = coder.decodeObject(forKey: "EBOOK_YN") as! String
         let TITLE_URL = coder.decodeObject(forKey: "TITLE_URL") as! String
@@ -114,7 +96,7 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         let BOOK_INTRODUCTION_URL = coder.decodeObject(forKey: "BOOK_INTRODUCTION_URL") as! String
         let BOOK_SUMMARY_URL = coder.decodeObject(forKey: "BOOK_SUMMARY_URL") as! String
         
-        self.init(TITLE: TITLE, VOL: VOL, SERIES_TITLE: SERIES_TITLE, AUTHOR: AUTHOR, EA_ISBN: EA_ISBN, EA_ADD_CODE: EA_ADD_CODE, SET_ISBN: SET_ISBN, SET_ADD_CODE: SET_ADD_CODE, SET_EXPRESSION: SET_EXPRESSION, PUBLISHER: PUBLISHER, PRE_PRICE: PRE_PRICE, PAGE: PAGE, BOOK_SIZE: BOOK_SIZE, FORM: FORM, PUBLISH_PREDATE: PUBLISH_PREDATE, EBOOK_YN: EBOOK_YN, TITLE_URL: TITLE_URL, BOOK_TB_CNT_URL: BOOK_TB_CNT_URL, BOOK_INTRODUCTION_URL: BOOK_INTRODUCTION_URL, BOOK_SUMMARY_URL: BOOK_SUMMARY_URL)
+        self.init(TITLE: TITLE, VOL: VOL, SERIES_TITLE: SERIES_TITLE, AUTHOR: AUTHOR, EA_ISBN: EA_ISBN, EA_ADD_CODE: EA_ADD_CODE, SET_ISBN: SET_ISBN, SET_ADD_CODE: SET_ADD_CODE, SET_EXPRESSION: SET_EXPRESSION, PUBLISHER: PUBLISHER, PRE_PRICE: PRE_PRICE, PUBLISH_PREDATE: PUBLISH_PREDATE, EBOOK_YN: EBOOK_YN, TITLE_URL: TITLE_URL, BOOK_TB_CNT_URL: BOOK_TB_CNT_URL, BOOK_INTRODUCTION_URL: BOOK_INTRODUCTION_URL, BOOK_SUMMARY_URL: BOOK_SUMMARY_URL)
     }
     
     var TITLE: String
@@ -128,13 +110,10 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
     var SET_EXPRESSION: String
     var PUBLISHER: String
     var PRE_PRICE: String
-    var PAGE: String
-    var BOOK_SIZE: String
-    var FORM: String
     var PUBLISH_PREDATE: String
     var EBOOK_YN: String
     var TITLE_URL: String
-    var BOOK_TB_CNT_URL: String
+    var BOOK_TB_CNT_URL: String // 목차
     var BOOK_INTRODUCTION_URL: String
     var BOOK_SUMMARY_URL: String
     
@@ -150,9 +129,6 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         SET_EXPRESSION = ""
         PUBLISHER = ""
         PRE_PRICE = ""
-        PAGE = ""
-        BOOK_SIZE = ""
-        FORM = ""
         PUBLISH_PREDATE = ""
         EBOOK_YN = ""
         TITLE_URL = ""
@@ -161,7 +137,7 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         BOOK_SUMMARY_URL = ""
     }
     
-    init(TITLE: String, VOL: String, SERIES_TITLE: String, AUTHOR: String, EA_ISBN: String, EA_ADD_CODE: String, SET_ISBN: String, SET_ADD_CODE: String, SET_EXPRESSION: String, PUBLISHER: String, PRE_PRICE: String, PAGE: String, BOOK_SIZE: String, FORM: String, PUBLISH_PREDATE: String, EBOOK_YN: String, TITLE_URL: String, BOOK_TB_CNT_URL: String, BOOK_INTRODUCTION_URL: String, BOOK_SUMMARY_URL: String) {
+    init(TITLE: String, VOL: String, SERIES_TITLE: String, AUTHOR: String, EA_ISBN: String, EA_ADD_CODE: String, SET_ISBN: String, SET_ADD_CODE: String, SET_EXPRESSION: String, PUBLISHER: String, PRE_PRICE: String, PUBLISH_PREDATE: String, EBOOK_YN: String, TITLE_URL: String, BOOK_TB_CNT_URL: String, BOOK_INTRODUCTION_URL: String, BOOK_SUMMARY_URL: String) {
         self.TITLE = TITLE
         self.VOL = VOL
         self.SERIES_TITLE = SERIES_TITLE
@@ -173,9 +149,6 @@ class SeojiData: NSObject, Codable, NSCoding, NSSecureCoding{
         self.SET_EXPRESSION = SET_EXPRESSION
         self.PUBLISHER = PUBLISHER
         self.PRE_PRICE = PRE_PRICE
-        self.PAGE = PAGE
-        self.BOOK_SIZE = BOOK_SIZE
-        self.FORM = FORM
         self.PUBLISH_PREDATE = PUBLISH_PREDATE
         self.EBOOK_YN = EBOOK_YN
         self.TITLE_URL = TITLE_URL
@@ -193,6 +166,37 @@ struct SearchData: Codable {
     
 }
 
+class SearchConditionModel {
+    var conditionTitle: String
+    var title: String
+    var author: String
+    var publisher: String
+    var isbn: String
+    var startDate: String
+    var endDate: String
+    
+    init() {
+        conditionTitle = ""
+        title = ""
+        author = ""
+        publisher = ""
+        isbn = ""
+        startDate = ""
+        endDate = ""
+    }
+    
+    init(conditionTitle: String, title: String, author: String, publisher: String, isbn: String, startDate: String, endDate: String) {
+        self.conditionTitle = conditionTitle
+        self.title = title
+        self.author = author
+        self.publisher = publisher
+        self.isbn = isbn
+        self.startDate = startDate
+        self.endDate = endDate
+    }
+    
+}
+
 extension Dictionary {
     var queryString: String {
         var output = ""
@@ -203,9 +207,6 @@ extension Dictionary {
         
         return output
     }
-    
-    
-    
 }
 
 class SearchBook {
@@ -272,19 +273,21 @@ extension UIViewController {
 }
 
 
-// MARK:- Heart List Dictionary
+// MARK:- Heart Dictionary / Search Condition Model Array
 
 var heartDic: [String: SeojiData] = [:]
+var conditionList: [SearchConditionModel] = []
 
-func saveHeartList() {
+
+// MARK:- Archiving
+func saveData(data: Any, at: String) {
     DispatchQueue.global().async {
         let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-        guard let archivedURL = documentDirectory?.appendingPathComponent("heart") else {
+        guard let archivedURL = documentDirectory?.appendingPathComponent(at) else {
             return
         }
-        
         do {
-            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: heartDic, requiringSecureCoding: true)
+            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: true)
             try archivedData.write(to: archivedURL)
         } catch {
             print(error)
@@ -292,10 +295,10 @@ func saveHeartList() {
     }
 }
 
-func loadHeartList() -> [String: SeojiData]? {
+func loadData(at: String) -> Any? {
     let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
     
-    guard let archiveURL = documentDirectory?.appendingPathComponent("heart") else {
+    guard let archiveURL = documentDirectory?.appendingPathComponent(at) else {
         return nil
     }
     
@@ -306,47 +309,6 @@ func loadHeartList() -> [String: SeojiData]? {
     guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
         return nil
     }
-    
-    return unarchivedData as? [String: SeojiData]
+    return unarchivedData
 }
 
-
-// MARK:- Bell List Dictionary
-
-var bellDic: [String: String] = [:]
-// ISBN: Title
-
-func saveBellList() {
-    DispatchQueue.global().async {
-        let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-        guard let archivedURL = documentDirectory?.appendingPathComponent("bell") else {
-            return
-        }
-        do {
-            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: bellDic, requiringSecureCoding: true)
-            try archivedData.write(to: archivedURL)
-        } catch {
-            print(error)
-        }
-    }
-}
-
-func loadBellList() -> [String: String]? {
-    let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
-    
-    guard let archiveURL = documentDirectory?.appendingPathComponent("bell") else {
-        return nil
-    }
-    
-    guard let codedData = try? Data(contentsOf: archiveURL) else {
-        return nil
-    }
-    
-    guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
-        return nil
-    }
-    
-    return unarchivedData as? [String: String]
-}
-
-// save/load archiving할 때 불필요한 코드 수를 줄이는 게 나을 것 같음.

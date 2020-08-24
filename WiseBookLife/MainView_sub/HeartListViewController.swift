@@ -19,18 +19,15 @@ class HeartListViewController: UIViewController {
 
         self.navigationItem.title = "나의 찜리스트 😍"
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
-        
-        
 //        heartList = heartDic.values
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if let loadedData = loadHeartList() {
-//            heartDic = loadedData
-//        }
+        heartList = []
         for (_, value) in heartDic {
             heartList.append(value)
         }
+        heartList.sort(by: {$0.TITLE < $1.TITLE})
         heartView.reloadData()
     }
 
@@ -42,7 +39,7 @@ class HeartListViewController: UIViewController {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
             heartDic.removeValue(forKey: heartList[sender.tag].EA_ISBN)
-            saveHeartList()
+            saveData(data: heartDic, at: "heart")
             refreshData()
         }
     }
@@ -56,18 +53,6 @@ class HeartListViewController: UIViewController {
         heartView.reloadData()
     }
     
-    
-    @objc func onOffBellBtn(_ sender: UIButton!) {
-        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
-            sender.setImage(UIImage(systemName: "bell"), for: .normal)
-            bellDic.removeValue(forKey: heartList[sender.tag].EA_ISBN)
-        } else {
-            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-            bellDic.updateValue(heartList[sender.tag].TITLE, forKey: heartList[sender.tag].EA_ISBN)
-        }
-        print(bellDic.count)
-        saveBellList()
-    }
 }
 
 
@@ -100,17 +85,21 @@ extension HeartListViewController: UITableViewDataSource {
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         
-        
-        cell.bellBtn.tag = indexPath.row
-        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
-        
-        if bellDic[heartList[indexPath.row].EA_ISBN] != nil {
-            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-        } else {
-            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
-        }
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
+        detailVC.bookData = heartList[indexPath.row]
+        detailVC.modalPresentationStyle = .fullScreen
+        if heartDic[heartList[indexPath.row].EA_ISBN] != nil {
+            detailVC.isHeartBtnSelected = true
+        } else {
+            detailVC.isHeartBtnSelected = false
+        }
+        
+        present(detailVC, animated: true, completion: nil)
     }
 }
 

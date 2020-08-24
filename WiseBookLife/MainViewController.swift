@@ -13,7 +13,8 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    var heartImgList: [String] = []
+    typealias BookSimple = (title: String, image: String)
+    var heartImgList: [BookSimple] = []
     @IBOutlet var heartbookView: UICollectionView!
     @IBOutlet var noBookLabel: UILabel!
     
@@ -56,30 +57,24 @@ class MainViewController: UIViewController {
     // MARK:- Create Image List
     
     func viewHeartImgList() {
-//        heartList[index].TITLE_URL -> UIImage / count: MAX 3 ~ 6
-//        Append newbookList
-        if let loadedData = loadHeartList() {
-            heartDic = loadedData
+        if let loadedData = loadData(at: "heart") {
+            heartDic = loadedData as! [String: SeojiData]
         }
         heartImgList = []
         for (_, value) in heartDic {
-            heartImgList.append(value.TITLE_URL)
+            heartImgList.append((title: value.TITLE, image: value.TITLE_URL))
         }
+        heartImgList.sort(by: {$0.title < $1.title})
         heartbookView.reloadData()
     }
     
     // MARK:- Action
-    @IBAction func toAlarmList(_ sender: UIBarButtonItem) {
-        let alarmListVC = UIStoryboard(name: "AlarmListVC", bundle: nil).instantiateViewController(withIdentifier: "alarmListVC") as! AlarmListViewController
-        self.navigationController?.pushViewController(alarmListVC, animated: true)
-    }
     
     @IBAction func toDetailSearchView(_ sender: UIButton) {
         let detailSearchVC = UIStoryboard(name: "DetailSearchVC", bundle: nil).instantiateViewController(withIdentifier: "detailSearchVC") as! DetailSearchViewController
         self.navigationController?.pushViewController(detailSearchVC, animated: true)
         
     }
-    
     
     @IBAction func toMyList(_ sender: UIButton) {
         let heartListVC = UIStoryboard(name: "HeartListVC", bundle: nil).instantiateViewController(withIdentifier: "heartListVC") as! HeartListViewController
@@ -90,15 +85,6 @@ class MainViewController: UIViewController {
         let newListVC = UIStoryboard(name: "NewListVC", bundle: nil).instantiateViewController(withIdentifier: "newListVC") as! NewListViewController
         self.navigationController?.pushViewController(newListVC, animated: true)
     }
-    
-    @IBAction func toSettingView(_ sender: UIButton) {
-        let settingVC = UIStoryboard(name: "SettingVC", bundle: nil).instantiateViewController(withIdentifier: "settingVC") as! SettingViewController
-        settingVC.modalPresentationStyle = .fullScreen
-        
-        present(settingVC, animated: true, completion: nil)
-    }
-    
-    
     
 }
 
@@ -128,7 +114,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.heartbookView {
             let heartCell = heartbookView.dequeueReusableCell(withReuseIdentifier: "newbookCell", for: indexPath) as! NewbookCell
-            heartCell.bookImgView.image = urlToImage(from: heartImgList[indexPath.row])
+            heartCell.bookImgView.image = urlToImage(from: heartImgList[indexPath.row].image)
             
             return heartCell
         } else {

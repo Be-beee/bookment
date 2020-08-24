@@ -34,6 +34,9 @@ class NewListViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.newbooksView.reloadData()
+    }
     
     
     // MARK:- Cell button action
@@ -45,20 +48,9 @@ class NewListViewController: UIViewController {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartDic.updateValue(newbooksList[sender.tag], forKey: newbooksList[sender.tag].EA_ISBN)
         }
-        saveHeartList()
+        saveData(data: heartDic, at: "heart")
     }
-    
-    @objc func onOffBellBtn(_ sender: UIButton!) {
-        if sender.imageView?.image == UIImage(systemName: "bell.fill") {
-            sender.setImage(UIImage(systemName: "bell"), for: .normal)
-            bellDic.removeValue(forKey: newbooksList[sender.tag].EA_ISBN)
-        } else {
-            sender.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-            bellDic.updateValue(newbooksList[sender.tag].TITLE, forKey: newbooksList[sender.tag].EA_ISBN)
-        }
-        print(bellDic.count)
-        saveBellList()
-    }
+
 }
 
 
@@ -91,15 +83,19 @@ extension NewListViewController: UITableViewDataSource {
         }
         
         
-        cell.bellBtn.tag = indexPath.row
-        cell.bellBtn.addTarget(self, action: #selector(onOffBellBtn), for: .touchUpInside)
-        
-        if bellDic[newbooksList[indexPath.row].EA_ISBN] != nil {
-            cell.bellBtn.setImage(UIImage(systemName: "bell.fill"), for: .normal)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
+        detailVC.bookData = newbooksList[indexPath.row]
+        detailVC.modalPresentationStyle = .fullScreen
+        if heartDic[newbooksList[indexPath.row].EA_ISBN] != nil {
+            detailVC.isHeartBtnSelected = true
         } else {
-            cell.bellBtn.setImage(UIImage(systemName: "bell"), for: .normal)
+            detailVC.isHeartBtnSelected = false
         }
         
-        return cell
+        present(detailVC, animated: true, completion: nil)
     }
 }

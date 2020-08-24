@@ -35,12 +35,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzr-z0-IbV">
-                        <rect key="frame" x="343.5" y="10" width="20.5" height="22"/>
+                        <rect key="frame" x="373.5" y="10" width="20.5" height="22"/>
                         <state key="normal" image="heart" catalog="system"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-g5-fT7">
-                        <rect key="frame" x="384" y="10" width="20" height="22"/>
-                        <state key="normal" image="bell" catalog="system"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -48,14 +44,12 @@
                     <constraint firstItem="N6N-Qe-Zs5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="IJh-BO-N7G"/>
                     <constraint firstItem="ldY-Bx-GbB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="L3k-TS-eNX"/>
                     <constraint firstItem="N6N-Qe-Zs5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Lek-Tv-x7H"/>
-                    <constraint firstItem="0UT-g5-fT7" firstAttribute="leading" secondItem="Mzr-z0-IbV" secondAttribute="trailing" constant="20" id="Obs-ry-LUR"/>
-                    <constraint firstItem="0UT-g5-fT7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Sqo-ED-mlJ"/>
                     <constraint firstItem="ldY-Bx-GbB" firstAttribute="leading" secondItem="N6N-Qe-Zs5" secondAttribute="trailing" constant="20" id="TTi-oy-wby"/>
+                    <constraint firstAttribute="trailing" secondItem="Mzr-z0-IbV" secondAttribute="trailing" constant="20" id="VDi-1q-upD"/>
                     <constraint firstAttribute="bottom" secondItem="N6N-Qe-Zs5" secondAttribute="bottom" constant="10" id="WBM-AJ-wMu"/>
                     <constraint firstItem="Mzr-z0-IbV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ykd-6A-ZCj"/>
                     <constraint firstItem="0os-fm-S03" firstAttribute="top" secondItem="ldY-Bx-GbB" secondAttribute="bottom" constant="10" id="gz5-qh-tuD"/>
                     <constraint firstItem="0os-fm-S03" firstAttribute="leading" secondItem="N6N-Qe-Zs5" secondAttribute="trailing" constant="20" id="iFV-nK-S5D"/>
-                    <constraint firstAttribute="trailing" secondItem="0UT-g5-fT7" secondAttribute="trailing" constant="10" id="pes-jf-v4z"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
@@ -64,7 +58,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="0os-fm-S03" id="Zpt-2d-OyR"/>
-                <outlet property="bellBtn" destination="0UT-g5-fT7" id="hK2-Kj-s7J"/>
                 <outlet property="bookCover" destination="N6N-Qe-Zs5" id="ZQ1-8t-wzS"/>
                 <outlet property="heartBtn" destination="Mzr-z0-IbV" id="hHk-fm-JlR"/>
                 <outlet property="titleLabel" destination="ldY-Bx-GbB" id="dnr-ki-6SV"/>
@@ -74,7 +67,6 @@
     </objects>
     <resources>
         <image name="No_Img.png" width="300" height="450"/>
-        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="heart" catalog="system" width="128" height="109"/>
     </resources>
 </document>

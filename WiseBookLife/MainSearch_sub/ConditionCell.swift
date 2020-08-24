@@ -1,22 +1,17 @@
 //
-//  CommonCell.swift
+//  ConditionCell.swift
 //  WiseBookLife
 //
-//  Created by 서보경 on 2020/07/01.
+//  Created by 서보경 on 2020/08/20.
 //  Copyright © 2020 서보경. All rights reserved.
 //
 
 import UIKit
 
-class CommonCell: UITableViewCell {
+class ConditionCell: UITableViewCell {
 
-    @IBOutlet var bookCover: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var authorLabel: UILabel!
-    
-    @IBOutlet var heartBtn: UIButton!
-    
-    var isHeartOn = false
+    @IBOutlet var conditionTitle: UILabel!
+    @IBOutlet var searchBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,4 +23,5 @@ class CommonCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

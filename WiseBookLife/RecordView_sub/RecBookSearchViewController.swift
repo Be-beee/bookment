@@ -50,7 +50,6 @@ extension RecBookSearchViewController: UITableViewDataSource {
         cell.authorLabel.text = searchResult[indexPath.row].AUTHOR
 //        cell.publisherLabel.text = searchResult[indexPath.row].PUBLISHER
         cell.heartBtn.isHidden = true
-        cell.bellBtn.isHidden = true
         
         return cell
     }

@@ -8,112 +8,138 @@
     </dependencies>
     <scenes>
         <!--Detail Search View Controller-->
-        <scene sceneID="Ca4-UB-BKI">
+        <scene sceneID="VSu-Fl-8H0">
             <objects>
-                <viewController storyboardIdentifier="detailSearchVC" id="hI3-xa-qez" customClass="DetailSearchViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ebQ-od-Zs3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController storyboardIdentifier="detailSearchVC" id="sow-SB-O0e" customClass="DetailSearchViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dwl-V4-1Nr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDF-OS-xER">
-                                <rect key="frame" x="20" y="84" width="374" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="저자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="va7-Jd-oYK">
-                                <rect key="frame" x="20" y="146" width="374" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="발행처" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E05-Tm-csS">
-                                <rect key="frame" x="20" y="208" width="374" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ISBN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6w-d0-vdI">
-                                <rect key="frame" x="20" y="270" width="374" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판 예정일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku3-Hh-sRi">
-                                <rect key="frame" x="20" y="332" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Opa-Vr-rfX">
-                                <rect key="frame" x="40" y="383" width="104" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G1h-ej-PJB">
-                                <rect key="frame" x="270" y="383" width="104" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjZ-Vb-3c4">
-                                <rect key="frame" x="201" y="382.5" width="12" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYk-oS-kjk">
-                                <rect key="frame" x="164" y="485.5" width="86" height="30"/>
-                                <state key="normal" title="검색 조건 저장"/>
-                                <connections>
-                                    <action selector="saveSearchDetails:" destination="hI3-xa-qez" eventType="touchUpInside" id="hHZ-jj-S6w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60v-lm-DxJ">
-                                <rect key="frame" x="142.5" y="555.5" width="129" height="30"/>
-                                <state key="normal" title="검색 조건 리스트 보기"/>
-                                <connections>
-                                    <action selector="showSearchDetailList:" destination="hI3-xa-qez" eventType="touchUpInside" id="oHY-pE-yBk"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECg-eh-vPg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="656"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvv-ez-TjB">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DYu-g5-0DA">
+                                                <rect key="frame" x="20" y="40" width="374" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="저자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS4-Ne-Jgh">
+                                                <rect key="frame" x="20" y="102" width="374" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="발행처" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5l-Se-Q7C">
+                                                <rect key="frame" x="20" y="164" width="374" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ISBN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ep-Ty-ENU">
+                                                <rect key="frame" x="20" y="226" width="374" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판 예정일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnP-hL-Hb5">
+                                                <rect key="frame" x="20" y="288" width="374" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pBj-RL-OZC">
+                                                <rect key="frame" x="40" y="339" width="104" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY.MM.DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5H-3a-X0d">
+                                                <rect key="frame" x="270" y="339" width="104" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myw-54-GEu">
+                                                <rect key="frame" x="164" y="441" width="86" height="30"/>
+                                                <state key="normal" title="검색 조건 저장"/>
+                                                <connections>
+                                                    <action selector="saveSearchDetails:" destination="sow-SB-O0e" eventType="touchUpInside" id="TMM-N2-SHI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKM-7w-ZrW">
+                                                <rect key="frame" x="142.5" y="511" width="129" height="30"/>
+                                                <state key="normal" title="검색 조건 리스트 보기"/>
+                                                <connections>
+                                                    <action selector="showSearchDetailList:" destination="sow-SB-O0e" eventType="touchUpInside" id="0aI-20-fc3"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ns-g4-gXL">
+                                                <rect key="frame" x="201" y="338.5" width="12" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="l5l-Se-Q7C" secondAttribute="trailing" constant="20" id="0Wa-IA-ivP"/>
+                                            <constraint firstItem="GKM-7w-ZrW" firstAttribute="centerX" secondItem="tvv-ez-TjB" secondAttribute="centerX" id="1E6-Hy-tB5"/>
+                                            <constraint firstAttribute="trailing" secondItem="3ep-Ty-ENU" secondAttribute="trailing" constant="20" id="3Z5-eH-ohq"/>
+                                            <constraint firstItem="DYu-g5-0DA" firstAttribute="top" secondItem="tvv-ez-TjB" secondAttribute="top" constant="40" id="3fd-wc-2Gp"/>
+                                            <constraint firstItem="kS4-Ne-Jgh" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="20" id="4mV-Sc-mFH"/>
+                                            <constraint firstItem="QnP-hL-Hb5" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="20" id="5Ur-cZ-Jct"/>
+                                            <constraint firstItem="GKM-7w-ZrW" firstAttribute="top" secondItem="myw-54-GEu" secondAttribute="bottom" constant="40" id="6U5-gU-Z9K"/>
+                                            <constraint firstItem="DYu-g5-0DA" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="20" id="9uq-s1-R9M"/>
+                                            <constraint firstItem="pBj-RL-OZC" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="40" id="Abs-lN-8L9"/>
+                                            <constraint firstItem="4Ns-g4-gXL" firstAttribute="centerX" secondItem="tvv-ez-TjB" secondAttribute="centerX" id="DVi-RN-G9U"/>
+                                            <constraint firstItem="pBj-RL-OZC" firstAttribute="top" secondItem="QnP-hL-Hb5" secondAttribute="bottom" constant="30" id="H6G-iT-BqT"/>
+                                            <constraint firstAttribute="trailing" secondItem="QnP-hL-Hb5" secondAttribute="trailing" constant="20" id="LKr-EU-ZdF"/>
+                                            <constraint firstItem="3ep-Ty-ENU" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="20" id="M1W-1C-hc2"/>
+                                            <constraint firstItem="myw-54-GEu" firstAttribute="centerX" secondItem="tvv-ez-TjB" secondAttribute="centerX" id="Mmu-iZ-Ewy"/>
+                                            <constraint firstItem="g5H-3a-X0d" firstAttribute="top" secondItem="QnP-hL-Hb5" secondAttribute="bottom" constant="30" id="PFj-6h-xgA"/>
+                                            <constraint firstItem="myw-54-GEu" firstAttribute="top" secondItem="pBj-RL-OZC" secondAttribute="bottom" constant="80" id="PpV-mf-EHn"/>
+                                            <constraint firstItem="3ep-Ty-ENU" firstAttribute="top" secondItem="l5l-Se-Q7C" secondAttribute="bottom" constant="40" id="Q6g-xK-uZZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="DYu-g5-0DA" secondAttribute="trailing" constant="20" id="Sog-qb-Pub"/>
+                                            <constraint firstAttribute="trailing" secondItem="g5H-3a-X0d" secondAttribute="trailing" constant="40" id="TuC-MO-VxB"/>
+                                            <constraint firstItem="l5l-Se-Q7C" firstAttribute="leading" secondItem="tvv-ez-TjB" secondAttribute="leading" constant="20" id="Y75-ag-9q6"/>
+                                            <constraint firstItem="QnP-hL-Hb5" firstAttribute="top" secondItem="3ep-Ty-ENU" secondAttribute="bottom" constant="40" id="abe-Dc-nGB"/>
+                                            <constraint firstItem="4Ns-g4-gXL" firstAttribute="centerY" secondItem="g5H-3a-X0d" secondAttribute="centerY" id="bRC-oh-6p5"/>
+                                            <constraint firstAttribute="trailing" secondItem="kS4-Ne-Jgh" secondAttribute="trailing" constant="20" id="bUD-8e-meA"/>
+                                            <constraint firstItem="kS4-Ne-Jgh" firstAttribute="top" secondItem="DYu-g5-0DA" secondAttribute="bottom" constant="40" id="fbq-1F-6pc"/>
+                                            <constraint firstItem="l5l-Se-Q7C" firstAttribute="top" secondItem="kS4-Ne-Jgh" secondAttribute="bottom" constant="40" id="jDo-lJ-QrN"/>
+                                            <constraint firstAttribute="bottom" secondItem="GKM-7w-ZrW" secondAttribute="bottom" constant="115" id="sLQ-Bt-NIo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tvv-ez-TjB" firstAttribute="leading" secondItem="ECg-eh-vPg" secondAttribute="leading" id="W4V-DF-r5n"/>
+                                    <constraint firstItem="tvv-ez-TjB" firstAttribute="top" secondItem="ECg-eh-vPg" secondAttribute="top" id="ZxK-MH-SYd"/>
+                                    <constraint firstAttribute="trailing" secondItem="tvv-ez-TjB" secondAttribute="trailing" id="fWL-IV-iVb"/>
+                                    <constraint firstAttribute="bottom" secondItem="tvv-ez-TjB" secondAttribute="bottom" id="hg3-lq-rBs"/>
+                                    <constraint firstItem="tvv-ez-TjB" firstAttribute="width" secondItem="ECg-eh-vPg" secondAttribute="width" id="iBE-Qo-6oi"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Opa-Vr-rfX" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="30" id="3bp-ye-ojF"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="E05-Tm-csS" secondAttribute="trailing" constant="20" id="BN3-XA-riM"/>
-                            <constraint firstItem="SDF-OS-xER" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="BWZ-qy-Ld7"/>
-                            <constraint firstItem="Opa-Vr-rfX" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="40" id="GWu-Wh-pY7"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="va7-Jd-oYK" secondAttribute="trailing" constant="20" id="LGl-Di-ANY"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="G1h-ej-PJB" secondAttribute="trailing" constant="40" id="Qa5-vZ-C79"/>
-                            <constraint firstItem="SDF-OS-xER" firstAttribute="top" secondItem="McL-t3-oKK" secondAttribute="top" constant="40" id="T7p-T6-7ay"/>
-                            <constraint firstItem="LjZ-Vb-3c4" firstAttribute="centerY" secondItem="Opa-Vr-rfX" secondAttribute="centerY" id="TWu-l0-XCR"/>
-                            <constraint firstItem="va7-Jd-oYK" firstAttribute="top" secondItem="SDF-OS-xER" secondAttribute="bottom" constant="40" id="VvG-pP-XA2"/>
-                            <constraint firstItem="60v-lm-DxJ" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="YNg-uq-ESC"/>
-                            <constraint firstItem="LjZ-Vb-3c4" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="ZOq-tQ-ucb"/>
-                            <constraint firstItem="G1h-ej-PJB" firstAttribute="top" secondItem="ku3-Hh-sRi" secondAttribute="bottom" constant="30" id="bFq-pm-F5g"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="V6w-d0-vdI" secondAttribute="trailing" constant="20" id="cPW-qq-vyI"/>
-                            <constraint firstItem="bYk-oS-kjk" firstAttribute="centerX" secondItem="ebQ-od-Zs3" secondAttribute="centerX" id="dON-uS-Cwj"/>
-                            <constraint firstItem="ku3-Hh-sRi" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="ecT-iz-q7I"/>
-                            <constraint firstItem="E05-Tm-csS" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fCU-Ws-qDZ"/>
-                            <constraint firstItem="va7-Jd-oYK" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="fW1-j8-M4Y"/>
-                            <constraint firstItem="V6w-d0-vdI" firstAttribute="leading" secondItem="McL-t3-oKK" secondAttribute="leading" constant="20" id="g42-1Z-sAd"/>
-                            <constraint firstItem="60v-lm-DxJ" firstAttribute="top" secondItem="bYk-oS-kjk" secondAttribute="bottom" constant="40" id="iLW-bY-WVa"/>
-                            <constraint firstItem="ku3-Hh-sRi" firstAttribute="top" secondItem="V6w-d0-vdI" secondAttribute="bottom" constant="40" id="ifH-qD-RSb"/>
-                            <constraint firstItem="bYk-oS-kjk" firstAttribute="top" secondItem="LjZ-Vb-3c4" secondAttribute="bottom" constant="80" id="nwu-si-4gZ"/>
-                            <constraint firstItem="V6w-d0-vdI" firstAttribute="top" secondItem="E05-Tm-csS" secondAttribute="bottom" constant="40" id="nyt-Jc-ry3"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="SDF-OS-xER" secondAttribute="trailing" constant="20" id="prd-89-ntt"/>
-                            <constraint firstItem="E05-Tm-csS" firstAttribute="top" secondItem="va7-Jd-oYK" secondAttribute="bottom" constant="40" id="z1w-jK-q8g"/>
-                            <constraint firstItem="McL-t3-oKK" firstAttribute="trailing" secondItem="ku3-Hh-sRi" secondAttribute="trailing" constant="20" id="zws-uT-tM7"/>
+                            <constraint firstItem="Wpt-oZ-7lo" firstAttribute="trailing" secondItem="ECg-eh-vPg" secondAttribute="trailing" id="1gV-vB-p7s"/>
+                            <constraint firstItem="ECg-eh-vPg" firstAttribute="top" secondItem="Wpt-oZ-7lo" secondAttribute="top" id="4KT-W0-fij"/>
+                            <constraint firstItem="Wpt-oZ-7lo" firstAttribute="bottom" secondItem="ECg-eh-vPg" secondAttribute="bottom" id="Bko-OF-Jew"/>
+                            <constraint firstItem="ECg-eh-vPg" firstAttribute="leading" secondItem="Wpt-oZ-7lo" secondAttribute="leading" id="mai-pQ-ZPn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="McL-t3-oKK"/>
+                        <viewLayoutGuide key="safeArea" id="Wpt-oZ-7lo"/>
                     </view>
+                    <size key="freeformSize" width="414" height="700"/>
                     <connections>
-                        <outlet property="authorField" destination="va7-Jd-oYK" id="VlB-bu-nSv"/>
-                        <outlet property="endPubDate" destination="G1h-ej-PJB" id="6mU-dw-Xnz"/>
-                        <outlet property="isbnField" destination="V6w-d0-vdI" id="09h-LR-RsE"/>
-                        <outlet property="publisherField" destination="E05-Tm-csS" id="BUG-Fd-j5b"/>
-                        <outlet property="startPubDate" destination="Opa-Vr-rfX" id="VcB-pz-uEz"/>
-                        <outlet property="titleField" destination="SDF-OS-xER" id="uNC-Bz-o4E"/>
+                        <outlet property="authorField" destination="kS4-Ne-Jgh" id="umN-Na-J1V"/>
+                        <outlet property="endPubDate" destination="g5H-3a-X0d" id="DRL-IK-b4a"/>
+                        <outlet property="isbnField" destination="3ep-Ty-ENU" id="Rfn-0A-xwO"/>
+                        <outlet property="publisherField" destination="l5l-Se-Q7C" id="jBj-Mv-v6D"/>
+                        <outlet property="startPubDate" destination="pBj-RL-OZC" id="hLH-mV-rhw"/>
+                        <outlet property="titleField" destination="DYu-g5-0DA" id="uhB-f0-nQ3"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6G9-U2-jaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YsI-ZQ-w6i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="121.875"/>
+            <point key="canvasLocation" x="76.811594202898561" y="130.58035714285714"/>
         </scene>
     </scenes>
 </document>

@@ -11,6 +11,7 @@ import UIKit
 class DetailSearchViewController: UIViewController {
 
     var params: [String: String] = [:]
+    var condition = SearchConditionModel()
     
     @IBOutlet var titleField: UITextField!
     @IBOutlet var authorField: UITextField!
@@ -20,7 +21,7 @@ class DetailSearchViewController: UIViewController {
     @IBOutlet var startPubDate: UITextField!
     @IBOutlet var endPubDate: UITextField!
     
-    let datePicker = UIDatePicker()
+    var datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,10 +148,28 @@ class DetailSearchViewController: UIViewController {
     
     // MARK:- Button Action Methods
     @IBAction func saveSearchDetails(_ sender: UIButton) {
-        print("save details")
-        
         // save detail to list
         
+        let title = titleField.text ?? ""
+        let author = authorField.text ?? ""
+        let publisher = publisherField.text ?? ""
+        let isbn = isbnField.text ?? ""
+        let startdate = startPubDate.text ?? ""
+        let enddate = endPubDate.text ?? ""
+        
+        let items: [String] = [ "제목:"+title, "저자:"+author, "출판사:"+publisher, "ISBN:"+isbn, "검색시작날짜:"+startdate, "검색끝날짜:"+enddate ]
+        
+        var conditiontitle = ""
+        for item in items {
+            if !item.isEmpty {
+                conditiontitle += (item + "/")
+            }
+        }
+        conditiontitle.removeLast()
+        
+        condition = SearchConditionModel(conditionTitle: conditiontitle, title: title, author: author, publisher: publisher, isbn: isbn, startDate: startdate, endDate: enddate)
+        
+        conditionList.append(condition)
         let alert = UIAlertController(title: "알림", message: "검색 조건이 저장되었습니다.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
         
@@ -161,7 +180,7 @@ class DetailSearchViewController: UIViewController {
     @IBAction func showSearchDetailList(_ sender: UIButton) {
         let searchListVC = UIStoryboard(name: "SearchListVC", bundle: nil).instantiateViewController(withIdentifier: "searchListVC") as! SearchListViewController
         
-//        searchListVC.modalPresentationStyle = .fullScreen
+        searchListVC.modalPresentationStyle = .fullScreen
         present(searchListVC, animated: true, completion: nil)
     }
     
