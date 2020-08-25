@@ -39,11 +39,15 @@ class BookDetailViewController: UIViewController {
         bookCover.image = urlToImage(from: bookData.TITLE_URL)
         titleLabel.text = bookData.TITLE
         authorLabel.text = bookData.AUTHOR
-        publishDateLabel.text = bookData.PUBLISH_PREDATE
-        publisherLabel.text = bookData.PUBLISHER
-        prepriceLabel.text = bookData.PRE_PRICE
-        isbnLabel.text = bookData.EA_ISBN
-        ebookYNLabel.text = bookData.EBOOK_YN
+        publishDateLabel.text = "출판(예정)일: " + bookData.PUBLISH_PREDATE
+        publisherLabel.text = "출판사: " + bookData.PUBLISHER
+        prepriceLabel.text = "예정 가격: " + bookData.PRE_PRICE
+        isbnLabel.text = "ISBN: " + bookData.EA_ISBN
+        if bookData.EBOOK_YN == "Y" {
+            ebookYNLabel.text = "전자책"
+        } else {
+            ebookYNLabel.text = "종이책"
+        }
         
         if bookData.BOOK_INTRODUCTION_URL.isEmpty {
             bookIntroduction.text = "등록된 책소개가 없습니다."

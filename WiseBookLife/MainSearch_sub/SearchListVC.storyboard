@@ -40,7 +40,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdQ-Jj-XYk">
                                                     <rect key="frame" x="364" y="7" width="30" height="30"/>
-                                                    <state key="normal" title="검색"/>
+                                                    <state key="normal" title="선택"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -85,9 +85,11 @@
                     </view>
                     <connections>
                         <outlet property="conditionView" destination="MJ5-D0-2JR" id="UDr-PH-TwV"/>
+                        <segue destination="fdO-sU-RoH" kind="unwind" identifier="toDetailSearch" unwindAction="unwindToDetailSearchWithSender:" id="79b-ob-FUm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgq-h3-YsG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fdO-sU-RoH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="50.724637681159422" y="99.776785714285708"/>
         </scene>

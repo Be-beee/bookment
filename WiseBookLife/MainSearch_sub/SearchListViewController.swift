@@ -10,12 +10,15 @@ import UIKit
 
 class SearchListViewController: UIViewController {
 
+    var selected = SearchConditionModel()
     @IBOutlet var conditionView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let loadedData = loadData(at: "conditions") {
+            conditionList = loadedData as! [SearchConditionModel]
+        }
     }
     @IBAction func dismissList(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -43,15 +46,21 @@ extension SearchListViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            conditionList.remove(at: indexPath.row)
+            conditionView.deleteRows(at: [indexPath], with: .automatic)
+            saveData(data: conditionList, at: "conditions")
+        }
+    }
+    
 }
 
 
 // MARK:- Extensions/Cell Button Action Method
 extension SearchListViewController {
     @objc func searchWithCondition(_ sender: UIButton!) {
-//        conditionList[sender.tag]
-//        선택된 셀의 검색 조건을 DetailSearchViewController로 보낸 후 (여기서 수행)
-//        DetailSearchViewContoller에서 MainSearchResultViewController로 이동 (DetailSearchViewController의 unwind에서 수행)
-        self.dismiss(animated: true, completion: nil)
+        selected = conditionList[sender.tag]
+        self.performSegue(withIdentifier: "toDetailSearch", sender: self)
     }
 }

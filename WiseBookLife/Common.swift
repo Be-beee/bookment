@@ -166,7 +166,34 @@ struct SearchData: Codable {
     
 }
 
-class SearchConditionModel {
+class SearchConditionModel: NSObject, NSCoding, NSSecureCoding {
+    func encode(with coder: NSCoder) {
+        coder.encode(conditionTitle, forKey: "conditionTitle")
+        coder.encode(title, forKey: "title")
+        coder.encode(author, forKey: "author")
+        coder.encode(publisher, forKey: "publisher")
+        coder.encode(isbn, forKey: "isbn")
+        coder.encode(startDate, forKey: "startDate")
+        coder.encode(endDate, forKey: "endDate")
+    }
+    
+    required convenience init?(coder: NSCoder) {
+        let conditionTitle = coder.decodeObject(forKey: "conditionTitle") as! String
+        let title = coder.decodeObject(forKey: "title") as! String
+        let author = coder.decodeObject(forKey: "author") as! String
+        let publisher = coder.decodeObject(forKey: "publisher") as! String
+        let isbn = coder.decodeObject(forKey: "isbn") as! String
+        let startDate = coder.decodeObject(forKey: "startDate") as! String
+        let endDate = coder.decodeObject(forKey: "endDate") as! String
+        
+        self.init(conditionTitle: conditionTitle, title: title, author: author, publisher: publisher, isbn: isbn, startDate: startDate, endDate: endDate)
+        
+    }
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
+    
     var conditionTitle: String
     var title: String
     var author: String
@@ -175,7 +202,7 @@ class SearchConditionModel {
     var startDate: String
     var endDate: String
     
-    init() {
+    override init() {
         conditionTitle = ""
         title = ""
         author = ""

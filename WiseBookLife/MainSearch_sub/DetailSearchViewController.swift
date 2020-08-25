@@ -35,6 +35,23 @@ class DetailSearchViewController: UIViewController {
         showdatePicker(sender: endPubDate, startEnd: false)
     }
     
+    // MARK:- Unwind
+    
+    @IBAction func unwindToDetailSearch(sender: UIStoryboardSegue) {
+        guard let from = sender.source as? SearchListViewController else {
+            return
+        }
+        titleField.text = from.selected.title
+        authorField.text = from.selected.author
+        publisherField.text = from.selected.publisher
+        isbnField.text = from.selected.isbn
+        startPubDate.text = from.selected.startDate
+        endPubDate.text = from.selected.endDate
+//        searchDetail()
+        
+    }
+    
+    // MARK:- Action Methods for bar button item
     @objc func searchDetail() {
         let mainSearchResultVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as! MainSearchResultViewController
         
@@ -170,6 +187,9 @@ class DetailSearchViewController: UIViewController {
         condition = SearchConditionModel(conditionTitle: conditiontitle, title: title, author: author, publisher: publisher, isbn: isbn, startDate: startdate, endDate: enddate)
         
         conditionList.append(condition)
+        saveData(data: conditionList, at: "conditions")
+        
+        // alert
         let alert = UIAlertController(title: "알림", message: "검색 조건이 저장되었습니다.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
         
