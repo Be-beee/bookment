@@ -8,11 +8,6 @@
 
 import UIKit
 
-// 이미 발행된 도서(오늘의 신간 포함), 기록 작성 시 검색창에 나타나는 도서의 경우 네이버 책 API를 사용하여 정보를 가져오도록 한다.
-// 비로그인 방식 오픈 API 호출 시 클라이언트 아이디 / 클라이언트 시크릿을 요청 헤더에 추가
-// X-Naver-Client-Id, X-Naver-Client-Secret
-// 발행 예정작의 경우만 서지정보유통시스템의 데이터를 가져온다.
-
 class MainViewController: UIViewController {
 
     typealias BookSimple = (title: String, image: String)
