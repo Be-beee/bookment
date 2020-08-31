@@ -17,7 +17,7 @@ class HeartListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "나의 찜리스트 😍"
+        self.navigationItem.title = "나의 관심도서 😍"
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
 //        heartList = heartDic.values
     }

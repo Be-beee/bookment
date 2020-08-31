@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -23,10 +23,15 @@
                                     <outlet property="delegate" destination="Roh-SF-rmI" id="nqt-BY-7Gu"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xLh-kW-aIW">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="xLh-kW-aIW" firstAttribute="centerY" secondItem="Cd5-DL-ypH" secondAttribute="centerY" id="5QG-ky-ci4"/>
                             <constraint firstItem="r1f-2Y-TKB" firstAttribute="trailing" secondItem="4YB-Ic-xbP" secondAttribute="trailing" id="77i-O1-0wX"/>
+                            <constraint firstItem="xLh-kW-aIW" firstAttribute="centerX" secondItem="Cd5-DL-ypH" secondAttribute="centerX" id="AhW-SK-3Ed"/>
                             <constraint firstItem="r1f-2Y-TKB" firstAttribute="bottom" secondItem="4YB-Ic-xbP" secondAttribute="bottom" id="RvB-qT-0PO"/>
                             <constraint firstItem="4YB-Ic-xbP" firstAttribute="leading" secondItem="r1f-2Y-TKB" secondAttribute="leading" id="UYc-sJ-rgz"/>
                             <constraint firstItem="4YB-Ic-xbP" firstAttribute="top" secondItem="r1f-2Y-TKB" secondAttribute="top" id="doC-Ul-hwy"/>
@@ -34,6 +39,7 @@
                         <viewLayoutGuide key="safeArea" id="r1f-2Y-TKB"/>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="xLh-kW-aIW" id="l5l-rS-iam"/>
                         <outlet property="newbooksView" destination="4YB-Ic-xbP" id="2eH-FV-ge6"/>
                     </connections>
                 </viewController>

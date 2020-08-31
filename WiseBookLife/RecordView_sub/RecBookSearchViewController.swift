@@ -15,23 +15,59 @@ class RecBookSearchViewController: UIViewController {
     var isSearched = false
     
     var searchTool = SearchBook()
+    var searchedWord = ""
+    var pageNo = 1
+    var pageSize = 20
     
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchResultView: UITableView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchResultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-//        selectedView <- take selected data, and view
-//        searchApiCall(method: "title", text: "sample")
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        footerBtn.setTitle("결과 더보기", for: .normal)
+        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
+        tableFooter.addSubview(footerBtn)
         
+        searchResultView.tableFooterView = tableFooter
+        if searchResult.count == 0 {
+            tableFooter.isHidden = true
+        }
+        // 결과는 제대로 나타나지만 table footer가 보이지 않음..
+        // 빈 화면에서부터 activity indicator가 작동 중임
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        pageNo = 1
     }
 
+    
+    @objc func showMoreResult() {
+        let title_param: [String: String] = [
+            "title" : searchedWord
+        ]
+        let author_param: [String: String] = [
+            "author" : searchedWord
+        ]
+        pageNo += 1
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
+            self.searchResult.append(contentsOf: self.searchTool.results)
+            self.searchResultView.reloadData()
+        }
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
+            self.searchResult.append(contentsOf: self.searchTool.results)
+            self.searchResultView.reloadData()
+        }
+    }
 }
 
+// MARK:- Extensions
 extension RecBookSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
@@ -48,7 +84,6 @@ extension RecBookSearchViewController: UITableViewDataSource {
         cell.bookCover.image = urlToImage(from: searchResult[indexPath.row].TITLE_URL)
         cell.titleLabel.text = searchResult[indexPath.row].TITLE
         cell.authorLabel.text = searchResult[indexPath.row].AUTHOR
-//        cell.publisherLabel.text = searchResult[indexPath.row].PUBLISHER
         cell.heartBtn.isHidden = true
         
         return cell
@@ -74,18 +109,24 @@ extension RecBookSearchViewController: UISearchBarDelegate {
         
         if !searchBar.text!.isEmpty {
             self.searchResult = []
-            self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: ["title" : searchBar.text!]) {
+            self.searchedWord = searchBar.text!
+            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["title" : searchBar.text!]) {
+                self.indicator.startAnimating()
                 self.searchResult.append(contentsOf: self.searchTool.results)
                 self.searchResultView.reloadData()
+                self.indicator.stopAnimating()
             }
-            self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: ["author" : searchBar.text!]) {
+            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["author" : searchBar.text!]) {
+                self.indicator.startAnimating()
                 self.searchResult.append(contentsOf: self.searchTool.results)
                 self.searchResultView.reloadData()
+                self.indicator.stopAnimating()
             }
             
         } else {
             // searchResult 비워두기
             self.searchResult = []
+            self.indicator.stopAnimating()
         }
     }
 }

@@ -23,17 +23,23 @@
                                     <outlet property="delegate" destination="QBC-9g-q2h" id="Ayh-uv-RLq"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-Ye-YH1">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XwQ-Ye-YH1" firstAttribute="centerY" secondItem="YC9-Ic-SYN" secondAttribute="centerY" id="6ZY-WM-9HQ"/>
                             <constraint firstItem="2gE-Ka-aOK" firstAttribute="top" secondItem="TXY-gQ-hFg" secondAttribute="top" id="NEM-F0-s6r"/>
                             <constraint firstItem="TXY-gQ-hFg" firstAttribute="bottom" secondItem="2gE-Ka-aOK" secondAttribute="bottom" id="PEK-3F-D5v"/>
                             <constraint firstItem="TXY-gQ-hFg" firstAttribute="trailing" secondItem="2gE-Ka-aOK" secondAttribute="trailing" id="Pex-sr-k5a"/>
                             <constraint firstItem="2gE-Ka-aOK" firstAttribute="leading" secondItem="TXY-gQ-hFg" secondAttribute="leading" id="UcF-LY-xyJ"/>
+                            <constraint firstItem="XwQ-Ye-YH1" firstAttribute="centerX" secondItem="YC9-Ic-SYN" secondAttribute="centerX" id="ec3-eL-bxD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TXY-gQ-hFg"/>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="XwQ-Ye-YH1" id="q7u-W1-9za"/>
                         <outlet property="resultView" destination="2gE-Ka-aOK" id="2QG-eg-uIe"/>
                     </connections>
                 </viewController>

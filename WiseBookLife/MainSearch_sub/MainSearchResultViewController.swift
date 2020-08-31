@@ -12,13 +12,18 @@ class MainSearchResultViewController: UIViewController {
 
     var resultList: [SeojiData] = []
     @IBOutlet var resultView: UITableView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     var searchTool = SearchBook()
     var searchedWord = ""
+    var pageNo = 1
+    var pageSize = 20
     
     var detailSearchQuery: [String: String] = [:]
     
     var isSearched = false
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +32,17 @@ class MainSearchResultViewController: UIViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = false
         resultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
+        
         searchController.searchBar.text = searchedWord
         self.navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
         
         if searchedWord.isEmpty, detailSearchQuery.count != 0 {
-            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: detailSearchQuery) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: detailSearchQuery) {
+                self.indicator.startAnimating()
                 self.resultList.append(contentsOf: self.searchTool.results)
                 self.resultView.reloadData()
+                self.indicator.stopAnimating()
             }
         } else {
             let titleParam = [
@@ -44,16 +51,33 @@ class MainSearchResultViewController: UIViewController {
             let authorParam = [
                 "author" : searchedWord
             ]
-            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
+                self.indicator.startAnimating()
                 self.resultList.append(contentsOf: self.searchTool.results)
                 self.resultView.reloadData()
+                self.indicator.stopAnimating()
             }
-            searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
+                self.indicator.startAnimating()
                 self.resultList.append(contentsOf: self.searchTool.results)
                 self.resultView.reloadData()
+                self.indicator.stopAnimating()
+                
             }
         }
         
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        footerBtn.setTitle("결과 더보기", for: .normal)
+        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
+        tableFooter.addSubview(footerBtn)
+        
+        resultView.tableFooterView = tableFooter
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        pageNo = 1
     }
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
@@ -65,6 +89,28 @@ class MainSearchResultViewController: UIViewController {
             heartDic.updateValue(resultList[sender.tag], forKey: resultList[sender.tag].EA_ISBN)
         }
         saveData(data: heartDic, at: "heart")
+    }
+    
+    @objc func showMoreResult() {
+        let title_param: [String: String] = [
+            "title" : searchedWord
+        ]
+        let author_param: [String: String] = [
+            "author" : searchedWord
+        ]
+        pageNo += 1
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
+            self.indicator.startAnimating()
+            self.resultList.append(contentsOf: self.searchTool.results)
+            self.resultView.reloadData()
+            self.indicator.stopAnimating()
+        }
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
+            self.indicator.startAnimating()
+            self.resultList.append(contentsOf: self.searchTool.results)
+            self.resultView.reloadData()
+            self.indicator.stopAnimating()
+        }
     }
 
 }
@@ -125,9 +171,15 @@ extension MainSearchResultViewController: UITableViewDataSource {
     
 }
 
-extension MainSearchResultViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        if let hasText = searchController.searchBar.text {
+extension MainSearchResultViewController: UISearchBarDelegate {
+    @objc func dismissKeyboard() {
+        self.searchController.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+        pageNo = 1
+        if let hasText = searchBar.text {
             self.resultList = []
             self.resultView.reloadData()
             if !hasText.isEmpty {
@@ -137,18 +189,21 @@ extension MainSearchResultViewController: UISearchResultsUpdating {
                 let authorParam: [String: String] = [
                     "author": hasText
                 ]
-                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: titleParam) {
+                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
+                    self.indicator.startAnimating()
                     self.resultList.append(contentsOf: self.searchTool.results)
                     self.resultView.reloadData()
+                    self.indicator.stopAnimating()
                 }
-                self.searchTool.callAPI(page_no: 1, page_size: 50, additional_param: authorParam) {
+                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
+                    self.indicator.startAnimating()
                     self.resultList.append(contentsOf: self.searchTool.results)
                     self.resultView.reloadData()
+                    self.indicator.stopAnimating()
                 }
             }
             
+
         }
     }
-    
-    
 }

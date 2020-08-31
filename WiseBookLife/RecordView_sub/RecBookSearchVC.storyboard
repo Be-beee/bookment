@@ -30,20 +30,26 @@
                                     <outlet property="delegate" destination="tWL-zy-G0T" id="YBg-2K-PPE"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Quy-rs-rFt">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Quy-rs-rFt" firstAttribute="centerX" secondItem="A9v-v8-fIv" secondAttribute="centerX" id="C00-t4-1KM"/>
                             <constraint firstItem="qm4-4s-1DY" firstAttribute="top" secondItem="9Gv-7O-SEG" secondAttribute="top" id="G53-T4-Eeg"/>
                             <constraint firstItem="9Gv-7O-SEG" firstAttribute="trailing" secondItem="aeg-Mk-Bv3" secondAttribute="trailing" id="Hl7-P6-HbM"/>
                             <constraint firstItem="qm4-4s-1DY" firstAttribute="leading" secondItem="9Gv-7O-SEG" secondAttribute="leading" id="SvG-XD-EIf"/>
                             <constraint firstItem="aeg-Mk-Bv3" firstAttribute="leading" secondItem="9Gv-7O-SEG" secondAttribute="leading" id="W6V-JI-yYt"/>
                             <constraint firstItem="9Gv-7O-SEG" firstAttribute="bottom" secondItem="aeg-Mk-Bv3" secondAttribute="bottom" id="WFj-cD-2P5"/>
+                            <constraint firstItem="Quy-rs-rFt" firstAttribute="centerY" secondItem="A9v-v8-fIv" secondAttribute="centerY" id="c1r-fV-MUU"/>
                             <constraint firstItem="qm4-4s-1DY" firstAttribute="trailing" secondItem="9Gv-7O-SEG" secondAttribute="trailing" id="egb-Py-EcK"/>
                             <constraint firstItem="aeg-Mk-Bv3" firstAttribute="top" secondItem="qm4-4s-1DY" secondAttribute="bottom" id="vVo-om-Pnu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Gv-7O-SEG"/>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="Quy-rs-rFt" id="DEZ-pK-Rt6"/>
                         <outlet property="searchBar" destination="qm4-4s-1DY" id="ht2-u2-eFd"/>
                         <outlet property="searchResultView" destination="aeg-Mk-Bv3" id="q9C-mW-x09"/>
                         <segue destination="Y8g-J6-CsI" kind="unwind" identifier="toAddView" unwindAction="unwindSearchViewWithSender:" id="gtY-Lq-12o"/>

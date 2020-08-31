@@ -12,15 +12,22 @@ class NewListViewController: UIViewController {
 
     var newbooksList:[SeojiData] = []
     @IBOutlet var newbooksView: UITableView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     var searchTool = SearchBook()
+    var pageNo = 1
+    var pageSize = 20
+    
+    let df = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setting navigation bar
         self.navigationItem.title = "오늘의 신간 😎"
         newbooksView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        let df = DateFormatter()
+        // calling data
         df.dateFormat = "yyyyMMdd"
         
         let param: [String: String] = [
@@ -28,13 +35,25 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         
-        searchTool.callAPI(page_no: 1, page_size: 1000, additional_param: param) {
-            self.newbooksList = self.searchTool.results
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param) {
+            self.indicator.startAnimating()
+            self.newbooksList.append(contentsOf: self.searchTool.results)
             self.newbooksView.reloadData()
+            self.indicator.stopAnimating()
         }
+        
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        footerBtn.setTitle("결과 더보기", for: .normal)
+        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
+        tableFooter.addSubview(footerBtn)
+        
+        newbooksView.tableFooterView = tableFooter
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        pageNo = 1
         self.newbooksView.reloadData()
     }
     
@@ -50,10 +69,23 @@ class NewListViewController: UIViewController {
         }
         saveData(data: heartDic, at: "heart")
     }
+    
+    @objc func showMoreResult() {
+        let param: [String: String] = [
+            "start_publish_date" : df.string(from: Date()),
+            "end_publish_date" : df.string(from: Date())
+        ]
+        pageNo += 1
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param) {
+            self.newbooksList.append(contentsOf: self.searchTool.results)
+            self.newbooksView.reloadData()
+        }
+    }
 
 }
 
 
+// MARK:- Extensions
 extension NewListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
