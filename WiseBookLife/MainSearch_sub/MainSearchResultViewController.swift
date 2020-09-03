@@ -10,7 +10,7 @@ import UIKit
 
 class MainSearchResultViewController: UIViewController {
 
-    var resultList: [SeojiData] = []
+    var resultList: [(image: UIImage, contents: SeojiData)] = []
     @IBOutlet var resultView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
     
@@ -40,7 +40,10 @@ class MainSearchResultViewController: UIViewController {
         if searchedWord.isEmpty, detailSearchQuery.count != 0 {
             searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: detailSearchQuery) {
                 self.indicator.startAnimating()
-                self.resultList.append(contentsOf: self.searchTool.results)
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.resultList.append((image: image!, contents: item))
+                }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
             }
@@ -53,13 +56,19 @@ class MainSearchResultViewController: UIViewController {
             ]
             searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
                 self.indicator.startAnimating()
-                self.resultList.append(contentsOf: self.searchTool.results)
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.resultList.append((image: image!, contents: item))
+                }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
             }
             searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
                 self.indicator.startAnimating()
-                self.resultList.append(contentsOf: self.searchTool.results)
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.resultList.append((image: image!, contents: item))
+                }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
                 
@@ -83,10 +92,10 @@ class MainSearchResultViewController: UIViewController {
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            heartDic.removeValue(forKey: resultList[sender.tag].EA_ISBN)
+            heartDic.removeValue(forKey: resultList[sender.tag].contents.EA_ISBN)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            heartDic.updateValue(resultList[sender.tag], forKey: resultList[sender.tag].EA_ISBN)
+            heartDic.updateValue(resultList[sender.tag].contents, forKey: resultList[sender.tag].contents.EA_ISBN)
         }
         saveData(data: heartDic, at: "heart")
     }
@@ -101,13 +110,26 @@ class MainSearchResultViewController: UIViewController {
         pageNo += 1
         searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
             self.indicator.startAnimating()
-            self.resultList.append(contentsOf: self.searchTool.results)
-            self.resultView.reloadData()
+            if self.searchTool.results.isEmpty {
+                let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.resultList.append((image: image!, contents: item))
+                }
+                self.resultView.reloadData()
+            }
             self.indicator.stopAnimating()
         }
         searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
             self.indicator.startAnimating()
-            self.resultList.append(contentsOf: self.searchTool.results)
+            for item in self.searchTool.results {
+                let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                self.resultList.append((image: image!, contents: item))
+            }
             self.resultView.reloadData()
             self.indicator.stopAnimating()
         }
@@ -131,21 +153,21 @@ extension MainSearchResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = resultView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as! CommonCell
         
-        cell.bookCover.image = urlToImage(from: resultList[indexPath.row].TITLE_URL)
-        if resultList[indexPath.row].TITLE == "" {
+        cell.bookCover.image = resultList[indexPath.row].image
+        if resultList[indexPath.row].contents.TITLE == "" {
             cell.titleLabel.text = "[NO TITLE]"
             cell.titleLabel.textColor = .lightGray
         } else {
-            cell.titleLabel.text = resultList[indexPath.row].TITLE
+            cell.titleLabel.text = resultList[indexPath.row].contents.TITLE
         }
         
-        cell.authorLabel.text = resultList[indexPath.row].AUTHOR
+        cell.authorLabel.text = resultList[indexPath.row].contents.AUTHOR
         
         //heart button, bell button -> add Target
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if heartDic[resultList[indexPath.row].EA_ISBN] != nil {
+        if heartDic[resultList[indexPath.row].contents.EA_ISBN] != nil {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -157,9 +179,9 @@ extension MainSearchResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         
-        detailVC.bookData = resultList[indexPath.row]
+        detailVC.bookData = resultList[indexPath.row].contents
         detailVC.modalPresentationStyle = .fullScreen
-        if heartDic[resultList[indexPath.row].EA_ISBN] != nil {
+        if heartDic[resultList[indexPath.row].contents.EA_ISBN] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false
@@ -191,13 +213,19 @@ extension MainSearchResultViewController: UISearchBarDelegate {
                 ]
                 self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
                     self.indicator.startAnimating()
-                    self.resultList.append(contentsOf: self.searchTool.results)
+                    for item in self.searchTool.results {
+                        let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                        self.resultList.append((image: image!, contents: item))
+                    }
                     self.resultView.reloadData()
                     self.indicator.stopAnimating()
                 }
                 self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
                     self.indicator.startAnimating()
-                    self.resultList.append(contentsOf: self.searchTool.results)
+                    for item in self.searchTool.results {
+                        let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                        self.resultList.append((image: image!, contents: item))
+                    }
                     self.resultView.reloadData()
                     self.indicator.stopAnimating()
                 }

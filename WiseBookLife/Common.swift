@@ -238,6 +238,7 @@ extension Dictionary {
 
 class SearchBook {
     var results: [SeojiData] = []
+    var count: Int = 0
     
     func callAPI(page_no: Int, page_size: Int, additional_param: [String:String], completion: @escaping (() -> Void)) {
         let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"

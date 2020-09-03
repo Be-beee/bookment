@@ -11,7 +11,7 @@ import UIKit
 class RecBookSearchViewController: UIViewController {
 
     var selected: SeojiData = SeojiData()
-    var searchResult: [SeojiData] = []
+    var searchResult: [(image: UIImage, contents:SeojiData)] = []
     var isSearched = false
     
     var searchTool = SearchBook()
@@ -37,8 +37,10 @@ class RecBookSearchViewController: UIViewController {
         tableFooter.addSubview(footerBtn)
         
         searchResultView.tableFooterView = tableFooter
+        indicator.isHidden = true
+        
         if searchResult.count == 0 {
-            tableFooter.isHidden = true
+            searchResultView.tableFooterView?.isHidden = true
         }
         // 결과는 제대로 나타나지만 table footer가 보이지 않음..
         // 빈 화면에서부터 activity indicator가 작동 중임
@@ -57,12 +59,36 @@ class RecBookSearchViewController: UIViewController {
         ]
         pageNo += 1
         searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
-            self.searchResult.append(contentsOf: self.searchTool.results)
-            self.searchResultView.reloadData()
+            self.indicator.startAnimating()
+            if self.searchTool.results.isEmpty {
+                let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.searchResult.append((image: image!, contents: item))
+                }
+                self.searchResultView.reloadData()
+            }
+            self.indicator.stopAnimating()
         }
         searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
-            self.searchResult.append(contentsOf: self.searchTool.results)
-            self.searchResultView.reloadData()
+            self.indicator.startAnimating()
+            if self.searchTool.results.isEmpty {
+                let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.searchResult.append((image: image!, contents: item))
+                }
+                self.searchResultView.reloadData()
+            }
+            self.indicator.stopAnimating()
         }
     }
 }
@@ -81,9 +107,9 @@ extension RecBookSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchResultView.dequeueReusableCell(withIdentifier: "commonCell") as! CommonCell
         
-        cell.bookCover.image = urlToImage(from: searchResult[indexPath.row].TITLE_URL)
-        cell.titleLabel.text = searchResult[indexPath.row].TITLE
-        cell.authorLabel.text = searchResult[indexPath.row].AUTHOR
+        cell.bookCover.image = searchResult[indexPath.row].image
+        cell.titleLabel.text = searchResult[indexPath.row].contents.TITLE
+        cell.authorLabel.text = searchResult[indexPath.row].contents.AUTHOR
         cell.heartBtn.isHidden = true
         
         return cell
@@ -91,7 +117,7 @@ extension RecBookSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selected = searchResult[indexPath.row]
+        selected = searchResult[indexPath.row].contents
         self.performSegue(withIdentifier: "toAddView", sender: self)
     }
     
@@ -108,25 +134,33 @@ extension RecBookSearchViewController: UISearchBarDelegate {
         dismissKeyboard()
         
         if !searchBar.text!.isEmpty {
+            self.indicator.isHidden = false
+            self.searchResultView.tableFooterView?.isHidden = false
             self.searchResult = []
             self.searchedWord = searchBar.text!
             self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["title" : searchBar.text!]) {
                 self.indicator.startAnimating()
-                self.searchResult.append(contentsOf: self.searchTool.results)
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.searchResult.append((image: image!, contents: item))
+                }
                 self.searchResultView.reloadData()
                 self.indicator.stopAnimating()
             }
             self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["author" : searchBar.text!]) {
                 self.indicator.startAnimating()
-                self.searchResult.append(contentsOf: self.searchTool.results)
+                for item in self.searchTool.results {
+                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    self.searchResult.append((image: image!, contents: item))
+                }
                 self.searchResultView.reloadData()
                 self.indicator.stopAnimating()
             }
             
         } else {
-            // searchResult 비워두기
             self.searchResult = []
-            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+            self.searchResultView.tableFooterView?.isHidden = true
         }
     }
 }

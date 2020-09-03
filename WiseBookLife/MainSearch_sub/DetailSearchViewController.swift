@@ -96,7 +96,7 @@ class DetailSearchViewController: UIViewController {
         }
         
         if empty == 6 {
-            let alert = UIAlertController(title: "에러", message: "검색 조건을 하나 이상 입력해주세요!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "알림", message: "검색 조건을 하나 이상 입력해주세요!", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
             
             alert.addAction(ok)

@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
                 self.newImgList.append(item.TITLE_URL)
             }
             self.newbookView.reloadData()
+            // 추후 activity indicator 추가하기
         }
     }
     
