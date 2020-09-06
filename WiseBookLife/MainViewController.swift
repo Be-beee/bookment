@@ -15,12 +15,14 @@ class MainViewController: UIViewController {
     @IBOutlet var heartbookView: UICollectionView!
     @IBOutlet var noBookLabel: UILabel!
     
-    var newImgList: [String] = []
+    var newImgList: [UIImage] = []
     @IBOutlet var newbookView: UICollectionView!
     
     var searchTool = SearchBook()
     
     @IBOutlet var searchBar: UISearchBar!
+    
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -34,12 +36,14 @@ class MainViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         print(df.string(from: Date()))
-        searchTool.callAPI(page_no: 1, page_size: 10, additional_param: param) {
+        searchTool.callAPI(page_no: 1, page_size: 10, additional_param: param, target: self) {
+            self.indicator.startAnimating()
             for item in self.searchTool.results {
-                self.newImgList.append(item.TITLE_URL)
+                let image = self.urlToImage(from: item.TITLE_URL)
+                self.newImgList.append(image!)
             }
             self.newbookView.reloadData()
-            // 추후 activity indicator 추가하기
+            self.indicator.stopAnimating()
         }
     }
     
@@ -119,7 +123,7 @@ extension MainViewController: UICollectionViewDataSource {
         } else {
             let newbookCell = newbookView.dequeueReusableCell(withReuseIdentifier: "newbookCell", for: indexPath) as! NewbookCell
             
-            newbookCell.bookImgView.image = urlToImage(from: newImgList[indexPath.row])
+            newbookCell.bookImgView.image = newImgList[indexPath.row]
             
             return newbookCell
         }

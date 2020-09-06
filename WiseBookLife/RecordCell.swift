@@ -10,4 +10,5 @@ import UIKit
 
 class RecordCell: UICollectionViewCell {
     @IBOutlet var bookImage: UIImageView!
+    @IBOutlet var bookTitle: UILabel!
 }

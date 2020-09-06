@@ -32,9 +32,9 @@ class DetailRecViewController: UIViewController {
         bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.bookData.TITLE_URL)
         bookInfoView.bookTitle.text = selectedItem.bookData.TITLE
         bookInfoView.bookAuthor.text = selectedItem.bookData.AUTHOR
-        bookInfoView.bookDate.text = selectedItem.bookData.PUBLISH_PREDATE
-        bookInfoView.bookPublisher.text = selectedItem.bookData.PUBLISHER
-        bookInfoView.bookISBN.text = selectedItem.bookData.EA_ISBN
+        bookInfoView.bookDate.text = "출판(예정)일: " + selectedItem.bookData.PUBLISH_PREDATE
+        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.bookData.PUBLISHER
+        bookInfoView.bookISBN.text = "ISBN: " + selectedItem.bookData.EA_ISBN
     }
     
     @objc func editThisRecord() {

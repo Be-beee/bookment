@@ -238,9 +238,8 @@ extension Dictionary {
 
 class SearchBook {
     var results: [SeojiData] = []
-    var count: Int = 0
     
-    func callAPI(page_no: Int, page_size: Int, additional_param: [String:String], completion: @escaping (() -> Void)) {
+    func callAPI(page_no: Int, page_size: Int, additional_param: [String:String], target: UIViewController, completion: @escaping (() -> Void)) {
         let seojiURL = "http://seoji.nl.go.kr/landingPage/SearchApi.do"
         var mustParam: [String:String] = [
             "cert_key" : "5d01bbea58ffb91aeff99991a691eae9687af5bf7bece6abe67f6058cbaf364c",
@@ -277,7 +276,13 @@ class SearchBook {
                 
             } catch {
                 // error 처리
-                print("error ==> \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "알림", message: "네트워크 에러가 발생했습니다\n잠시 후 다시 시도해 주세요.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(ok)
+                    
+                    target.present(alert, animated: true, completion: nil)
+                }
             }
         }.resume()
             
@@ -297,6 +302,12 @@ extension UIViewController {
         }
     }
     
+    func settingFooterForTableView(for footer: UIView, action selector: Selector) {
+        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        footerBtn.setTitle("결과 더보기", for: .normal)
+        footerBtn.addTarget(self, action: selector, for: .touchUpInside)
+        footer.addSubview(footerBtn)
+    }
     
 }
 

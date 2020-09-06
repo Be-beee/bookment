@@ -35,6 +35,10 @@ class DetailSearchViewController: UIViewController {
         showdatePicker(sender: endPubDate, startEnd: false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        params = [:]
+    }
+    
     // MARK:- Unwind
     
     @IBAction func unwindToDetailSearch(sender: UIStoryboardSegue) {
@@ -94,9 +98,16 @@ class DetailSearchViewController: UIViewController {
         } else {
             empty += 1
         }
-        
+        print(params)
         if empty == 6 {
             let alert = UIAlertController(title: "알림", message: "검색 조건을 하나 이상 입력해주세요!", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            
+            present(alert, animated: true, completion: nil)
+        } else if let start = params["start_publish_date"], let end = params["end_publish_date"], start > end {
+            let alert = UIAlertController(title: "알림", message: "기간을 올바르게 입력해주세요!\n출판시작일이 출판종료일보다 앞서야합니다.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
             
             alert.addAction(ok)

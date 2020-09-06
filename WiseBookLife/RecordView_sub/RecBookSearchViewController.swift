@@ -31,10 +31,7 @@ class RecBookSearchViewController: UIViewController {
         
         // setting table footer
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        footerBtn.setTitle("결과 더보기", for: .normal)
-        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
-        tableFooter.addSubview(footerBtn)
+        settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
         
         searchResultView.tableFooterView = tableFooter
         indicator.isHidden = true
@@ -42,8 +39,6 @@ class RecBookSearchViewController: UIViewController {
         if searchResult.count == 0 {
             searchResultView.tableFooterView?.isHidden = true
         }
-        // 결과는 제대로 나타나지만 table footer가 보이지 않음..
-        // 빈 화면에서부터 activity indicator가 작동 중임
     }
     override func viewWillAppear(_ animated: Bool) {
         pageNo = 1
@@ -58,9 +53,9 @@ class RecBookSearchViewController: UIViewController {
             "author" : searchedWord
         ]
         pageNo += 1
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param, target: self) {
             self.indicator.startAnimating()
-            if self.searchTool.results.isEmpty {
+            if self.searchTool.results.isEmpty { // Attempt to present UIAlertController on RecBookSearchViewController which is already presenting UIAlertController
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(ok)
@@ -74,7 +69,7 @@ class RecBookSearchViewController: UIViewController {
             }
             self.indicator.stopAnimating()
         }
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
@@ -138,7 +133,7 @@ extension RecBookSearchViewController: UISearchBarDelegate {
             self.searchResultView.tableFooterView?.isHidden = false
             self.searchResult = []
             self.searchedWord = searchBar.text!
-            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["title" : searchBar.text!]) {
+            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["title" : searchBar.text!], target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -147,7 +142,7 @@ extension RecBookSearchViewController: UISearchBarDelegate {
                 self.searchResultView.reloadData()
                 self.indicator.stopAnimating()
             }
-            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["author" : searchBar.text!]) {
+            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["author" : searchBar.text!], target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)

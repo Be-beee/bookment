@@ -37,8 +37,15 @@ class MainSearchResultViewController: UIViewController {
         self.navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
+        
+        resultView.tableFooterView = tableFooter
+        resultView.tableFooterView?.isHidden = true
+        
         if searchedWord.isEmpty, detailSearchQuery.count != 0 {
-            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: detailSearchQuery) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: detailSearchQuery, target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -46,6 +53,7 @@ class MainSearchResultViewController: UIViewController {
                 }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
+                self.resultView.tableFooterView?.isHidden = false
             }
         } else {
             let titleParam = [
@@ -54,7 +62,7 @@ class MainSearchResultViewController: UIViewController {
             let authorParam = [
                 "author" : searchedWord
             ]
-            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam, target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -62,8 +70,9 @@ class MainSearchResultViewController: UIViewController {
                 }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
+                self.resultView.tableFooterView?.isHidden = false
             }
-            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
+            searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam,target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -71,18 +80,11 @@ class MainSearchResultViewController: UIViewController {
                 }
                 self.resultView.reloadData()
                 self.indicator.stopAnimating()
+                self.resultView.tableFooterView?.isHidden = false
                 
             }
         }
         
-        // setting table footer
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        footerBtn.setTitle("결과 더보기", for: .normal)
-        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
-        tableFooter.addSubview(footerBtn)
-        
-        resultView.tableFooterView = tableFooter
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +110,7 @@ class MainSearchResultViewController: UIViewController {
             "author" : searchedWord
         ]
         pageNo += 1
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
@@ -124,7 +126,7 @@ class MainSearchResultViewController: UIViewController {
             }
             self.indicator.stopAnimating()
         }
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param, target: self) {
             self.indicator.startAnimating()
             for item in self.searchTool.results {
                 let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -205,13 +207,15 @@ extension MainSearchResultViewController: UISearchBarDelegate {
             self.resultList = []
             self.resultView.reloadData()
             if !hasText.isEmpty {
+                self.searchedWord = hasText
+                self.searchController.searchBar.text = self.searchedWord
                 let titleParam: [String: String] = [
                     "title" : hasText
                 ]
                 let authorParam: [String: String] = [
                     "author": hasText
                 ]
-                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam) {
+                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: titleParam, target: self) {
                     self.indicator.startAnimating()
                     for item in self.searchTool.results {
                         let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -220,7 +224,7 @@ extension MainSearchResultViewController: UISearchBarDelegate {
                     self.resultView.reloadData()
                     self.indicator.stopAnimating()
                 }
-                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam) {
+                self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: authorParam, target: self) {
                     self.indicator.startAnimating()
                     for item in self.searchTool.results {
                         let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)

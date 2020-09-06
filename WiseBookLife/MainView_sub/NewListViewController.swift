@@ -27,6 +27,13 @@ class NewListViewController: UIViewController {
         self.navigationItem.title = "오늘의 신간 😎"
         newbooksView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
+        
+        newbooksView.tableFooterView = tableFooter
+        self.newbooksView.tableFooterView?.isHidden = true
+        
         // calling data
         df.dateFormat = "yyyyMMdd"
         
@@ -35,7 +42,7 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param, target: self) {
             self.indicator.startAnimating()
             for item in self.searchTool.results {
                 let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
@@ -43,16 +50,9 @@ class NewListViewController: UIViewController {
             }
             self.newbooksView.reloadData()
             self.indicator.stopAnimating()
+            self.newbooksView.tableFooterView?.isHidden = false
         }
         
-        // setting table footer
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        footerBtn.setTitle("결과 더보기", for: .normal)
-        footerBtn.addTarget(self, action: #selector(showMoreResult), for: .touchUpInside)
-        tableFooter.addSubview(footerBtn)
-        
-        newbooksView.tableFooterView = tableFooter
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         pageNo += 1
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param) {
+        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
