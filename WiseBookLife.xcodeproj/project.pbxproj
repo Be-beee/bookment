@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B5356F8124F90CEA006A43EA /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B5356F8024F90CEA006A43EA /* launch.png */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
 		B55F601524ED5AFC00D363A7 /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */; };
@@ -20,7 +19,6 @@
 		B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* RecordViewController.swift */; };
 		B572CE8C24A08BB300702C6E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8B24A08BB300702C6E /* Common.swift */; };
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
-		B572CE9224A0983000702C6E /* No_Img.png in Resources */ = {isa = PBXBuildFile; fileRef = B572CE9124A0983000702C6E /* No_Img.png */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
 		B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A431724C6E666009A86DA /* AlarmCell.swift */; };
@@ -46,7 +44,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B5356F8024F90CEA006A43EA /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
 		B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +56,6 @@
 		B572CE8924A0831D00702C6E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B572CE8B24A08BB300702C6E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
-		B572CE9124A0983000702C6E /* No_Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No_Img.png; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
 		B58A431724C6E666009A86DA /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
@@ -160,8 +156,6 @@
 			children = (
 				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
 				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
-				B572CE9124A0983000702C6E /* No_Img.png */,
-				B5356F8024F90CEA006A43EA /* launch.png */,
 				B572CE8B24A08BB300702C6E /* Common.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
@@ -247,10 +241,8 @@
 				B5AFB9F124A357A90072DAD8 /* NewListVC.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
-				B5356F8124F90CEA006A43EA /* launch.png in Resources */,
 				B55F601724ED5B1000D363A7 /* SearchListVC.storyboard in Resources */,
 				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
-				B572CE9224A0983000702C6E /* No_Img.png in Resources */,
 				B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */,
 				B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */,
 				B56B972424DFB51100347D11 /* DetailSearchVC.storyboard in Resources */,
