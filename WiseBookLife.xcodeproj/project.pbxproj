@@ -21,7 +21,6 @@
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
-		B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A431724C6E666009A86DA /* AlarmCell.swift */; };
 		B59D832024C01AF600797D5F /* RecBookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */; };
 		B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */; };
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
@@ -58,7 +57,6 @@
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
-		B58A431724C6E666009A86DA /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecBookSearchViewController.swift; sourceTree = "<group>"; };
 		B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecBookSearchVC.storyboard; sourceTree = "<group>"; };
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				B5AFB9E624A346FA0072DAD8 /* NewbookCell.swift */,
-				B58A431724C6E666009A86DA /* AlarmCell.swift */,
 				B5AFB9EE24A3579A0072DAD8 /* NewListViewController.swift */,
 				B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */,
 				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
@@ -260,7 +257,6 @@
 				B5AFB9EF24A3579A0072DAD8 /* NewListViewController.swift in Sources */,
 				B572743D24EE76FD001CEFBF /* ConditionCell.swift in Sources */,
 				B5FA8DAD249F666B0009B24B /* MainViewController.swift in Sources */,
-				B58A431824C6E666009A86DA /* AlarmCell.swift in Sources */,
 				B56B972224DFB50100347D11 /* DetailSearchViewController.swift in Sources */,
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
@@ -352,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -406,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

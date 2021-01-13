@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Img.png" translatesAutoresizingMaskIntoConstraints="NO" id="N6N-Qe-Zs5">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_Img" translatesAutoresizingMaskIntoConstraints="NO" id="N6N-Qe-Zs5">
                         <rect key="frame" x="10" y="10" width="77.5" height="115"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="N6N-Qe-Zs5" secondAttribute="height" multiplier="27:40" id="Gun-LY-p9K"/>
@@ -67,7 +67,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="No_Img.png" width="300" height="450"/>
+        <image name="No_Img" width="300" height="450"/>
         <image name="heart" catalog="system" width="128" height="109"/>
     </resources>
 </document>
