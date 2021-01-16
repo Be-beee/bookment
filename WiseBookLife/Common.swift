@@ -8,6 +8,59 @@
 
 import UIKit
 
+struct ClientData: Codable {
+    var requestURL: String
+    var requestHeader: [String: String]
+    init() {
+        guard let path = Bundle.main.path(forResource: "ApplicationInfo", ofType: "plist") else {
+            requestURL = "None"
+            requestHeader = [:]
+            return
+        }
+        guard let xml = FileManager.default.contents(atPath: path) else {
+            requestURL = "None"
+            requestHeader = [:]
+            return
+        }
+        guard let data = try? PropertyListDecoder().decode(ClientData.self, from: xml) else {
+            requestURL = "None"
+            requestHeader = [:]
+            return
+        }
+        
+        requestURL = data.requestURL
+        requestHeader = data.requestHeader
+    }
+}
+
+struct RequestParam {
+    var query: String
+    var display: Int?
+    var start: Int?
+    var sort: String?
+    // 이후 상세 검색 시 필요한 요청 쿼리
+}
+
+struct ResultModel: Codable {
+    var total: Int?
+    var start: Int?
+    var display: Int?
+    var items: [BookItem]?
+}
+
+struct BookItem: Codable {
+    var title: String
+    var link: String
+    var image: String
+    var author: String
+    var price: Int?
+    var discount: Int?
+    var publisher: String
+    var isbn: Int
+    var description: String
+    var pubdate: Date
+}
+
 class RecordModel: NSObject, NSCoding, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(bookData, forKey: "bookData")

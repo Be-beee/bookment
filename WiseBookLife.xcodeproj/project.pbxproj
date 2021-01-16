@@ -32,6 +32,7 @@
 		B5AFB9F124A357A90072DAD8 /* NewListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */; };
 		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
 		B5AFB9F924A3604C0072DAD8 /* HeartListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */; };
+		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */; };
 		B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DA8249F666B0009B24B /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 		B5AFB9F024A357A90072DAD8 /* NewListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewListVC.storyboard; sourceTree = "<group>"; };
 		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
 		B5AFB9F824A3604C0072DAD8 /* HeartListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeartListVC.storyboard; sourceTree = "<group>"; };
+		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordVC.storyboard; sourceTree = "<group>"; };
 		B5FA8DA5249F666B0009B24B /* WiseBookLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseBookLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,14 @@
 			path = MainView_sub;
 			sourceTree = "<group>";
 		};
+		B5B3F31825B2CC0600A3CC14 /* ClientData */ = {
+			isa = PBXGroup;
+			children = (
+				B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */,
+			);
+			path = ClientData;
+			sourceTree = "<group>";
+		};
 		B5D190A924A4A72E00F1DCDB /* RecordView_sub */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
 				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B5FA8DB6249F666B0009B24B /* Info.plist */,
+				B5B3F31825B2CC0600A3CC14 /* ClientData */,
 				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
 				B5AFB9E524A341AA0072DAD8 /* MainView_sub */,
 				B5D190A924A4A72E00F1DCDB /* RecordView_sub */,
@@ -232,6 +243,7 @@
 			files = (
 				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
 				B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */,
+				B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */,
 				B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */,
 				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,
 				B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */,
