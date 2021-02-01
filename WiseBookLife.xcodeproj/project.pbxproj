@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50D93F725C82FA100AAED67 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D93F625C82FA100AAED67 /* Archive.swift */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
 		B55F601524ED5AFC00D363A7 /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50D93F625C82FA100AAED67 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
 		B55F601424ED5AFC00D363A7 /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
 				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
 				B572CE8B24A08BB300702C6E /* Common.swift */,
+				B50D93F625C82FA100AAED67 /* Archive.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5FA8DAC249F666B0009B24B /* MainViewController.swift */,
@@ -276,6 +279,7 @@
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
+				B50D93F725C82FA100AAED67 /* Archive.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,

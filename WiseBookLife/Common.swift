@@ -61,6 +61,14 @@ struct BookItem: Codable {
     var pubdate: Date
 }
 
+/*
+ *
+ *
+ 객체 변경 중~
+ *
+ *
+ */
+
 class RecordModel: NSObject, NSCoding, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(bookData, forKey: "bookData")
