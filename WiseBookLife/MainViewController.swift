@@ -32,14 +32,14 @@ class MainViewController: UIViewController {
         df.dateFormat = "yyyyMMdd"
         
         let param: [String: String] = [
-            "start_publish_date" : df.string(from: Date()),
-            "end_publish_date" : df.string(from: Date())
+            "d_dafr" : df.string(from: Date()),
+            "d_dato" : df.string(from: Date())
         ]
         print(df.string(from: Date()))
-        searchTool.callAPI(page_no: 1, page_size: 10, additional_param: param, target: self) {
+        searchTool.callAPI(additional_param: param, target: self) {
             self.indicator.startAnimating()
             for item in self.searchTool.results {
-                let image = self.urlToImage(from: item.TITLE_URL)
+                let image = self.urlToImage(from: item.image)
                 self.newImgList.append(image!)
             }
             self.newbookView.reloadData()
@@ -60,12 +60,12 @@ class MainViewController: UIViewController {
     // MARK:- Create Image List
     
     func viewHeartImgList() {
-        if let loadedData = loadData(at: "heart") {
-            heartDic = loadedData as! [String: SeojiData]
-        }
+//        if let loadedData = loadData(at: "heart") {
+//            heartDic = loadedData as! [String: SeojiData]
+//        }
         heartImgList = []
         for (_, value) in heartDic {
-            heartImgList.append((title: value.TITLE, image: value.TITLE_URL))
+            heartImgList.append((title: value.title, image: value.image))
         }
         heartImgList.sort(by: {$0.title < $1.title})
         heartbookView.reloadData()

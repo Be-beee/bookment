@@ -10,8 +10,8 @@ import UIKit
 
 class RecBookSearchViewController: UIViewController {
 
-    var selected: SeojiData = SeojiData()
-    var searchResult: [(image: UIImage, contents:SeojiData)] = []
+    var selected = BookItem()
+    var searchResult: [(image: UIImage, contents: BookItem)] = []
     var isSearched = false
     
     var searchTool = SearchBook()
@@ -53,7 +53,7 @@ class RecBookSearchViewController: UIViewController {
             "author" : searchedWord
         ]
         pageNo += 1
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: title_param, target: self) {
+        searchTool.callAPI(additional_param: title_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty { // Attempt to present UIAlertController on RecBookSearchViewController which is already presenting UIAlertController
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
@@ -62,14 +62,14 @@ class RecBookSearchViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 for item in self.searchTool.results {
-                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.searchResult.append((image: image!, contents: item))
                 }
                 self.searchResultView.reloadData()
             }
             self.indicator.stopAnimating()
         }
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: author_param, target: self) {
+        searchTool.callAPI(additional_param: author_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
@@ -78,7 +78,7 @@ class RecBookSearchViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 for item in self.searchTool.results {
-                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.searchResult.append((image: image!, contents: item))
                 }
                 self.searchResultView.reloadData()
@@ -103,8 +103,8 @@ extension RecBookSearchViewController: UITableViewDataSource {
         let cell = searchResultView.dequeueReusableCell(withIdentifier: "commonCell") as! CommonCell
         
         cell.bookCover.image = searchResult[indexPath.row].image
-        cell.titleLabel.text = searchResult[indexPath.row].contents.TITLE
-        cell.authorLabel.text = searchResult[indexPath.row].contents.AUTHOR
+        cell.titleLabel.text = searchResult[indexPath.row].contents.title
+        cell.authorLabel.text = searchResult[indexPath.row].contents.author
         cell.heartBtn.isHidden = true
         
         return cell
@@ -133,19 +133,19 @@ extension RecBookSearchViewController: UISearchBarDelegate {
             self.searchResultView.tableFooterView?.isHidden = false
             self.searchResult = []
             self.searchedWord = searchBar.text!
-            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["title" : searchBar.text!], target: self) {
+            self.searchTool.callAPI(additional_param: ["title" : searchBar.text!], target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
-                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.searchResult.append((image: image!, contents: item))
                 }
                 self.searchResultView.reloadData()
                 self.indicator.stopAnimating()
             }
-            self.searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: ["author" : searchBar.text!], target: self) {
+            self.searchTool.callAPI(additional_param: ["author" : searchBar.text!], target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
-                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.searchResult.append((image: image!, contents: item))
                 }
                 self.searchResultView.reloadData()

@@ -10,7 +10,7 @@ import UIKit
 
 class NewListViewController: UIViewController {
 
-    var newbooksList:[(image: UIImage, contents: SeojiData)] = []
+    var newbooksList:[(image: UIImage, contents: BookItem)] = []
     @IBOutlet var newbooksView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
     
@@ -42,10 +42,10 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param, target: self) {
+        searchTool.callAPI(additional_param: param, target: self) {
             self.indicator.startAnimating()
             for item in self.searchTool.results {
-                let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                 self.newbooksList.append((image: image!, contents: item))
             }
             self.newbooksView.reloadData()
@@ -65,12 +65,12 @@ class NewListViewController: UIViewController {
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            heartDic.removeValue(forKey: newbooksList[sender.tag].contents.EA_ISBN)
+            heartDic.removeValue(forKey: newbooksList[sender.tag].contents.isbn)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            heartDic.updateValue(newbooksList[sender.tag].contents, forKey: newbooksList[sender.tag].contents.EA_ISBN)
+            heartDic.updateValue(newbooksList[sender.tag].contents, forKey: newbooksList[sender.tag].contents.isbn)
         }
-        saveData(data: heartDic, at: "heart")
+//        saveData(data: heartDic, at: "heart")
     }
     
     @objc func showMoreResult() {
@@ -79,7 +79,7 @@ class NewListViewController: UIViewController {
             "end_publish_date" : df.string(from: Date())
         ]
         pageNo += 1
-        searchTool.callAPI(page_no: pageNo, page_size: pageSize, additional_param: param, target: self) {
+        searchTool.callAPI(additional_param: param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
@@ -88,7 +88,7 @@ class NewListViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 for item in self.searchTool.results {
-                    let image = item.TITLE_URL.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.TITLE_URL)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.newbooksList.append((image: image!, contents: item))
                 }
                 self.newbooksView.reloadData()
@@ -116,14 +116,14 @@ extension NewListViewController: UITableViewDataSource {
 
         cell.bookCover.image = newbooksList[indexPath.row].image
         
-        cell.titleLabel.text = newbooksList[indexPath.row].contents.TITLE
-        cell.authorLabel.text = newbooksList[indexPath.row].contents.AUTHOR
+        cell.titleLabel.text = newbooksList[indexPath.row].contents.title
+        cell.authorLabel.text = newbooksList[indexPath.row].contents.author
         
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if heartDic[newbooksList[indexPath.row].contents.EA_ISBN] != nil {
+        if heartDic[newbooksList[indexPath.row].contents.isbn] != nil {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -137,7 +137,7 @@ extension NewListViewController: UITableViewDataSource {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         detailVC.bookData = newbooksList[indexPath.row].contents
         detailVC.modalPresentationStyle = .fullScreen
-        if heartDic[newbooksList[indexPath.row].contents.EA_ISBN] != nil {
+        if heartDic[newbooksList[indexPath.row].contents.isbn] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false

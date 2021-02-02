@@ -198,7 +198,7 @@ class DetailSearchViewController: UIViewController {
         condition = SearchConditionModel(conditionTitle: conditiontitle, title: title, author: author, publisher: publisher, isbn: isbn, startDate: startdate, endDate: enddate)
         
         conditionList.append(condition)
-        saveData(data: conditionList, at: "conditions")
+//        saveData(data: conditionList, at: "conditions")
         
         // alert
         let alert = UIAlertController(title: "알림", message: "검색 조건이 저장되었습니다.", preferredStyle: .alert)

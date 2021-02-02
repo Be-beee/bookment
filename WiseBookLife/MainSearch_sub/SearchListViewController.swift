@@ -50,7 +50,7 @@ extension SearchListViewController: UITableViewDataSource {
         if editingStyle == .delete {
             conditionList.remove(at: indexPath.row)
             conditionView.deleteRows(at: [indexPath], with: .automatic)
-            saveData(data: conditionList, at: "conditions")
+//            saveData(data: conditionList, at: "conditions")
         }
     }
     

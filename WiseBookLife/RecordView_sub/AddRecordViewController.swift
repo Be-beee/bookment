@@ -10,7 +10,7 @@ import UIKit
 
 class AddRecordViewController: UIViewController {
 
-    var recordModel: RecordModel = RecordModel()
+    var recordModel = Record()
     
     @IBOutlet var todayDate: UILabel!
     @IBOutlet var recordTitle: UITextField!
@@ -32,24 +32,24 @@ class AddRecordViewController: UIViewController {
         case true:
             searchBtn.isHidden = true
             presentSelectView()
-            recordTitle.text = recordModel.recordTitle
+            recordTitle.text = recordModel.recTitle
             recordContents.text = recordModel.recordContents
-            todayDate.text = recordModel.date
+            todayDate.text = recordModel.date.dateToString()
         default:
             todayDate.text = today
-            recordModel.date = today
+//            recordModel.date = today
         }
         
     }
     
     func presentSelectView() {
-        selectedBookView.bookCoverView.image = urlToImage(from: recordModel.bookData.TITLE_URL)
-        selectedBookView.bookTitle.text = recordModel.bookData.TITLE
-        selectedBookView.bookAuthor.text =  recordModel.bookData.AUTHOR
-        selectedBookView.bookPublisher.text = "출판사: " + recordModel.bookData.PUBLISHER
+        selectedBookView.bookCoverView.image = urlToImage(from: recordModel.bookData.image)
+        selectedBookView.bookTitle.text = recordModel.bookData.title
+        selectedBookView.bookAuthor.text =  recordModel.bookData.author
+        selectedBookView.bookPublisher.text = "출판사: " + recordModel.bookData.publisher
         
-        selectedBookView.bookDate.text = "출간(예정)일: " +  recordModel.bookData.PUBLISH_PREDATE
-        selectedBookView.bookISBN.text = "ISBN: "+recordModel.bookData.EA_ISBN
+        selectedBookView.bookDate.text = "출간(예정)일: " + recordModel.bookData.pubdate
+        selectedBookView.bookISBN.text = "ISBN: " + String(recordModel.bookData.isbn)
     }
     
     // MARK:- Unwind Segue
@@ -76,10 +76,10 @@ class AddRecordViewController: UIViewController {
     @IBAction func saveRecords(_ sender: UIButton) {
         
         if let title = recordTitle.text, title != "" {
-            recordModel.recordTitle = title
+            recordModel.recTitle = title
             recordModel.recordContents = recordContents.text
             
-            if !recordModel.bookData.EA_ISBN.isEmpty {
+            if !recordModel.bookData.isbn.isEmpty {
                 self.performSegue(withIdentifier: "toRecordView", sender: self)
                 // Unbalanced calls to begin/end appearance transitions
                 

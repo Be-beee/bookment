@@ -10,14 +10,14 @@ import UIKit
 
 class RecordViewController: UIViewController {
 
-    var records: [RecordModel] = []
+    var records: [Record] = []
     @IBOutlet var recordView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let loadedRecords = loadData(at: "records") {
-            self.records = loadedRecords as! [RecordModel]
-        }
+//        if let loadedRecords = loadData(at: "records") {
+//            self.records = loadedRecords as! [RecordModel]
+//        }
     }
     
     // MARK:- Unwind Segue
@@ -26,7 +26,7 @@ class RecordViewController: UIViewController {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
                 records.remove(at: selected[0].item)
-                saveData(data: self.records, at: "records")
+//                saveData(data: self.records, at: "records")
             }
             self.recordView.reloadData()
         }
@@ -47,7 +47,7 @@ class RecordViewController: UIViewController {
         } else {
             records.append(addRecordVC.recordModel)
         }
-        saveData(data: self.records, at: "records")
+//        saveData(data: self.records, at: "records")
         recordView.reloadData()
     }
     
@@ -86,8 +86,8 @@ extension RecordViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-        cell.bookImage.image = urlToImage(from: records[indexPath.row].bookData.TITLE_URL)
-        cell.bookTitle.text = records[indexPath.row].bookData.TITLE
+        cell.bookImage.image = urlToImage(from: records[indexPath.row].bookData.image)
+        cell.bookTitle.text = records[indexPath.row].bookData.title
         return cell
     }
     

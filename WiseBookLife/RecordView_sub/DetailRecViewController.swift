@@ -10,14 +10,14 @@ import UIKit
 
 class DetailRecViewController: UIViewController {
 
-    var selectedItem: RecordModel = RecordModel()
+    var selectedItem = Record()
     @IBOutlet var recTitle: UILabel!
     @IBOutlet var recContents: UITextView!
     @IBOutlet var bookInfoView: SelectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = selectedItem.date
+        self.navigationItem.title = selectedItem.date.dateToString()
         self.navigationItem.largeTitleDisplayMode = .never
         let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editThisRecord))
         self.navigationItem.rightBarButtonItem = editButton
@@ -25,16 +25,16 @@ class DetailRecViewController: UIViewController {
     }
     
     func presentData() {
-        recTitle.text = selectedItem.recordTitle
+        recTitle.text = selectedItem.recTitle
         recContents.text = selectedItem.recordContents
         
         // book data 가져오기
-        bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.bookData.TITLE_URL)
-        bookInfoView.bookTitle.text = selectedItem.bookData.TITLE
-        bookInfoView.bookAuthor.text = selectedItem.bookData.AUTHOR
-        bookInfoView.bookDate.text = "출판(예정)일: " + selectedItem.bookData.PUBLISH_PREDATE
-        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.bookData.PUBLISHER
-        bookInfoView.bookISBN.text = "ISBN: " + selectedItem.bookData.EA_ISBN
+        bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.bookData.image)
+        bookInfoView.bookTitle.text = selectedItem.bookData.title
+        bookInfoView.bookAuthor.text = selectedItem.bookData.author
+        bookInfoView.bookDate.text = "출판(예정)일: " + selectedItem.bookData.pubdate
+        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.bookData.publisher
+        bookInfoView.bookISBN.text = "ISBN: " + String(selectedItem.bookData.isbn)
     }
     
     @objc func editThisRecord() {

@@ -13,7 +13,7 @@ class HeartListViewController: UIViewController {
 
     @IBOutlet var heartView: UITableView!
     
-    var heartList: [SeojiData] = []
+    var heartList: [BookItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +27,7 @@ class HeartListViewController: UIViewController {
         for (_, value) in heartDic {
             heartList.append(value)
         }
-        heartList.sort(by: {$0.TITLE < $1.TITLE})
+        heartList.sort(by: {$0.title < $1.title})
         heartView.reloadData()
     }
 
@@ -38,8 +38,8 @@ class HeartListViewController: UIViewController {
 //        sender.isSelected = !sender.isSelected
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            heartDic.removeValue(forKey: heartList[sender.tag].EA_ISBN)
-            saveData(data: heartDic, at: "heart")
+            heartDic.removeValue(forKey: heartList[sender.tag].isbn)
+//            saveData(data: heartDic, at: "heart")
             refreshData()
         }
     }
@@ -70,16 +70,16 @@ extension HeartListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = heartView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as! CommonCell
         
-        cell.bookCover.image = urlToImage(from: heartList[indexPath.row].TITLE_URL)
+        cell.bookCover.image = urlToImage(from: heartList[indexPath.row].image)
         
-        if heartList[indexPath.row].TITLE == "" {
+        if heartList[indexPath.row].title == "" {
             cell.titleLabel.text = "[NO TITLE]"
             cell.titleLabel.textColor = .lightGray
         } else {
-            cell.titleLabel.text = heartList[indexPath.row].TITLE
+            cell.titleLabel.text = heartList[indexPath.row].title
         }
         
-        cell.authorLabel.text = heartList[indexPath.row].AUTHOR
+        cell.authorLabel.text = heartList[indexPath.row].author
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
@@ -93,7 +93,7 @@ extension HeartListViewController: UITableViewDataSource {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         detailVC.bookData = heartList[indexPath.row]
         detailVC.modalPresentationStyle = .fullScreen
-        if heartDic[heartList[indexPath.row].EA_ISBN] != nil {
+        if heartDic[heartList[indexPath.row].isbn] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false
