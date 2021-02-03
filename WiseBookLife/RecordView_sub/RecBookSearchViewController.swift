@@ -46,32 +46,13 @@ class RecBookSearchViewController: UIViewController {
 
     
     @objc func showMoreResult() {
-        let title_param: [String: String] = [
-            "title" : searchedWord
-        ]
-        let author_param: [String: String] = [
-            "author" : searchedWord
+        let query_param: [String: String] = [
+            "query" : searchedWord
         ]
         pageNo += 1
-        searchTool.callAPI(additional_param: title_param, target: self) {
+        searchTool.callAPI(additional_param: query_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty { // Attempt to present UIAlertController on RecBookSearchViewController which is already presenting UIAlertController
-                let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                for item in self.searchTool.results {
-                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
-                    self.searchResult.append((image: image!, contents: item))
-                }
-                self.searchResultView.reloadData()
-            }
-            self.indicator.stopAnimating()
-        }
-        searchTool.callAPI(additional_param: author_param, target: self) {
-            self.indicator.startAnimating()
-            if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(ok)
@@ -133,16 +114,7 @@ extension RecBookSearchViewController: UISearchBarDelegate {
             self.searchResultView.tableFooterView?.isHidden = false
             self.searchResult = []
             self.searchedWord = searchBar.text!
-            self.searchTool.callAPI(additional_param: ["title" : searchBar.text!], target: self) {
-                self.indicator.startAnimating()
-                for item in self.searchTool.results {
-                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
-                    self.searchResult.append((image: image!, contents: item))
-                }
-                self.searchResultView.reloadData()
-                self.indicator.stopAnimating()
-            }
-            self.searchTool.callAPI(additional_param: ["author" : searchBar.text!], target: self) {
+            self.searchTool.callAPI(additional_param: ["query" : searchBar.text!], target: self) {
                 self.indicator.startAnimating()
                 for item in self.searchTool.results {
                     let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)

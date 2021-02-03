@@ -183,22 +183,10 @@ extension MainSearchResultViewController: UISearchBarDelegate {
             if !hasText.isEmpty {
                 self.searchedWord = hasText
                 self.searchController.searchBar.text = self.searchedWord
-                let titleParam: [String: String] = [
-                    "title" : hasText
+                let query_param: [String: String] = [
+                    "query" : hasText
                 ]
-                let authorParam: [String: String] = [
-                    "author": hasText
-                ]
-                self.searchTool.callAPI(additional_param: titleParam, target: self) {
-                    self.indicator.startAnimating()
-                    for item in self.searchTool.results {
-                        let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
-                        self.resultList.append((image: image!, contents: item))
-                    }
-                    self.resultView.reloadData()
-                    self.indicator.stopAnimating()
-                }
-                self.searchTool.callAPI(additional_param: authorParam, target: self) {
+                self.searchTool.callAPI(additional_param: query_param, target: self) {
                     self.indicator.startAnimating()
                     for item in self.searchTool.results {
                         let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
