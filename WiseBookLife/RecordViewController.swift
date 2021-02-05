@@ -66,7 +66,9 @@ class RecordViewController: UIViewController {
 
 extension RecordViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width/3 - 25, height: 180)
+        let width: CGFloat = UIScreen.main.bounds.width/3 - 25
+        let height: CGFloat = width*40/27
+        return CGSize(width: width, height: height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 15
@@ -87,7 +89,6 @@ extension RecordViewController: UICollectionViewDataSource {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
         cell.bookImage.image = urlToImage(from: records[indexPath.row].bookData.image)
-        cell.bookTitle.text = records[indexPath.row].bookData.title
         return cell
     }
     

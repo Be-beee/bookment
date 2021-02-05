@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.0000000000002" y="-265.17857142857144"/>
+            <point key="canvasLocation" x="1570" y="-388"/>
         </scene>
         <!--내 서재-->
         <scene sceneID="3Ld-DD-upi">
@@ -247,33 +247,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KW5-rk-amM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="145"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="160" id="Jgw-YM-iri"/>
+                                                        <constraint firstAttribute="width" secondItem="KW5-rk-amM" secondAttribute="height" multiplier="27:40" id="QPf-SK-bLB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozf-OU-geR">
-                                                    <rect key="frame" x="0.0" y="147" width="108" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KW5-rk-amM" firstAttribute="leading" secondItem="jo9-fu-B0B" secondAttribute="leading" id="1hH-o4-Fkx"/>
-                                                <constraint firstAttribute="trailing" secondItem="ozf-OU-geR" secondAttribute="trailing" id="6iz-iB-Hou"/>
                                                 <constraint firstItem="KW5-rk-amM" firstAttribute="top" secondItem="jo9-fu-B0B" secondAttribute="top" id="AX4-VH-Kbg"/>
                                                 <constraint firstAttribute="trailing" secondItem="KW5-rk-amM" secondAttribute="trailing" id="RfN-cp-7h7"/>
-                                                <constraint firstItem="ozf-OU-geR" firstAttribute="top" secondItem="KW5-rk-amM" secondAttribute="bottom" constant="2" id="Uhp-zT-mlt"/>
-                                                <constraint firstAttribute="bottom" secondItem="KW5-rk-amM" secondAttribute="bottom" constant="20" id="bBp-gw-uGT"/>
-                                                <constraint firstItem="ozf-OU-geR" firstAttribute="leading" secondItem="jo9-fu-B0B" secondAttribute="leading" id="zVz-n9-SdE"/>
+                                                <constraint firstAttribute="bottom" secondItem="KW5-rk-amM" secondAttribute="bottom" id="bBp-gw-uGT"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <size key="customSize" width="108" height="165"/>
                                         <connections>
                                             <outlet property="bookImage" destination="KW5-rk-amM" id="F4C-iy-f87"/>
-                                            <outlet property="bookTitle" destination="ozf-OU-geR" id="RvC-xR-K7C"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -305,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gk6-nv-6yX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.0000000000002" y="675"/>
+            <point key="canvasLocation" x="2935" y="145"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xzl-Ny-cA1">
@@ -320,6 +311,8 @@
                     <connections>
                         <segue destination="sl6-Fa-zBD" kind="relationship" relationship="viewControllers" id="oHP-GO-qn9"/>
                         <segue destination="JQ8-d2-4l2" kind="relationship" relationship="viewControllers" id="e7W-Sr-TR1"/>
+                        <segue destination="gzC-aq-nHa" kind="relationship" relationship="viewControllers" id="Bbs-iT-nMK"/>
+                        <segue destination="xj8-W6-Qvp" kind="relationship" relationship="viewControllers" id="HDf-el-WcP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rds-23-3NV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -343,7 +336,39 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiT-zd-fdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027.536231884058" y="-265.17857142857144"/>
+            <point key="canvasLocation" x="862" y="-398"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DsU-qg-2ie">
+            <objects>
+                <viewController id="gzC-aq-nHa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mpX-dl-wnC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NgG-qU-6Jp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="chart.pie.fill" catalog="system" id="ovO-KE-l7m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skK-Hb-TeF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="488"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9kv-ra-ykZ">
+            <objects>
+                <viewController id="xj8-W6-Qvp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zS5-i9-Y32">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FDs-TM-Uas"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="gear" catalog="system" id="zDN-2L-o3N"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkP-Fh-aOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="1009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Apn-YS-ao4">
@@ -362,12 +387,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89s-ku-b4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027.536231884058" y="676.33928571428567"/>
+            <point key="canvasLocation" x="2251" y="145"/>
         </scene>
     </scenes>
     <resources>
         <image name="No_Img" width="300" height="450"/>
         <image name="book.fill" catalog="system" width="128" height="102"/>
+        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="groupTableViewBackgroundColor">

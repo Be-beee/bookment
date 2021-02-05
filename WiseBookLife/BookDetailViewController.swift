@@ -19,12 +19,8 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var publishDateLabel: UILabel!
     @IBOutlet var publisherLabel: UILabel!
     @IBOutlet var prepriceLabel: UILabel!
-    @IBOutlet var isbnLabel: UILabel!
-    @IBOutlet var ebookYNLabel: UILabel!
     
-    @IBOutlet var bookIntroduction: UITextView!
-    @IBOutlet var bookSummary: UITextView!
-    @IBOutlet var bookTB: UITextView!
+    @IBOutlet weak var bookIntroduction: UILabel!
     
     @IBOutlet var heartBtn: UIButton!
     
@@ -39,10 +35,9 @@ class BookDetailViewController: UIViewController {
         bookCover.image = urlToImage(from: bookData.image)
         titleLabel.text = bookData.title
         authorLabel.text = bookData.author
-        publishDateLabel.text = "출판(예정)일: " + bookData.pubdate
+        publishDateLabel.text = "출판일: " + bookData.pubdate
         publisherLabel.text = "출판사: " + bookData.publisher
-        prepriceLabel.text = "예정 가격: " + bookData.price
-        isbnLabel.text = "ISBN: " + bookData.isbn
+        prepriceLabel.text = "가격: " + bookData.price
 //        if bookData.EBOOK_YN == "Y" {
 //            ebookYNLabel.text = "전자책"
 //        } else {
