@@ -16,8 +16,24 @@
                     <view key="view" contentMode="scaleToFill" id="jBF-OJ-ezn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-Ii-eIO" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Cxw-BI-tWT" id="GtG-9f-KBD"/>
+                                    <outlet property="delegate" destination="Cxw-BI-tWT" id="CK2-jy-IHC"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oy2-9C-NhU"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oy2-9C-NhU" firstAttribute="trailing" secondItem="ixt-Ii-eIO" secondAttribute="trailing" id="C3N-X5-b6b"/>
+                            <constraint firstItem="ixt-Ii-eIO" firstAttribute="leading" secondItem="oy2-9C-NhU" secondAttribute="leading" id="Zca-k8-Nvk"/>
+                            <constraint firstItem="ixt-Ii-eIO" firstAttribute="top" secondItem="oy2-9C-NhU" secondAttribute="top" id="hzw-VT-14f"/>
+                            <constraint firstItem="oy2-9C-NhU" firstAttribute="bottom" secondItem="ixt-Ii-eIO" secondAttribute="bottom" id="iWt-x1-QXr"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dks-gV-rN6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,8 +42,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

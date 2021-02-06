@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3B19EB88203A24BBB80AE27 /* Pods_WiseBookLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8872CF7F0EFDD4D3074F6CB /* Pods_WiseBookLife.framework */; };
 		B50D93F725C82FA100AAED67 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D93F625C82FA100AAED67 /* Archive.swift */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7EDD8D23E795D42807E097AA /* Pods-WiseBookLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiseBookLife.release.xcconfig"; path = "Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife.release.xcconfig"; sourceTree = "<group>"; };
 		B50D93F625C82FA100AAED67 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
@@ -74,6 +76,8 @@
 		B5FA8DB1249F666B0009B24B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5FA8DB4249F666B0009B24B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5FA8DB6249F666B0009B24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49A3D26278209CA641CEA66 /* Pods-WiseBookLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiseBookLife.debug.xcconfig"; path = "Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife.debug.xcconfig"; sourceTree = "<group>"; };
+		E8872CF7F0EFDD4D3074F6CB /* Pods_WiseBookLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiseBookLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B19EB88203A24BBB80AE27 /* Pods_WiseBookLife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +143,8 @@
 			children = (
 				B5FA8DA7249F666B0009B24B /* WiseBookLife */,
 				B5FA8DA6249F666B0009B24B /* Products */,
+				E0A60361FA1AB4CA0EC739D3 /* Pods */,
+				EDD2400FACA0A398AE23E954 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +181,24 @@
 			path = WiseBookLife;
 			sourceTree = "<group>";
 		};
+		E0A60361FA1AB4CA0EC739D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E49A3D26278209CA641CEA66 /* Pods-WiseBookLife.debug.xcconfig */,
+				7EDD8D23E795D42807E097AA /* Pods-WiseBookLife.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EDD2400FACA0A398AE23E954 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8872CF7F0EFDD4D3074F6CB /* Pods_WiseBookLife.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5FA8DB9249F666B0009B24B /* Build configuration list for PBXNativeTarget "WiseBookLife" */;
 			buildPhases = (
+				38004AB229CA664488E1747E /* [CP] Check Pods Manifest.lock */,
 				B5FA8DA1249F666B0009B24B /* Sources */,
 				B5FA8DA2249F666B0009B24B /* Frameworks */,
 				B5FA8DA3249F666B0009B24B /* Resources */,
+				70213D32A66484C2DAACEBF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38004AB229CA664488E1747E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WiseBookLife-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70213D32A66484C2DAACEBF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5FA8DA1249F666B0009B24B /* Sources */ = {
@@ -414,6 +483,7 @@
 		};
 		B5FA8DBA249F666B0009B24B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E49A3D26278209CA641CEA66 /* Pods-WiseBookLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -432,6 +502,7 @@
 		};
 		B5FA8DBB249F666B0009B24B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EDD8D23E795D42807E097AA /* Pods-WiseBookLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

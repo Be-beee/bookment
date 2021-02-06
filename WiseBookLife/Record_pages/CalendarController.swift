@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FSCalendar
 
 class CalendarController: UIViewController {
 
@@ -14,3 +15,7 @@ class CalendarController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+
+extension CalendarController: FSCalendarDelegate {}
+extension CalendarController: FSCalendarDataSource {}
