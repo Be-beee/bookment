@@ -64,7 +64,7 @@
         <!--내 서재-->
         <scene sceneID="SyF-tl-zev">
             <objects>
-                <viewController id="eHX-Tm-Iu7" sceneMemberID="viewController">
+                <viewController id="eHX-Tm-Iu7" customClass="MainPageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIr-sY-YT1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7U-yq-buO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="-240"/>
+            <point key="canvasLocation" x="1646" y="-240"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0y-W2-DiK">
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peo-vK-QFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2626" y="-287"/>
+            <point key="canvasLocation" x="2410" y="-307"/>
         </scene>
     </scenes>
     <resources>
