@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Heart List View Controller-->
+        <scene sceneID="F2J-JT-5VN">
+            <objects>
+                <viewController storyboardIdentifier="HeartListViewController" id="2YE-VX-8HI" customClass="HeartListViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GQZ-FJ-igv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ouY-YK-nq9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2YE-VX-8HI" id="pgF-7o-uwO"/>
+                                    <outlet property="delegate" destination="2YE-VX-8HI" id="bz8-3l-hLS"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BLp-h2-4kG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BLp-h2-4kG" firstAttribute="bottom" secondItem="ouY-YK-nq9" secondAttribute="bottom" id="HN4-1K-IdF"/>
+                            <constraint firstItem="BLp-h2-4kG" firstAttribute="trailing" secondItem="ouY-YK-nq9" secondAttribute="trailing" id="KKx-K1-c3V"/>
+                            <constraint firstItem="ouY-YK-nq9" firstAttribute="leading" secondItem="BLp-h2-4kG" secondAttribute="leading" id="Pgr-0l-tQO"/>
+                            <constraint firstItem="ouY-YK-nq9" firstAttribute="top" secondItem="BLp-h2-4kG" secondAttribute="top" id="SFl-wc-Dj2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="heartView" destination="ouY-YK-nq9" id="vST-gM-14m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfe-n7-IOK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="-19"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

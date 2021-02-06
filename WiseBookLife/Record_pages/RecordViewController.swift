@@ -11,7 +11,7 @@ import UIKit
 class RecordViewController: UIViewController {
 
     var records: [Record] = []
-    @IBOutlet var recordView: UICollectionView!
+    @IBOutlet weak var recordView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,15 +49,6 @@ class RecordViewController: UIViewController {
         }
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()
-    }
-    
-    // MARK:- Action Methods
-    
-    @IBAction func toAddView(_ sender: UIBarButtonItem) {
-        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-        
-        addRecordVC.modalPresentationStyle = .fullScreen
-        present(addRecordVC, animated: true, completion: nil)
     }
 }
 
@@ -100,4 +91,24 @@ extension RecordViewController: UICollectionViewDataSource {
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let footer = recordView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "recordFooter", for: indexPath) as? RecordFooter else { return UICollectionReusableView() }
+        footer.addBtn.addTarget(self, action: #selector(addBook), for: .touchUpInside)
+        return footer
+    }
+    
+    @objc func addBook() {
+        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
+        
+        addRecordVC.modalPresentationStyle = .fullScreen
+        self.present(addRecordVC, animated: true, completion: nil)
+    }
+    
+}
+
+class RecordFooter: UICollectionReusableView {
+    @IBOutlet weak var addBtn: UIButton!
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
