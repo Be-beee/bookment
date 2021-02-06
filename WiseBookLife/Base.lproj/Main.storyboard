@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skK-Hb-TeF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="488"/>
+            <point key="canvasLocation" x="899" y="419"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9kv-ra-ykZ">
@@ -59,12 +59,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkP-Fh-aOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="1197"/>
+            <point key="canvasLocation" x="899" y="1091"/>
         </scene>
         <!--내 서재-->
         <scene sceneID="SyF-tl-zev">
             <objects>
-                <viewController id="eHX-Tm-Iu7" customClass="MainPageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainPageViewController" id="eHX-Tm-Iu7" customClass="MainPageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIr-sY-YT1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,9 @@
                                     <segment title="북캘린더"/>
                                     <segment title="위시리스트"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changePages:" destination="eHX-Tm-Iu7" eventType="valueChanged" id="Rzk-Pj-eEf"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifa-sv-Pno">
                                 <rect key="frame" x="0.0" y="61" width="414" height="664"/>
@@ -97,8 +100,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="내 서재" id="eF3-0q-O75">
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="eZM-CF-oXh"/>
+                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="eZM-CF-oXh">
+                            <connections>
+                                <action selector="goToSearchMenu:" destination="eHX-Tm-Iu7" id="Uyi-Xd-j2W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="Ifa-sv-Pno" id="1kB-hw-aUP"/>
+                        <outlet property="segmentedControl" destination="Te4-ob-Cao" id="U7M-sb-jKT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7U-yq-buO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,7 +137,7 @@
         <!--Page View Controller-->
         <scene sceneID="rPk-fu-8ET">
             <objects>
-                <viewController id="eL7-a9-kuj" customClass="PageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewController" id="eL7-a9-kuj" customClass="PageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uSM-c7-sea">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peo-vK-QFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2410" y="-307"/>
+            <point key="canvasLocation" x="2358" y="-346"/>
         </scene>
     </scenes>
     <resources>

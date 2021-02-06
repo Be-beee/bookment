@@ -30,6 +30,9 @@ class PageViewController: UIPageViewController {
         if let firstVC = vcs.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+//        if let superVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainPageViewController") as? MainPageViewController {
+//            superVC.delegate = self
+//        }
     }
     
     func importViewControllers(name: String) -> UIViewController {
@@ -60,6 +63,11 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
             return vcs[nextIdx]
         }
     }
-    
-    
 }
+
+//extension PageViewController: SegControlDelegate {
+//    func modifyIndex(_ idx: Int) {
+//        print("modify \(idx)")
+//        setViewControllers([vcs[idx]], direction: .forward, animated: true, completion: nil)
+//    }
+//}

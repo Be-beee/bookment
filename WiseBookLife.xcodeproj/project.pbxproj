@@ -99,6 +99,7 @@
 		B5A4AD6825CE70B600DBE58C /* Record_pages */ = {
 			isa = PBXGroup;
 			children = (
+				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
 				B5A4AD7625CE79F000DBE58C /* RecordViewController.storyboard */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
@@ -151,9 +152,9 @@
 		B5FA8DA7249F666B0009B24B /* WiseBookLife */ = {
 			isa = PBXGroup;
 			children = (
+				B5B3F31825B2CC0600A3CC14 /* ClientData */,
 				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
 				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
-				B5B3F31825B2CC0600A3CC14 /* ClientData */,
 				B572CE8B24A08BB300702C6E /* Common.swift */,
 				B50D93F625C82FA100AAED67 /* Archive.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
@@ -162,7 +163,6 @@
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
 				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
-				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B5FA8DB6249F666B0009B24B /* Info.plist */,
 				B5A4AD6825CE70B600DBE58C /* Record_pages */,
 				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
