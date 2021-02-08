@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,8 @@
 		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */; };
+		B5EF459825D1781D00165604 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF459625D1781D00165604 /* CustomCell.swift */; };
+		B5EF459925D1781D00165604 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5EF459725D1781D00165604 /* CustomCell.xib */; };
 		B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DA8249F666B0009B24B /* AppDelegate.swift */; };
 		B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */; };
 		B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FA8DAE249F666B0009B24B /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordVC.storyboard; sourceTree = "<group>"; };
+		B5EF459625D1781D00165604 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		B5EF459725D1781D00165604 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		B5FA8DA5249F666B0009B24B /* WiseBookLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseBookLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FA8DA8249F666B0009B24B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				B5A4AD7625CE79F000DBE58C /* RecordViewController.storyboard */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B5A4AD7025CE71AD00DBE58C /* CalendarController.storyboard */,
+				B5EF459625D1781D00165604 /* CustomCell.swift */,
+				B5EF459725D1781D00165604 /* CustomCell.xib */,
 				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
 				B5A4AD7325CE71E800DBE58C /* HeartListViewController.storyboard */,
 			);
@@ -187,7 +193,6 @@
 				E49A3D26278209CA641CEA66 /* Pods-WiseBookLife.debug.xcconfig */,
 				7EDD8D23E795D42807E097AA /* Pods-WiseBookLife.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -259,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EF459925D1781D00165604 /* CustomCell.xib in Resources */,
 				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
 				B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */,
 				B5A4AD7725CE79F000DBE58C /* RecordViewController.storyboard in Resources */,
@@ -329,6 +335,7 @@
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
+				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* Archive.swift in Sources */,

@@ -20,6 +20,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-Ii-eIO" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="Cxw-BI-tWT" id="GtG-9f-KBD"/>
                                     <outlet property="delegate" destination="Cxw-BI-tWT" id="CK2-jy-IHC"/>
@@ -35,6 +41,9 @@
                             <constraint firstItem="oy2-9C-NhU" firstAttribute="bottom" secondItem="ixt-Ii-eIO" secondAttribute="bottom" id="iWt-x1-QXr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calendarView" destination="ixt-Ii-eIO" id="l2a-CL-Wbc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dks-gV-rN6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
