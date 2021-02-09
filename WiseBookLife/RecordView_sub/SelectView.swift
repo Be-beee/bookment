@@ -18,7 +18,6 @@ class SelectView: UIView {
     @IBOutlet var bookAuthor: UILabel!
     @IBOutlet var bookDate: UILabel!
     @IBOutlet var bookPublisher: UILabel!
-    @IBOutlet var bookISBN: UILabel!
     
     
     override init(frame: CGRect) {

@@ -38,27 +38,8 @@ class BookDetailViewController: UIViewController {
         publishDateLabel.text = "출판일: " + bookData.pubdate
         publisherLabel.text = "출판사: " + bookData.publisher
         prepriceLabel.text = "가격: " + bookData.price
-//        if bookData.EBOOK_YN == "Y" {
-//            ebookYNLabel.text = "전자책"
-//        } else {
-//            ebookYNLabel.text = "종이책"
-//        }
         
         bookIntroduction.text = bookData.description
-        
-//        if bookData.BOOK_SUMMARY_URL.isEmpty {
-//            bookSummary.text = "등록된 책요약이 없습니다."
-//        } else {
-//            bookSummary.text = bookData.BOOK_SUMMARY_URL
-//        }
-//
-//        if bookData.BOOK_TB_CNT_URL.isEmpty {
-//            bookTB.text = "등록된 목차가 없습니다."
-//        } else {
-//            bookTB.text = bookData.BOOK_TB_CNT_URL
-//        }
-        
-        
     }
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {

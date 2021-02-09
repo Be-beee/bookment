@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,6 @@
                 <outlet property="bookAuthor" destination="kjE-cb-1Md" id="bJJ-bO-JV1"/>
                 <outlet property="bookCoverView" destination="UbC-Tq-m6t" id="A4l-yu-8HT"/>
                 <outlet property="bookDate" destination="sa7-aK-0Xi" id="8MK-yh-UD9"/>
-                <outlet property="bookISBN" destination="qD1-8P-0h4" id="Kac-rc-Ldc"/>
                 <outlet property="bookPublisher" destination="mqi-xs-VCf" id="nta-XV-2Az"/>
                 <outlet property="bookTitle" destination="4NM-3G-Yhf" id="rVQ-W7-Oqr"/>
             </connections>
@@ -46,12 +46,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="isbn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-8P-0h4">
-                    <rect key="frame" x="165" y="163" width="229" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NM-3G-Yhf">
                     <rect key="frame" x="165" y="25" width="229" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -59,15 +53,14 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="UbC-Tq-m6t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="2RL-GY-EcB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mqi-xs-VCf" secondAttribute="trailing" constant="20" id="5VU-TY-PpY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qD1-8P-0h4" secondAttribute="trailing" constant="20" id="5rN-yM-WVk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4NM-3G-Yhf" secondAttribute="trailing" constant="20" id="9Ko-aL-f5W"/>
                 <constraint firstItem="4NM-3G-Yhf" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="9RM-OA-fC8"/>
                 <constraint firstItem="sa7-aK-0Xi" firstAttribute="top" secondItem="kjE-cb-1Md" secondAttribute="bottom" constant="10" id="BjK-gF-zNl"/>
-                <constraint firstItem="qD1-8P-0h4" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="Chh-aF-PHc"/>
                 <constraint firstItem="4NM-3G-Yhf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Iag-g4-1BS"/>
                 <constraint firstItem="kjE-cb-1Md" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="VUK-8R-qeh"/>
                 <constraint firstItem="kjE-cb-1Md" firstAttribute="top" secondItem="4NM-3G-Yhf" secondAttribute="bottom" constant="30" id="XFM-Ux-lDA"/>
@@ -76,13 +69,16 @@
                 <constraint firstItem="UbC-Tq-m6t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="cdK-nH-PbB"/>
                 <constraint firstItem="mqi-xs-VCf" firstAttribute="top" secondItem="sa7-aK-0Xi" secondAttribute="bottom" constant="10" id="kLm-Wd-WOU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kjE-cb-1Md" secondAttribute="trailing" constant="20" id="moa-Rk-4Sv"/>
-                <constraint firstItem="qD1-8P-0h4" firstAttribute="top" secondItem="mqi-xs-VCf" secondAttribute="bottom" constant="10" id="p3d-Ap-k2D"/>
                 <constraint firstItem="sa7-aK-0Xi" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="uiE-0T-RPT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sa7-aK-0Xi" secondAttribute="trailing" constant="20" id="zET-je-9Kq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

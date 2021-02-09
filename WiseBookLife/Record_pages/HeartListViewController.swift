@@ -19,7 +19,6 @@ class HeartListViewController: UIViewController {
 
         self.navigationItem.title = "나의 관심도서 😍"
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
-//        heartList = heartDic.values
     }
     
     override func viewWillAppear(_ animated: Bool) {

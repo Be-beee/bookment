@@ -48,8 +48,7 @@ class AddRecordViewController: UIViewController {
         selectedBookView.bookAuthor.text =  recordModel.bookData.author
         selectedBookView.bookPublisher.text = "출판사: " + recordModel.bookData.publisher
         
-        selectedBookView.bookDate.text = "출간(예정)일: " + recordModel.bookData.pubdate
-        selectedBookView.bookISBN.text = "ISBN: " + String(recordModel.bookData.isbn)
+        selectedBookView.bookDate.text = "출간일: " + recordModel.bookData.pubdate
     }
     
     // MARK:- Unwind Segue

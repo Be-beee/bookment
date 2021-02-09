@@ -12,7 +12,6 @@ import FSCalendar
 class CustomCell: FSCalendarCell {
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }
