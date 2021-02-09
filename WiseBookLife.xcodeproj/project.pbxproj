@@ -25,7 +25,6 @@
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
 		B5A4AD6625CE6F4F00DBE58C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6525CE6F4F00DBE58C /* PageViewController.swift */; };
 		B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6925CE70D800DBE58C /* CalendarController.swift */; };
-		B5A4AD7125CE71AD00DBE58C /* CalendarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A4AD7025CE71AD00DBE58C /* CalendarController.storyboard */; };
 		B5A4AD7425CE71E800DBE58C /* HeartListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A4AD7325CE71E800DBE58C /* HeartListViewController.storyboard */; };
 		B5A4AD7725CE79F000DBE58C /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A4AD7625CE79F000DBE58C /* RecordViewController.storyboard */; };
 		B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6F42724F3904F0048000E /* BookDetailViewController.swift */; };
@@ -62,7 +61,6 @@
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6525CE6F4F00DBE58C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6925CE70D800DBE58C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
-		B5A4AD7025CE71AD00DBE58C /* CalendarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarController.storyboard; sourceTree = "<group>"; };
 		B5A4AD7325CE71E800DBE58C /* HeartListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeartListViewController.storyboard; sourceTree = "<group>"; };
 		B5A4AD7625CE79F000DBE58C /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
 		B5A6F42724F3904F0048000E /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
@@ -111,8 +109,6 @@
 				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
 				B5A4AD7625CE79F000DBE58C /* RecordViewController.storyboard */,
-				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
-				B5A4AD7025CE71AD00DBE58C /* CalendarController.storyboard */,
 				B5EF459625D1781D00165604 /* CustomCell.swift */,
 				B5EF459725D1781D00165604 /* CustomCell.xib */,
 				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
@@ -172,6 +168,7 @@
 				B50D93F625C82FA100AAED67 /* Archive.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
 				B5A4AD6525CE6F4F00DBE58C /* PageViewController.swift */,
+				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
@@ -268,7 +265,6 @@
 				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
 				B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */,
 				B5A4AD7725CE79F000DBE58C /* RecordViewController.storyboard in Resources */,
-				B5A4AD7125CE71AD00DBE58C /* CalendarController.storyboard in Resources */,
 				B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */,
 				B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */,
 				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,

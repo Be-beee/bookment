@@ -13,7 +13,6 @@ class PageViewController: UIPageViewController {
     lazy var vcs: [UIViewController] = {
         return [
             self.importViewControllers(name: "RecordViewController"),
-            self.importViewControllers(name: "CalendarController"),
             self.importViewControllers(name: "HeartListViewController")
         ]
     }()
