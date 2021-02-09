@@ -38,7 +38,6 @@ struct RequestParam {
     var display: Int?
     var start: Int?
     var sort: String?
-    // 이후 상세 검색 시 필요한 요청 쿼리
 }
 
 struct ResultModel: Codable {
@@ -83,16 +82,6 @@ extension Date {
     }
 }
 
-struct SearchConditionModel: Codable {
-    var conditionTitle: String = ""
-    var title: String = ""
-    var author: String = ""
-    var publisher: String = ""
-    var isbn: String = ""
-    var startDate: String = ""
-    var endDate: String = ""
-}
-
 extension Dictionary {
     var queryString: String {
         var output = ""
@@ -125,7 +114,6 @@ class SearchBook {
             guard let data = data else {
                 return
             }
-            // 오늘의 신간 표시에서 에러 발생하니까 확인 필요함~ 걍 오늘의 신간 없앨까?ㅎㅎ
             
             let decoder = JSONDecoder()
             
@@ -139,13 +127,13 @@ class SearchBook {
             } catch let error {
                 // error 처리
                 print(error.localizedDescription)
-//                DispatchQueue.main.async {
-//                    let alert = UIAlertController(title: "알림", message: "네트워크 에러가 발생했습니다\n잠시 후 다시 시도해 주세요.", preferredStyle: .alert)
-//                    let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-//                    alert.addAction(ok)
-//
-//                    target.present(alert, animated: true, completion: nil)
-//                }
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "알림", message: "네트워크 에러가 발생했습니다\n잠시 후 다시 시도해 주세요.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(ok)
+
+                    target.present(alert, animated: true, completion: nil)
+                }
             }
         }.resume()
             
@@ -180,7 +168,6 @@ extension UIViewController {
 struct CommonData {
     static var heartDic: [String: BookItem] = [:] // ISBN: Item
     static var calendarModel: [String: [BookItem]] = [:] // date_string: [Item]
-//    static var calendarModal: [CalendarModel] = []
 }
 
 
