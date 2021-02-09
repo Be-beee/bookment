@@ -67,8 +67,11 @@ struct Record: Codable {
     var recTitle: String = ""
     var date: Date = Date()
     var recordContents: String = ""
-    
-    
+}
+
+struct CalendarModel: Codable {
+    var date = Date()
+    var bookDatas: [BookItem] = []
 }
 
 extension Date {
@@ -174,8 +177,11 @@ extension UIViewController {
 
 // MARK:- Heart Dictionary / Search Condition Model Array
 
-var heartDic: [String: BookItem] = [:] // ISBN: Item
-var conditionList: [SearchConditionModel] = []
+struct CommonData {
+    static var heartDic: [String: BookItem] = [:] // ISBN: Item
+    static var calendarModel: [String: [BookItem]] = [:] // date_string: [Item]
+//    static var calendarModal: [CalendarModel] = []
+}
 
 
 // MARK:- Archiving

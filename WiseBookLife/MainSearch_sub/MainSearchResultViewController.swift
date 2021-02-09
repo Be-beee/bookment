@@ -80,10 +80,10 @@ class MainSearchResultViewController: UIViewController {
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            heartDic.removeValue(forKey: resultList[sender.tag].contents.isbn)
+            CommonData.heartDic.removeValue(forKey: resultList[sender.tag].contents.isbn)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            heartDic.updateValue(resultList[sender.tag].contents, forKey: resultList[sender.tag].contents.isbn)
+            CommonData.heartDic.updateValue(resultList[sender.tag].contents, forKey: resultList[sender.tag].contents.isbn)
         }
 //        saveData(data: heartDic, at: "heart")
     }
@@ -143,7 +143,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if heartDic[resultList[indexPath.row].contents.isbn] != nil {
+        if CommonData.heartDic[resultList[indexPath.row].contents.isbn] != nil {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -157,7 +157,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         
         detailVC.bookData = resultList[indexPath.row].contents
         detailVC.modalPresentationStyle = .fullScreen
-        if heartDic[resultList[indexPath.row].contents.isbn] != nil {
+        if CommonData.heartDic[resultList[indexPath.row].contents.isbn] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false

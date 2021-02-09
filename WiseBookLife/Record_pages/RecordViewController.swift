@@ -20,12 +20,14 @@ class RecordViewController: UIViewController {
 //        }
     }
     
-    // MARK:- Unwind Segue
+    // MARK:- Unwind Segue (기록 삭제 시 캘린더 책 삭제 같이 되도록 구현 해야 함)
     
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
                 records.remove(at: selected[0].item)
+//                CommonData.calendarModel.removeValue(forKey: <#T##String#>)
+                // 삭제 구현 덜 됨
 //                saveData(data: self.records, at: "records")
             }
             self.recordView.reloadData()
@@ -46,6 +48,18 @@ class RecordViewController: UIViewController {
             records[selected[0].item] = addRecordVC.recordModel
         } else {
             records.append(addRecordVC.recordModel)
+            
+            let df = DateFormatter()
+            df.locale = Locale(identifier: "ko_KR")
+            df.dateFormat = "yyyy-MM-dd"
+            
+            let key = df.string(from: addRecordVC.recordModel.date)
+            
+            var calValue = CommonData.calendarModel[key] ?? []
+            // MARK: - 이슈 : 같은 책 정보가 여러번 추가되는 이슈가 발생할 수 있음
+            calValue.append(addRecordVC.recordModel.bookData) // < 이부분
+            
+            CommonData.calendarModel.updateValue(calValue, forKey: key)
         }
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()

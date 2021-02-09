@@ -17,24 +17,10 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="144" height="199"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kiC-7h-cMz">
-                        <rect key="frame" x="0.0" y="0.0" width="144" height="199"/>
-                    </imageView>
-                </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="kiC-7h-cMz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P0f-tB-dAX"/>
-                <constraint firstAttribute="trailing" secondItem="kiC-7h-cMz" secondAttribute="trailing" id="bap-AX-12Q"/>
-                <constraint firstAttribute="bottom" secondItem="kiC-7h-cMz" secondAttribute="bottom" id="cGh-66-c7K"/>
-                <constraint firstItem="kiC-7h-cMz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yI2-28-YyX"/>
-            </constraints>
             <size key="customSize" width="144" height="199"/>
-            <connections>
-                <outlet property="bookCover" destination="kiC-7h-cMz" id="Gtu-QB-I2t"/>
-            </connections>
             <point key="canvasLocation" x="205.79710144927537" y="159.70982142857142"/>
         </collectionViewCell>
     </objects>

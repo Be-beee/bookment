@@ -63,10 +63,10 @@ class BookDetailViewController: UIViewController {
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if isHeartBtnSelected {
-            heartDic.removeValue(forKey: bookData.isbn)
+            CommonData.heartDic.removeValue(forKey: bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            heartDic.updateValue(bookData, forKey: bookData.isbn)
+            CommonData.heartDic.updateValue(bookData, forKey: bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
 //        saveData(data: heartDic, at: "heart")

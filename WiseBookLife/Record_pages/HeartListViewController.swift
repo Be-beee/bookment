@@ -24,7 +24,7 @@ class HeartListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         heartList = []
-        for (_, value) in heartDic {
+        for (_, value) in CommonData.heartDic {
             heartList.append(value)
         }
         heartList.sort(by: {$0.title < $1.title})
@@ -38,7 +38,7 @@ class HeartListViewController: UIViewController {
 //        sender.isSelected = !sender.isSelected
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            heartDic.removeValue(forKey: heartList[sender.tag].isbn)
+            CommonData.heartDic.removeValue(forKey: heartList[sender.tag].isbn)
 //            saveData(data: heartDic, at: "heart")
             refreshData()
         }
@@ -46,7 +46,7 @@ class HeartListViewController: UIViewController {
     
     func refreshData() {
         heartList = []
-        for (_, value) in heartDic {
+        for (_, value) in CommonData.heartDic {
             heartList.append(value)
         }
         
@@ -93,7 +93,7 @@ extension HeartListViewController: UITableViewDataSource {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         detailVC.bookData = heartList[indexPath.row]
         detailVC.modalPresentationStyle = .fullScreen
-        if heartDic[heartList[indexPath.row].isbn] != nil {
+        if CommonData.heartDic[heartList[indexPath.row].isbn] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false

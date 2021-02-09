@@ -10,7 +10,6 @@ import UIKit
 import FSCalendar
 
 class CustomCell: FSCalendarCell {
-    @IBOutlet weak var bookCover: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
