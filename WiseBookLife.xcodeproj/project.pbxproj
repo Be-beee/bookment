@@ -20,6 +20,8 @@
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
+		B589088925D42ED400FDA0D6 /* AddCalendarBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589088825D42ED400FDA0D6 /* AddCalendarBookController.swift */; };
+		B589088D25D42EEF00FDA0D6 /* AddCalendarBookController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B589088C25D42EEF00FDA0D6 /* AddCalendarBookController.storyboard */; };
 		B59D832024C01AF600797D5F /* RecBookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */; };
 		B59D832224C01B0E00797D5F /* RecBookSearchVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */; };
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
@@ -58,6 +60,8 @@
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
+		B589088825D42ED400FDA0D6 /* AddCalendarBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarBookController.swift; sourceTree = "<group>"; };
+		B589088C25D42EEF00FDA0D6 /* AddCalendarBookController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCalendarBookController.storyboard; sourceTree = "<group>"; };
 		B59D831F24C01AF600797D5F /* RecBookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecBookSearchViewController.swift; sourceTree = "<group>"; };
 		B59D832124C01B0E00797D5F /* RecBookSearchVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecBookSearchVC.storyboard; sourceTree = "<group>"; };
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 			children = (
 				B561165025D37B3A00C0D94B /* CalendarListViewController.swift */,
 				B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */,
+				B589088825D42ED400FDA0D6 /* AddCalendarBookController.swift */,
+				B589088C25D42EEF00FDA0D6 /* AddCalendarBookController.storyboard */,
 			);
 			path = Calendar_sub;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
 				B5A4AD7425CE71E800DBE58C /* HeartListViewController.storyboard in Resources */,
 				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
+				B589088D25D42EEF00FDA0D6 /* AddCalendarBookController.storyboard in Resources */,
 				B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
 			);
@@ -346,6 +353,7 @@
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
+				B589088925D42ED400FDA0D6 /* AddCalendarBookController.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,

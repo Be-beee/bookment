@@ -19,8 +19,11 @@ class CalendarListViewController: UIViewController {
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
     }
     
-    @IBAction func addBook(_ sender: Any) {
-        print("add book")
+    @IBAction func addBook(_ sender: UIBarButtonItem) {
+        guard let addBookVC = UIStoryboard(name: "AddCalendarBookController", bundle: nil).instantiateViewController(withIdentifier: "AddCalendarBookController") as? AddCalendarBookController else { return }
+        self.present(addBookVC, animated: true, completion: nil)
+        
+        // add book method랑 버튼 전부 테이블뷰 footer로 옮기고 bar button item은 화면 dismiss하는 기능으로 변경할 것
     }
     
     
