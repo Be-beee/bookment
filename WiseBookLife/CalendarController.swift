@@ -50,13 +50,13 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         df.dateFormat = "yyyy-MM-dd"
         let key = df.string(from: date)
         print(key)
-        guard let addBookVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
+        guard let bookListVC = UIStoryboard(name: "CalendarListViewController", bundle: nil).instantiateViewController(withIdentifier: "CalendarListViewController") as? CalendarListViewController else { return }
         
 //        UINavigationController(rootViewController: addBookVC)
         if let bookdatas = CommonData.calendarModel[key] {
-            addBookVC.booklist = bookdatas
+            bookListVC.booklist = bookdatas
         }
-        self.present(UINavigationController(rootViewController: addBookVC), animated: true, completion: nil)
+        self.present(UINavigationController(rootViewController: bookListVC), animated: true, completion: nil)
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {

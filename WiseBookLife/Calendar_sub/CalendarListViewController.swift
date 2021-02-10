@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddBookViewController: UIViewController {
+class CalendarListViewController: UIViewController {
 
     var booklist: [BookItem] = []
     @IBOutlet weak var todayBookTableView: UITableView!
@@ -26,12 +26,12 @@ class AddBookViewController: UIViewController {
     
 }
 
-extension AddBookViewController: UITableViewDelegate {
+extension CalendarListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
     }
 }
-extension AddBookViewController: UITableViewDataSource {
+extension CalendarListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return booklist.count
     }
