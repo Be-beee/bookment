@@ -17,6 +17,10 @@ class CalendarController: UIViewController {
         settingCalendarView()
         calendarView.collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendarView.reloadData()
+    }
     
     func settingCalendarView() {
         calendarView.appearance.headerDateFormat = "YYYY년 M월"
@@ -42,10 +46,17 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
     
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let key = df.string(from: date)
+        print(key)
+        guard let addBookVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
         
-        print(formatter.string(from: date))
+//        UINavigationController(rootViewController: addBookVC)
+        if let bookdatas = CommonData.calendarModel[key] {
+            addBookVC.booklist = bookdatas
+        }
+        self.present(UINavigationController(rootViewController: addBookVC), animated: true, completion: nil)
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {

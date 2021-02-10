@@ -11,6 +11,8 @@
 		B50D93F725C82FA100AAED67 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D93F625C82FA100AAED67 /* Archive.swift */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
+		B561165125D37B3A00C0D94B /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561165025D37B3A00C0D94B /* AddBookViewController.swift */; };
+		B561165425D37B5300C0D94B /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B561165325D37B5300C0D94B /* AddBookViewController.storyboard */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
 		B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */; };
 		B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* RecordViewController.swift */; };
@@ -47,6 +49,8 @@
 		B50D93F625C82FA100AAED67 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
+		B561165025D37B3A00C0D94B /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		B561165325D37B5300C0D94B /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
 		B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultVC.storyboard; sourceTree = "<group>"; };
 		B572CE8924A0831D00702C6E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B561164F25D37AEE00C0D94B /* Calendar_sub */ = {
+			isa = PBXGroup;
+			children = (
+				B561165025D37B3A00C0D94B /* AddBookViewController.swift */,
+				B561165325D37B5300C0D94B /* AddBookViewController.storyboard */,
+			);
+			path = Calendar_sub;
+			sourceTree = "<group>";
+		};
 		B56B972024DFB4DA00347D11 /* MainSearch_sub */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +190,7 @@
 				B5A4AD6825CE70B600DBE58C /* Record_pages */,
 				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
 				B5D190A924A4A72E00F1DCDB /* RecordView_sub */,
+				B561164F25D37AEE00C0D94B /* Calendar_sub */,
 				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
 				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
 				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
@@ -261,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B561165425D37B5300C0D94B /* AddBookViewController.storyboard in Resources */,
 				B5EF459925D1781D00165604 /* CustomCell.xib in Resources */,
 				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
 				B5D190AD24A4A78E00F1DCDB /* AddRecordVC.storyboard in Resources */,
@@ -343,6 +358,7 @@
 				B572CE8C24A08BB300702C6E /* Common.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddRecordViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
+				B561165125D37B3A00C0D94B /* AddBookViewController.swift in Sources */,
 				B59D832024C01AF600797D5F /* RecBookSearchViewController.swift in Sources */,
 				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,
 			);
