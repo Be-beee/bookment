@@ -153,9 +153,10 @@ extension UIViewController {
         }
     }
     
-    func settingFooterForTableView(for footer: UIView, action selector: Selector) {
-        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        footerBtn.setTitle("결과 더보기", for: .normal)
+    func settingFooterForTableView(for footer: UIView, action selector: Selector, title str: String = "결과 더보기") {
+        let footerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
+        footerBtn.setTitle(str, for: .normal)
+        footerBtn.setTitleColor(.label, for: .normal)
         footerBtn.addTarget(self, action: selector, for: .touchUpInside)
         footer.addSubview(footerBtn)
     }

@@ -17,13 +17,22 @@ class CalendarListViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
+        
+        // setting table footer
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        settingFooterForTableView(for: tableFooter, action: #selector(addBookToCalendar), title: "책 추가")
+        
+        todayBookTableView.tableFooterView = tableFooter
+//        todayBookTableView.tableFooterView?.isHidden = true
     }
     
-    @IBAction func addBook(_ sender: UIBarButtonItem) {
+    @IBAction func dismissListView(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func addBookToCalendar() {
         guard let addBookVC = UIStoryboard(name: "AddCalendarBookController", bundle: nil).instantiateViewController(withIdentifier: "AddCalendarBookController") as? AddCalendarBookController else { return }
         self.present(addBookVC, animated: true, completion: nil)
-        
-        // add book method랑 버튼 전부 테이블뷰 footer로 옮기고 bar button item은 화면 dismiss하는 기능으로 변경할 것
     }
     
     
