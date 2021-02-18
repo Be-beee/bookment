@@ -44,13 +44,13 @@
                                     <segment title="위시리스트"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changePages:" destination="eHX-Tm-Iu7" eventType="valueChanged" id="Rzk-Pj-eEf"/>
+                                    <action selector="changePages:" destination="eHX-Tm-Iu7" eventType="valueChanged" id="8c3-od-ejI"/>
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifa-sv-Pno">
                                 <rect key="frame" x="0.0" y="61" width="414" height="664"/>
                                 <connections>
-                                    <segue destination="eL7-a9-kuj" kind="embed" id="6Zs-9A-m4T"/>
+                                    <segue destination="eL7-a9-kuj" kind="embed" identifier="pageSeg" id="6Zs-9A-m4T"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -74,7 +74,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="containerView" destination="Ifa-sv-Pno" id="1kB-hw-aUP"/>
                         <outlet property="segmentedControl" destination="Te4-ob-Cao" id="U7M-sb-jKT"/>
                     </connections>
                 </viewController>

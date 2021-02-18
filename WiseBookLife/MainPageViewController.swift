@@ -8,14 +8,9 @@
 
 import UIKit
 
-protocol SegControlDelegate {
-    func modifyIndex(_ idx: Int)
-}
-
 class MainPageViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var containerView: UIView!
-//    var delegate: SegControlDelegate?
+    private var embeddedViewController: PageViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +25,14 @@ class MainPageViewController: UIViewController {
         
     }
     @IBAction func changePages(_ sender: UISegmentedControl) {
-//        delegate?.modifyIndex(sender.selectedSegmentIndex)
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PageViewController") as? PageViewController else { return }
-        print("view selected")
-        vc.setViewControllers([vc.vcs[sender.selectedSegmentIndex]], direction: .reverse, animated: false, completion: nil)
-        
+        embeddedViewController.setViewControllers([embeddedViewController.vcs[sender.selectedSegmentIndex]], direction: .reverse, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pageSeg" {
+            if let embeddedPageVC = segue.destination as? PageViewController {
+                embeddedViewController = embeddedPageVC
+            }
+        }
     }
 }

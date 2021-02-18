@@ -16,6 +16,8 @@ class PageViewController: UIPageViewController {
             self.importViewControllers(name: "HeartListViewController")
         ]
     }()
+    var selectedIdx = 0
+    private var mainPageViewController: MainPageViewController!
     
     required init?(coder: NSCoder) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -29,9 +31,9 @@ class PageViewController: UIPageViewController {
         if let firstVC = vcs.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-//        if let superVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainPageViewController") as? MainPageViewController {
-//            superVC.delegate = self
-//        }
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainPageViewController") as? MainPageViewController else { return }
+        mainPageViewController = vc
     }
     
     func importViewControllers(name: String) -> UIViewController {
@@ -46,10 +48,11 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
         let prevIdx = idx - 1
         
         if prevIdx < 0 {
-            return vcs.last
+            return nil
         } else {
-            return vcs[prevIdx]
+            selectedIdx = prevIdx
         }
+        return vcs[selectedIdx]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -57,16 +60,14 @@ extension PageViewController: UIPageViewControllerDelegate, UIPageViewController
         let nextIdx = idx + 1
         
         if nextIdx >= vcs.count {
-            return vcs.first
+            return nil
         } else {
-            return vcs[nextIdx]
+            selectedIdx = nextIdx
+            mainPageViewController.segmentedControl?.selectedSegmentIndex = selectedIdx
+            // 페이지가 이동할 때 세그먼트 컨트롤의 값을 어떻게 바꿀 것인지???
+            // 일단 위의 방법은 안먹힘
+            // 델리게이트 패턴? 써야하나
         }
+        return vcs[selectedIdx]
     }
 }
-
-//extension PageViewController: SegControlDelegate {
-//    func modifyIndex(_ idx: Int) {
-//        print("modify \(idx)")
-//        setViewControllers([vcs[idx]], direction: .forward, animated: true, completion: nil)
-//    }
-//}
