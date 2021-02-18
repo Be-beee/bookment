@@ -38,7 +38,6 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kYL-2G-VxC">
                                                     <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="160" id="5M6-Na-uCF"/>
                                                         <constraint firstAttribute="width" secondItem="kYL-2G-VxC" secondAttribute="height" multiplier="27:40" id="aLN-dt-zwV"/>
                                                     </constraints>
                                                 </imageView>
@@ -51,7 +50,6 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                        <size key="customSize" width="108" height="165"/>
                                         <connections>
                                             <outlet property="bookImage" destination="kYL-2G-VxC" id="TrX-NB-HsO"/>
                                         </connections>
