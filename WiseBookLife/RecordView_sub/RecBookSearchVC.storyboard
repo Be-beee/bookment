@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,13 +19,13 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aeg-Mk-Bv3">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tWL-zy-G0T" id="DQk-Ip-2BG"/>
                                     <outlet property="delegate" destination="tWL-zy-G0T" id="H9f-YU-SdB"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qm4-4s-1DY">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm4-4s-1DY">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -34,7 +36,8 @@
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="9Gv-7O-SEG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Quy-rs-rFt" firstAttribute="centerX" secondItem="A9v-v8-fIv" secondAttribute="centerX" id="C00-t4-1KM"/>
                             <constraint firstItem="qm4-4s-1DY" firstAttribute="top" secondItem="9Gv-7O-SEG" secondAttribute="top" id="G53-T4-Eeg"/>
@@ -46,7 +49,6 @@
                             <constraint firstItem="qm4-4s-1DY" firstAttribute="trailing" secondItem="9Gv-7O-SEG" secondAttribute="trailing" id="egb-Py-EcK"/>
                             <constraint firstItem="aeg-Mk-Bv3" firstAttribute="top" secondItem="qm4-4s-1DY" secondAttribute="bottom" id="vVo-om-Pnu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="9Gv-7O-SEG"/>
                     </view>
                     <connections>
                         <outlet property="indicator" destination="Quy-rs-rFt" id="DEZ-pK-Rt6"/>
@@ -61,4 +63,9 @@
             <point key="canvasLocation" x="115.94202898550725" y="154.6875"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

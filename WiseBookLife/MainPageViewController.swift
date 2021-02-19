@@ -22,7 +22,9 @@ class MainPageViewController: UIViewController {
         
     }
     @IBAction func goToSearchMenu(_ sender: Any) {
+        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
         
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     @IBAction func changePages(_ sender: UISegmentedControl) {
         embeddedViewController.setViewControllers([embeddedViewController.vcs[sender.selectedSegmentIndex]], direction: .reverse, animated: true, completion: nil)

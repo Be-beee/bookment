@@ -13,6 +13,7 @@ class MainSearchResultViewController: UIViewController {
     var resultList: [(image: UIImage, contents: BookItem)] = []
     @IBOutlet var resultView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var searchTool = SearchBook()
     var searchedWord = ""
@@ -23,58 +24,32 @@ class MainSearchResultViewController: UIViewController {
     
     var isSearched = false
     
-    let searchController = UISearchController(searchResultsController: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.indicator.stopAnimating()
         resultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        
-        searchController.searchBar.text = searchedWord
-        self.navigationItem.searchController = searchController
-        searchController.searchBar.delegate = self
-        
-        // setting table footer
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
-        
-        resultView.tableFooterView = tableFooter
-        resultView.tableFooterView?.isHidden = true
-        
-        if searchedWord.isEmpty, detailSearchQuery.count != 0 {
-            searchTool.callAPI(additional_param: detailSearchQuery, target: self) {
-                self.indicator.startAnimating()
-                for item in self.searchTool.results {
-                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
-                    self.resultList.append((image: image!, contents: item))
-                }
-                self.resultView.reloadData()
-                self.indicator.stopAnimating()
-                self.resultView.tableFooterView?.isHidden = false
-            }
-        } else {
-            let query_param = [
-                "query" : searchedWord
-            ]
-            searchTool.callAPI(additional_param: query_param, target: self) {
-                self.indicator.startAnimating()
-                for item in self.searchTool.results {
-                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
-                    self.resultList.append((image: image!, contents: item))
-                }
-                self.resultView.reloadData()
-                self.indicator.stopAnimating()
-                self.resultView.tableFooterView?.isHidden = false
-            }
-        }
+        settingSearchBar()
+        settingResultFooter()
         
         
     }
     override func viewWillAppear(_ animated: Bool) {
         pageNo = 1
+    }
+    
+    func settingSearchBar() {
+        searchBar.backgroundColor = .systemBackground
+        searchBar.delegate = self
+    }
+    
+    func settingResultFooter() {
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
+        
+        resultView.tableFooterView = tableFooter
+        resultView.tableFooterView?.isHidden = true
     }
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
@@ -171,7 +146,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
 
 extension MainSearchResultViewController: UISearchBarDelegate {
     @objc func dismissKeyboard() {
-        self.searchController.searchBar.resignFirstResponder()
+        self.searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -182,7 +157,8 @@ extension MainSearchResultViewController: UISearchBarDelegate {
             self.resultView.reloadData()
             if !hasText.isEmpty {
                 self.searchedWord = hasText
-                self.searchController.searchBar.text = self.searchedWord
+                searchBar.text = self.searchedWord
+                searchBar.enablesReturnKeyAutomatically = true
                 let query_param: [String: String] = [
                     "query" : hasText
                 ]
