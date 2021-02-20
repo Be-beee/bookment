@@ -78,9 +78,9 @@ class AddRecordViewController: UIViewController {
             recordModel.recTitle = title
             recordModel.recordContents = recordContents.text
             
-            if !recordModel.bookData.isbn.isEmpty {
+            if !recordModel.bookData.isbn.isEmpty || !recordModel.bookData.title.isEmpty {
                 self.performSegue(withIdentifier: "toRecordView", sender: self)
-                // Unbalanced calls to begin/end appearance transitions
+                // ISSUE - Unbalanced calls to begin/end appearance transitions
                 
             } else {
                 let bookAlert = UIAlertController(title: "에러", message: "기록을 작성할 책을 선택해주세요!", preferredStyle: .alert)

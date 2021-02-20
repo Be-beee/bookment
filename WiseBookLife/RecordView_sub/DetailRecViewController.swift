@@ -21,6 +21,7 @@ class DetailRecViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(editThisRecord))
         self.navigationItem.rightBarButtonItem = editButton
+        self.recContents.isEditable = false
         presentData()
     }
     

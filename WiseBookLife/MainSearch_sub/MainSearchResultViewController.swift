@@ -37,6 +37,7 @@ class MainSearchResultViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         curPageNo = 1
+        self.resultView.reloadData()
     }
     
     func settingSearchBar() {
