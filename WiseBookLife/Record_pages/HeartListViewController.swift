@@ -16,9 +16,8 @@ class HeartListViewController: UIViewController {
     var heartList: [BookItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.title = "나의 관심도서 😍"
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
+        settingHeartListFooter() // setting table footer
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +27,18 @@ class HeartListViewController: UIViewController {
         }
         heartList.sort(by: {$0.title < $1.title})
         heartView.reloadData()
+    }
+    
+    func settingHeartListFooter() {
+        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        settingFooterForTableView(for: tableFooter, action: #selector(addHeartBook), title: "책 추가하기")
+        
+        heartView.tableFooterView = tableFooter
+    }
+    
+    @objc func addHeartBook() {
+        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 
     

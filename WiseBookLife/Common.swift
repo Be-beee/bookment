@@ -59,6 +59,14 @@ struct BookItem: Codable {
     var isbn: String = ""
     var description: String = ""
     var pubdate: String = ""
+    
+    mutating func modifySearchedData() {
+        let title = self.title.removeHTMLTag()
+        let author = self.author.removeHTMLTag()
+        
+        self.title = title
+        self.author = author
+    }
 }
 
 struct Record: Codable {
@@ -119,7 +127,12 @@ class SearchBook {
             
             do {
                 let user = try decoder.decode(ResultModel.self, from: data)
-                self.results = user.items
+                var datas: [BookItem] = []
+                for item in user.items {
+                    let newItem = BookItem(title: item.title.removeHTMLTag(), link: item.link, image: item.image, author: item.author.removeHTMLTag(), price: item.price, discount: item.discount, publisher: item.publisher, isbn: item.isbn, description: item.description.removeHTMLTag(), pubdate: item.pubdate)
+                    datas.append(newItem)
+                }
+                self.results = datas
                 DispatchQueue.main.async {
                     completion()
                 }
@@ -161,6 +174,14 @@ extension UIViewController {
         footer.addSubview(footerBtn)
     }
     
+}
+
+extension String {
+    func removeHTMLTag() -> String {
+        let rmFirst = self.replacingOccurrences(of: "<b>", with: "")
+        let result = rmFirst.replacingOccurrences(of: "</b>", with: "")
+        return result
+    }
 }
 
 

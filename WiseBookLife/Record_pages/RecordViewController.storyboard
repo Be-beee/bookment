@@ -61,7 +61,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-YA-6FD">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                            <state key="normal" title="책 추가하기"/>
+                                            <state key="normal" title="기록 추가"/>
                                         </button>
                                     </subviews>
                                     <constraints>

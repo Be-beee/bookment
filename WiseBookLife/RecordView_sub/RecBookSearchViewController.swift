@@ -16,8 +16,8 @@ class RecBookSearchViewController: UIViewController {
     
     var searchTool = SearchBook()
     var searchedWord = ""
-    var pageNo = 1
-    var pageSize = 20
+    var curPageNo = 1
+    var pageSize = 10
     
     
     @IBOutlet var searchBar: UISearchBar!
@@ -26,10 +26,15 @@ class RecBookSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchResultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
+        settingResultFooter()// setting table footer
         
-        // setting table footer
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        curPageNo = 1
+    }
+
+    func settingResultFooter() {
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         settingFooterForTableView(for: tableFooter, action: #selector(showMoreResult))
         
@@ -40,19 +45,16 @@ class RecBookSearchViewController: UIViewController {
             searchResultView.tableFooterView?.isHidden = true
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        pageNo = 1
-    }
-
     
     @objc func showMoreResult() {
+        curPageNo += pageSize
         let query_param: [String: String] = [
-            "query" : searchedWord
+            "query" : searchedWord,
+            "start" : String(curPageNo)
         ]
-        pageNo += 1
         searchTool.callAPI(additional_param: query_param, target: self) {
             self.indicator.startAnimating()
-            if self.searchTool.results.isEmpty { // Attempt to present UIAlertController on RecBookSearchViewController which is already presenting UIAlertController
+            if self.searchTool.results.isEmpty {
                 let alert = UIAlertController(title: "알림", message: "마지막 검색 결과입니다!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(ok)
@@ -108,6 +110,7 @@ extension RecBookSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
+        self.curPageNo = 1
         
         if !searchBar.text!.isEmpty {
             self.indicator.isHidden = false

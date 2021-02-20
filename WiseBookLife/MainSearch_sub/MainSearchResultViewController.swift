@@ -17,8 +17,8 @@ class MainSearchResultViewController: UIViewController {
     
     var searchTool = SearchBook()
     var searchedWord = ""
-    var pageNo = 1
-    var pageSize = 20
+    var curPageNo = 1
+    var pageSize = 10
     
     var detailSearchQuery: [String: String] = [:]
     
@@ -36,7 +36,7 @@ class MainSearchResultViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        pageNo = 1
+        curPageNo = 1
     }
     
     func settingSearchBar() {
@@ -64,10 +64,11 @@ class MainSearchResultViewController: UIViewController {
     }
     
     @objc func showMoreResult() {
+        curPageNo += pageSize
         let query_param: [String: String] = [
-            "query" : searchedWord
+            "query" : searchedWord,
+            "start" : String(curPageNo)
         ]
-        pageNo += 1
         searchTool.callAPI(additional_param: query_param, target: self) {
             self.indicator.startAnimating()
             if self.searchTool.results.isEmpty {
@@ -151,16 +152,18 @@ extension MainSearchResultViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
-        pageNo = 1
+        self.curPageNo = 1
+        self.resultList = []
+        self.resultView.reloadData()
         if let hasText = searchBar.text {
-            self.resultList = []
-            self.resultView.reloadData()
             if !hasText.isEmpty {
+                self.resultView.tableFooterView?.isHidden = false
                 self.searchedWord = hasText
                 searchBar.text = self.searchedWord
                 searchBar.enablesReturnKeyAutomatically = true
                 let query_param: [String: String] = [
-                    "query" : hasText
+                    "query" : hasText,
+                    "start" : String(curPageNo)
                 ]
                 self.searchTool.callAPI(additional_param: query_param, target: self) {
                     self.indicator.startAnimating()
