@@ -10,13 +10,17 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    private var embeddedViewController: PageViewController!
+    @IBOutlet weak var recordContainerView: UIView!
+    @IBOutlet weak var wishListContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // navigation bar bottom line 삭제하기
+        
+        recordContainerView.isHidden = false
+        wishListContainerView.isHidden = true
     
 //        segmentedControl.setTitleTextAttributes(<#T##attributes: [NSAttributedString.Key : Any]?##[NSAttributedString.Key : Any]?#>, for: <#T##UIControl.State#>)
         
@@ -27,14 +31,13 @@ class MainPageViewController: UIViewController {
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
     @IBAction func changePages(_ sender: UISegmentedControl) {
-        embeddedViewController.setViewControllers([embeddedViewController.vcs[sender.selectedSegmentIndex]], direction: .reverse, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pageSeg" {
-            if let embeddedPageVC = segue.destination as? PageViewController {
-                embeddedViewController = embeddedPageVC
-            }
+        switch sender.selectedSegmentIndex {
+        case 1:
+            recordContainerView.isHidden = true
+            wishListContainerView.isHidden = false
+        default:
+            recordContainerView.isHidden = false
+            wishListContainerView.isHidden = true
         }
     }
 }

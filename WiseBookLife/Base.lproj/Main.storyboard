@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -50,7 +51,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifa-sv-Pno">
                                 <rect key="frame" x="0.0" y="61" width="414" height="664"/>
                                 <connections>
-                                    <segue destination="eL7-a9-kuj" kind="embed" identifier="pageSeg" id="6Zs-9A-m4T"/>
+                                    <segue destination="3aw-5k-lG0" kind="embed" id="NFR-Ve-Aac"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEb-1R-Mrp">
+                                <rect key="frame" x="0.0" y="61" width="414" height="664"/>
+                                <connections>
+                                    <segue destination="4uD-3D-Lhv" kind="embed" id="ytm-Zp-DLb"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -58,9 +65,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ifa-sv-Pno" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="0X6-QU-yyh"/>
+                            <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="LEb-1R-Mrp" secondAttribute="trailing" id="BBt-wm-iM8"/>
+                            <constraint firstItem="LEb-1R-Mrp" firstAttribute="top" secondItem="Te4-ob-Cao" secondAttribute="bottom" constant="15" id="GFc-fi-2sq"/>
                             <constraint firstItem="Te4-ob-Cao" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" constant="20" id="UPI-09-HoA"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="Te4-ob-Cao" secondAttribute="trailing" constant="20" id="XmO-dE-g3r"/>
                             <constraint firstItem="Ifa-sv-Pno" firstAttribute="top" secondItem="Te4-ob-Cao" secondAttribute="bottom" constant="15" id="eIr-tT-RuB"/>
+                            <constraint firstItem="LEb-1R-Mrp" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="k0k-Ev-D77"/>
+                            <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="LEb-1R-Mrp" secondAttribute="bottom" id="qXH-zd-WnM"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="Ifa-sv-Pno" secondAttribute="trailing" id="qd8-nf-1Ap"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="Ifa-sv-Pno" secondAttribute="bottom" id="shU-x1-NL3"/>
                             <constraint firstItem="Te4-ob-Cao" firstAttribute="top" secondItem="Bx3-u9-BuM" secondAttribute="top" constant="15" id="xI4-dS-LAR"/>
@@ -74,12 +85,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="recordContainerView" destination="Ifa-sv-Pno" id="XLN-jE-G94"/>
                         <outlet property="segmentedControl" destination="Te4-ob-Cao" id="U7M-sb-jKT"/>
+                        <outlet property="wishListContainerView" destination="LEb-1R-Mrp" id="Ss6-DU-R6V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7U-yq-buO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1646" y="-240"/>
+            <point key="canvasLocation" x="1644.9275362318842" y="-240.40178571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O0y-W2-DiK">
@@ -99,21 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWr-lb-FA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="899" y="-240"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="rPk-fu-8ET">
-            <objects>
-                <viewController storyboardIdentifier="PageViewController" id="eL7-a9-kuj" customClass="PageViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uSM-c7-sea">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="rs9-6Y-13s"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="peo-vK-QFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2358" y="-346"/>
         </scene>
         <!--Calendar Controller-->
         <scene sceneID="jpR-aR-esl">
@@ -166,12 +164,136 @@
             </objects>
             <point key="canvasLocation" x="896" y="1068"/>
         </scene>
+        <!--Record View Controller-->
+        <scene sceneID="QVm-AU-rdA">
+            <objects>
+                <viewController storyboardIdentifier="RecordViewController" id="3aw-5k-lG0" customClass="RecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKT-P5-aia">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0j6-Jh-f7i">
+                                <rect key="frame" x="20" y="44" width="374" height="620"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hCv-2b-q1e">
+                                    <size key="itemSize" width="108" height="165"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordCell" id="DpD-OL-ejz" customClass="RecordCell" customModule="WiseBookLife" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D1g-Fg-Lpg">
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cXF-UR-BZO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="cXF-UR-BZO" secondAttribute="height" multiplier="27:40" id="rHN-5i-lWs"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="cXF-UR-BZO" secondAttribute="bottom" id="54E-ct-By5"/>
+                                                <constraint firstItem="cXF-UR-BZO" firstAttribute="leading" secondItem="D1g-Fg-Lpg" secondAttribute="leading" id="Plm-v0-vYw"/>
+                                                <constraint firstAttribute="trailing" secondItem="cXF-UR-BZO" secondAttribute="trailing" id="aPp-Hh-tlx"/>
+                                                <constraint firstItem="cXF-UR-BZO" firstAttribute="top" secondItem="D1g-Fg-Lpg" secondAttribute="top" id="eVu-39-Sbb"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="bookImage" destination="cXF-UR-BZO" id="TxQ-iP-Sff"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordFooter" id="gTm-nk-89P" customClass="RecordFooter" customModule="WiseBookLife" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="165" width="374" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOB-QL-qRM">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                            <state key="normal" title="기록 추가"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="IOB-QL-qRM" secondAttribute="trailing" id="4zk-6f-rET"/>
+                                        <constraint firstAttribute="bottom" secondItem="IOB-QL-qRM" secondAttribute="bottom" id="Ic2-Bm-MMV"/>
+                                        <constraint firstItem="IOB-QL-qRM" firstAttribute="top" secondItem="gTm-nk-89P" secondAttribute="top" id="Uzn-nm-teJ"/>
+                                        <constraint firstItem="IOB-QL-qRM" firstAttribute="leading" secondItem="gTm-nk-89P" secondAttribute="leading" id="ut0-CH-uX6"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="addBtn" destination="IOB-QL-qRM" id="lmu-zl-stM"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="3aw-5k-lG0" id="lKW-Pz-3IY"/>
+                                    <outlet property="delegate" destination="3aw-5k-lG0" id="Gi5-e6-mpH"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bkp-sB-UqE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0j6-Jh-f7i" firstAttribute="leading" secondItem="Bkp-sB-UqE" secondAttribute="leading" constant="20" id="3OT-Uo-3Zd"/>
+                            <constraint firstItem="0j6-Jh-f7i" firstAttribute="top" secondItem="Bkp-sB-UqE" secondAttribute="top" id="8TV-MN-1bq"/>
+                            <constraint firstItem="Bkp-sB-UqE" firstAttribute="bottom" secondItem="0j6-Jh-f7i" secondAttribute="bottom" id="Cpb-ly-CzT"/>
+                            <constraint firstItem="Bkp-sB-UqE" firstAttribute="trailing" secondItem="0j6-Jh-f7i" secondAttribute="trailing" constant="20" id="c7s-iO-48D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="recordView" destination="0j6-Jh-f7i" id="Dnl-31-KgV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziF-lc-TLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="-544"/>
+        </scene>
+        <!--Heart List View Controller-->
+        <scene sceneID="KI5-PR-ZWg">
+            <objects>
+                <viewController storyboardIdentifier="HeartListViewController" id="4uD-3D-Lhv" customClass="HeartListViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A67-cb-EUQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="isN-1i-GK0">
+                                <rect key="frame" x="0.0" y="44" width="414" height="620"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4uD-3D-Lhv" id="cYh-lg-uba"/>
+                                    <outlet property="delegate" destination="4uD-3D-Lhv" id="PUR-5B-Y7J"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KMW-Kf-gQY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KMW-Kf-gQY" firstAttribute="trailing" secondItem="isN-1i-GK0" secondAttribute="trailing" id="373-dV-JeK"/>
+                            <constraint firstItem="isN-1i-GK0" firstAttribute="leading" secondItem="KMW-Kf-gQY" secondAttribute="leading" id="57R-vA-NNl"/>
+                            <constraint firstItem="KMW-Kf-gQY" firstAttribute="bottom" secondItem="isN-1i-GK0" secondAttribute="bottom" id="6eM-jU-idp"/>
+                            <constraint firstItem="isN-1i-GK0" firstAttribute="top" secondItem="KMW-Kf-gQY" secondAttribute="top" id="T4n-g9-5Ib"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="heartView" destination="isN-1i-GK0" id="01v-je-9fd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iJh-bA-y5o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2507" y="68"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book.fill" catalog="system" width="128" height="102"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

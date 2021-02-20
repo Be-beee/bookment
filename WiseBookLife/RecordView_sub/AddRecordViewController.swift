@@ -56,7 +56,7 @@ class AddRecordViewController: UIViewController {
     @IBAction func unwindSearchView(sender: UIStoryboardSegue) {
         searchBtn.isHidden = true
         
-        guard let searchresultVC = sender.source as? RecBookSearchViewController else {
+        guard let searchresultVC = sender.source as? SubSearchViewController else {
             return
         }
         recordModel.bookData = searchresultVC.selected
@@ -66,7 +66,7 @@ class AddRecordViewController: UIViewController {
     
     // MARK:- Action Methods
     @IBAction func searchBook(_ sender: UIButton) {
-        let recBookSearchVC = UIStoryboard(name: "RecBookSearchVC", bundle: nil).instantiateViewController(withIdentifier: "recBookSearchVC") as! RecBookSearchViewController
+        let recBookSearchVC = UIStoryboard(name: "SubSearchViewController", bundle: nil).instantiateViewController(withIdentifier: "SubSearchViewController") as! SubSearchViewController
         
         self.present(recBookSearchVC, animated: true, completion: nil)
     }

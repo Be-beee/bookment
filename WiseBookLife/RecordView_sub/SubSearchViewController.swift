@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecBookSearchViewController: UIViewController {
+class SubSearchViewController: UIViewController {
 
     var selected = BookItem()
     var searchResult: [(image: UIImage, contents: BookItem)] = []
@@ -72,12 +72,12 @@ class RecBookSearchViewController: UIViewController {
 }
 
 // MARK:- Extensions
-extension RecBookSearchViewController: UITableViewDelegate {
+extension SubSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
     }
 }
-extension RecBookSearchViewController: UITableViewDataSource {
+extension SubSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResult.count
     }
@@ -102,7 +102,7 @@ extension RecBookSearchViewController: UITableViewDataSource {
     
 }
 
-extension RecBookSearchViewController: UISearchBarDelegate {
+extension SubSearchViewController: UISearchBarDelegate {
     
     @objc func dismissKeyboard() {
         searchBar.resignFirstResponder()

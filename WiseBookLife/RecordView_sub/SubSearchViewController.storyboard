@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rec Book Search View Controller-->
+        <!--Sub Search View Controller-->
         <scene sceneID="cJJ-Xj-MYC">
             <objects>
-                <viewController storyboardIdentifier="recBookSearchVC" id="tWL-zy-G0T" customClass="RecBookSearchViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubSearchViewController" id="tWL-zy-G0T" customClass="SubSearchViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9v-v8-fIv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
