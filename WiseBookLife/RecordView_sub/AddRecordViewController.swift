@@ -67,7 +67,7 @@ class AddRecordViewController: UIViewController {
     // MARK:- Action Methods
     @IBAction func searchBook(_ sender: UIButton) {
         let recBookSearchVC = UIStoryboard(name: "SubSearchViewController", bundle: nil).instantiateViewController(withIdentifier: "SubSearchViewController") as! SubSearchViewController
-        
+        recBookSearchVC.from = .record
         self.present(recBookSearchVC, animated: true, completion: nil)
     }
     

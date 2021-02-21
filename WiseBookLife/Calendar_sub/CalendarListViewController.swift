@@ -18,12 +18,23 @@ class CalendarListViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        // setting table footer
+        settingCalendarListFooter()// setting table footer
+    }
+    
+    func settingCalendarListFooter() {
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         settingFooterForTableView(for: tableFooter, action: #selector(addBookToCalendar), title: "책 추가")
         
         todayBookTableView.tableFooterView = tableFooter
-//        todayBookTableView.tableFooterView?.isHidden = true
+    }
+    
+    @IBAction func unwindToThisDateBookList(sender: UIStoryboardSegue) {
+        guard let searchresultVC = sender.source as? SubSearchViewController else {
+            return
+        }
+        booklist.append(searchresultVC.selected)
+        todayBookTableView.reloadData()
+        // add archive code
     }
     
     @IBAction func dismissListView(_ sender: UIBarButtonItem) {
@@ -31,8 +42,9 @@ class CalendarListViewController: UIViewController {
     }
     
     @objc func addBookToCalendar() {
-        guard let addBookVC = UIStoryboard(name: "AddCalendarBookController", bundle: nil).instantiateViewController(withIdentifier: "AddCalendarBookController") as? AddCalendarBookController else { return }
-        self.present(addBookVC, animated: true, completion: nil)
+        guard let subSearchVC = UIStoryboard(name: "SubSearchViewController", bundle: nil).instantiateViewController(withIdentifier: "SubSearchViewController") as? SubSearchViewController else { return }
+        subSearchVC.from = .calendar
+        self.present(subSearchVC, animated: true, completion: nil)
     }
     
     

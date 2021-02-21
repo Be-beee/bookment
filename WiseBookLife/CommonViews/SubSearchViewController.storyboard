@@ -55,6 +55,7 @@
                         <outlet property="searchBar" destination="qm4-4s-1DY" id="ht2-u2-eFd"/>
                         <outlet property="searchResultView" destination="aeg-Mk-Bv3" id="q9C-mW-x09"/>
                         <segue destination="Y8g-J6-CsI" kind="unwind" identifier="toAddView" unwindAction="unwindSearchViewWithSender:" id="gtY-Lq-12o"/>
+                        <segue destination="Y8g-J6-CsI" kind="unwind" identifier="toCalendarBookList" unwindAction="unwindToThisDateBookListWithSender:" id="BgF-hY-n0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfg-0O-grn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

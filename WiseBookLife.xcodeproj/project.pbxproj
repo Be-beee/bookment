@@ -116,6 +116,19 @@
 			path = MainSearch_sub;
 			sourceTree = "<group>";
 		};
+		B57BFFA525E210C8009780ED /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
+				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
+				B59D831F24C01AF600797D5F /* SubSearchViewController.swift */,
+				B59D832124C01B0E00797D5F /* SubSearchViewController.storyboard */,
+				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
+				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
+			);
+			path = CommonViews;
+			sourceTree = "<group>";
+		};
 		B5A4AD6825CE70B600DBE58C /* Record_pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +156,6 @@
 				B5D190AC24A4A78E00F1DCDB /* AddRecordVC.storyboard */,
 				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
 				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
-				B59D831F24C01AF600797D5F /* SubSearchViewController.swift */,
-				B59D832124C01B0E00797D5F /* SubSearchViewController.storyboard */,
 				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
 				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
 			);
@@ -175,15 +186,12 @@
 				B5B3F31825B2CC0600A3CC14 /* ClientData */,
 				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
 				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
-				B572CE8B24A08BB300702C6E /* Common.swift */,
 				B50D93F625C82FA100AAED67 /* Archive.swift */,
+				B572CE8B24A08BB300702C6E /* Common.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
-				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
-				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
-				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
-				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
 				B5FA8DB6249F666B0009B24B /* Info.plist */,
+				B57BFFA525E210C8009780ED /* CommonViews */,
 				B5A4AD6825CE70B600DBE58C /* Record_pages */,
 				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
 				B5D190A924A4A72E00F1DCDB /* RecordView_sub */,

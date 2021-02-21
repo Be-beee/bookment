@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum From {
+    case none, record, calendar
+}
+
 class SubSearchViewController: UIViewController {
 
     var selected = BookItem()
@@ -18,6 +22,7 @@ class SubSearchViewController: UIViewController {
     var searchedWord = ""
     var curPageNo = 1
     var pageSize = 10
+    var from: From = .none
     
     
     @IBOutlet var searchBar: UISearchBar!
@@ -96,7 +101,14 @@ extension SubSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selected = searchResult[indexPath.row].contents
-        self.performSegue(withIdentifier: "toAddView", sender: self)
+        switch from {
+        case .record:
+            self.performSegue(withIdentifier: "toAddView", sender: self)
+        case .calendar:
+            self.performSegue(withIdentifier: "toCalendarBookList", sender: self)
+        default:
+            print(selected)
+        }
     }
     
     
