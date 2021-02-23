@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVt-VW-saF" customClass="SelectView" customModule="WiseBookLife" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99" width="414" height="240"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="bUp-Me-HHi"/>
                                 </constraints>
@@ -29,8 +31,8 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-cB-xjz">
                                 <rect key="frame" x="20" y="412" width="374" height="450"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -41,44 +43,49 @@
                                     <constraint firstAttribute="height" constant="25" id="fP0-np-WCN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" backgroundImage="checkmark" catalog="system"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" backgroundImage="checkmark" catalog="system">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                                 <connections>
                                     <action selector="saveRecords:" destination="taT-N4-ig5" eventType="touchUpInside" id="D1g-7l-7zO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy.MM.dd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKr-eH-vJf">
-                                <rect key="frame" x="160.5" y="59" width="93" height="25"/>
+                                <rect key="frame" x="161" y="59" width="92" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpw-ub-JvZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpw-ub-JvZ">
                                 <rect key="frame" x="0.0" y="99" width="414" height="240"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="bgG-cG-GD1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="이 곳을 터치해 책을 검색해주세요!">
-                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <color key="titleColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="searchBook:" destination="taT-N4-ig5" eventType="touchUpInside" id="OtO-6E-Ykb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-G4-b2j">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-G4-b2j">
                                 <rect key="frame" x="20" y="61" width="23" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="IPY-Po-UUx"/>
                                     <constraint firstAttribute="width" constant="23" id="twg-AQ-p3j"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" backgroundImage="xmark" catalog="system"/>
                                 <connections>
                                     <action selector="backToRecordsView:" destination="taT-N4-ig5" eventType="touchUpInside" id="2wQ-uC-gNL"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qdr-UQ-it6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dpw-ub-JvZ" firstAttribute="top" secondItem="EKr-eH-vJf" secondAttribute="bottom" constant="15" id="58A-dA-IRm"/>
                             <constraint firstItem="GVt-VW-saF" firstAttribute="top" secondItem="2Yx-G4-b2j" secondAttribute="bottom" constant="15" id="6Rv-No-ryn"/>
@@ -102,7 +109,6 @@
                             <constraint firstItem="GVt-VW-saF" firstAttribute="top" secondItem="3yk-1g-Mhl" secondAttribute="bottom" constant="15" id="pFq-3j-YhU"/>
                             <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="dpw-ub-JvZ" secondAttribute="trailing" id="saX-I6-dpi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qdr-UQ-it6"/>
                     </view>
                     <connections>
                         <outlet property="recordContents" destination="7QR-cB-xjz" id="4Yd-wN-d3t"/>
@@ -122,5 +128,20 @@
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -16,6 +16,10 @@ class CalendarController: UIViewController {
         super.viewDidLoad()
         settingCalendarView()
         calendarView.collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        // navigation bar bottom line 삭제하기
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

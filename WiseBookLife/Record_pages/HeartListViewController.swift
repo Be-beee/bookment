@@ -67,12 +67,7 @@ class HeartListViewController: UIViewController {
 
 
 // MARK:- Extensions
-extension HeartListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
-    }
-}
-extension HeartListViewController: UITableViewDataSource {
+extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return heartList.count
     }
@@ -88,6 +83,9 @@ extension HeartListViewController: UITableViewDataSource {
         } else {
             cell.titleLabel.text = heartList[indexPath.row].title
         }
+        
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
         
         cell.authorLabel.text = heartList[indexPath.row].author
         
@@ -111,5 +109,11 @@ extension HeartListViewController: UITableViewDataSource {
         
         present(detailVC, animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 135
+    }
+    
+    
 }
 
