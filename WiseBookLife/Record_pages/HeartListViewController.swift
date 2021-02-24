@@ -12,21 +12,18 @@ import UIKit
 class HeartListViewController: UIViewController {
 
     @IBOutlet var heartView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     
     var heartList: [BookItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         settingHeartListFooter() // setting table footer
+        settingEmptyView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        heartList = []
-        for (_, value) in CommonData.heartDic {
-            heartList.append(value)
-        }
-        heartList.sort(by: {$0.title < $1.title})
-        heartView.reloadData()
+        refreshData()
     }
     
     func settingHeartListFooter() {
@@ -34,6 +31,20 @@ class HeartListViewController: UIViewController {
         settingFooterForTableView(for: tableFooter, action: #selector(addHeartBook), title: "책 추가하기")
         
         heartView.tableFooterView = tableFooter
+    }
+    
+    func settingEmptyView() {
+        emptyView.backgroundColor = .systemBackground
+        emptyView.alpha = 1
+        reloadEmptyView()
+    }
+    
+    func reloadEmptyView() {
+        if heartList.count > 0 {
+            emptyView.isHidden = true
+        } else {
+            emptyView.isHidden = false
+        }
     }
     
     @objc func addHeartBook() {
@@ -59,8 +70,9 @@ class HeartListViewController: UIViewController {
         for (_, value) in CommonData.heartDic {
             heartList.append(value)
         }
-        
+        // title sorting 생략됨
         heartView.reloadData()
+        reloadEmptyView()
     }
     
 }

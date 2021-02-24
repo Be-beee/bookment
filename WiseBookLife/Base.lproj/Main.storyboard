@@ -40,43 +40,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Te4-ob-Cao">
-                                <rect key="frame" x="20" y="15" width="374" height="32"/>
-                                <segments>
-                                    <segment title="기록"/>
-                                    <segment title="위시리스트"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changePages:" destination="eHX-Tm-Iu7" eventType="valueChanged" id="8c3-od-ejI"/>
-                                </connections>
-                            </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifa-sv-Pno">
-                                <rect key="frame" x="0.0" y="61" width="414" height="664"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="665"/>
                                 <connections>
                                     <segue destination="3aw-5k-lG0" kind="embed" id="NFR-Ve-Aac"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEb-1R-Mrp">
-                                <rect key="frame" x="0.0" y="61" width="414" height="664"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="665"/>
                                 <connections>
                                     <segue destination="4uD-3D-Lhv" kind="embed" id="ytm-Zp-DLb"/>
                                 </connections>
                             </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Q54-oa-XYQ">
+                                <rect key="frame" x="20" y="0.0" width="118.5" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajf-by-s7S">
+                                        <rect key="frame" x="0.0" y="0.0" width="29.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위시리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwG-9Q-0zN">
+                                        <rect key="frame" x="44.5" y="0.0" width="74" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7So-y7-XE5"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bx3-u9-BuM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ifa-sv-Pno" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="0X6-QU-yyh"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="LEb-1R-Mrp" secondAttribute="trailing" id="BBt-wm-iM8"/>
-                            <constraint firstItem="LEb-1R-Mrp" firstAttribute="top" secondItem="Te4-ob-Cao" secondAttribute="bottom" constant="15" id="GFc-fi-2sq"/>
-                            <constraint firstItem="Te4-ob-Cao" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" constant="20" id="UPI-09-HoA"/>
-                            <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="Te4-ob-Cao" secondAttribute="trailing" constant="20" id="XmO-dE-g3r"/>
-                            <constraint firstItem="Ifa-sv-Pno" firstAttribute="top" secondItem="Te4-ob-Cao" secondAttribute="bottom" constant="15" id="eIr-tT-RuB"/>
+                            <constraint firstItem="Ifa-sv-Pno" firstAttribute="top" secondItem="Q54-oa-XYQ" secondAttribute="bottom" id="DWj-cX-LOA"/>
+                            <constraint firstItem="Q54-oa-XYQ" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" constant="20" id="J0e-sc-WQr"/>
+                            <constraint firstItem="LEb-1R-Mrp" firstAttribute="top" secondItem="Q54-oa-XYQ" secondAttribute="bottom" id="W2W-jx-4nM"/>
                             <constraint firstItem="LEb-1R-Mrp" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="k0k-Ev-D77"/>
+                            <constraint firstItem="Q54-oa-XYQ" firstAttribute="top" secondItem="Bx3-u9-BuM" secondAttribute="top" id="m5F-ij-1BM"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="LEb-1R-Mrp" secondAttribute="bottom" id="qXH-zd-WnM"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="Ifa-sv-Pno" secondAttribute="trailing" id="qd8-nf-1Ap"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="Ifa-sv-Pno" secondAttribute="bottom" id="shU-x1-NL3"/>
-                            <constraint firstItem="Te4-ob-Cao" firstAttribute="top" secondItem="Bx3-u9-BuM" secondAttribute="top" constant="15" id="xI4-dS-LAR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eF3-0q-O75">
@@ -89,8 +98,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="recordContainerView" destination="Ifa-sv-Pno" id="XLN-jE-G94"/>
-                        <outlet property="segmentedControl" destination="Te4-ob-Cao" id="U7M-sb-jKT"/>
+                        <outlet property="recordViewMenu" destination="Ajf-by-s7S" id="S9u-Qs-IIh"/>
                         <outlet property="wishListContainerView" destination="LEb-1R-Mrp" id="Ss6-DU-R6V"/>
+                        <outlet property="wishListViewMenu" destination="gwG-9Q-0zN" id="I1L-lI-zgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7U-yq-buO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -176,11 +186,11 @@
             <objects>
                 <viewController storyboardIdentifier="RecordViewController" id="3aw-5k-lG0" customClass="RecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKT-P5-aia">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0j6-Jh-f7i">
-                                <rect key="frame" x="20" y="44" width="374" height="620"/>
+                                <rect key="frame" x="20" y="44" width="374" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hCv-2b-q1e">
                                     <size key="itemSize" width="108" height="165"/>
@@ -267,17 +277,35 @@
             <objects>
                 <viewController storyboardIdentifier="HeartListViewController" id="4uD-3D-Lhv" customClass="HeartListViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A67-cb-EUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="isN-1i-GK0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="4uD-3D-Lhv" id="cYh-lg-uba"/>
                                     <outlet property="delegate" destination="4uD-3D-Lhv" id="PUR-5B-Y7J"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WE3-bd-z2I">
+                                <rect key="frame" x="0.0" y="44" width="414" height="621"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyh-wE-ZUT">
+                                        <rect key="frame" x="97.5" y="243.5" width="219.5" height="41"/>
+                                        <string key="text">아직 등록된 책이 없어요😢
+책을 위시리스트에 추가해보세요!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstItem="wyh-wE-ZUT" firstAttribute="centerY" secondItem="WE3-bd-z2I" secondAttribute="centerY" multiplier="0.85" id="9hd-dL-8sP"/>
+                                    <constraint firstItem="wyh-wE-ZUT" firstAttribute="centerX" secondItem="WE3-bd-z2I" secondAttribute="centerX" id="zb4-7Y-ge9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KMW-Kf-gQY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -285,10 +313,15 @@
                             <constraint firstItem="KMW-Kf-gQY" firstAttribute="trailing" secondItem="isN-1i-GK0" secondAttribute="trailing" id="373-dV-JeK"/>
                             <constraint firstItem="isN-1i-GK0" firstAttribute="leading" secondItem="KMW-Kf-gQY" secondAttribute="leading" id="57R-vA-NNl"/>
                             <constraint firstItem="KMW-Kf-gQY" firstAttribute="bottom" secondItem="isN-1i-GK0" secondAttribute="bottom" id="6eM-jU-idp"/>
+                            <constraint firstItem="KMW-Kf-gQY" firstAttribute="trailing" secondItem="WE3-bd-z2I" secondAttribute="trailing" id="9wJ-BU-mBu"/>
+                            <constraint firstItem="KMW-Kf-gQY" firstAttribute="bottom" secondItem="WE3-bd-z2I" secondAttribute="bottom" id="JM5-BI-wjY"/>
                             <constraint firstItem="isN-1i-GK0" firstAttribute="top" secondItem="KMW-Kf-gQY" secondAttribute="top" id="T4n-g9-5Ib"/>
+                            <constraint firstItem="WE3-bd-z2I" firstAttribute="leading" secondItem="KMW-Kf-gQY" secondAttribute="leading" id="XtZ-O6-WdC"/>
+                            <constraint firstItem="WE3-bd-z2I" firstAttribute="top" secondItem="KMW-Kf-gQY" secondAttribute="top" id="hZP-dO-Fto"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyView" destination="WE3-bd-z2I" id="YZn-Mi-PQz"/>
                         <outlet property="heartView" destination="isN-1i-GK0" id="01v-je-9fd"/>
                     </connections>
                 </viewController>
@@ -327,6 +360,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
