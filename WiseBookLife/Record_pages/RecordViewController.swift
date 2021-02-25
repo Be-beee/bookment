@@ -12,12 +12,41 @@ class RecordViewController: UIViewController {
 
     var records: [Record] = []
     @IBOutlet weak var recordView: UICollectionView!
+    @IBOutlet weak var emptyRecordView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        settingEmptyRecordView()
 //        if let loadedRecords = loadData(at: "records") {
 //            self.records = loadedRecords as! [RecordModel]
 //        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadEmptyView()
+    }
+    
+    func settingEmptyRecordView() {
+        emptyRecordView.alpha = 1
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchEmptyView))
+        emptyRecordView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func reloadEmptyView() {
+        if records.count > 0 {
+            emptyRecordView.isHidden = true
+        } else {
+            emptyRecordView.isHidden = false
+        }
+    }
+    
+    @objc func touchEmptyView() {
+        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
+        
+        addRecordVC.modalPresentationStyle = .fullScreen
+        self.present(addRecordVC, animated: true, completion: nil)
     }
     
     // MARK:- Unwind Segue (기록 삭제 시 캘린더 책 삭제 같이 되도록 구현 해야 함)
@@ -63,6 +92,7 @@ class RecordViewController: UIViewController {
         }
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()
+        reloadEmptyView()
     }
 }
 

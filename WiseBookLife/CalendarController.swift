@@ -31,7 +31,13 @@ class CalendarController: UIViewController {
         calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
         calendarView.appearance.headerTitleColor = .label
         calendarView.appearance.weekdayTextColor = .label
-        calendarView.appearance.selectionColor = .systemOrange
+        calendarView.appearance.titleDefaultColor = .label
+        
+        calendarView.appearance.selectionColor = .clear
+        calendarView.appearance.todayColor = .none
+        
+        calendarView.appearance.titleTodayColor = .systemBlue
+        calendarView.appearance.titleSelectionColor = .systemOrange
     }
 }
 

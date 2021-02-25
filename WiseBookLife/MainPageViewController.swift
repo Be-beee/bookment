@@ -30,7 +30,7 @@ class MainPageViewController: UIViewController {
         wishListContainerView.isHidden = true
         
         recordViewMenu.textColor = .systemOrange
-        wishListViewMenu.textColor = .systemGray
+        wishListViewMenu.textColor = .label
     }
     
     func settingMenuGesture() {
@@ -52,13 +52,13 @@ class MainPageViewController: UIViewController {
         wishListContainerView.isHidden = true
         
         recordViewMenu.textColor = .systemOrange
-        wishListViewMenu.textColor = .systemGray
+        wishListViewMenu.textColor = .label
     }
     @objc func showWishListView() {
         recordContainerView.isHidden = true
         wishListContainerView.isHidden = false
         
-        recordViewMenu.textColor = .systemGray
+        recordViewMenu.textColor = .label
         wishListViewMenu.textColor = .systemOrange
     }
 }
