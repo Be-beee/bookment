@@ -11,10 +11,11 @@ import FSCalendar
 
 class CalendarController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
+    let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingCalendarView()
+        settingCalendarHeader()
         calendarView.collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -26,18 +27,27 @@ class CalendarController: UIViewController {
         calendarView.reloadData()
     }
     
-    func settingCalendarView() {
-        calendarView.appearance.headerDateFormat = "YYYY년 M월"
-        calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendarView.appearance.headerTitleColor = .label
-        calendarView.appearance.weekdayTextColor = .label
-        calendarView.appearance.titleDefaultColor = .label
+    func settingCalendarHeader() {
+        let headerButton = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: calendarView.calendarHeaderView.fs_height))
+        headerButton.setTitle("타이틀 구역입니다.", for: .normal)
+        headerButton.setTitleColor(.clear, for: .normal)
+        headerButton.isUserInteractionEnabled = true
         
-        calendarView.appearance.selectionColor = .clear
-        calendarView.appearance.todayColor = .none
+        headerButton.addTarget(self, action: #selector(chooseDateWithPicker), for: .touchUpInside)
+        calendarView.addSubview(headerButton)
         
-        calendarView.appearance.titleTodayColor = .systemBlue
-        calendarView.appearance.titleSelectionColor = .systemOrange
+        headerButton.translatesAutoresizingMaskIntoConstraints = false
+        headerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        headerButton.centerYAnchor.constraint(equalTo: calendarView.calendarHeaderView.centerYAnchor).isActive = true
+    }
+    
+    @objc func chooseDateWithPicker() {
+        guard let selectDateVC = UIStoryboard(name: "SelectDateController", bundle: nil).instantiateViewController(withIdentifier: "SelectDateController") as? SelectDateController else { return }
+        selectDateVC.modalPresentationStyle = .popover
+        selectDateVC.preferredContentSize = CGSize(width: 200, height: UIScreen.main.bounds.height/3)
+        
+        self.present(selectDateVC, animated: true, completion: nil)
+        
     }
 }
 

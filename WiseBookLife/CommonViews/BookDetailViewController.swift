@@ -58,9 +58,9 @@ class BookDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func showDetailWebSite(_ sender: UIButton) {
-        guard let detailURL = URL(string: bookData.link) else { return }
-        let detailSafariVC = SFSafariViewController(url: detailURL)
-        
-        self.present(detailSafariVC, animated: true, completion: nil)
+//        guard let detailURL = URL(string: bookData.link) else { return }
+//        let detailSafariVC = SFSafariViewController(url: detailURL)
+//        
+//        self.present(detailSafariVC, animated: true, completion: nil)
     }
 }
