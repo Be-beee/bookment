@@ -160,7 +160,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
                                         <color key="value" systemColor="systemOrangeColor"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="YYYY년 M월 ▼"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy년 M월 ▼"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>

@@ -43,11 +43,18 @@ class CalendarController: UIViewController {
     
     @objc func chooseDateWithPicker() {
         guard let selectDateVC = UIStoryboard(name: "SelectDateController", bundle: nil).instantiateViewController(withIdentifier: "SelectDateController") as? SelectDateController else { return }
-        selectDateVC.modalPresentationStyle = .popover
-        selectDateVC.preferredContentSize = CGSize(width: 200, height: UIScreen.main.bounds.height/3)
         
         self.present(selectDateVC, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func unwindToCalendarFromSelectDate(sender: UIStoryboardSegue) {
+        guard let selectVC = sender.source as? SelectDateController else { return }
+        
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_KR")
+        date.dateFormat = "yyyy년 MM월"
+        calendarView.setCurrentPage(date.date(from: selectVC.selectedDate) ?? Date(), animated: false)
     }
 }
 
