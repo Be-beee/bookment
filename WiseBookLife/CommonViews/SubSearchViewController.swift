@@ -28,6 +28,7 @@ class SubSearchViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchResultView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyResultView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +136,11 @@ extension SubSearchViewController: UISearchBarDelegate {
                     let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                     self.searchResult.append((image: image!, contents: item))
                 }
+                if self.searchResult.isEmpty {
+                    self.emptyResultView.isHidden = false
+                } else {
+                    self.emptyResultView.isHidden = true
+                }
                 self.searchResultView.reloadData()
                 self.indicator.stopAnimating()
             }
@@ -143,6 +149,7 @@ extension SubSearchViewController: UISearchBarDelegate {
             self.searchResult = []
             self.indicator.isHidden = true
             self.searchResultView.tableFooterView?.isHidden = true
+            self.emptyResultView.isHidden = false
         }
     }
 }

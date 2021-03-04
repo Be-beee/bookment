@@ -25,14 +25,36 @@
                                     <outlet property="delegate" destination="DH1-Ow-J7N" id="gKi-ok-ckc"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3n-ps-eIp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0S-Nf-gvj">
+                                        <rect key="frame" x="76" y="366.5" width="262" height="41"/>
+                                        <string key="text">등록된 책이 없습니다.🤔
+이 곳을 터치해 읽은 책을 추가해보세요!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="g0S-Nf-gvj" firstAttribute="centerY" secondItem="U3n-ps-eIp" secondAttribute="centerY" id="b6p-hi-Hqe"/>
+                                    <constraint firstItem="g0S-Nf-gvj" firstAttribute="centerX" secondItem="U3n-ps-eIp" secondAttribute="centerX" id="udw-N8-LQL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VMf-tc-NfL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VMf-tc-NfL" firstAttribute="trailing" secondItem="5qf-96-J5g" secondAttribute="trailing" id="7nI-Sa-1a2"/>
                             <constraint firstItem="VMf-tc-NfL" firstAttribute="bottom" secondItem="5qf-96-J5g" secondAttribute="bottom" id="A67-mY-2m7"/>
+                            <constraint firstItem="VMf-tc-NfL" firstAttribute="trailing" secondItem="U3n-ps-eIp" secondAttribute="trailing" id="EP0-sW-q9f"/>
                             <constraint firstItem="5qf-96-J5g" firstAttribute="leading" secondItem="VMf-tc-NfL" secondAttribute="leading" id="FHl-p8-B3B"/>
+                            <constraint firstItem="VMf-tc-NfL" firstAttribute="bottom" secondItem="U3n-ps-eIp" secondAttribute="bottom" id="GDp-OM-Heg"/>
                             <constraint firstItem="5qf-96-J5g" firstAttribute="top" secondItem="VMf-tc-NfL" secondAttribute="top" id="Mq6-UR-8f6"/>
+                            <constraint firstItem="U3n-ps-eIp" firstAttribute="top" secondItem="VMf-tc-NfL" secondAttribute="top" id="b43-zU-Gq6"/>
+                            <constraint firstItem="U3n-ps-eIp" firstAttribute="leading" secondItem="VMf-tc-NfL" secondAttribute="leading" id="dtU-8C-qXd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="책 목록" id="lre-Py-Iin">
@@ -44,6 +66,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyResultView" destination="U3n-ps-eIp" id="3YB-VI-ZMr"/>
                         <outlet property="todayBookTableView" destination="5qf-96-J5g" id="qgp-oP-rIA"/>
                     </connections>
                 </viewController>
@@ -74,6 +97,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

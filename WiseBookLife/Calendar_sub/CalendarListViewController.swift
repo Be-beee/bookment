@@ -12,13 +12,32 @@ class CalendarListViewController: UIViewController {
 
     var booklist: [BookItem] = []
     @IBOutlet weak var todayBookTableView: UITableView!
+    @IBOutlet weak var emptyResultView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        refreshBookListView()
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
         settingCalendarListFooter()// setting table footer
+        settingTapGestureAtEmptyResultView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshBookListView()
+    }
+    
+    func refreshBookListView() {
+        todayBookTableView.reloadData()
+        if booklist.isEmpty {
+            self.emptyResultView.isHidden = false
+        } else {
+            self.emptyResultView.isHidden = true
+        }
     }
     
     func settingCalendarListFooter() {
@@ -28,12 +47,17 @@ class CalendarListViewController: UIViewController {
         todayBookTableView.tableFooterView = tableFooter
     }
     
+    func settingTapGestureAtEmptyResultView() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addBookToCalendar))
+        self.emptyResultView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     @IBAction func unwindToThisDateBookList(sender: UIStoryboardSegue) {
         guard let searchresultVC = sender.source as? SubSearchViewController else {
             return
         }
         booklist.append(searchresultVC.selected)
-        todayBookTableView.reloadData()
+        refreshBookListView()
         // add archive code
     }
     

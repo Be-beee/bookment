@@ -14,6 +14,7 @@ class MainSearchResultViewController: UIViewController {
     @IBOutlet var resultView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var emptyResultView: UIView!
     
     var searchTool = SearchBook()
     var searchedWord = ""
@@ -173,12 +174,20 @@ extension MainSearchResultViewController: UISearchBarDelegate {
                         let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
                         self.resultList.append((image: image!, contents: item))
                     }
+                    if self.resultList.isEmpty {
+                        self.emptyResultView.isHidden = false
+                    } else {
+                        self.emptyResultView.isHidden = true
+                    }
                     self.resultView.reloadData()
                     self.indicator.stopAnimating()
                 }
             }
             
 
+        } else {
+            self.indicator.isHidden = true
+            self.emptyResultView.isHidden = false
         }
     }
 }
