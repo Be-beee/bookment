@@ -29,9 +29,6 @@ class RecordViewController: UIViewController {
     
     func settingEmptyRecordView() {
         emptyRecordView.alpha = 1
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchEmptyView))
-        emptyRecordView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func reloadEmptyView() {
@@ -40,13 +37,6 @@ class RecordViewController: UIViewController {
         } else {
             emptyRecordView.isHidden = false
         }
-    }
-    
-    @objc func touchEmptyView() {
-        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-        
-        addRecordVC.modalPresentationStyle = .fullScreen
-        self.present(addRecordVC, animated: true, completion: nil)
     }
     
     // MARK:- Unwind Segue (기록 삭제 시 캘린더 책 삭제 같이 되도록 구현 해야 함)
@@ -135,28 +125,8 @@ extension RecordViewController: UICollectionViewDataSource {
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let footer = recordView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "recordFooter", for: indexPath) as? RecordFooter else { return UICollectionReusableView() }
-        footer.addBtn.addTarget(self, action: #selector(addBook), for: .touchUpInside)
-        return footer
-    }
-    
-    @objc func addBook() {
-        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-        
-        addRecordVC.modalPresentationStyle = .fullScreen
-        self.present(addRecordVC, animated: true, completion: nil)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
-}
-
-class RecordFooter: UICollectionReusableView {
-    @IBOutlet weak var addBtn: UIButton!
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

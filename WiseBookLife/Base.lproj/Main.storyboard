@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -52,6 +51,21 @@
                                     <segue destination="4uD-3D-Lhv" kind="embed" id="ytm-Zp-DLb"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wZ-VX-xUS">
+                                <rect key="frame" x="329" y="640" width="55" height="55"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="65k-yL-kFk"/>
+                                    <constraint firstAttribute="width" constant="55" id="nQF-SN-wsO"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveToAddContentsView:" destination="eHX-Tm-Iu7" eventType="touchUpInside" id="UsM-Gw-t0Q"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Q54-oa-XYQ">
                                 <rect key="frame" x="20" y="0.0" width="118.5" height="60"/>
                                 <subviews>
@@ -78,8 +92,10 @@
                         <constraints>
                             <constraint firstItem="Ifa-sv-Pno" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="0X6-QU-yyh"/>
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="LEb-1R-Mrp" secondAttribute="trailing" id="BBt-wm-iM8"/>
+                            <constraint firstItem="Bx3-u9-BuM" firstAttribute="trailing" secondItem="4wZ-VX-xUS" secondAttribute="trailing" constant="30" id="DIN-Ry-Vt0"/>
                             <constraint firstItem="Ifa-sv-Pno" firstAttribute="top" secondItem="Q54-oa-XYQ" secondAttribute="bottom" id="DWj-cX-LOA"/>
                             <constraint firstItem="Q54-oa-XYQ" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" constant="20" id="J0e-sc-WQr"/>
+                            <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="4wZ-VX-xUS" secondAttribute="bottom" constant="30" id="UjC-QN-kYQ"/>
                             <constraint firstItem="LEb-1R-Mrp" firstAttribute="top" secondItem="Q54-oa-XYQ" secondAttribute="bottom" id="W2W-jx-4nM"/>
                             <constraint firstItem="LEb-1R-Mrp" firstAttribute="leading" secondItem="Bx3-u9-BuM" secondAttribute="leading" id="k0k-Ev-D77"/>
                             <constraint firstItem="Q54-oa-XYQ" firstAttribute="top" secondItem="Bx3-u9-BuM" secondAttribute="top" id="m5F-ij-1BM"/>
@@ -97,6 +113,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="floatingPlusBtn" destination="4wZ-VX-xUS" id="ZVd-JB-EUu"/>
                         <outlet property="recordContainerView" destination="Ifa-sv-Pno" id="XLN-jE-G94"/>
                         <outlet property="recordViewMenu" destination="Ajf-by-s7S" id="S9u-Qs-IIh"/>
                         <outlet property="wishListContainerView" destination="LEb-1R-Mrp" id="Ss6-DU-R6V"/>
@@ -268,7 +285,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hCv-2b-q1e">
                                     <size key="itemSize" width="108" height="165"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -299,30 +316,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordFooter" id="gTm-nk-89P" customClass="RecordFooter" customModule="WiseBookLife" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="165" width="374" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOB-QL-qRM">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal">
-                                                <imageReference key="image" image="plus" catalog="system" symbolScale="default"/>
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="IOB-QL-qRM" secondAttribute="trailing" id="4zk-6f-rET"/>
-                                        <constraint firstAttribute="bottom" secondItem="IOB-QL-qRM" secondAttribute="bottom" id="Ic2-Bm-MMV"/>
-                                        <constraint firstItem="IOB-QL-qRM" firstAttribute="top" secondItem="gTm-nk-89P" secondAttribute="top" id="Uzn-nm-teJ"/>
-                                        <constraint firstItem="IOB-QL-qRM" firstAttribute="leading" secondItem="gTm-nk-89P" secondAttribute="leading" id="ut0-CH-uX6"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="addBtn" destination="IOB-QL-qRM" id="lmu-zl-stM"/>
-                                    </connections>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="3aw-5k-lG0" id="lKW-Pz-3IY"/>
                                     <outlet property="delegate" destination="3aw-5k-lG0" id="Gi5-e6-mpH"/>
@@ -483,6 +476,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

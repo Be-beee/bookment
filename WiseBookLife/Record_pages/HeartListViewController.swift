@@ -18,19 +18,11 @@ class HeartListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
-        settingHeartListFooter() // setting table footer
         settingEmptyView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         refreshData()
-    }
-    
-    func settingHeartListFooter() {
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addHeartBook), title: "책 추가하기")
-        
-        heartView.tableFooterView = tableFooter
     }
     
     func settingEmptyView() {
@@ -45,11 +37,6 @@ class HeartListViewController: UIViewController {
         } else {
             emptyView.isHidden = false
         }
-    }
-    
-    @objc func addHeartBook() {
-        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
-        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 
     
