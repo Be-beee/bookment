@@ -43,7 +43,10 @@ class CalendarController: UIViewController {
     
     @objc func chooseDateWithPicker() {
         guard let selectDateVC = UIStoryboard(name: "SelectDateController", bundle: nil).instantiateViewController(withIdentifier: "SelectDateController") as? SelectDateController else { return }
-        
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ko_KR")
+        df.dateFormat = "yyyy MM"
+        selectDateVC.selectedDate = df.string(from: calendarView.currentPage)
         self.present(selectDateVC, animated: true, completion: nil)
         
     }

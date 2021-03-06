@@ -19,12 +19,16 @@ class SelectDateController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingSelectDateAlertView()
         settingPickerViewYearList()
+        settingSelectDateAlertView()
     }
     
     func settingSelectDateAlertView() {
-        self.view.backgroundColor = UIColor(white: 0.4, alpha: 0.8)
+        self.view.backgroundColor = .clear
+        
+        let selected = selectedDate.components(separatedBy: " ").map { Int($0) ?? 0 }
+        self.calendarDatePicker.selectRow(selected[0]-2001, inComponent: 0, animated: true)
+        self.calendarDatePicker.selectRow(selected[1]-1, inComponent: 1, animated: true)
     }
     func settingPickerViewYearList() {
         let dateFormatter = DateFormatter()

@@ -148,6 +148,10 @@ extension RecordViewController: UICollectionViewDataSource {
         self.present(addRecordVC, animated: true, completion: nil)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+    }
+    
 }
 
 class RecordFooter: UICollectionReusableView {

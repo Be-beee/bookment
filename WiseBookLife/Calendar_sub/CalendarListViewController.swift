@@ -42,7 +42,7 @@ class CalendarListViewController: UIViewController {
     
     func settingCalendarListFooter() {
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addBookToCalendar), title: "책 추가")
+        settingFooterForTableView(for: tableFooter, action: #selector(addBookToCalendar), title: nil, image: UIImage(systemName: "plus"), bgColor: .systemOrange)
         
         todayBookTableView.tableFooterView = tableFooter
     }

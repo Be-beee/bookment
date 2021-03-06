@@ -44,7 +44,7 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XwQ-Ye-YH1">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="검색할 단어를 입력해주세요!" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfj-6K-HbS">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="도서 검색" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfj-6K-HbS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
