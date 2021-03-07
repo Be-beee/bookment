@@ -91,8 +91,27 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.authorLabel.text = item.author
         
+        cell.heartBtn.tag = indexPath.row
+        cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
+        
+        if CommonData.heartDic[booklist[indexPath.row].isbn] != nil {
+            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
         
         return cell
+    }
+    
+    @objc func onOffHeartBtn(_ sender: UIButton!) {
+        if sender.imageView?.image == UIImage(systemName: "heart.fill") {
+            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+            CommonData.heartDic.removeValue(forKey: booklist[sender.tag].isbn)
+        } else {
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            CommonData.heartDic.updateValue(booklist[sender.tag], forKey: booklist[sender.tag].isbn)
+        }
+//        saveData(data: heartDic, at: "heart")
     }
     
     

@@ -120,6 +120,13 @@ class SearchBook {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "알림", message: "네트워크 에러가 발생했습니다\n잠시 후 다시 시도해 주세요.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(ok)
+
+                    target.present(alert, animated: true, completion: nil)
+                }
                 return
             }
             
@@ -235,3 +242,9 @@ func loadData(at: String) -> Any? {
     return unarchivedData
 }
 
+// MARK: - Main Theme Color
+
+struct Theme {
+    static let main = Theme()
+    let mainColor = UIColor(red: 239/255, green: 190/255, blue: 91/255, alpha: 1) //#EFBE5B
+}

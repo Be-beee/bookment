@@ -22,6 +22,7 @@ class MainPageViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // navigation bar bottom line 삭제하기
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
         settingInitialView()
         settingMenuGesture()
     }
@@ -30,7 +31,7 @@ class MainPageViewController: UIViewController {
         recordContainerView.isHidden = false
         wishListContainerView.isHidden = true
         
-        recordViewMenu.textColor = .systemOrange
+        recordViewMenu.textColor = Theme.main.mainColor
         wishListViewMenu.textColor = .label
         
         floatingPlusBtn.layer.cornerRadius = floatingPlusBtn.bounds.size.width/2
@@ -58,7 +59,7 @@ class MainPageViewController: UIViewController {
         recordContainerView.isHidden = false
         wishListContainerView.isHidden = true
         
-        recordViewMenu.textColor = .systemOrange
+        recordViewMenu.textColor = Theme.main.mainColor
         wishListViewMenu.textColor = .label
     }
     @objc func showWishListView() {
@@ -66,7 +67,7 @@ class MainPageViewController: UIViewController {
         wishListContainerView.isHidden = false
         
         recordViewMenu.textColor = .label
-        wishListViewMenu.textColor = .systemOrange
+        wishListViewMenu.textColor = Theme.main.mainColor
     }
     
     

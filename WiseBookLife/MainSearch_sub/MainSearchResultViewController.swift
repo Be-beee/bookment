@@ -28,7 +28,7 @@ class MainSearchResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.tintColor = .systemOrange
+        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
         self.indicator.stopAnimating()
         resultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         

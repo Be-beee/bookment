@@ -12,6 +12,7 @@ class AppInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
     }
 
 }
