@@ -37,7 +37,7 @@ class MainPageViewController: UIViewController {
         floatingPlusBtn.layer.cornerRadius = floatingPlusBtn.bounds.size.width/2
         
         floatingPlusBtn.layer.shadowColor = UIColor.systemGray.cgColor
-        floatingPlusBtn.layer.shadowOpacity = 0.8
+        floatingPlusBtn.layer.shadowOpacity = 0.5
         floatingPlusBtn.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
