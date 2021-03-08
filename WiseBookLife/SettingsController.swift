@@ -8,21 +8,22 @@
 
 import UIKit
 import MessageUI
+import SafariServices
 
 class SettingsController: UIViewController {
-
-    var infoSection: [String] = [
-        "애플리케이션 정보"
-    ]
     
     var backupSection: [String] = [
-        "iCloud 동기화",
-        "백업 파일 만들기",
+        "백업 및 복원"
     ]
     
     var feedbackSection: [String] = [
         "피드백 보내기",
         "리뷰 남기기"
+    ]
+    
+    var infoSection: [String] = [
+        "애플리케이션 정보",
+        "개발자 사이트로 이동"
     ]
     
     @IBOutlet weak var settingsView: UITableView!
@@ -48,11 +49,11 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return infoSection.count
-        case 1:
             return backupSection.count
-        default:
+        case 1:
             return feedbackSection.count
+        default:
+            return infoSection.count
         }
     }
     
@@ -60,11 +61,11 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
         guard let cell = settingsView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as? SettingCell else { return UITableViewCell() }
         switch indexPath.section {
         case 0:
-            cell.settingTitle.text = infoSection[indexPath.row]
-        case 1:
             cell.settingTitle.text = backupSection[indexPath.row]
-        default:
+        case 1:
             cell.settingTitle.text = feedbackSection[indexPath.row]
+        default:
+            cell.settingTitle.text = infoSection[indexPath.row]
         }
         return cell
     }
@@ -72,12 +73,8 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            guard let appInfoVC = UIStoryboard(name: "AppInfoViewController", bundle: nil).instantiateViewController(withIdentifier: "AppInfoViewController") as? AppInfoViewController else { return }
-            
-            self.navigationController?.pushViewController(appInfoVC, animated: true)
+            print("manage backup file")
         case 1:
-            print("selected Index: section-\(indexPath.section) row-\(indexPath.row)")
-        default:
             if indexPath.row == 0 {
                 let mailComposeVC = configureMailComposer()
                 if MFMailComposeViewController.canSendMail() {
@@ -89,6 +86,20 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
                     self.present(alert, animated: true, completion: nil)
                     print("이메일을 보낼 수 없습니다.")
                 }
+            } else {
+                
+            }
+        default:
+            if indexPath.row == 0 {
+                guard let appInfoVC = UIStoryboard(name: "AppInfoViewController", bundle: nil).instantiateViewController(withIdentifier: "AppInfoViewController") as? AppInfoViewController else { return }
+                
+                self.navigationController?.pushViewController(appInfoVC, animated: true)
+            } else if indexPath.row == 1 {
+                let myLink = "https://github.com/Be-beee"
+                guard let detailURL = URL(string: myLink) else { return }
+                let detailSafariVC = SFSafariViewController(url: detailURL)
+                
+                self.present(detailSafariVC, animated: true, completion: nil)
             }
         }
     }

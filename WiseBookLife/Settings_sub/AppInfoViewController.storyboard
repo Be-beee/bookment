@@ -17,18 +17,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63x-LW-fve">
-                                <rect key="frame" x="146" y="303" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="4gv-N0-CEg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4gv-N0-CEg" secondAttribute="height" multiplier="207:64" id="fuP-oz-bBI"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VPf-6L-3J7">
+                                <rect key="frame" x="146" y="270.5" width="122" height="221"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="슬기로운 독서생활" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-yj-i7r">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전: 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-D5-kbB">
+                                        <rect key="frame" x="31" y="60.5" width="60" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-It-QeD">
+                                        <rect key="frame" x="20" y="121" width="82" height="30"/>
+                                        <state key="normal" title="업데이트 확인"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSd-gG-lzK">
+                                        <rect key="frame" x="7" y="191" width="108" height="30"/>
+                                        <state key="normal" title="개인정보 처리방침"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="90x-dq-WJP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="63x-LW-fve" firstAttribute="centerX" secondItem="jfE-o2-313" secondAttribute="centerX" id="HV6-T0-2MQ"/>
-                            <constraint firstItem="63x-LW-fve" firstAttribute="centerY" secondItem="jfE-o2-313" secondAttribute="centerY" multiplier="0.7" id="POe-sD-HPj"/>
+                            <constraint firstItem="VPf-6L-3J7" firstAttribute="centerX" secondItem="jfE-o2-313" secondAttribute="centerX" id="SP5-KN-Ibs"/>
+                            <constraint firstItem="4gv-N0-CEg" firstAttribute="top" secondItem="90x-dq-WJP" secondAttribute="top" id="jOP-dx-U7Z"/>
+                            <constraint firstItem="VPf-6L-3J7" firstAttribute="centerY" secondItem="jfE-o2-313" secondAttribute="centerY" multiplier="0.85" id="l68-UL-4pV"/>
+                            <constraint firstItem="4gv-N0-CEg" firstAttribute="leading" secondItem="90x-dq-WJP" secondAttribute="leading" id="lQP-xE-1iT"/>
+                            <constraint firstItem="90x-dq-WJP" firstAttribute="trailing" secondItem="4gv-N0-CEg" secondAttribute="trailing" id="q4I-kd-zjG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +66,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launch" width="1000" height="1500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
