@@ -23,8 +23,8 @@
                                     <constraint firstAttribute="width" secondItem="4gv-N0-CEg" secondAttribute="height" multiplier="207:64" id="fuP-oz-bBI"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VPf-6L-3J7">
-                                <rect key="frame" x="146" y="270.5" width="122" height="221"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="VPf-6L-3J7">
+                                <rect key="frame" x="146" y="202" width="122" height="131"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="슬기로운 독서생활" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-yj-i7r">
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="20.5"/>
@@ -32,19 +32,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전: 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-D5-kbB">
-                                        <rect key="frame" x="31" y="60.5" width="60" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-D5-kbB">
+                                        <rect key="frame" x="29.5" y="50.5" width="63.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-It-QeD">
-                                        <rect key="frame" x="20" y="121" width="82" height="30"/>
+                                        <rect key="frame" x="20" y="101" width="82" height="30"/>
                                         <state key="normal" title="업데이트 확인"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSd-gG-lzK">
-                                        <rect key="frame" x="7" y="191" width="108" height="30"/>
-                                        <state key="normal" title="개인정보 처리방침"/>
+                                        <connections>
+                                            <action selector="confirmUpdate:" destination="Si4-g5-m1m" eventType="touchUpInside" id="yT7-EP-o00"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -54,11 +53,14 @@
                         <constraints>
                             <constraint firstItem="VPf-6L-3J7" firstAttribute="centerX" secondItem="jfE-o2-313" secondAttribute="centerX" id="SP5-KN-Ibs"/>
                             <constraint firstItem="4gv-N0-CEg" firstAttribute="top" secondItem="90x-dq-WJP" secondAttribute="top" id="jOP-dx-U7Z"/>
-                            <constraint firstItem="VPf-6L-3J7" firstAttribute="centerY" secondItem="jfE-o2-313" secondAttribute="centerY" multiplier="0.85" id="l68-UL-4pV"/>
                             <constraint firstItem="4gv-N0-CEg" firstAttribute="leading" secondItem="90x-dq-WJP" secondAttribute="leading" id="lQP-xE-1iT"/>
                             <constraint firstItem="90x-dq-WJP" firstAttribute="trailing" secondItem="4gv-N0-CEg" secondAttribute="trailing" id="q4I-kd-zjG"/>
+                            <constraint firstItem="VPf-6L-3J7" firstAttribute="top" secondItem="4gv-N0-CEg" secondAttribute="bottom" constant="30" id="y1S-hn-ajW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="versionLabel" destination="3xd-D5-kbB" id="Xcq-Sy-4FL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9b-Eo-WBW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
