@@ -79,9 +79,9 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         let key = df.string(from: date)
-        print(key)
         guard let bookListVC = UIStoryboard(name: "CalendarListViewController", bundle: nil).instantiateViewController(withIdentifier: "CalendarListViewController") as? CalendarListViewController else { return }
 
+        bookListVC.currentDate = key
         if let bookdatas = CommonData.calendarModel[key] {
             bookListVC.booklist = bookdatas
         }

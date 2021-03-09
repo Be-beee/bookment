@@ -10,6 +10,7 @@ import UIKit
 
 class CalendarListViewController: UIViewController {
 
+    var currentDate: String = "yyyy-MM-dd" // format
     var booklist: [BookItem] = []
     @IBOutlet weak var todayBookTableView: UITableView!
     @IBOutlet weak var emptyResultView: UIView!
@@ -56,6 +57,10 @@ class CalendarListViewController: UIViewController {
         guard let searchresultVC = sender.source as? SubSearchViewController else {
             return
         }
+        
+        var prevData = CommonData.calendarModel[currentDate] ?? [] // 선택된 날짜 정보 추가
+        prevData.append(searchresultVC.selected)
+        CommonData.calendarModel.updateValue(prevData, forKey: currentDate)
         booklist.append(searchresultVC.selected)
         refreshBookListView()
         // add archive code
