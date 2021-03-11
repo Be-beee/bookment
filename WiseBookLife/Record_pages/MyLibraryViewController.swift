@@ -8,9 +8,8 @@
 
 import UIKit
 
-class RecordViewController: UIViewController {
+class MyLibraryViewController: UIViewController {
 
-    var records: [Record] = []
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
     
@@ -32,7 +31,7 @@ class RecordViewController: UIViewController {
     }
     
     func reloadEmptyView() {
-        if records.count > 0 {
+        if CommonData.shared.records.count > 0 {
             emptyRecordView.isHidden = true
         } else {
             emptyRecordView.isHidden = false
@@ -44,7 +43,7 @@ class RecordViewController: UIViewController {
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
-                records.remove(at: selected[0].item)
+                CommonData.shared.records.remove(at: selected[0].item)
 //                CommonData.calendarModel.removeValue(forKey: <#T##String#>)
                 // 삭제 구현 덜 됨
 //                saveData(data: self.records, at: "records")
@@ -56,29 +55,30 @@ class RecordViewController: UIViewController {
     }
     
     @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
-        guard let addRecordVC = sender.source as? AddRecordViewController else {
+        guard let addVC = sender.source as? AddBookViewController else {
             return
         }
         guard let selected = self.recordView.indexPathsForSelectedItems else {
             return
         }
         
-        if addRecordVC.editmode {
-            records[selected[0].item] = addRecordVC.recordModel
+        if addVC.editmode {
+            CommonData.shared.records[selected[0].item] = addVC.recordModel
         } else {
-            records.append(addRecordVC.recordModel)
+            // MARK: - 이미 서재에 등록된 도서가 중복 추가되는 이슈가 발생할 수 있음
+            CommonData.shared.records.append(addVC.recordModel)
             
             let df = DateFormatter()
             df.locale = Locale(identifier: "ko_KR")
             df.dateFormat = "yyyy-MM-dd"
             
-            let key = df.string(from: addRecordVC.recordModel.date)
+            let key = df.string(from: addVC.recordModel.date)
             
-            var calValue = CommonData.calendarModel[key] ?? []
+            var calValue = CommonData.shared.calendarModel[key] ?? []
             // MARK: - 이슈 : 같은 책 정보가 여러번 추가되는 이슈가 발생할 수 있음
-            calValue.append(addRecordVC.recordModel.bookData) // < 이부분
+            calValue.append(addVC.recordModel.bookData) // < 이부분
             
-            CommonData.calendarModel.updateValue(calValue, forKey: key)
+            CommonData.shared.calendarModel.updateValue(calValue, forKey: key)
         }
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()
@@ -89,7 +89,7 @@ class RecordViewController: UIViewController {
 
 // MARK:- Extensions
 
-extension RecordViewController: UICollectionViewDelegateFlowLayout {
+extension MyLibraryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = UIScreen.main.bounds.width/3 - 25
         let height: CGFloat = width*40/27
@@ -103,17 +103,15 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension RecordViewController: UICollectionViewDelegate { }
-
-extension RecordViewController: UICollectionViewDataSource {
+extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return records.count
+        return CommonData.shared.records.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-        cell.bookImage.image = urlToImage(from: records[indexPath.row].bookData.image)
+        cell.bookImage.image = urlToImage(from: CommonData.shared.records[indexPath.row].bookData.image)
         return cell
     }
     
@@ -121,7 +119,8 @@ extension RecordViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as! DetailRecViewController
         
-        detailRecVC.selectedItem = records[indexPath.row]
+        detailRecVC.selectedIndex = indexPath.row
+//        detailRecVC.selectedItem = CommonData.shared.records[indexPath.row]
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     

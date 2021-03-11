@@ -69,7 +69,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         df.dateFormat = "yyyy-MM-dd"
 
         let key = df.string(from: date)
-        guard let data = CommonData.calendarModel[key] else { return nil }
+        guard let data = CommonData.shared.calendarModel[key] else { return nil }
         let bookImg = data[0].image
         return urlToImage(from: bookImg)
     }
@@ -82,7 +82,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         guard let bookListVC = UIStoryboard(name: "CalendarListViewController", bundle: nil).instantiateViewController(withIdentifier: "CalendarListViewController") as? CalendarListViewController else { return }
 
         bookListVC.currentDate = key
-        if let bookdatas = CommonData.calendarModel[key] {
+        if let bookdatas = CommonData.shared.calendarModel[key] {
             bookListVC.booklist = bookdatas
         }
         let withNavVC = UINavigationController(rootViewController: bookListVC)

@@ -23,8 +23,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="lJZ-Tu-U5t" kind="relationship" relationship="viewControllers" id="Ajw-lm-hkR"/>
-                        <segue destination="3i9-FT-L8A" kind="relationship" relationship="viewControllers" id="XQ9-DY-vKE"/>
-                        <segue destination="8el-mW-Quh" kind="relationship" relationship="viewControllers" id="YdN-Vf-9RG"/>
+                        <segue destination="1S2-fP-dsF" kind="relationship" relationship="viewControllers" id="BSF-sI-hPG"/>
+                        <segue destination="8el-mW-Quh" kind="relationship" relationship="viewControllers" id="2JZ-gl-Xf3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rds-23-3NV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="55" id="nQF-SN-wsO"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="pencil" catalog="system">
+                                <state key="normal" image="magnifyingglass" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                 </state>
                                 <connections>
@@ -67,16 +67,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Q54-oa-XYQ">
-                                <rect key="frame" x="20" y="0.0" width="118.5" height="60"/>
+                                <rect key="frame" x="20" y="0.0" width="137.5" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajf-by-s7S">
-                                        <rect key="frame" x="0.0" y="0.0" width="29.5" height="60"/>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 서재" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajf-by-s7S">
+                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위시리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwG-9Q-0zN">
-                                        <rect key="frame" x="44.5" y="0.0" width="74" height="60"/>
+                                        <rect key="frame" x="63.5" y="0.0" width="74" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -104,14 +104,7 @@
                             <constraint firstItem="Bx3-u9-BuM" firstAttribute="bottom" secondItem="Ifa-sv-Pno" secondAttribute="bottom" id="shU-x1-NL3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eF3-0q-O75">
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="eZM-CF-oXh">
-                            <color key="tintColor" red="0.90588235289999997" green="0.74509803919999995" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="goToSearchMenu:" destination="eHX-Tm-Iu7" id="Uyi-Xd-j2W"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="eF3-0q-O75"/>
                     <connections>
                         <outlet property="floatingPlusBtn" destination="4wZ-VX-xUS" id="ZVd-JB-EUu"/>
                         <outlet property="recordContainerView" destination="Ifa-sv-Pno" id="XLN-jE-G94"/>
@@ -152,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvg-Hg-Npq" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
@@ -197,6 +190,7 @@
                             <constraint firstItem="Pij-E7-hDg" firstAttribute="bottom" secondItem="bvg-Hg-Npq" secondAttribute="bottom" id="wnh-0t-2BP"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="Pe5-WH-o0s"/>
                     <navigationItem key="navigationItem" id="KAg-MY-AhJ">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Tdq-LQ-mQs">
                             <color key="tintColor" red="0.90588235289999997" green="0.74509803919999995" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -208,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdY-u3-QDi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645" y="412"/>
+            <point key="canvasLocation" x="899" y="415"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="GDx-4j-xws">
@@ -271,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="1645" y="1067"/>
         </scene>
-        <!--Record View Controller-->
+        <!--My Library View Controller-->
         <scene sceneID="QVm-AU-rdA">
             <objects>
-                <viewController storyboardIdentifier="RecordViewController" id="3aw-5k-lG0" customClass="RecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyLibraryViewController" id="3aw-5k-lG0" customClass="MyLibraryViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKT-P5-aia">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,8 +318,8 @@
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUI-K5-93n">
                                 <rect key="frame" x="0.0" y="44" width="414" height="621"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 기록을 작성해보세요!🥰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VP-nP-DRb">
-                                        <rect key="frame" x="100.5" y="253.5" width="213.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 책을 추가해보세요!🥰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VP-nP-DRb">
+                                        <rect key="frame" x="108" y="253.5" width="198.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -418,25 +412,6 @@
             <point key="canvasLocation" x="2506" y="6"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="wMo-h4-BPt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3i9-FT-L8A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="No3-Fd-PdR"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lan-bC-5lp">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1S2-fP-dsF" kind="relationship" relationship="rootViewController" id="AKY-fR-1C3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V5y-tQ-xLo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="895.6521739130435" y="411.83035714285711"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="8xO-LB-O7R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8el-mW-Quh" sceneMemberID="viewController">
@@ -453,7 +428,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xb7-AF-Egx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.6521739130435" y="1067.4107142857142"/>
+            <point key="canvasLocation" x="899" y="1067"/>
         </scene>
     </scenes>
     <resources>
@@ -461,7 +436,6 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

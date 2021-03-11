@@ -23,8 +23,8 @@ class CalendarListViewController: UIViewController {
         refreshBookListView()
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
         
-        settingCalendarListFooter()// setting table footer
-        settingTapGestureAtEmptyResultView()
+//        settingCalendarListFooter()
+//        settingTapGestureAtEmptyResultView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,9 +58,9 @@ class CalendarListViewController: UIViewController {
             return
         }
         
-        var prevData = CommonData.calendarModel[currentDate] ?? [] // 선택된 날짜 정보 추가
+        var prevData = CommonData.shared.calendarModel[currentDate] ?? [] // 선택된 날짜 정보 추가
         prevData.append(searchresultVC.selected)
-        CommonData.calendarModel.updateValue(prevData, forKey: currentDate)
+        CommonData.shared.calendarModel.updateValue(prevData, forKey: currentDate)
         booklist.append(searchresultVC.selected)
         refreshBookListView()
         // add archive code
@@ -99,7 +99,7 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if CommonData.heartDic[booklist[indexPath.row].isbn] != nil {
+        if CommonData.shared.heartDic[booklist[indexPath.row].isbn] != nil {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -111,10 +111,10 @@ extension CalendarListViewController: UITableViewDataSource {
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            CommonData.heartDic.removeValue(forKey: booklist[sender.tag].isbn)
+            CommonData.shared.heartDic.removeValue(forKey: booklist[sender.tag].isbn)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            CommonData.heartDic.updateValue(booklist[sender.tag], forKey: booklist[sender.tag].isbn)
+            CommonData.shared.heartDic.updateValue(booklist[sender.tag], forKey: booklist[sender.tag].isbn)
         }
 //        saveData(data: heartDic, at: "heart")
     }

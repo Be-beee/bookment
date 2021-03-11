@@ -46,7 +46,7 @@ class HeartListViewController: UIViewController {
 //        sender.isSelected = !sender.isSelected
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            CommonData.heartDic.removeValue(forKey: heartList[sender.tag].isbn)
+            CommonData.shared.heartDic.removeValue(forKey: heartList[sender.tag].isbn)
 //            saveData(data: heartDic, at: "heart")
             refreshData()
         }
@@ -54,7 +54,7 @@ class HeartListViewController: UIViewController {
     
     func refreshData() {
         heartList = []
-        for (_, value) in CommonData.heartDic {
+        for (_, value) in CommonData.shared.heartDic {
             heartList.append(value)
         }
         // title sorting 생략됨
@@ -100,7 +100,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         detailVC.bookData = heartList[indexPath.row]
         detailVC.modalPresentationStyle = .fullScreen
-        if CommonData.heartDic[heartList[indexPath.row].isbn] != nil {
+        if CommonData.shared.heartDic[heartList[indexPath.row].isbn] != nil {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false

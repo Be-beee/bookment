@@ -45,10 +45,10 @@ class BookDetailViewController: UIViewController {
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if isHeartBtnSelected {
-            CommonData.heartDic.removeValue(forKey: bookData.isbn)
+            CommonData.shared.heartDic.removeValue(forKey: bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            CommonData.heartDic.updateValue(bookData, forKey: bookData.isbn)
+            CommonData.shared.heartDic.updateValue(bookData, forKey: bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
 //        saveData(data: heartDic, at: "heart")
@@ -57,6 +57,13 @@ class BookDetailViewController: UIViewController {
     @IBAction func dismissView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func addToMyLibrary(_ sender: UIButton) {
+        guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
+        addVC.recordModel = Record(bookData: self.bookData, date: Date(), contents: [])
+        self.present(addVC, animated: true, completion: nil)
+    }
+    
     @IBAction func showDetailWebSite(_ sender: UIButton) {
 //        guard let detailURL = URL(string: bookData.link) else { return }
 //        let detailSafariVC = SFSafariViewController(url: detailURL)

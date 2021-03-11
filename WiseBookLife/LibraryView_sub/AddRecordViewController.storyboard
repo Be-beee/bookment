@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Record View Controller-->
+        <scene sceneID="4B2-eA-MEl">
+            <objects>
+                <viewController storyboardIdentifier="AddRecordViewController" modalPresentationStyle="fullScreen" id="lSn-vn-0Fv" customClass="AddRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gua-HX-lHH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-g3-PAx">
+                                <rect key="frame" x="20" y="104" width="374" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Fw-ZWd">
+                                <rect key="frame" x="371" y="61" width="23" height="21.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="CoW-UQ-NzW"/>
+                                    <constraint firstAttribute="height" constant="25" id="RKD-gi-YD4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" red="0.90588235289999997" green="0.74509803919999995" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" backgroundImage="checkmark" catalog="system"/>
+                                <connections>
+                                    <action selector="saveRecord:" destination="lSn-vn-0Fv" eventType="touchUpInside" id="20H-1S-o4v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기록 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Da-r2-pQq">
+                                <rect key="frame" x="160.5" y="59" width="93" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-TT-Kpc">
+                                <rect key="frame" x="20" y="61" width="23" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="2Wj-7Y-ICz"/>
+                                    <constraint firstAttribute="height" constant="25" id="rh0-5x-8Lx"/>
+                                </constraints>
+                                <color key="tintColor" red="0.90588235289999997" green="0.74509803919999995" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" backgroundImage="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissThisView:" destination="lSn-vn-0Fv" eventType="touchUpInside" id="hCj-RE-yPG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XAp-KI-DlD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dZT-g3-PAx" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="2MJ-2m-mh8"/>
+                            <constraint firstItem="9Da-r2-pQq" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="Asu-2A-ydU"/>
+                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="wNn-Fw-ZWd" secondAttribute="bottom" constant="20" id="BoO-mk-gus"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="wNn-Fw-ZWd" secondAttribute="trailing" constant="20" id="bbB-lr-yF0"/>
+                            <constraint firstItem="wNn-Fw-ZWd" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="gpz-Lq-cRI"/>
+                            <constraint firstItem="a8b-TT-Kpc" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="hgo-7K-kOd"/>
+                            <constraint firstItem="a8b-TT-Kpc" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="hnI-GB-JSq"/>
+                            <constraint firstItem="9Da-r2-pQq" firstAttribute="centerX" secondItem="Gua-HX-lHH" secondAttribute="centerX" id="hvi-e0-COr"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="dZT-g3-PAx" secondAttribute="trailing" constant="20" id="nxA-Ag-Bd4"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" id="yPW-xx-mSm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="recordInputView" destination="dZT-g3-PAx" id="zXy-aB-XSz"/>
+                        <segue destination="TH5-bK-OXL" kind="unwind" identifier="toDetailViewFromAddView" unwindAction="saveRecordsToLibraryWithSender:" id="Ajh-aT-0oM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8D-aQ-Vdn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="TH5-bK-OXL" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="120"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

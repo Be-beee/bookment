@@ -49,12 +49,6 @@ class MainPageViewController: UIViewController {
         wishListViewMenu.addGestureRecognizer(wishListViewGesture)
     }
     
-    @IBAction func goToSearchMenu(_ sender: Any) {
-        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
-        
-        self.navigationController?.pushViewController(searchVC, animated: true)
-    }
-    
     @objc func showRecordView() {
         recordContainerView.isHidden = false
         wishListContainerView.isHidden = true
@@ -72,9 +66,7 @@ class MainPageViewController: UIViewController {
     
     
     @IBAction func moveToAddContentsView(_ sender: UIButton) {
-        let addRecordVC = UIStoryboard(name: "AddRecordVC", bundle: nil).instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-
-        addRecordVC.modalPresentationStyle = .fullScreen
-        self.present(addRecordVC, animated: true, completion: nil)
+        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }

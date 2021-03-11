@@ -71,9 +71,8 @@ struct BookItem: Codable {
 
 struct Record: Codable {
     var bookData: BookItem = BookItem()
-    var recTitle: String = ""
     var date: Date = Date()
-    var recordContents: String = ""
+    var contents: [String] = []
 }
 
 struct CalendarModel: Codable {
@@ -204,8 +203,11 @@ extension String {
 // MARK:- Heart Dictionary / Search Condition Model Array
 
 struct CommonData {
-    static var heartDic: [String: BookItem] = [:] // ISBN: Item
-    static var calendarModel: [String: [BookItem]] = [:] // date_string: [Item]
+    static var shared = CommonData()
+    
+    var heartDic: [String: BookItem] = [:] // ISBN: Item
+    var calendarModel: [String: [BookItem]] = [:] // date_string: [Item]
+    var records: [Record] = []
 }
 
 

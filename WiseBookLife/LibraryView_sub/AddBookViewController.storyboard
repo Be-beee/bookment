@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Record View Controller-->
+        <!--Add Book View Controller-->
         <scene sceneID="hOb-3m-23N">
             <objects>
-                <viewController storyboardIdentifier="addRecordVC" id="taT-N4-ig5" customClass="AddRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBookViewController" modalPresentationStyle="fullScreen" id="taT-N4-ig5" customClass="AddBookViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Te-Us-y5D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,11 +24,6 @@
                                     <constraint firstAttribute="height" constant="240" id="bUp-Me-HHi"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eJU-LF-tfJ">
-                                <rect key="frame" x="20" y="369" width="374" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-cB-xjz">
                                 <rect key="frame" x="20" y="412" width="374" height="450"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -49,26 +44,12 @@
                                     <action selector="saveRecords:" destination="taT-N4-ig5" eventType="touchUpInside" id="D1g-7l-7zO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy.MM.dd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKr-eH-vJf">
-                                <rect key="frame" x="161" y="59" width="92" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 서재에 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKr-eH-vJf">
+                                <rect key="frame" x="158.5" y="59" width="97" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpw-ub-JvZ">
-                                <rect key="frame" x="0.0" y="99" width="414" height="240"/>
-                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="bgG-cG-GD1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="이 곳을 터치해 책을 검색해주세요!">
-                                    <color key="titleColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchBook:" destination="taT-N4-ig5" eventType="touchUpInside" id="OtO-6E-Ykb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-G4-b2j">
                                 <rect key="frame" x="20" y="61" width="23" height="20.5"/>
                                 <constraints>
@@ -81,39 +62,49 @@
                                     <action selector="backToRecordsView:" destination="taT-N4-ig5" eventType="touchUpInside" id="2wQ-uC-gNL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽은 날" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsR-dN-g04">
+                                <rect key="frame" x="20" y="371" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2ff-8J-w27">
+                                <rect key="frame" x="284" y="356.5" width="110" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M5O-dx-EZq"/>
+                                    <constraint firstAttribute="width" constant="110" id="cDb-5h-Jvo"/>
+                                </constraints>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qdr-UQ-it6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dpw-ub-JvZ" firstAttribute="top" secondItem="EKr-eH-vJf" secondAttribute="bottom" constant="15" id="58A-dA-IRm"/>
                             <constraint firstItem="GVt-VW-saF" firstAttribute="top" secondItem="2Yx-G4-b2j" secondAttribute="bottom" constant="15" id="6Rv-No-ryn"/>
-                            <constraint firstItem="eJU-LF-tfJ" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" constant="20" id="AI4-Q5-qnO"/>
-                            <constraint firstItem="dpw-ub-JvZ" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" id="Cvi-Zi-u9O"/>
+                            <constraint firstItem="7QR-cB-xjz" firstAttribute="top" secondItem="IsR-dN-g04" secondAttribute="bottom" constant="20" id="FX4-9O-63n"/>
+                            <constraint firstItem="2ff-8J-w27" firstAttribute="centerY" secondItem="IsR-dN-g04" secondAttribute="centerY" id="KzQ-kv-Asr"/>
                             <constraint firstItem="EKr-eH-vJf" firstAttribute="top" secondItem="qdr-UQ-it6" secondAttribute="top" constant="15" id="Mim-b4-dxa"/>
                             <constraint firstItem="GVt-VW-saF" firstAttribute="top" secondItem="EKr-eH-vJf" secondAttribute="bottom" constant="15" id="NmI-Qc-f9A"/>
                             <constraint firstItem="EKr-eH-vJf" firstAttribute="centerX" secondItem="0Te-Us-y5D" secondAttribute="centerX" id="Olw-sP-ids"/>
                             <constraint firstItem="2Yx-G4-b2j" firstAttribute="top" secondItem="qdr-UQ-it6" secondAttribute="top" constant="15" id="P9a-2h-shu"/>
                             <constraint firstItem="7QR-cB-xjz" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" constant="20" id="Q7C-by-ljr"/>
-                            <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="eJU-LF-tfJ" secondAttribute="trailing" constant="20" id="QmZ-FO-v2Q"/>
                             <constraint firstItem="2Yx-G4-b2j" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" constant="20" id="RKi-ch-zHk"/>
                             <constraint firstItem="GVt-VW-saF" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" id="U4s-Hs-0Au"/>
-                            <constraint firstItem="eJU-LF-tfJ" firstAttribute="top" secondItem="GVt-VW-saF" secondAttribute="bottom" constant="30" id="Z1k-JV-hoH"/>
                             <constraint firstItem="qdr-UQ-it6" firstAttribute="bottom" secondItem="7QR-cB-xjz" secondAttribute="bottom" id="as3-eM-aGY"/>
                             <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="3yk-1g-Mhl" secondAttribute="trailing" constant="20" id="ba0-yi-bQe"/>
                             <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="GVt-VW-saF" secondAttribute="trailing" id="fCb-tF-0g2"/>
                             <constraint firstItem="3yk-1g-Mhl" firstAttribute="top" secondItem="qdr-UQ-it6" secondAttribute="top" constant="15" id="ffx-Dz-pRg"/>
-                            <constraint firstItem="7QR-cB-xjz" firstAttribute="top" secondItem="eJU-LF-tfJ" secondAttribute="bottom" constant="20" id="iKF-1Q-5AQ"/>
+                            <constraint firstItem="IsR-dN-g04" firstAttribute="leading" secondItem="qdr-UQ-it6" secondAttribute="leading" constant="20" id="jZr-xw-h1e"/>
+                            <constraint firstAttribute="trailing" secondItem="2ff-8J-w27" secondAttribute="trailing" constant="20" id="mF6-KH-ByN"/>
                             <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="7QR-cB-xjz" secondAttribute="trailing" constant="20" id="p0T-2Z-vnJ"/>
                             <constraint firstItem="GVt-VW-saF" firstAttribute="top" secondItem="3yk-1g-Mhl" secondAttribute="bottom" constant="15" id="pFq-3j-YhU"/>
-                            <constraint firstItem="qdr-UQ-it6" firstAttribute="trailing" secondItem="dpw-ub-JvZ" secondAttribute="trailing" id="saX-I6-dpi"/>
+                            <constraint firstItem="IsR-dN-g04" firstAttribute="top" secondItem="GVt-VW-saF" secondAttribute="bottom" constant="32" id="uvx-g2-Ixd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="readDatePicker" destination="2ff-8J-w27" id="SAa-q7-C1t"/>
                         <outlet property="recordContents" destination="7QR-cB-xjz" id="4Yd-wN-d3t"/>
-                        <outlet property="recordTitle" destination="eJU-LF-tfJ" id="OiP-aS-XEI"/>
-                        <outlet property="searchBtn" destination="dpw-ub-JvZ" id="EbN-58-qfu"/>
                         <outlet property="selectedBookView" destination="GVt-VW-saF" id="uTC-Mf-y5x"/>
-                        <outlet property="todayDate" destination="EKr-eH-vJf" id="ZjM-w7-lce"/>
                         <segue destination="XKb-3n-25c" kind="unwind" identifier="toRecordView" unwindAction="unwindToRecordWithSender:" id="srg-cN-C6v"/>
                     </connections>
                 </viewController>
@@ -131,9 +122,6 @@
         </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
