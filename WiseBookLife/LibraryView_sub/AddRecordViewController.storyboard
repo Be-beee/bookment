@@ -14,16 +14,43 @@
             <objects>
                 <viewController storyboardIdentifier="AddRecordViewController" modalPresentationStyle="fullScreen" id="lSn-vn-0Fv" customClass="AddRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gua-HX-lHH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="930"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-g3-PAx">
-                                <rect key="frame" x="20" y="104" width="374" height="758"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIM-hY-E3h">
+                                <rect key="frame" x="0.0" y="104" width="414" height="826"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-0x-JbR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-g3-PAx">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="450"/>
+                                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="450" id="3Zu-ya-KU5"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="Ua0-0x-JbR" secondAttribute="top" id="Y5E-Fe-CpF"/>
+                                            <constraint firstAttribute="trailing" secondItem="dZT-g3-PAx" secondAttribute="trailing" constant="20" id="cuv-Nb-5hz"/>
+                                            <constraint firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" id="rjb-Ml-mgl"/>
+                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="leading" secondItem="Ua0-0x-JbR" secondAttribute="leading" constant="20" id="zj2-Sd-Vqe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ua0-0x-JbR" secondAttribute="trailing" id="4Re-HS-bKk"/>
+                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="top" secondItem="bIM-hY-E3h" secondAttribute="top" id="MVG-jT-OcC"/>
+                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="leading" secondItem="bIM-hY-E3h" secondAttribute="leading" id="ShG-6E-8V1"/>
+                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="width" secondItem="bIM-hY-E3h" secondAttribute="width" id="wIQ-8E-D9e"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ua0-0x-JbR" secondAttribute="bottom" id="xXS-GX-nRL"/>
+                                </constraints>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Fw-ZWd">
                                 <rect key="frame" x="371" y="61" width="23" height="21.5"/>
                                 <constraints>
@@ -59,18 +86,19 @@
                         <viewLayoutGuide key="safeArea" id="XAp-KI-DlD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dZT-g3-PAx" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="2MJ-2m-mh8"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="bIM-hY-E3h" secondAttribute="trailing" id="3Na-aJ-wvv"/>
                             <constraint firstItem="9Da-r2-pQq" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="Asu-2A-ydU"/>
-                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="wNn-Fw-ZWd" secondAttribute="bottom" constant="20" id="BoO-mk-gus"/>
+                            <constraint firstAttribute="bottom" secondItem="bIM-hY-E3h" secondAttribute="bottom" id="T9v-EL-19T"/>
                             <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="wNn-Fw-ZWd" secondAttribute="trailing" constant="20" id="bbB-lr-yF0"/>
+                            <constraint firstItem="bIM-hY-E3h" firstAttribute="top" secondItem="wNn-Fw-ZWd" secondAttribute="bottom" constant="20" id="gf4-Ks-D1c"/>
                             <constraint firstItem="wNn-Fw-ZWd" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="gpz-Lq-cRI"/>
                             <constraint firstItem="a8b-TT-Kpc" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="hgo-7K-kOd"/>
                             <constraint firstItem="a8b-TT-Kpc" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="hnI-GB-JSq"/>
                             <constraint firstItem="9Da-r2-pQq" firstAttribute="centerX" secondItem="Gua-HX-lHH" secondAttribute="centerX" id="hvi-e0-COr"/>
-                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="dZT-g3-PAx" secondAttribute="trailing" constant="20" id="nxA-Ag-Bd4"/>
-                            <constraint firstItem="XAp-KI-DlD" firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" id="yPW-xx-mSm"/>
+                            <constraint firstItem="bIM-hY-E3h" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" id="iTo-IN-1jw"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="414" height="930"/>
                     <connections>
                         <outlet property="recordInputView" destination="dZT-g3-PAx" id="zXy-aB-XSz"/>
                         <segue destination="TH5-bK-OXL" kind="unwind" identifier="toDetailViewFromAddView" unwindAction="saveRecordsToLibraryWithSender:" id="Ajh-aT-0oM"/>
@@ -79,7 +107,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8D-aQ-Vdn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="TH5-bK-OXL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="120"/>
+            <point key="canvasLocation" x="1018.840579710145" y="119.86607142857142"/>
         </scene>
     </scenes>
     <resources>
@@ -90,6 +118,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

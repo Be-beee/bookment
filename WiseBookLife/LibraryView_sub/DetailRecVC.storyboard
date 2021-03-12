@@ -17,19 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-kI-5xY" customClass="SelectView" customModule="WiseBookLife" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="240"/>
-                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="jrN-nT-662"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ftg-gT-WU7">
-                                <rect key="frame" x="0.0" y="284" width="414" height="578"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ftg-gT-WU7">
+                                <rect key="frame" x="0.0" y="264" width="414" height="598"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordContentCell" id="QSi-Ec-HKb" customClass="RecordContentCell" customModule="WiseBookLife" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QSi-Ec-HKb" id="RgL-BP-c77">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -59,6 +52,20 @@
                                     <outlet property="delegate" destination="AZO-QX-LPB" id="fVj-O5-fSr"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-kI-5xY" customClass="SelectView" customModule="WiseBookLife" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="jrN-nT-662"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZx-ir-nds" userLabel="Line">
+                                <rect key="frame" x="20" y="263" width="374" height="1"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="F2F-Va-3VY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xe6-Hm-606"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,9 +74,12 @@
                             <constraint firstItem="Xe6-Hm-606" firstAttribute="trailing" secondItem="ftg-gT-WU7" secondAttribute="trailing" id="9kq-EO-ncb"/>
                             <constraint firstItem="Xe6-Hm-606" firstAttribute="trailing" secondItem="S8c-kI-5xY" secondAttribute="trailing" id="BcH-T7-roJ"/>
                             <constraint firstItem="Xe6-Hm-606" firstAttribute="bottom" secondItem="ftg-gT-WU7" secondAttribute="bottom" id="Tev-S7-WVG"/>
-                            <constraint firstItem="ftg-gT-WU7" firstAttribute="top" secondItem="S8c-kI-5xY" secondAttribute="bottom" id="XYa-9d-ttx"/>
+                            <constraint firstItem="ftg-gT-WU7" firstAttribute="top" secondItem="S8c-kI-5xY" secondAttribute="bottom" id="ZhY-2X-LwL"/>
                             <constraint firstItem="ftg-gT-WU7" firstAttribute="leading" secondItem="Xe6-Hm-606" secondAttribute="leading" id="b0D-JS-Jkt"/>
+                            <constraint firstItem="XZx-ir-nds" firstAttribute="leading" secondItem="Xe6-Hm-606" secondAttribute="leading" constant="20" id="bC8-Kv-Wvk"/>
                             <constraint firstItem="S8c-kI-5xY" firstAttribute="top" secondItem="Xe6-Hm-606" secondAttribute="top" id="joT-7H-fZE"/>
+                            <constraint firstItem="Xe6-Hm-606" firstAttribute="trailing" secondItem="XZx-ir-nds" secondAttribute="trailing" constant="20" id="qjP-Nb-eSZ"/>
+                            <constraint firstItem="ftg-gT-WU7" firstAttribute="top" secondItem="XZx-ir-nds" secondAttribute="bottom" id="zcS-ja-IgO"/>
                         </constraints>
                     </view>
                     <connections>
@@ -85,11 +95,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

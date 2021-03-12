@@ -96,6 +96,8 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.authorLabel.text = item.author
         
+        cell.addLibraryBtn.isHidden = true
+        
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         

@@ -172,7 +172,7 @@ extension UIViewController {
         }
     }
     
-    func settingFooterForTableView(for footer: UIView, action selector: Selector, title str: String? = "결과 더보기", image: UIImage? = nil, bgColor: UIColor? = nil) {
+    func settingFooterForTableView(for footer: UIView, action selector: Selector, title str: String? = "결과 더보기", image: UIImage? = nil, bgColor: UIColor? = nil, drawBorder: Bool = false) {
         let footerBtn = UIButton(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 20, height: 50))
         if let title = str {
             footerBtn.setTitle(title, for: .normal)
@@ -185,6 +185,13 @@ extension UIViewController {
         if let bgColor = bgColor {
             footerBtn.backgroundColor = bgColor
         }
+        
+        if drawBorder {
+            footerBtn.layer.borderWidth = 0.3
+            footerBtn.layer.borderColor = Theme.main.mainColor.cgColor
+            footerBtn.tintColor = Theme.main.mainColor
+        }
+        
         footerBtn.addTarget(self, action: selector, for: .touchUpInside)
         footer.addSubview(footerBtn)
     }

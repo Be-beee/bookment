@@ -37,7 +37,7 @@ class DetailRecViewController: UIViewController {
     
     func settingResultFooter() {
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addRecordToBookData), title: nil, image: UIImage(systemName: "plus"), bgColor: Theme.main.mainColor)
+        settingFooterForTableView(for: tableFooter, action: #selector(addRecordToBookData), title: nil, image: UIImage(systemName: "plus"), drawBorder: true)
         
         bookRecordsView.tableFooterView = tableFooter
     }
@@ -82,6 +82,10 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel.text = CommonData.shared.records[selectedIndex].contents[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "독서 기록"
     }
 }
 

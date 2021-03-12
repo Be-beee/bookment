@@ -58,28 +58,21 @@ class MyLibraryViewController: UIViewController {
         guard let addVC = sender.source as? AddBookViewController else {
             return
         }
-        guard let selected = self.recordView.indexPathsForSelectedItems else {
-            return
-        }
         
-        if addVC.editmode {
-            CommonData.shared.records[selected[0].item] = addVC.recordModel
-        } else {
-            // MARK: - 이미 서재에 등록된 도서가 중복 추가되는 이슈가 발생할 수 있음
-            CommonData.shared.records.append(addVC.recordModel)
-            
-            let df = DateFormatter()
-            df.locale = Locale(identifier: "ko_KR")
-            df.dateFormat = "yyyy-MM-dd"
-            
-            let key = df.string(from: addVC.recordModel.date)
-            
-            var calValue = CommonData.shared.calendarModel[key] ?? []
-            // MARK: - 이슈 : 같은 책 정보가 여러번 추가되는 이슈가 발생할 수 있음
-            calValue.append(addVC.recordModel.bookData) // < 이부분
-            
-            CommonData.shared.calendarModel.updateValue(calValue, forKey: key)
-        }
+        // MARK: - 이미 서재에 등록된 도서가 중복 추가되는 이슈가 발생할 수 있음
+        CommonData.shared.records.append(addVC.recordModel)
+        
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ko_KR")
+        df.dateFormat = "yyyy-MM-dd"
+        
+        let key = df.string(from: addVC.recordModel.date)
+        
+        var calValue = CommonData.shared.calendarModel[key] ?? []
+        // MARK: - 이슈 : 같은 책 정보가 여러번 추가되는 이슈가 발생할 수 있음
+        calValue.append(addVC.recordModel.bookData) // < 이부분
+        
+        CommonData.shared.calendarModel.updateValue(calValue, forKey: key)
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()
         reloadEmptyView()

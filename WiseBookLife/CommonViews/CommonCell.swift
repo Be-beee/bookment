@@ -15,6 +15,7 @@ class CommonCell: UITableViewCell {
     @IBOutlet var authorLabel: UILabel!
     
     @IBOutlet var heartBtn: UIButton!
+    @IBOutlet weak var addLibraryBtn: UIButton!
     
     var isHeartOn = false
 }

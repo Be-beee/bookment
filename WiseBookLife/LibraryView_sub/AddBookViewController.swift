@@ -16,8 +16,6 @@ class AddBookViewController: UIViewController {
     @IBOutlet var selectedBookView: SelectView!
     @IBOutlet weak var readDatePicker: UIDatePicker!
     
-    var editmode = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +36,7 @@ class AddBookViewController: UIViewController {
     func settingTextView() {
         recordContents.layer.borderWidth = 0.3
         recordContents.layer.borderColor = Theme.main.mainColor.cgColor
+        recordContents.backgroundColor = .systemBackground
     }
     
     // MARK:- Unwind Segue
@@ -54,7 +53,9 @@ class AddBookViewController: UIViewController {
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {
-        recordModel.contents.append(recordContents.text)
+        if !recordContents.text.isEmpty {
+            recordModel.contents.append(recordContents.text)
+        }
         recordModel.date = readDatePicker.date
         self.performSegue(withIdentifier: "toRecordView", sender: self)
     }
