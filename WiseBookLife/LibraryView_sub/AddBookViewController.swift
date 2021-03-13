@@ -39,17 +39,6 @@ class AddBookViewController: UIViewController {
         recordContents.backgroundColor = .systemBackground
     }
     
-    // MARK:- Unwind Segue
-    
-    @IBAction func unwindSearchView(sender: UIStoryboardSegue) {
-        
-        guard let searchresultVC = sender.source as? SubSearchViewController else {
-            return
-        }
-        recordModel.bookData = searchresultVC.selected
-        presentSelectView()
-    }
-    
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {

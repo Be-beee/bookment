@@ -22,9 +22,6 @@ class CalendarListViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         refreshBookListView()
         todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
-        
-//        settingCalendarListFooter()
-//        settingTapGestureAtEmptyResultView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,42 +38,9 @@ class CalendarListViewController: UIViewController {
         }
     }
     
-    func settingCalendarListFooter() {
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addBookToCalendar), title: nil, image: UIImage(systemName: "plus"), bgColor: .systemOrange)
-        
-        todayBookTableView.tableFooterView = tableFooter
-    }
-    
-    func settingTapGestureAtEmptyResultView() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addBookToCalendar))
-        self.emptyResultView.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    @IBAction func unwindToThisDateBookList(sender: UIStoryboardSegue) {
-        guard let searchresultVC = sender.source as? SubSearchViewController else {
-            return
-        }
-        
-        var prevData = CommonData.shared.calendarModel[currentDate] ?? [] // 선택된 날짜 정보 추가
-        prevData.append(searchresultVC.selected)
-        CommonData.shared.calendarModel.updateValue(prevData, forKey: currentDate)
-        booklist.append(searchresultVC.selected)
-        refreshBookListView()
-        // add archive code
-    }
-    
     @IBAction func dismissListView(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @objc func addBookToCalendar() {
-        guard let subSearchVC = UIStoryboard(name: "SubSearchViewController", bundle: nil).instantiateViewController(withIdentifier: "SubSearchViewController") as? SubSearchViewController else { return }
-        subSearchVC.from = .calendar
-        self.present(subSearchVC, animated: true, completion: nil)
-    }
-    
-    
 }
 
 extension CalendarListViewController: UITableViewDelegate {

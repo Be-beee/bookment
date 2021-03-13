@@ -26,8 +26,6 @@
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
-		B59D832024C01AF600797D5F /* SubSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D831F24C01AF600797D5F /* SubSearchViewController.swift */; };
-		B59D832224C01B0E00797D5F /* SubSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832124C01B0E00797D5F /* SubSearchViewController.storyboard */; };
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
 		B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecVC.storyboard */; };
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
@@ -68,8 +66,6 @@
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
-		B59D831F24C01AF600797D5F /* SubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSearchViewController.swift; sourceTree = "<group>"; };
-		B59D832124C01B0E00797D5F /* SubSearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubSearchViewController.storyboard; sourceTree = "<group>"; };
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
 		B59D832524C0215F00797D5F /* DetailRecVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecVC.storyboard; sourceTree = "<group>"; };
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -131,8 +127,6 @@
 			children = (
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
-				B59D831F24C01AF600797D5F /* SubSearchViewController.swift */,
-				B59D832124C01B0E00797D5F /* SubSearchViewController.storyboard */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
 				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
 			);
@@ -310,7 +304,6 @@
 				B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */,
 				B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */,
 				B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */,
-				B59D832224C01B0E00797D5F /* SubSearchViewController.storyboard in Resources */,
 				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,
 				B5616DD725EE83ED00A0103E /* SelectDateController.storyboard in Resources */,
 				B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */,
@@ -391,7 +384,6 @@
 				B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */,
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,
-				B59D832024C01AF600797D5F /* SubSearchViewController.swift in Sources */,
 				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
