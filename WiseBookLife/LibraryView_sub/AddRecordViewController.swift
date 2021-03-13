@@ -11,10 +11,12 @@ import UIKit
 class AddRecordViewController: UIViewController {
 
     var inputData = ""
+    var placeholderText = "기록을 작성해보세요!"
+    
     @IBOutlet weak var recordInputView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        recordInputView.delegate = self
+        recordInputView.delegate = self
         settingTextView()
     }
     
@@ -22,6 +24,8 @@ class AddRecordViewController: UIViewController {
         recordInputView.layer.borderWidth = 0.3
         recordInputView.layer.borderColor = Theme.main.mainColor.cgColor
         recordInputView.backgroundColor = .systemBackground
+        recordInputView.text = self.placeholderText
+        recordInputView.textColor = .systemGray
     }
     
     @IBAction func dismissThisView(_ sender: UIButton) {
@@ -30,7 +34,7 @@ class AddRecordViewController: UIViewController {
     
     @IBAction func saveRecord(_ sender: UIButton) {
         self.inputData = recordInputView.text
-        if !inputData.isEmpty {
+        if !inputData.isEmpty, recordInputView.textColor == .label {
             self.performSegue(withIdentifier: "toDetailViewFromAddView", sender: self)
         } else {
             let alert = UIAlertController(title: "알림", message: "내용을 입력해주세요!", preferredStyle: .alert)
@@ -42,22 +46,18 @@ class AddRecordViewController: UIViewController {
     }
 }
 
-//extension AddRecordViewController: UITextViewDelegate {
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.text.isEmpty {
-//            textView.text = "독서 기록을 남겨보세요. (선택)"
-//            textView.textColor = .systemGray
-//        }
-//    }
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView.text.isEmpty {
-//            textView.text = "독서 기록을 남겨보세요. (선택)"
-//            textView.textColor = .systemGray
-//        }
-//    }
-//
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        <#code#>
-//    }
-//}
+extension AddRecordViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == self.placeholderText {
+            textView.text = ""
+            
+        }
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        textView.textColor = .label
+        if textView.text == self.placeholderText {
+            textView.text = ""
+        }
+        return true
+    }
+}

@@ -11,6 +11,7 @@ import UIKit
 class AddBookViewController: UIViewController {
 
     var recordModel = Record()
+    var placeholderText = "기록을 작성해보세요! (선택)"
     
     @IBOutlet var recordContents: UITextView!
     @IBOutlet var selectedBookView: SelectView!
@@ -21,6 +22,7 @@ class AddBookViewController: UIViewController {
         
         settingTextView()
         presentSelectView()
+        recordContents.delegate = self
         
     }
     
@@ -37,12 +39,14 @@ class AddBookViewController: UIViewController {
         recordContents.layer.borderWidth = 0.3
         recordContents.layer.borderColor = Theme.main.mainColor.cgColor
         recordContents.backgroundColor = .systemBackground
+        recordContents.text = placeholderText
+        recordContents.textColor = .systemGray
     }
     
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {
-        if !recordContents.text.isEmpty {
+        if !recordContents.text.isEmpty, recordContents.textColor == .label {
             recordModel.contents.append(recordContents.text)
         }
         recordModel.date = readDatePicker.date
@@ -50,5 +54,21 @@ class AddBookViewController: UIViewController {
     }
     @IBAction func backToRecordsView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AddBookViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == self.placeholderText {
+            textView.text = ""
+            
+        }
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        textView.textColor = .label
+        if textView.text == self.placeholderText {
+            textView.text = ""
+        }
+        return true
     }
 }
