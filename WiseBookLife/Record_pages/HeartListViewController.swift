@@ -83,17 +83,23 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = heartList[indexPath.row].title
         }
         
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 10
-        
         cell.authorLabel.text = heartList[indexPath.row].author
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         
+        cell.addLibraryBtn.tag = indexPath.row
+        cell.addLibraryBtn.addTarget(self, action: #selector(addToLibrary), for: .touchUpInside)
 
         return cell
+    }
+    
+    @objc func addToLibrary(_ sender: UIButton!) {
+        let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
+        addLibraryVC.recordModel = Record(bookData: self.heartList[sender.tag], date: Date(), contents: [])
+        
+        self.present(addLibraryVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
