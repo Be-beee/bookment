@@ -31,6 +31,7 @@ class MainPageViewController: UIViewController {
         recordContainerView.isHidden = false
         wishListContainerView.isHidden = true
         
+        recordViewMenu.font = UIFont.boldSystemFont(ofSize: 17)
         recordViewMenu.textColor = Theme.main.mainColor
         wishListViewMenu.textColor = .label
         
@@ -53,14 +54,18 @@ class MainPageViewController: UIViewController {
         recordContainerView.isHidden = false
         wishListContainerView.isHidden = true
         
+        recordViewMenu.font = UIFont.boldSystemFont(ofSize: 17)
         recordViewMenu.textColor = Theme.main.mainColor
+        wishListViewMenu.font = UIFont.systemFont(ofSize: 17)
         wishListViewMenu.textColor = .label
     }
     @objc func showWishListView() {
         recordContainerView.isHidden = true
         wishListContainerView.isHidden = false
         
+        recordViewMenu.font = UIFont.systemFont(ofSize: 17)
         recordViewMenu.textColor = .label
+        wishListViewMenu.font = UIFont.boldSystemFont(ofSize: 17)
         wishListViewMenu.textColor = Theme.main.mainColor
     }
     

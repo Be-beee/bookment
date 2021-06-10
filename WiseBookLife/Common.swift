@@ -255,5 +255,6 @@ func loadData(at: String) -> Any? {
 
 struct Theme {
     static let main = Theme()
-    let mainColor = UIColor(red: 239/255, green: 190/255, blue: 91/255, alpha: 1) //#EFBE5B
+//    let mainColor = UIColor(red: 239/255, green: 190/255, blue: 91/255, alpha: 1) //#EFBE5B
+    let mainColor = UIColor(red: 255/255, green: 104/255, blue: 53/255, alpha: 1) //#FF6835
 }
