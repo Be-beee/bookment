@@ -43,3 +43,38 @@ struct Archive<T: Codable> {
     }
     
 }
+
+
+
+// MARK:- Archiving Test
+func saveData(data: Any, at: String) {
+    DispatchQueue.global().async {
+        let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+        guard let archivedURL = documentDirectory?.appendingPathComponent(at) else {
+            return
+        }
+        do {
+            let archivedData = try NSKeyedArchiver.archivedData(withRootObject: data, requiringSecureCoding: true)
+            try archivedData.write(to: archivedURL)
+        } catch {
+            print(error)
+        }
+    }
+}
+
+func loadData(at: String) -> Any? {
+    let documentDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first
+    
+    guard let archiveURL = documentDirectory?.appendingPathComponent(at) else {
+        return nil
+    }
+    
+    guard let codedData = try? Data(contentsOf: archiveURL) else {
+        return nil
+    }
+    
+    guard let unarchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) else {
+        return nil
+    }
+    return unarchivedData
+}
