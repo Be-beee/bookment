@@ -10,7 +10,10 @@ import UIKit
 
 class AddBookViewController: UIViewController {
 
-    var recordModel = Record()
+    var recordDate = Date()
+    var selectedBookItem = BookItem()
+    var contents = ""
+    
     var placeholderText = "기록을 작성해보세요! (선택)"
     
     @IBOutlet var recordContents: UITextView!
@@ -27,12 +30,12 @@ class AddBookViewController: UIViewController {
     }
     
     func presentSelectView() {
-        selectedBookView.bookCoverView.image = urlToImage(from: recordModel.bookData.image)
-        selectedBookView.bookTitle.text = recordModel.bookData.title
-        selectedBookView.bookAuthor.text =  recordModel.bookData.author
-        selectedBookView.bookPublisher.text = "출판사: " + recordModel.bookData.publisher
+        selectedBookView.bookCoverView.image = urlToImage(from: selectedBookItem.image)
+        selectedBookView.bookTitle.text = selectedBookItem.title
+        selectedBookView.bookAuthor.text =  selectedBookItem.author
+        selectedBookView.bookPublisher.text = "출판사: " + selectedBookItem.publisher
         
-        selectedBookView.bookDate.text = "출간일: " + recordModel.bookData.pubdate
+        selectedBookView.bookDate.text = "출간일: " + selectedBookItem.pubdate
     }
     
     func settingTextView() {
@@ -46,10 +49,10 @@ class AddBookViewController: UIViewController {
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {
+        recordDate = readDatePicker.date
         if !recordContents.text.isEmpty, recordContents.textColor == .label {
-            recordModel.contents.append(recordContents.text)
+            contents = recordContents.text
         }
-        recordModel.date = readDatePicker.date
         self.performSegue(withIdentifier: "toRecordView", sender: self)
     }
     @IBAction func backToRecordsView(_ sender: UIButton) {

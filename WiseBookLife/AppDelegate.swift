@@ -14,7 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//        if let loadedRecords = loadData(at: "records") {
+//            self.records = loadedRecords as! [RecordModel]
+//        }
+        
+        // 아카이빙된 기록 데이터 및 위시리스트 데이터 불러오기
+        
         return true
     }
 

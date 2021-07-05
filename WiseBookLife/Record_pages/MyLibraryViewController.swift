@@ -13,21 +13,25 @@ class MyLibraryViewController: UIViewController {
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
     
+    var libraryListData: [BookItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingEmptyRecordView()
-//        if let loadedRecords = loadData(at: "records") {
-//            self.records = loadedRecords as! [RecordModel]
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadEmptyView()
+        setLibraryListData()
     }
     
     func settingEmptyRecordView() {
         emptyRecordView.alpha = 1
+    }
+    
+    func setLibraryListData() {
+        libraryListData = CommonData.shared.createMyLibraryList()
     }
     
     func reloadEmptyView() {
@@ -38,14 +42,13 @@ class MyLibraryViewController: UIViewController {
         }
     }
     
-    // MARK:- Unwind Segue (기록 삭제 시 캘린더 책 삭제 같이 되도록 구현 해야 함)
+    // MARK:- Unwind Segue
     
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
-                CommonData.shared.records.remove(at: selected[0].item)
-//                CommonData.calendarModel.removeValue(forKey: <#T##String#>)
-                // 삭제 구현 덜 됨
+                let willRemoveDatakey = libraryListData[selected[0].item].isbn
+                CommonData.shared.records.removeValue(forKey: willRemoveDatakey)
 //                saveData(data: self.records, at: "records")
             }
             self.recordView.reloadData()
@@ -59,20 +62,18 @@ class MyLibraryViewController: UIViewController {
             return
         }
         
-        // MARK: - 이미 서재에 등록된 도서가 중복 추가되는 이슈가 발생할 수 있음
-        CommonData.shared.records.append(addVC.recordModel)
+        let recordKey = addVC.selectedBookItem.isbn
+        if let prevData = CommonData.shared.records[recordKey] {
+            var nextData = prevData
+            nextData.contents.updateValue(addVC.contents, forKey: addVC.recordDate)
+            CommonData.shared.records.updateValue(nextData, forKey: recordKey)
+            // 기존 책 데이터 컨테이너에 새로운 기록을 추가한다.
+        } else {
+            let newData = Record(bookData: addVC.selectedBookItem, contents: [addVC.recordDate: addVC.contents])
+            CommonData.shared.records.updateValue(newData, forKey: recordKey)
+            // 새로운 책 데이터 컨테이너와 함께 새로운 기록을 추가한다.
+        }
         
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "ko_KR")
-        df.dateFormat = "yyyy-MM-dd"
-        
-        let key = df.string(from: addVC.recordModel.date)
-        
-        var calValue = CommonData.shared.calendarModel[key] ?? []
-        // MARK: - 이슈 : 같은 책 정보가 여러번 추가되는 이슈가 발생할 수 있음
-        calValue.append(addVC.recordModel.bookData) // < 이부분
-        
-        CommonData.shared.calendarModel.updateValue(calValue, forKey: key)
 //        saveData(data: self.records, at: "records")
         recordView.reloadData()
         reloadEmptyView()
@@ -98,13 +99,13 @@ extension MyLibraryViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CommonData.shared.records.count
+        return libraryListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-        cell.bookImage.image = urlToImage(from: CommonData.shared.records[indexPath.row].bookData.image)
+        cell.bookImage.image = urlToImage(from: libraryListData[indexPath.row].image)
         return cell
     }
     
@@ -112,8 +113,7 @@ extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as! DetailRecViewController
         
-        detailRecVC.selectedIndex = indexPath.row
-//        detailRecVC.selectedItem = CommonData.shared.records[indexPath.row]
+        detailRecVC.selectedKey = libraryListData[indexPath.row].isbn
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     

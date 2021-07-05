@@ -71,8 +71,7 @@ struct BookItem: Codable {
 
 struct Record: Codable {
     var bookData: BookItem = BookItem()
-    var date: Date = Date()
-    var contents: [String] = []
+    var contents: [Date: String] = [:]
 }
 
 struct CalendarModel: Codable {
@@ -213,8 +212,53 @@ struct CommonData {
     static var shared = CommonData()
     
     var heartDic: [String: BookItem] = [:] // ISBN: Item
-    var calendarModel: [String: [BookItem]] = [:] // date_string: [Item]
-    var records: [Record] = []
+    var records: [String: Record] = [:] // ISBN: Record
+    // 최신순으로 정렬하기 위한 기준이 필요함
+    var latest: [String] = []
+    
+    
+    func sortRecords(isbn: String) -> [(Date, String)] {
+        guard let data = records[isbn] else { return [] }
+        
+        return data.contents.sorted { $0.key < $1.key }
+    }
+    
+    func createCalendarModel() -> [String: [BookItem]] { // date_string: [Item]
+        
+        var calendarModel: [String: [BookItem]] = [:]
+        let values = records.values
+        
+        for item in values {
+            let bookitem = item.bookData
+            for data in item.contents {
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd"
+                let calendarKey = df.string(from: data.key)
+                
+                var newItem: [BookItem] = []
+                
+                if let prevItem = calendarModel[calendarKey] {
+                    newItem = prevItem
+                }
+                newItem.append(bookitem)
+                // 캘린더 중복 추가 문제 해결 필요
+                
+                calendarModel.updateValue(newItem, forKey: df.string(from: data.key))
+                
+            }
+        }
+        
+        return calendarModel
+    }
+    
+    func createMyLibraryList() -> [BookItem] {
+        var librarylist = records.map { $0.value.bookData }
+        librarylist.sort { $0.title < $1.title }
+        // records 데이터 변경 최신 순으로 정렬이 필요함
+        // 현재는 이름 순 정렬 중
+        
+        return librarylist
+    }
 }
 
 
@@ -255,6 +299,5 @@ func loadData(at: String) -> Any? {
 
 struct Theme {
     static let main = Theme()
-//    let mainColor = UIColor(red: 239/255, green: 190/255, blue: 91/255, alpha: 1) //#EFBE5B
     let mainColor = UIColor(red: 255/255, green: 104/255, blue: 53/255, alpha: 1) //#FF6835
 }

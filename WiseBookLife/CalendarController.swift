@@ -13,6 +13,8 @@ class CalendarController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     let datePicker = UIDatePicker()
     
+    var calData: [String: [BookItem]] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingCalendarHeader()
@@ -24,7 +26,12 @@ class CalendarController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setCalendarData()
         calendarView.reloadData()
+    }
+    
+    func setCalendarData() {
+        calData = CommonData.shared.createCalendarModel()
     }
     
     func settingCalendarHeader() {
@@ -69,9 +76,14 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         df.dateFormat = "yyyy-MM-dd"
 
         let key = df.string(from: date)
-        guard let data = CommonData.shared.calendarModel[key] else { return nil }
-        let bookImg = data[0].image
-        return urlToImage(from: bookImg)
+        guard let data = calData[key] else { return nil }
+        if data.count > 0 {
+            let bookImg = data[0].image
+            return urlToImage(from: bookImg)
+        } else {
+            return nil
+        }
+        
     }
     
     // 특정 날짜 선택 시
@@ -82,7 +94,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         guard let bookListVC = UIStoryboard(name: "CalendarListViewController", bundle: nil).instantiateViewController(withIdentifier: "CalendarListViewController") as? CalendarListViewController else { return }
 
         bookListVC.currentDate = key
-        if let bookdatas = CommonData.shared.calendarModel[key] {
+        if let bookdatas = calData[key] {
             bookListVC.booklist = bookdatas
         }
         let withNavVC = UINavigationController(rootViewController: bookListVC)

@@ -10,14 +10,13 @@ import UIKit
 
 class DetailRecViewController: UIViewController {
 
-    var selectedIndex = -1
-    lazy var selectedItem = CommonData.shared.records[selectedIndex]
+    var selectedKey = ""
+    var selectedBookRecords: [(Date, String)] = []
     @IBOutlet var bookInfoView: SelectView!
     @IBOutlet weak var bookRecordsView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = selectedItem.date.dateToString()
         self.navigationItem.largeTitleDisplayMode = .never
         let deleteButton = UIBarButtonItem(title: "삭제", style: .done, target: self, action: #selector(deleteThisBookData))
         self.navigationItem.rightBarButtonItem = deleteButton
@@ -26,13 +25,27 @@ class DetailRecViewController: UIViewController {
         settingResultFooter()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingRecordList()
+        bookRecordsView.reloadData()
+    }
+    
     func presentData() {
         // book data 가져오기
+        guard let selectedItem = CommonData.shared.records[selectedKey] else {
+            return
+        }
         bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.bookData.image)
         bookInfoView.bookTitle.text = selectedItem.bookData.title
         bookInfoView.bookAuthor.text = selectedItem.bookData.author
         bookInfoView.bookDate.text = "출간일: " + selectedItem.bookData.pubdate
         bookInfoView.bookPublisher.text = "출판사: " + selectedItem.bookData.publisher
+        
+    }
+    
+    func settingRecordList() {
+        selectedBookRecords = CommonData.shared.sortRecords(isbn: selectedKey).filter({ $0.1 != "" })
     }
     
     func settingResultFooter() {
@@ -65,21 +78,22 @@ class DetailRecViewController: UIViewController {
     
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
         let start = sender.source as! AddRecordViewController
-        CommonData.shared.records[selectedIndex].contents.append(start.inputData)
+        CommonData.shared.records[selectedKey]?.contents.updateValue(start.inputData, forKey: Date())
         self.bookRecordsView.reloadData()
     }
 }
 
 extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CommonData.shared.records[selectedIndex].contents.count
+        return selectedBookRecords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = bookRecordsView.dequeueReusableCell(withIdentifier: "RecordContentCell", for: indexPath) as? RecordContentCell else {
             return UITableViewCell()
         }
-        cell.contentLabel.text = CommonData.shared.records[selectedIndex].contents[indexPath.row]
+        
+        cell.contentLabel.text = selectedBookRecords[indexPath.row].1
         
         return cell
     }

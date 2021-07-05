@@ -60,14 +60,14 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func addToMyLibrary(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
-        addVC.recordModel = Record(bookData: self.bookData, date: Date(), contents: [])
+        addVC.selectedBookItem = self.bookData
         self.present(addVC, animated: true, completion: nil)
     }
     
     @IBAction func showDetailWebSite(_ sender: UIButton) {
-//        guard let detailURL = URL(string: bookData.link) else { return }
-//        let detailSafariVC = SFSafariViewController(url: detailURL)
-//
-//        self.present(detailSafariVC, animated: true, completion: nil)
+        guard let detailURL = URL(string: bookData.link) else { return }
+        let detailSafariVC = SFSafariViewController(url: detailURL)
+
+        self.present(detailSafariVC, animated: true, completion: nil)
     }
 }
