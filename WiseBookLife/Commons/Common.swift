@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct BookItem: Codable {
+struct BookItem: Codable, Hashable {
     var title: String = ""
     var link: String = ""
     var image: String = ""
@@ -72,13 +72,14 @@ struct CommonData {
                 df.dateFormat = "yyyy-MM-dd"
                 let calendarKey = df.string(from: data.key)
                 
-                var newItem: [BookItem] = []
+                var newItemSets: Set<BookItem> = []
                 
                 if let prevItem = calendarModel[calendarKey] {
-                    newItem = prevItem
+                    newItemSets = Set(prevItem)
                 }
-                newItem.append(bookitem)
-                // 캘린더 중복 추가 문제 해결 필요
+                newItemSets.insert(bookitem)
+                let newItem = newItemSets.sorted { $0.title < $1.title }
+                // 기록 업데이트 순으로 정렬할 방법?
                 
                 calendarModel.updateValue(newItem, forKey: df.string(from: data.key))
                 
