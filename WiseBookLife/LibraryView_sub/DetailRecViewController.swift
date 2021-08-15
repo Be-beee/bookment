@@ -27,8 +27,7 @@ class DetailRecViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        settingRecordList()
-        bookRecordsView.reloadData()
+        refreshRecordList()
     }
     
     func presentData() {
@@ -44,8 +43,9 @@ class DetailRecViewController: UIViewController {
         
     }
     
-    func settingRecordList() {
+    func refreshRecordList() {
         selectedBookRecords = CommonData.shared.sortRecords(isbn: selectedKey).filter({ $0.1 != "" })
+        self.bookRecordsView.reloadData()
     }
     
     func settingResultFooter() {
@@ -100,6 +100,14 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "독서 기록"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let willDeleteKey = selectedBookRecords[indexPath.row].0
+            CommonData.shared.records[selectedKey]?.contents.removeValue(forKey: willDeleteKey)
+        }
+        self.refreshRecordList()
     }
 }
 
