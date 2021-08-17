@@ -17,6 +17,7 @@
 		B561165425D37B5300C0D94B /* CalendarListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */; };
 		B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5616DD325EE83D900A0103E /* SelectDateController.swift */; };
 		B5616DD725EE83ED00A0103E /* SelectDateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */; };
+		B563D2BE26C9749200C0ACFD /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
 		B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */; };
 		B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */; };
@@ -60,6 +61,7 @@
 		B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarListViewController.storyboard; sourceTree = "<group>"; };
 		B5616DD325EE83D900A0103E /* SelectDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateController.swift; sourceTree = "<group>"; };
 		B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectDateController.storyboard; sourceTree = "<group>"; };
+		B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
 		B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultVC.storyboard; sourceTree = "<group>"; };
 		B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				B57D472C2693281300ADCADE /* UIExtensions.swift */,
 				B57D472F2693360600ADCADE /* Theme.swift */,
 				B57D4731269336BD00ADCADE /* APIService.swift */,
+				B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			files = (
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
+				B563D2BE26C9749200C0ACFD /* MainTabBarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B57D47302693360600ADCADE /* Theme.swift in Sources */,
 				B57D472D2693281300ADCADE /* UIExtensions.swift in Sources */,
