@@ -71,7 +71,10 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            print("manage backup file")
+            let updateAlert = UIAlertController(title: "알림", message: "추후 지원될 예정입니다.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+            updateAlert.addAction(ok)
+            self.present(updateAlert, animated: true, completion: nil)
         case 1:
             if indexPath.row == 0 {
                 let mailComposeVC = configureMailComposer()
