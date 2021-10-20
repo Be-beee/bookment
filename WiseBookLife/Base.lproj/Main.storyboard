@@ -415,7 +415,7 @@
         <scene sceneID="8xO-LB-O7R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8el-mW-Quh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="gearshape" catalog="system" id="tka-u2-mLR"/>
+                    <tabBarItem key="tabBarItem" title="" image="gear" catalog="system" id="tka-u2-mLR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="khp-PJ-qh1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -434,7 +434,7 @@
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="groupTableViewBackgroundColor">
