@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="104" width="414" height="826"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-0x-JbR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="520"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-g3-PAx">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="450"/>
+                                                <rect key="frame" x="20" y="50" width="374" height="450"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="450" id="3Zu-ya-KU5"/>
@@ -33,12 +33,23 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-mY-nUq">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="40"/>
+                                                <color key="tintColor" red="1" green="0.40784313725490196" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="DEe-zC-fcs"/>
+                                                </constraints>
+                                                <locale key="locale" localeIdentifier="ko_KR"/>
+                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="Ua0-0x-JbR" secondAttribute="top" id="Y5E-Fe-CpF"/>
+                                            <constraint firstItem="aqe-mY-nUq" firstAttribute="top" secondItem="Ua0-0x-JbR" secondAttribute="top" id="2jv-4x-GfV"/>
+                                            <constraint firstAttribute="trailing" secondItem="aqe-mY-nUq" secondAttribute="trailing" constant="20" symbolic="YES" id="7tp-T1-Nxu"/>
+                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="aqe-mY-nUq" secondAttribute="bottom" constant="10" id="B0s-rm-ODm"/>
+                                            <constraint firstItem="aqe-mY-nUq" firstAttribute="centerX" secondItem="Ua0-0x-JbR" secondAttribute="centerX" id="Kkz-ad-Jde"/>
                                             <constraint firstAttribute="trailing" secondItem="dZT-g3-PAx" secondAttribute="trailing" constant="20" id="cuv-Nb-5hz"/>
-                                            <constraint firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" id="rjb-Ml-mgl"/>
+                                            <constraint firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" constant="20" id="rjb-Ml-mgl"/>
                                             <constraint firstItem="dZT-g3-PAx" firstAttribute="leading" secondItem="Ua0-0x-JbR" secondAttribute="leading" constant="20" id="zj2-Sd-Vqe"/>
                                         </constraints>
                                     </view>
@@ -51,7 +62,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Ua0-0x-JbR" secondAttribute="bottom" id="xXS-GX-nRL"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Fw-ZWd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Fw-ZWd">
                                 <rect key="frame" x="371" y="61" width="23" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="23" id="CoW-UQ-NzW"/>
@@ -100,6 +111,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="930"/>
                     <connections>
+                        <outlet property="recordDatePicker" destination="aqe-mY-nUq" id="xIR-4h-azt"/>
                         <outlet property="recordInputView" destination="dZT-g3-PAx" id="zXy-aB-XSz"/>
                         <segue destination="TH5-bK-OXL" kind="unwind" identifier="toDetailViewFromAddView" unwindAction="saveRecordsToLibraryWithSender:" id="Ajh-aT-0oM"/>
                     </connections>

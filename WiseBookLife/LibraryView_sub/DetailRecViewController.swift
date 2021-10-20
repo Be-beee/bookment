@@ -78,7 +78,7 @@ class DetailRecViewController: UIViewController {
     
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
         let start = sender.source as! AddRecordViewController
-        CommonData.shared.records[selectedKey]?.contents.updateValue(start.inputData, forKey: Date())
+        CommonData.shared.records[selectedKey]?.contents.updateValue(start.inputData.text, forKey: start.inputData.date)
         self.bookRecordsView.reloadData()
     }
 }
