@@ -1,5 +1,14 @@
+# Client Key
 WiseBookLife/ClientData/
+
+# XCode
 xcuserdata
 xcshareddata
-.DS_Store
+*.xcodeproj
+
+# CocoaPods
 Pods/
+*.xcworkspace
+
+# MacOS
+.DS_Store
