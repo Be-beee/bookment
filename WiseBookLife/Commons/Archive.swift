@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 // 아카이빙하기
 
@@ -77,4 +78,63 @@ func loadData(at: String) -> Any? {
         return nil
     }
     return unarchivedData
+}
+
+class DatabaseManager {
+    static let shared = DatabaseManager()
+    private let db: Realm!
+
+    private init() {
+        do {
+            db = try Realm()
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
+    }
+
+    
+    // MARK: - Database Management Method
+    
+    func loadRecords() -> [Record] {
+        let list = db.objects(Record.self)
+        return Array(list)
+    }
+
+    func addRecord(data: Record) -> Bool {
+        do {
+            try db.write {
+                db.add(data)
+            }
+        } catch {
+            return false
+        }
+        return true
+    }
+
+    func updateRecord() -> Bool {
+        return false
+    }
+
+    func deleteRecord(from: [Record], index: Int) -> Bool {
+        do {
+            try db.write {
+                db.delete(from[index])
+            }
+        } catch {
+            return false
+        }
+        return true
+    }
+
+    func deleteAllRecords() -> Bool {
+        do {
+            try db.write {
+                db.deleteAll()
+            }
+        } catch {
+            return false
+        }
+        return true
+    }
+
 }
