@@ -51,7 +51,6 @@ class BookDetailViewController: UIViewController {
             CommonData.shared.heartDic.updateValue(bookData, forKey: bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
-//        saveData(data: heartDic, at: "heart")
         isHeartBtnSelected.toggle()
     }
     @IBAction func dismissView(_ sender: UIButton) {
@@ -60,7 +59,7 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func addToMyLibrary(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
-        addVC.selectedBookItem = self.bookData
+        addVC.selectedBookItem = BookInfo(title: self.bookData.title, link: self.bookData.link, image: self.bookData.image, author: self.bookData.author, price: self.bookData.price, publisher: self.bookData.publisher, isbn: self.bookData.isbn, descriptionBook: self.bookData.description, pubdate: self.bookData.pubdate)
         self.present(addVC, animated: true, completion: nil)
     }
     

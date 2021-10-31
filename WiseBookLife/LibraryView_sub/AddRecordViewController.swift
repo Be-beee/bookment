@@ -10,7 +10,7 @@ import UIKit
 
 class AddRecordViewController: UIViewController {
 
-    var inputData: (date: Date, text: String) = (Date(), "")
+    var newRecordContent = RecordContent()
     var placeholderText = "기록을 작성해보세요!"
     
     @IBOutlet weak var recordInputView: UITextView!
@@ -34,9 +34,9 @@ class AddRecordViewController: UIViewController {
     }
     
     @IBAction func saveRecord(_ sender: UIButton) {
-        self.inputData.date = recordDatePicker.date
-        self.inputData.text = recordInputView.text
-        if !inputData.text.isEmpty, recordInputView.textColor == .label {
+        self.newRecordContent.date = recordDatePicker.date
+        self.newRecordContent.text = recordInputView.text
+        if !newRecordContent.text.isEmpty, recordInputView.textColor == .label {
             self.performSegue(withIdentifier: "toDetailViewFromAddView", sender: self)
         } else {
             let alert = UIAlertController(title: "알림", message: "내용을 입력해주세요!", preferredStyle: .alert)

@@ -10,8 +10,8 @@ import UIKit
 
 class DetailRecViewController: UIViewController {
 
-    var selectedKey = ""
-    var selectedBookRecords: [(Date, String)] = []
+    var selectedISBN = ""
+    var selectedBookRecords: [RecordContent] = []
     @IBOutlet var bookInfoView: SelectView!
     @IBOutlet weak var bookRecordsView: UITableView!
     
@@ -32,19 +32,17 @@ class DetailRecViewController: UIViewController {
     
     func presentData() {
         // book data 가져오기
-        guard let selectedItem = CommonData.shared.records[selectedKey] else {
-            return
-        }
-        bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.bookData.image)
-        bookInfoView.bookTitle.text = selectedItem.bookData.title
-        bookInfoView.bookAuthor.text = selectedItem.bookData.author
-        bookInfoView.bookDate.text = "출간일: " + selectedItem.bookData.pubdate
-        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.bookData.publisher
+        guard let selectedItem = DatabaseManager.shared.findBookInfo(isbn: selectedISBN) else { return }
+        bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.image)
+        bookInfoView.bookTitle.text = selectedItem.title
+        bookInfoView.bookAuthor.text = selectedItem.author
+        bookInfoView.bookDate.text = "출간일: " + selectedItem.pubdate
+        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.publisher
         
     }
     
     func refreshRecordList() {
-        selectedBookRecords = CommonData.shared.sortRecords(isbn: selectedKey).filter({ $0.1 != "" })
+        selectedBookRecords = DatabaseManager.shared.sortRecords(isbn: selectedISBN).filter{ $0.text != "" }
         self.bookRecordsView.reloadData()
     }
     
@@ -78,7 +76,7 @@ class DetailRecViewController: UIViewController {
     
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
         let start = sender.source as! AddRecordViewController
-        CommonData.shared.records[selectedKey]?.contents.updateValue(start.inputData.text, forKey: start.inputData.date)
+        DatabaseManager.shared.addRecordToDB(start.newRecordContent, nil)
         self.bookRecordsView.reloadData()
     }
 }
@@ -93,7 +91,7 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.contentLabel.text = selectedBookRecords[indexPath.row].1
+        cell.contentLabel.text = selectedBookRecords[indexPath.row].text
         
         return cell
     }
@@ -104,8 +102,9 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let willDeleteKey = selectedBookRecords[indexPath.row].0
-            CommonData.shared.records[selectedKey]?.contents.removeValue(forKey: willDeleteKey)
+            // TODO: record가 하나만 남아있을 경우 삭제 방법 고려
+            let willDelete = selectedBookRecords[indexPath.row]
+            DatabaseManager.shared.deleteRecord([willDelete])
         }
         self.refreshRecordList()
     }

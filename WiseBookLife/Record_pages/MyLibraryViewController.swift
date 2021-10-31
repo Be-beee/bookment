@@ -13,7 +13,7 @@ class MyLibraryViewController: UIViewController {
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
     
-    var libraryListData: [BookItem] = []
+    var myBooks: [BookInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class MyLibraryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadEmptyView()
         setLibraryListData()
+        reloadEmptyView()
     }
     
     func settingEmptyRecordView() {
@@ -31,11 +31,11 @@ class MyLibraryViewController: UIViewController {
     }
     
     func setLibraryListData() {
-        libraryListData = CommonData.shared.createMyLibraryList()
+        myBooks = getThumbnailList()
     }
     
     func reloadEmptyView() {
-        if CommonData.shared.records.count > 0 {
+        if myBooks.count > 0 {
             emptyRecordView.isHidden = true
         } else {
             emptyRecordView.isHidden = false
@@ -47,9 +47,10 @@ class MyLibraryViewController: UIViewController {
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
-                let willRemoveDatakey = libraryListData[selected[0].item].isbn
-                CommonData.shared.records.removeValue(forKey: willRemoveDatakey)
-//                saveData(data: self.records, at: "records")
+                // TODO: record와 bookinfo list 둘 다 삭제되도록
+                let willDeleteISBN = myBooks[selected[0].item].isbn
+                let deleteItems = DatabaseManager.shared.loadRecords().filter { $0.isbn == willDeleteISBN }
+                DatabaseManager.shared.deleteRecord(Array(deleteItems))
             }
             self.recordView.reloadData()
         }
@@ -61,22 +62,8 @@ class MyLibraryViewController: UIViewController {
         guard let addVC = sender.source as? AddBookViewController else {
             return
         }
-        
-        let recordKey = addVC.selectedBookItem.isbn
-        if let prevData = CommonData.shared.records[recordKey] {
-            var nextData = prevData
-            nextData.contents.updateValue(addVC.contents, forKey: addVC.recordDate)
-            CommonData.shared.records.updateValue(nextData, forKey: recordKey)
-            // 기존 책 데이터 컨테이너에 새로운 기록을 추가한다.
-        } else {
-            let newData = Record(bookData: addVC.selectedBookItem, contents: [addVC.recordDate: addVC.contents])
-            CommonData.shared.records.updateValue(newData, forKey: recordKey)
-            // 새로운 책 데이터 컨테이너와 함께 새로운 기록을 추가한다.
-        }
-        
-//        saveData(data: self.records, at: "records")
-        recordView.reloadData()
-        reloadEmptyView()
+        DatabaseManager.shared.addRecordToDB(addVC.newRecordContent, addVC.selectedBookItem)
+        self.refreshLibraryView()
     }
 }
 
@@ -99,13 +86,13 @@ extension MyLibraryViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return libraryListData.count
+        return myBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-        cell.bookImage.image = urlToImage(from: libraryListData[indexPath.row].image)
+        cell.bookImage.image = urlToImage(from: myBooks[indexPath.row].image)
         return cell
     }
     
@@ -113,7 +100,7 @@ extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as! DetailRecViewController
         
-        detailRecVC.selectedKey = libraryListData[indexPath.row].isbn
+        detailRecVC.selectedISBN = myBooks[indexPath.row].isbn
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     
@@ -121,4 +108,27 @@ extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDat
         return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
+}
+
+extension MyLibraryViewController {
+    // MARK: Refresh View
+    func refreshLibraryView() {
+        recordView.reloadData()
+        reloadEmptyView()
+    }
+}
+
+extension MyLibraryViewController {
+    // MARK: DatabaseManager
+    
+    func getThumbnailList() -> [BookInfo] {
+        // 아카이빙 되어 있는 책 정보
+        let loaded = DatabaseManager.shared.loadRecords().distinct(by: ["isbn"]).map{ $0.isbn }
+        var list: [BookInfo] = []
+        for isbn_item in loaded {
+            guard let bookinfo = DatabaseManager.shared.findBookInfo(isbn: isbn_item) else { continue }
+            list.append(bookinfo)
+        }
+        return list
+    }
 }

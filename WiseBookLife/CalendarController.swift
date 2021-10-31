@@ -13,7 +13,7 @@ class CalendarController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     let datePicker = UIDatePicker()
     
-    var calData: [String: [BookItem]] = [:]
+    var calData: [String: [BookInfo]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class CalendarController: UIViewController {
     }
     
     func setCalendarData() {
-        calData = CommonData.shared.createCalendarModel()
+        calData = recordToCaledar()
     }
     
     func settingCalendarHeader() {
@@ -93,7 +93,9 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
 
         bookListVC.currentDate = key
         if let bookdatas = calData[key] {
-            bookListVC.booklist = bookdatas
+            // TODO: 수정 필요
+//            bookListVC.booklist = bookdatas
+            bookListVC.booklist = []
         }
         let withNavVC = UINavigationController(rootViewController: bookListVC)
         withNavVC.modalPresentationStyle = .fullScreen
@@ -106,5 +108,29 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         }
         cell.imageView.contentMode = .scaleAspectFit
         return cell
+    }
+}
+
+extension CalendarController {
+    // MARK: - DatabaseManager
+    
+    func recordToCaledar() -> [String: [BookInfo]] { // date_string: [BookInfo]
+        let loaded = DatabaseManager.shared.loadRecords()
+        var calendarData: [String: [BookInfo]] = [:]
+        for item in loaded {
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd"
+            let date_str = df.string(from: item.date)
+            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn) else { continue }
+            
+            if var value = calendarData[date_str] {
+                value.append(newBookItem)
+                calendarData.updateValue(value, forKey: date_str)
+            } else {
+                calendarData.updateValue([newBookItem], forKey: date_str)
+            }
+        }
+        
+        return calendarData
     }
 }

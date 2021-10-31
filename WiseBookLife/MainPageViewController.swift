@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainPageViewController: UIViewController {
     @IBOutlet weak var recordContainerView: UIView!
@@ -23,6 +24,7 @@ class MainPageViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
         settingInitialView()
         settingMenuGesture()
+        print(Realm.Configuration.defaultConfiguration.fileURL!) // realm file path
     }
     
     func settingInitialView() {

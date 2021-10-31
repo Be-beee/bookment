@@ -136,7 +136,8 @@ extension MainSearchResultViewController: UITableViewDataSource {
     
     @objc func addToLibrary(_ sender: UIButton!) {
         let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
-        addLibraryVC.selectedBookItem = self.resultList[sender.tag].contents
+        let selectedInResult = self.resultList[sender.tag].contents
+        addLibraryVC.selectedBookItem = BookInfo(title: selectedInResult.title, link: selectedInResult.link, image: selectedInResult.image, author: selectedInResult.author, price: selectedInResult.price, publisher: selectedInResult.publisher, isbn: selectedInResult.isbn, descriptionBook: selectedInResult.description, pubdate: selectedInResult.pubdate)
         
         self.present(addLibraryVC, animated: true, completion: nil)
     }

@@ -42,6 +42,19 @@ class BookInfo: Object, Codable {
     @objc dynamic var descriptionBook: String = ""
     @objc dynamic var pubdate: String = ""
     
+    convenience init(title: String, link: String, image: String, author: String, price: String, publisher: String, isbn: String, descriptionBook: String, pubdate: String) {
+        self.init()
+        self.title = title
+        self.link = link
+        self.image = image
+        self.author = author
+        self.price = price
+        self.publisher = publisher
+        self.isbn = isbn
+        self.descriptionBook = descriptionBook
+        self.pubdate = pubdate
+    }
+    
     func modifySearchedData() {
         let title = self.title.removeHTMLTag()
         let author = self.author.removeHTMLTag()
@@ -55,6 +68,25 @@ class RecordContent: Object {
     @objc dynamic var isbn: String = ""
     @objc dynamic var date: Date = Date()
     @objc dynamic var text: String = ""
+    
+    convenience init(isbn: String, date: Date, text: String) {
+        self.init()
+        
+        self.isbn = isbn
+        self.date = date
+        self.text = text
+    }
+}
+
+class HeartContent: Object {
+    @objc dynamic var isbn: String = ""
+    @objc dynamic var date: Date = Date()
+    
+    convenience init(isbn: String, date: Date) {
+        self.init()
+        self.isbn = isbn
+        self.date = date
+    }
 }
 
 

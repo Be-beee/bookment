@@ -9,10 +9,9 @@
 import UIKit
 
 class AddBookViewController: UIViewController {
-
-    var recordDate = Date()
-    var selectedBookItem = BookItem()
-    var contents = ""
+    
+    var selectedBookItem = BookInfo()
+    var newRecordContent = RecordContent()
     
     var placeholderText = "기록을 작성해보세요! (선택)"
     
@@ -49,9 +48,9 @@ class AddBookViewController: UIViewController {
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {
-        recordDate = readDatePicker.date
+        newRecordContent.date = readDatePicker.date
         if !recordContents.text.isEmpty, recordContents.textColor == .label {
-            contents = recordContents.text
+            newRecordContent.text = recordContents.text
         }
         self.performSegue(withIdentifier: "toRecordView", sender: self)
     }
