@@ -14,7 +14,7 @@ class HeartListViewController: UIViewController {
     @IBOutlet var heartView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
-    var heartList: [BookItem] = []
+    var heartList: [HeartContent] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
@@ -46,17 +46,16 @@ class HeartListViewController: UIViewController {
 //        sender.isSelected = !sender.isSelected
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            CommonData.shared.heartDic.removeValue(forKey: heartList[sender.tag].isbn)
-//            saveData(data: heartDic, at: "heart")
+            guard let willDeleteHeartContent = DatabaseManager.shared.findHeartContent(heartList[sender.tag].isbn) else { return }
+            let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[sender.tag].isbn)
+            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo)
             refreshData()
         }
     }
     
     func refreshData() {
-        heartList = []
-        for (_, value) in CommonData.shared.heartDic {
-            heartList.append(value)
-        }
+        let loaded = DatabaseManager.shared.loadHeartContent()
+        heartList = Array(loaded)
         // title sorting 생략됨
         heartView.reloadData()
         reloadEmptyView()
@@ -74,16 +73,17 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = heartView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as! CommonCell
         
-        cell.bookCover.image = urlToImage(from: heartList[indexPath.row].image)
+        let loadedBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)!
+        cell.bookCover.image = urlToImage(from: loadedBookInfo.image)
         
-        if heartList[indexPath.row].title == "" {
+        if loadedBookInfo.title == "" {
             cell.titleLabel.text = "[NO TITLE]"
             cell.titleLabel.textColor = .lightGray
         } else {
-            cell.titleLabel.text = heartList[indexPath.row].title
+            cell.titleLabel.text = loadedBookInfo.title
         }
         
-        cell.authorLabel.text = heartList[indexPath.row].author
+        cell.authorLabel.text = loadedBookInfo.author
         
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
@@ -97,16 +97,18 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func addToLibrary(_ sender: UIButton!) {
         let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
-        addLibraryVC.selectedBookItem = self.heartList[sender.tag]
+        let bookInfo = DatabaseManager.shared.findBookInfo(isbn: self.heartList[sender.tag].isbn)!
+        addLibraryVC.selectedBookItem = bookInfo
         
         self.present(addLibraryVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
-        detailVC.bookData = heartList[indexPath.row]
+        guard let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn) else { return }
+        detailVC.bookData = fromHeartListISBN
         detailVC.modalPresentationStyle = .fullScreen
-        if CommonData.shared.heartDic[heartList[indexPath.row].isbn] != nil {
+        if let _ = DatabaseManager.shared.findHeartContent(heartList[indexPath.row].isbn) {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false

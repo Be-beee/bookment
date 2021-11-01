@@ -11,7 +11,7 @@ import SafariServices
 
 class BookDetailViewController: UIViewController {
 
-    var bookData = BookItem()
+    var bookData = BookInfo()
     var isHeartBtnSelected = false
     
     @IBOutlet var bookCover: UIImageView!
@@ -45,10 +45,12 @@ class BookDetailViewController: UIViewController {
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if isHeartBtnSelected {
-            CommonData.shared.heartDic.removeValue(forKey: bookData.isbn)
+            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(bookData.isbn) else { return }
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookData)
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            CommonData.shared.heartDic.updateValue(bookData, forKey: bookData.isbn)
+            let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
+            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookData)
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         isHeartBtnSelected.toggle()

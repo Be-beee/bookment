@@ -65,7 +65,7 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if CommonData.shared.heartDic[booklist[indexPath.row].isbn] != nil {
+        if let _ = DatabaseManager.shared.findHeartContent(booklist[indexPath.row].isbn) {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -75,14 +75,17 @@ extension CalendarListViewController: UITableViewDataSource {
     }
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
+        let isbnKey = booklist[sender.tag].isbn
+        let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: isbnKey)
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            CommonData.shared.heartDic.removeValue(forKey: booklist[sender.tag].isbn)
+            guard let willDeleteHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) else { return }
+            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            CommonData.shared.heartDic.updateValue(booklist[sender.tag], forKey: booklist[sender.tag].isbn)
+            let newHeartContent = HeartContent(isbn: isbnKey, date: Date())
+            DatabaseManager.shared.addHeartContentToDB(newHeartContent, withBookInfo)
         }
-//        saveData(data: heartDic, at: "heart")
     }
     
     

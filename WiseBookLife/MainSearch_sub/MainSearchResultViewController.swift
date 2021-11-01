@@ -56,12 +56,16 @@ class MainSearchResultViewController: UIViewController {
     }
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
+        let isbnKey = resultList[sender.tag].contents.isbn
+        let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: isbnKey)
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            CommonData.shared.heartDic.removeValue(forKey: resultList[sender.tag].contents.isbn)
+            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) else { return }
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, withBookInfo)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            CommonData.shared.heartDic.updateValue(resultList[sender.tag].contents, forKey: resultList[sender.tag].contents.isbn)
+            let newHeartContent = HeartContent(isbn: isbnKey, date: Date())
+            DatabaseManager.shared.addHeartContentToDB(newHeartContent, withBookInfo)
         }
 //        saveData(data: heartDic, at: "heart")
     }
@@ -122,7 +126,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if CommonData.shared.heartDic[resultList[indexPath.row].contents.isbn] != nil {
+        if let _ = DatabaseManager.shared.findBookInfo(isbn: resultList[indexPath.row].contents.isbn) {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -145,9 +149,10 @@ extension MainSearchResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         
+        // MARK: - BookItem <-> BookInfo
         detailVC.bookData = resultList[indexPath.row].contents
         detailVC.modalPresentationStyle = .fullScreen
-        if CommonData.shared.heartDic[resultList[indexPath.row].contents.isbn] != nil {
+        if let _ = DatabaseManager.shared.findBookInfo(isbn: resultList[indexPath.row].contents.isbn) {
             detailVC.isHeartBtnSelected = true
         } else {
             detailVC.isHeartBtnSelected = false
