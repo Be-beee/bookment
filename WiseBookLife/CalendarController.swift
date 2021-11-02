@@ -93,8 +93,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
 
         bookListVC.currentDate = key
         if let bookdatas = calData[key] {
-            // TODO: 수정 필요
-//            bookListVC.booklist = bookdatas
+            bookListVC.booklist = bookdatas
             bookListVC.booklist = []
         }
         let withNavVC = UINavigationController(rootViewController: bookListVC)

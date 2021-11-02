@@ -141,7 +141,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
     @objc func addToLibrary(_ sender: UIButton!) {
         let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
         let selectedInResult = self.resultList[sender.tag].contents
-        addLibraryVC.selectedBookItem = BookInfo(title: selectedInResult.title, link: selectedInResult.link, image: selectedInResult.image, author: selectedInResult.author, price: selectedInResult.price, publisher: selectedInResult.publisher, isbn: selectedInResult.isbn, descriptionBook: selectedInResult.description, pubdate: selectedInResult.pubdate)
+        addLibraryVC.selectedBookItem = selectedInResult.changeToBookInfo()
         
         self.present(addLibraryVC, animated: true, completion: nil)
     }
@@ -150,7 +150,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
         
         // MARK: - BookItem <-> BookInfo
-        detailVC.bookData = resultList[indexPath.row].contents
+        detailVC.bookData = resultList[indexPath.row].contents.changeToBookInfo()
         detailVC.modalPresentationStyle = .fullScreen
         if let _ = DatabaseManager.shared.findBookInfo(isbn: resultList[indexPath.row].contents.isbn) {
             detailVC.isHeartBtnSelected = true

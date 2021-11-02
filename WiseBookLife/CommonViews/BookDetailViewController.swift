@@ -61,7 +61,7 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func addToMyLibrary(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
-        addVC.selectedBookItem = BookInfo(title: self.bookData.title, link: self.bookData.link, image: self.bookData.image, author: self.bookData.author, price: self.bookData.price, publisher: self.bookData.publisher, isbn: self.bookData.isbn, descriptionBook: self.bookData.description, pubdate: self.bookData.pubdate)
+        addVC.selectedBookItem = self.bookData
         self.present(addVC, animated: true, completion: nil)
     }
     

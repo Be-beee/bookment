@@ -89,7 +89,7 @@ class SearchBook {
                 let user = try decoder.decode(ResultModel.self, from: data)
                 var datas: [BookItem] = []
                 for item in user.items {
-                    let newItem = BookItem(title: item.title.removeHTMLTag(), link: item.link, image: item.image, author: item.author.removeHTMLTag(), price: item.price, discount: item.discount, publisher: item.publisher, isbn: item.isbn, description: item.description.removeHTMLTag(), pubdate: item.pubdate)
+                    let newItem = BookItem(title: item.title.removeHTMLTag(), link: item.link, image: item.image, author: item.author.removeHTMLTag(), price: item.price, publisher: item.publisher, isbn: item.isbn, description: item.description.removeHTMLTag(), pubdate: item.pubdate)
                     datas.append(newItem)
                 }
                 self.results = datas

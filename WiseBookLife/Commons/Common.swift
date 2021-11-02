@@ -15,7 +15,6 @@ struct BookItem: Codable, Hashable {
     var image: String = ""
     var author: String = ""
     var price: String = ""
-    var discount: String = ""
     var publisher: String = ""
     var isbn: String = ""
     var description: String = ""
@@ -28,6 +27,10 @@ struct BookItem: Codable, Hashable {
         self.title = title
         self.author = author
     }
+    
+    func changeToBookInfo() -> BookInfo {
+        return BookInfo(title: self.title, link: self.link, image: self.image, author: self.author, price: self.price, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
+    }
 }
 
 class BookInfo: Object, Codable {
@@ -36,13 +39,12 @@ class BookInfo: Object, Codable {
     @objc dynamic var image: String = ""
     @objc dynamic var author: String = ""
     @objc dynamic var price: String = ""
-//    @objc dynamic var discount: String = ""
     @objc dynamic var publisher: String = ""
     @objc dynamic var isbn: String = ""
-    @objc dynamic var descriptionBook: String = ""
+    @objc dynamic var descriptionText: String = ""
     @objc dynamic var pubdate: String = ""
     
-    convenience init(title: String, link: String, image: String, author: String, price: String, publisher: String, isbn: String, descriptionBook: String, pubdate: String) {
+    convenience init(title: String, link: String, image: String, author: String, price: String, publisher: String, isbn: String, descriptionText: String, pubdate: String) {
         self.init()
         self.title = title
         self.link = link
@@ -51,7 +53,7 @@ class BookInfo: Object, Codable {
         self.price = price
         self.publisher = publisher
         self.isbn = isbn
-        self.descriptionBook = descriptionBook
+        self.descriptionText = descriptionText
         self.pubdate = pubdate
     }
     
