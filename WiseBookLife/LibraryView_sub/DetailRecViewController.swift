@@ -76,6 +76,7 @@ class DetailRecViewController: UIViewController {
     
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
         let start = sender.source as! AddRecordViewController
+        start.newRecordContent.isbn = selectedISBN
         DatabaseManager.shared.addRecordToDB(start.newRecordContent, nil)
         self.bookRecordsView.reloadData()
     }

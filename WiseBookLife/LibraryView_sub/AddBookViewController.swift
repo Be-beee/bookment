@@ -10,7 +10,7 @@ import UIKit
 
 class AddBookViewController: UIViewController {
     
-    var selectedBookItem = BookInfo()
+    var selectedBookInfo = BookInfo()
     var newRecordContent = RecordContent()
     
     var placeholderText = "기록을 작성해보세요! (선택)"
@@ -29,12 +29,12 @@ class AddBookViewController: UIViewController {
     }
     
     func presentSelectView() {
-        selectedBookView.bookCoverView.image = urlToImage(from: selectedBookItem.image)
-        selectedBookView.bookTitle.text = selectedBookItem.title
-        selectedBookView.bookAuthor.text =  selectedBookItem.author
-        selectedBookView.bookPublisher.text = "출판사: " + selectedBookItem.publisher
+        selectedBookView.bookCoverView.image = urlToImage(from: selectedBookInfo.image)
+        selectedBookView.bookTitle.text = selectedBookInfo.title
+        selectedBookView.bookAuthor.text =  selectedBookInfo.author
+        selectedBookView.bookPublisher.text = "출판사: " + selectedBookInfo.publisher
         
-        selectedBookView.bookDate.text = "출간일: " + selectedBookItem.pubdate
+        selectedBookView.bookDate.text = "출간일: " + selectedBookInfo.pubdate
     }
     
     func settingTextView() {
@@ -48,6 +48,7 @@ class AddBookViewController: UIViewController {
     
     // MARK:- Action Methods
     @IBAction func saveRecords(_ sender: UIButton) {
+        newRecordContent.isbn = selectedBookInfo.isbn
         newRecordContent.date = readDatePicker.date
         if !recordContents.text.isEmpty, recordContents.textColor == .label {
             newRecordContent.text = recordContents.text

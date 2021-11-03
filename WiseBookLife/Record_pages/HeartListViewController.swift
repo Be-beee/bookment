@@ -98,7 +98,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func addToLibrary(_ sender: UIButton!) {
         let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
         let bookInfo = DatabaseManager.shared.findBookInfo(isbn: self.heartList[sender.tag].isbn)!
-        addLibraryVC.selectedBookItem = bookInfo
+        addLibraryVC.selectedBookInfo = bookInfo
         
         self.present(addLibraryVC, animated: true, completion: nil)
     }
