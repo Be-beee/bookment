@@ -57,7 +57,7 @@ class MainSearchResultViewController: UIViewController {
     
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         let isbnKey = resultList[sender.tag].contents.isbn
-        let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: isbnKey)
+        let withBookInfo = resultList[sender.tag].contents.changeToBookInfo()
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
             guard let foundHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) else { return }
@@ -126,7 +126,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         cell.heartBtn.tag = indexPath.row
         cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
         
-        if let _ = DatabaseManager.shared.findBookInfo(isbn: resultList[indexPath.row].contents.isbn) {
+        if let _ = DatabaseManager.shared.findHeartContent(resultList[indexPath.row].contents.isbn) {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)

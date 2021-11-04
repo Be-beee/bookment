@@ -211,7 +211,7 @@ extension DatabaseManager {
         let foundRecordContents = DatabaseManager.shared.findRecordContents(heart.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count > 0, let book = book {
+        if Array(foundRecordContents).count == 0, let book = book {
             bookDeleteResult = DatabaseManager.shared.deleteBookInfo([book])
         }
         let heartDeleteResult = DatabaseManager.shared.deleteHeartContent([heart])
