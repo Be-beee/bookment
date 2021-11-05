@@ -183,7 +183,7 @@ extension DatabaseManager {
         let foundRecordContents = DatabaseManager.shared.findRecordContents(record.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count + heartContentCount > 1, let book = book {
+        if Array(foundRecordContents).count + heartContentCount == 1, let book = book {
             bookDeleteResult = DatabaseManager.shared.deleteBookInfo([book])
         }
         let recordDeleteResult = DatabaseManager.shared.deleteRecord([record])

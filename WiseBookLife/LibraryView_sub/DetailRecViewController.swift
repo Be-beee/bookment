@@ -11,6 +11,7 @@ import UIKit
 class DetailRecViewController: UIViewController {
 
     var selectedISBN = ""
+    var cachedBookInfo = BookInfo()
     var selectedBookRecords: [RecordContent] = []
     @IBOutlet var bookInfoView: SelectView!
     @IBOutlet weak var bookRecordsView: UITableView!
@@ -39,6 +40,7 @@ class DetailRecViewController: UIViewController {
         bookInfoView.bookDate.text = "출간일: " + selectedItem.pubdate
         bookInfoView.bookPublisher.text = "출판사: " + selectedItem.publisher
         
+        self.cachedBookInfo = BookInfo(title: selectedItem.title, link: selectedItem.link, image: selectedItem.image, author: selectedItem.author, price: selectedItem.price, publisher: selectedItem.publisher, isbn: selectedItem.isbn, descriptionText: selectedItem.descriptionText, pubdate: selectedItem.pubdate)
     }
     
     func refreshRecordList() {
@@ -77,7 +79,11 @@ class DetailRecViewController: UIViewController {
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
         let start = sender.source as! AddRecordViewController
         start.newRecordContent.isbn = selectedISBN
-        DatabaseManager.shared.addRecordToDB(start.newRecordContent, nil)
+        if let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: selectedISBN) {
+            DatabaseManager.shared.addRecordToDB(start.newRecordContent, withBookInfo)
+        } else {
+            DatabaseManager.shared.addRecordToDB(start.newRecordContent, cachedBookInfo)
+        }
         self.bookRecordsView.reloadData()
     }
 }
@@ -103,9 +109,9 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: record가 하나만 남아있을 경우 삭제 방법 고려
             let willDelete = selectedBookRecords[indexPath.row]
-            DatabaseManager.shared.deleteRecord([willDelete])
+            let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: selectedISBN)
+            DatabaseManager.shared.deleteRecordToDB(willDelete, withBookInfo)
         }
         self.refreshRecordList()
     }
