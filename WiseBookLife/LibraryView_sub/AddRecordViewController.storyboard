@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,54 +14,9 @@
             <objects>
                 <viewController storyboardIdentifier="AddRecordViewController" modalPresentationStyle="fullScreen" id="lSn-vn-0Fv" customClass="AddRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gua-HX-lHH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="930"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIM-hY-E3h">
-                                <rect key="frame" x="0.0" y="104" width="414" height="826"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ua0-0x-JbR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="520"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-g3-PAx">
-                                                <rect key="frame" x="20" y="50" width="374" height="450"/>
-                                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="450" id="3Zu-ya-KU5"/>
-                                                </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="aqe-mY-nUq">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="40"/>
-                                                <color key="tintColor" red="1" green="0.40784313725490196" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="DEe-zC-fcs"/>
-                                                </constraints>
-                                                <locale key="locale" localeIdentifier="ko_KR"/>
-                                            </datePicker>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="aqe-mY-nUq" firstAttribute="top" secondItem="Ua0-0x-JbR" secondAttribute="top" id="2jv-4x-GfV"/>
-                                            <constraint firstAttribute="trailing" secondItem="aqe-mY-nUq" secondAttribute="trailing" constant="20" symbolic="YES" id="7tp-T1-Nxu"/>
-                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="top" secondItem="aqe-mY-nUq" secondAttribute="bottom" constant="10" id="B0s-rm-ODm"/>
-                                            <constraint firstItem="aqe-mY-nUq" firstAttribute="centerX" secondItem="Ua0-0x-JbR" secondAttribute="centerX" id="Kkz-ad-Jde"/>
-                                            <constraint firstAttribute="trailing" secondItem="dZT-g3-PAx" secondAttribute="trailing" constant="20" id="cuv-Nb-5hz"/>
-                                            <constraint firstAttribute="bottom" secondItem="dZT-g3-PAx" secondAttribute="bottom" constant="20" id="rjb-Ml-mgl"/>
-                                            <constraint firstItem="dZT-g3-PAx" firstAttribute="leading" secondItem="Ua0-0x-JbR" secondAttribute="leading" constant="20" id="zj2-Sd-Vqe"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ua0-0x-JbR" secondAttribute="trailing" id="4Re-HS-bKk"/>
-                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="top" secondItem="bIM-hY-E3h" secondAttribute="top" id="MVG-jT-OcC"/>
-                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="leading" secondItem="bIM-hY-E3h" secondAttribute="leading" id="ShG-6E-8V1"/>
-                                    <constraint firstItem="Ua0-0x-JbR" firstAttribute="width" secondItem="bIM-hY-E3h" secondAttribute="width" id="wIQ-8E-D9e"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ua0-0x-JbR" secondAttribute="bottom" id="xXS-GX-nRL"/>
-                                </constraints>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Fw-ZWd">
                                 <rect key="frame" x="371" y="61" width="23" height="21.5"/>
                                 <constraints>
@@ -93,26 +48,44 @@
                                     <action selector="dismissThisView:" destination="lSn-vn-0Fv" eventType="touchUpInside" id="hCj-RE-yPG"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="IXJ-5J-1ai">
+                                <rect key="frame" x="20" y="104" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="G9L-I4-VF7"/>
+                                </constraints>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
+                            </datePicker>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMQ-Ln-qjq">
+                                <rect key="frame" x="20" y="154" width="374" height="688"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XAp-KI-DlD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="bIM-hY-E3h" secondAttribute="trailing" id="3Na-aJ-wvv"/>
                             <constraint firstItem="9Da-r2-pQq" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="Asu-2A-ydU"/>
-                            <constraint firstAttribute="bottom" secondItem="bIM-hY-E3h" secondAttribute="bottom" id="T9v-EL-19T"/>
+                            <constraint firstItem="gMQ-Ln-qjq" firstAttribute="top" secondItem="IXJ-5J-1ai" secondAttribute="bottom" constant="10" id="O78-MS-DNb"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="bottom" secondItem="gMQ-Ln-qjq" secondAttribute="bottom" constant="20" id="UIq-ui-UK0"/>
+                            <constraint firstItem="IXJ-5J-1ai" firstAttribute="leading" secondItem="Gua-HX-lHH" secondAttribute="leading" constant="20" id="V7j-W3-zYc"/>
+                            <constraint firstItem="IXJ-5J-1ai" firstAttribute="top" secondItem="wNn-Fw-ZWd" secondAttribute="bottom" constant="20" id="WlU-Xn-Z16"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="gMQ-Ln-qjq" secondAttribute="trailing" constant="20" id="ZuI-qp-F0i"/>
                             <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="wNn-Fw-ZWd" secondAttribute="trailing" constant="20" id="bbB-lr-yF0"/>
-                            <constraint firstItem="bIM-hY-E3h" firstAttribute="top" secondItem="wNn-Fw-ZWd" secondAttribute="bottom" constant="20" id="gf4-Ks-D1c"/>
                             <constraint firstItem="wNn-Fw-ZWd" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="gpz-Lq-cRI"/>
                             <constraint firstItem="a8b-TT-Kpc" firstAttribute="top" secondItem="XAp-KI-DlD" secondAttribute="top" constant="15" id="hgo-7K-kOd"/>
                             <constraint firstItem="a8b-TT-Kpc" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="hnI-GB-JSq"/>
                             <constraint firstItem="9Da-r2-pQq" firstAttribute="centerX" secondItem="Gua-HX-lHH" secondAttribute="centerX" id="hvi-e0-COr"/>
-                            <constraint firstItem="bIM-hY-E3h" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" id="iTo-IN-1jw"/>
+                            <constraint firstItem="gMQ-Ln-qjq" firstAttribute="leading" secondItem="XAp-KI-DlD" secondAttribute="leading" constant="20" id="ncg-Yt-aQ5"/>
+                            <constraint firstItem="XAp-KI-DlD" firstAttribute="trailing" secondItem="IXJ-5J-1ai" secondAttribute="trailing" constant="20" id="vYf-sv-5lk"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="930"/>
                     <connections>
-                        <outlet property="recordDatePicker" destination="aqe-mY-nUq" id="xIR-4h-azt"/>
-                        <outlet property="recordInputView" destination="dZT-g3-PAx" id="zXy-aB-XSz"/>
+                        <outlet property="recordDatePicker" destination="IXJ-5J-1ai" id="exk-tu-g5i"/>
+                        <outlet property="recordInputView" destination="gMQ-Ln-qjq" id="cPF-E5-lIr"/>
+                        <outlet property="textViewBottomConstraint" destination="UIq-ui-UK0" id="fHU-al-Q2y"/>
                         <segue destination="TH5-bK-OXL" kind="unwind" identifier="toDetailViewFromAddView" unwindAction="saveRecordsToLibraryWithSender:" id="Ajh-aT-0oM"/>
                     </connections>
                 </viewController>
@@ -130,9 +103,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
