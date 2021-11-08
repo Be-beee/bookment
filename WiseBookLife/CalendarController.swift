@@ -94,7 +94,6 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         bookListVC.currentDate = key
         if let bookdatas = calData[key] {
             bookListVC.booklist = bookdatas
-            bookListVC.booklist = []
         }
         let withNavVC = UINavigationController(rootViewController: bookListVC)
         withNavVC.modalPresentationStyle = .fullScreen
