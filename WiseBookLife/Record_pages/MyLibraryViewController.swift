@@ -23,7 +23,7 @@ class MyLibraryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLibraryListData()
-        reloadEmptyView()
+        refreshLibraryView()
     }
     
     func settingEmptyRecordView() {
@@ -47,7 +47,6 @@ class MyLibraryViewController: UIViewController {
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
         if let selected = self.recordView.indexPathsForSelectedItems {
             if selected.count != 0 {
-                // TODO: record와 bookinfo list 둘 다 삭제되도록
                 let willDeleteISBN = myBooks[selected[0].item].isbn
                 let deleteItems = DatabaseManager.shared.loadRecords().filter { $0.isbn == willDeleteISBN }
                 DatabaseManager.shared.deleteRecord(Array(deleteItems))
