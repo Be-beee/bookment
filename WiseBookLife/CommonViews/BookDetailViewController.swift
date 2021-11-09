@@ -40,7 +40,7 @@ class BookDetailViewController: UIViewController {
         publisherLabel.text = "출판사: " + bookData.publisher
         prepriceLabel.text = "가격: " + bookData.price
         
-        bookIntroduction.text = bookData.description
+        bookIntroduction.text = bookData.descriptionText
     }
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
