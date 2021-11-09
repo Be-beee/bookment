@@ -122,6 +122,7 @@ extension CalendarController {
             guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn) else { continue }
             
             if var value = calendarData[date_str] {
+                if value.contains(where: { $0.isbn == newBookItem.isbn }) { continue }
                 value.append(newBookItem)
                 calendarData.updateValue(value, forKey: date_str)
             } else {
