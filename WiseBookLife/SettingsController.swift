@@ -23,7 +23,7 @@ class SettingsController: UIViewController {
     
     var infoSection: [String] = [
         "애플리케이션 정보",
-        "개발자 사이트로 이동"
+        "오픈소스 라이선스"
     ]
     
     @IBOutlet weak var settingsView: UITableView!
@@ -96,11 +96,7 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
                 
                 self.navigationController?.pushViewController(appInfoVC, animated: true)
             } else if indexPath.row == 1 {
-                let myLink = "https://github.com/Be-beee"
-                guard let detailURL = URL(string: myLink) else { return }
-                let detailSafariVC = SFSafariViewController(url: detailURL)
-                
-                self.present(detailSafariVC, animated: true, completion: nil)
+                print("LICENSE 화면으로 이동: FSCalendar, Realm 라이선스 표기")
             }
         }
     }
