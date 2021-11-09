@@ -44,7 +44,7 @@ class DetailRecViewController: UIViewController {
     }
     
     func refreshRecordList() {
-        selectedBookRecords = DatabaseManager.shared.sortRecords(isbn: selectedISBN).filter{ $0.text != "" }
+        selectedBookRecords = DatabaseManager.shared.sortRecords(isbn: selectedISBN)
         self.bookRecordsView.reloadData()
     }
     
@@ -97,8 +97,11 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = bookRecordsView.dequeueReusableCell(withIdentifier: "RecordContentCell", for: indexPath) as? RecordContentCell else {
             return UITableViewCell()
         }
+        let df = DateFormatter()
+        df.dateFormat = "yyyy.MM.dd."
         
         cell.contentLabel.text = selectedBookRecords[indexPath.row].text
+        cell.dateLabel.text = df.string(from: selectedBookRecords[indexPath.row].date)
         
         return cell
     }
@@ -119,4 +122,5 @@ extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
 
 class RecordContentCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 }
