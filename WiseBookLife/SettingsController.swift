@@ -96,7 +96,8 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
                 
                 self.navigationController?.pushViewController(appInfoVC, animated: true)
             } else if indexPath.row == 1 {
-                print("LICENSE 화면으로 이동: FSCalendar, Realm 라이선스 표기")
+                guard let showLicenseVC = UIStoryboard(name: "ShowLicenseController", bundle: nil).instantiateViewController(withIdentifier: "ShowLicenseController") as? ShowLicenseController else { return }
+                self.navigationController?.pushViewController(showLicenseVC, animated: true)
             }
         }
     }
