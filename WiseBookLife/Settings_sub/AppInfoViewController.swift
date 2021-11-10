@@ -15,9 +15,7 @@ class AppInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        // navigation bar bottom line 삭제하기
+        self.removeNavigationBarLine()
         self.navigationItem.title = "애플리케이션 정보"
         
         settingAppInfoView()
