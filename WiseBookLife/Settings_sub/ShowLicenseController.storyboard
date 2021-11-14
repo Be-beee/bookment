@@ -17,20 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="license info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCj-gi-kMq">
-                                <rect key="frame" x="164" y="437.5" width="86" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="License information" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C9N-7f-hR9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iCj-gi-kMq" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="CRQ-WX-tYQ"/>
-                            <constraint firstItem="iCj-gi-kMq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="r7e-bg-LTo"/>
+                            <constraint firstItem="C9N-7f-hR9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TWc-Qg-jBY"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="C9N-7f-hR9" secondAttribute="trailing" id="WFX-5B-0va"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="C9N-7f-hR9" secondAttribute="bottom" id="m7v-1U-urV"/>
+                            <constraint firstItem="C9N-7f-hR9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="s0H-ff-SBA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="licenseTextView" destination="C9N-7f-hR9" id="gHe-r1-IwV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,6 +44,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
