@@ -29,12 +29,7 @@ class AddBookViewController: UIViewController {
     }
     
     func presentSelectView() {
-        selectedBookView.bookCoverView.image = urlToImage(from: selectedBookInfo.image)
-        selectedBookView.bookTitle.text = selectedBookInfo.title
-        selectedBookView.bookAuthor.text =  selectedBookInfo.author
-        selectedBookView.bookPublisher.text = "출판사: " + selectedBookInfo.publisher
-        
-        selectedBookView.bookDate.text = "출간일: " + selectedBookInfo.pubdate
+        selectedBookView.configure(selectedBookInfo)
     }
     
     func settingTextView() {

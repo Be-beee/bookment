@@ -14,6 +14,7 @@
                 <outlet property="bookAuthor" destination="kjE-cb-1Md" id="bJJ-bO-JV1"/>
                 <outlet property="bookCoverView" destination="UbC-Tq-m6t" id="A4l-yu-8HT"/>
                 <outlet property="bookDate" destination="sa7-aK-0Xi" id="8MK-yh-UD9"/>
+                <outlet property="bookPrice" destination="0CK-Iu-TKV" id="YPj-Vw-ZJJ"/>
                 <outlet property="bookPublisher" destination="mqi-xs-VCf" id="nta-XV-2Az"/>
                 <outlet property="bookTitle" destination="4NM-3G-Yhf" id="rVQ-W7-Oqr"/>
             </connections>
@@ -54,20 +55,29 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CK-Iu-TKV">
+                    <rect key="frame" x="150" y="141" width="244" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="0CK-Iu-TKV" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="12J-Q5-j9g"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mqi-xs-VCf" secondAttribute="trailing" constant="20" id="5VU-TY-PpY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4NM-3G-Yhf" secondAttribute="trailing" constant="20" id="9Ko-aL-f5W"/>
                 <constraint firstItem="4NM-3G-Yhf" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="9RM-OA-fC8"/>
                 <constraint firstItem="sa7-aK-0Xi" firstAttribute="top" secondItem="kjE-cb-1Md" secondAttribute="bottom" constant="10" id="BjK-gF-zNl"/>
                 <constraint firstItem="UbC-Tq-m6t" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CrK-Em-Ubb"/>
                 <constraint firstItem="4NM-3G-Yhf" firstAttribute="top" secondItem="UbC-Tq-m6t" secondAttribute="top" constant="5" id="Cuu-Zq-wvZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0CK-Iu-TKV" secondAttribute="trailing" constant="20" id="TgX-0T-Pce"/>
                 <constraint firstItem="kjE-cb-1Md" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="VUK-8R-qeh"/>
                 <constraint firstItem="kjE-cb-1Md" firstAttribute="top" secondItem="4NM-3G-Yhf" secondAttribute="bottom" constant="15" id="XFM-Ux-lDA"/>
                 <constraint firstItem="mqi-xs-VCf" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="YXs-xv-Eqz"/>
                 <constraint firstItem="UbC-Tq-m6t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="cdK-nH-PbB"/>
+                <constraint firstItem="0CK-Iu-TKV" firstAttribute="top" secondItem="mqi-xs-VCf" secondAttribute="bottom" constant="10" id="eVT-Q8-0h8"/>
                 <constraint firstItem="mqi-xs-VCf" firstAttribute="top" secondItem="sa7-aK-0Xi" secondAttribute="bottom" constant="10" id="kLm-Wd-WOU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kjE-cb-1Md" secondAttribute="trailing" constant="20" id="moa-Rk-4Sv"/>
                 <constraint firstItem="sa7-aK-0Xi" firstAttribute="leading" secondItem="UbC-Tq-m6t" secondAttribute="trailing" constant="20" id="uiE-0T-RPT"/>

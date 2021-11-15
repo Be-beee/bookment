@@ -32,13 +32,8 @@ class DetailRecViewController: UIViewController {
     }
     
     func presentData() {
-        // book data 가져오기
         guard let selectedItem = DatabaseManager.shared.findBookInfo(isbn: selectedISBN) else { return }
-        bookInfoView.bookCoverView.image = urlToImage(from: selectedItem.image)
-        bookInfoView.bookTitle.text = selectedItem.title
-        bookInfoView.bookAuthor.text = selectedItem.author
-        bookInfoView.bookDate.text = "출간일: " + selectedItem.pubdate
-        bookInfoView.bookPublisher.text = "출판사: " + selectedItem.publisher
+        bookInfoView.configure(selectedItem)
         
         self.cachedBookInfo = BookInfo(title: selectedItem.title, link: selectedItem.link, image: selectedItem.image, author: selectedItem.author, price: selectedItem.price, publisher: selectedItem.publisher, isbn: selectedItem.isbn, descriptionText: selectedItem.descriptionText, pubdate: selectedItem.pubdate)
     }

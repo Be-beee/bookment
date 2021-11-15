@@ -31,12 +31,7 @@ class BookDetailViewController: UIViewController {
     }
     
     func configureSelectedBookView() {
-        selectedBookView.bookCoverView.image = urlToImage(from: bookData.image)
-        selectedBookView.bookTitle.text = bookData.title
-        selectedBookView.bookAuthor.text = bookData.author
-        selectedBookView.bookPublisher.text = "출판사: " + bookData.publisher
-        selectedBookView.bookDate.text = "출판일: " + bookData.pubdate
-//        prepriceLabel.text = "가격: " + bookData.price
+        selectedBookView.configure(bookData)
     }
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
