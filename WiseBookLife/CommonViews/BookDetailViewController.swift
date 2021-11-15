@@ -14,15 +14,8 @@ class BookDetailViewController: UIViewController {
     var bookData = BookInfo()
     var isHeartBtnSelected = false
     
-    @IBOutlet var bookCover: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var publishDateLabel: UILabel!
-    @IBOutlet var publisherLabel: UILabel!
-    @IBOutlet var prepriceLabel: UILabel!
-    
+    @IBOutlet weak var selectedBookView: SelectView!
     @IBOutlet weak var bookIntroduction: UILabel!
-    
     @IBOutlet var heartBtn: UIButton!
     
     override func viewDidLoad() {
@@ -33,14 +26,17 @@ class BookDetailViewController: UIViewController {
         } else {
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
-        bookCover.image = urlToImage(from: bookData.image)
-        titleLabel.text = bookData.title
-        authorLabel.text = bookData.author
-        publishDateLabel.text = "출판일: " + bookData.pubdate
-        publisherLabel.text = "출판사: " + bookData.publisher
-        prepriceLabel.text = "가격: " + bookData.price
-        
+        configureSelectedBookView()
         bookIntroduction.text = bookData.descriptionText
+    }
+    
+    func configureSelectedBookView() {
+        selectedBookView.bookCoverView.image = urlToImage(from: bookData.image)
+        selectedBookView.bookTitle.text = bookData.title
+        selectedBookView.bookAuthor.text = bookData.author
+        selectedBookView.bookPublisher.text = "출판사: " + bookData.publisher
+        selectedBookView.bookDate.text = "출판일: " + bookData.pubdate
+//        prepriceLabel.text = "가격: " + bookData.price
     }
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
