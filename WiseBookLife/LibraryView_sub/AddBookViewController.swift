@@ -19,6 +19,12 @@ class AddBookViewController: UIViewController {
     @IBOutlet var selectedBookView: SelectView!
     @IBOutlet weak var readDatePicker: UIDatePicker!
     
+    @IBOutlet weak var recordContentsBottom: NSLayoutConstraint!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +32,17 @@ class AddBookViewController: UIViewController {
         presentSelectView()
         recordContents.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func presentSelectView() {
@@ -52,6 +69,18 @@ class AddBookViewController: UIViewController {
     }
     @IBAction func backToRecordsView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AddBookViewController {
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            recordContentsBottom.constant = 20 + keyboardHeight
+        }
+    }
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+        recordContentsBottom.constant = 20
     }
 }
 
