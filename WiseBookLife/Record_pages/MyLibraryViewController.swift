@@ -91,7 +91,7 @@ extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
         
-        cell.bookImage.image = urlToImage(from: myBooks[indexPath.row].image)
+        cell.bookImage.image = ImageDownloader.urlToImage(from: myBooks[indexPath.row].image)
         return cell
     }
     

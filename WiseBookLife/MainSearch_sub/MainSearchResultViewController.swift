@@ -85,7 +85,7 @@ class MainSearchResultViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 for item in self.searchTool.results {
-                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
+                    let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : ImageDownloader.urlToImage(from: item.image)
                     self.resultList.append((image: image!, contents: item))
                 }
                 self.resultView.reloadData()
@@ -187,7 +187,7 @@ extension MainSearchResultViewController: UISearchBarDelegate {
                 self.searchTool.callAPI(additional_param: query_param, target: self) {
                     self.indicator.startAnimating()
                     for item in self.searchTool.results {
-                        let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : self.urlToImage(from: item.image)
+                        let image = item.image.isEmpty ? UIImage(named: "No_Img.png") : ImageDownloader.urlToImage(from: item.image)
                         self.resultList.append((image: image!, contents: item))
                     }
                     if self.resultList.isEmpty {

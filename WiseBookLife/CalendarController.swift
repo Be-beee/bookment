@@ -77,7 +77,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
         guard let data = calData[key] else { return nil }
         if data.count > 0 {
             let bookImg = data[0].image
-            return urlToImage(from: bookImg)
+            return ImageDownloader.urlToImage(from: bookImg)
         } else {
             return nil
         }

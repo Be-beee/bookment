@@ -23,15 +23,6 @@ extension UIViewController {
 // MARK:- Etc.
 
 extension UIViewController {
-    func urlToImage(from url: String) -> UIImage? {
-        if let url = URL(string: url) {
-            if let imgData = try? Data(contentsOf: url) {
-                return UIImage(data: imgData)
-            }
-        }
-        return UIImage(named: "No_Img.png")
-    }
-    
     func settingFooterForTableView(for footer: UIView, action selector: Selector, title str: String? = "결과 더보기", image: UIImage? = nil, bgColor: UIColor? = nil, drawBorder: Bool = false) {
         let footerBtn = UIButton(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 20, height: 50))
         if let title = str {
@@ -56,4 +47,15 @@ extension UIViewController {
         footer.addSubview(footerBtn)
     }
     
+}
+
+class ImageDownloader {
+    static func urlToImage(from url: String) -> UIImage? {
+        if let url = URL(string: url) {
+            if let imgData = try? Data(contentsOf: url) {
+                return UIImage(data: imgData)
+            }
+        }
+        return UIImage(named: "No_Img.png")
+    }
 }

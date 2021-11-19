@@ -36,7 +36,7 @@ class SelectView: UIView {
     }
     
     func configure(_ bookData: BookInfo) {
-        self.bookCoverView.image = urlToImage(from: bookData.image)
+        self.bookCoverView.image = ImageDownloader.urlToImage(from: bookData.image)
         self.bookTitle.text = bookData.title
         self.bookAuthor.text = bookData.author
         self.bookPublisher.text = "출판사: " + bookData.publisher
@@ -44,15 +44,4 @@ class SelectView: UIView {
         self.bookPrice.text = "가격: " + bookData.price
     }
 
-}
-
-extension UIView {
-    func urlToImage(from url: String) -> UIImage? {
-        if let url = URL(string: url) {
-            if let imgData = try? Data(contentsOf: url) {
-                return UIImage(data: imgData)
-            }
-        }
-        return UIImage(named: "No_Img.png")
-    }
 }
