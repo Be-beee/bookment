@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AppInfoViewController: UIViewController {
 
@@ -26,9 +27,11 @@ class AppInfoViewController: UIViewController {
         versionLabel.text = "ver. "+currentVer
     }
 
-    @IBAction func confirmUpdate(_ sender: UIButton) {
-        let appID = ""
-        guard let appstoreURL = URL(string: "itms-apps://itunes.apple.com/app/\(appID)") else { return }
-        UIApplication.shared.open(appstoreURL, options: [:], completionHandler: nil)
+    @IBAction func moveToDeveloperSite(_ sender: UIButton) {
+        let myLink = "https://github.com/Be-beee"
+        guard let detailURL = URL(string: myLink) else { return }
+        let detailSafariVC = SFSafariViewController(url: detailURL)
+
+        self.present(detailSafariVC, animated: true, completion: nil)
     }
 }
