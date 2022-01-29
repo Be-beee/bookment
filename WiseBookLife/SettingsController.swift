@@ -13,7 +13,8 @@ import SafariServices
 class SettingsController: UIViewController {
     
     var backupSection: [String] = [
-        "백업 및 복원"
+        "백업 및 복원", // json 파일 생성 --> ISBN 정보, 독서기록 저장
+        "내 독서기록 내보내기" // pdf 파일 생성
     ]
     
     var feedbackSection: [String] = [
@@ -71,10 +72,17 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource, MFMail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let updateAlert = UIAlertController(title: "알림", message: "추후 지원될 예정입니다.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-            updateAlert.addAction(ok)
-            self.present(updateAlert, animated: true, completion: nil)
+            if indexPath.row == 0 {
+                let updateAlert = UIAlertController(title: "알림", message: "추후 지원될 예정입니다.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                updateAlert.addAction(ok)
+                self.present(updateAlert, animated: true, completion: nil)
+            } else if indexPath.row == 1 {
+                guard let exportVC = UIStoryboard(name: "ExportManagerViewController", bundle: nil).instantiateViewController(withIdentifier: "ExportManagerViewController") as? ExportManagerViewController else { return }
+                
+                self.navigationController?.pushViewController(exportVC, animated: true)
+            }
+            
         case 1:
             if indexPath.row == 0 {
                 let mailComposeVC = configureMailComposer()

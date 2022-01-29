@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B3B19EB88203A24BBB80AE27 /* Pods_WiseBookLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8872CF7F0EFDD4D3074F6CB /* Pods_WiseBookLife.framework */; };
+		B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5001AA9278F13FB00219175 /* ExportManagerViewController.swift */; };
+		B5001AAC278F140D00219175 /* ExportManagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */; };
 		B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D93F625C82FA100AAED67 /* DatabaseManager.swift */; };
 		B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */; };
 		B52C453C25FA5B0C00EED195 /* AddRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		7EDD8D23E795D42807E097AA /* Pods-WiseBookLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiseBookLife.release.xcconfig"; path = "Target Support Files/Pods-WiseBookLife/Pods-WiseBookLife.release.xcconfig"; sourceTree = "<group>"; };
+		B5001AA9278F13FB00219175 /* ExportManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManagerViewController.swift; sourceTree = "<group>"; };
+		B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExportManagerViewController.storyboard; sourceTree = "<group>"; };
 		B50D93F625C82FA100AAED67 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordViewController.storyboard; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 		B5909C9125E78B1300AC401A /* Settings_sub */ = {
 			isa = PBXGroup;
 			children = (
+				B5001AA9278F13FB00219175 /* ExportManagerViewController.swift */,
+				B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */,
 				B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */,
 				B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */,
 				B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */,
@@ -335,6 +341,7 @@
 				B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */,
 				B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */,
 				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,
+				B5001AAC278F140D00219175 /* ExportManagerViewController.storyboard in Resources */,
 				B5616DD725EE83ED00A0103E /* SelectDateController.storyboard in Resources */,
 				B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
@@ -410,6 +417,7 @@
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
+				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B57D4732269336BD00ADCADE /* APIService.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
