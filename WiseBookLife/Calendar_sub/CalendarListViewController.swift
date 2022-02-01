@@ -55,6 +55,8 @@ extension CalendarListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = todayBookTableView.dequeueReusableCell(withIdentifier: "commonCell") as? CommonCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
+        
         let item = booklist[indexPath.row]
         cell.bookCover.image = ImageDownloader.urlToImage(from: item.image)
         cell.titleLabel.text = item.title
