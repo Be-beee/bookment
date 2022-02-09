@@ -14,12 +14,12 @@ class SettingsController: UIViewController {
     
     var backupSection: [String] = [
         "백업 및 복원", // json 파일 생성 --> ISBN 정보, 독서기록 저장
-        "내 독서기록 내보내기" // pdf 파일 생성
+//        "내 독서기록 내보내기" // pdf 파일 생성
     ]
     
     var feedbackSection: [String] = [
         "피드백 보내기",
-        "리뷰 남기기"
+//        "리뷰 남기기"
     ]
     
     var infoSection: [String] = [
