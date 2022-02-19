@@ -37,7 +37,7 @@ class BookDetailViewController: UIViewController {
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if isHeartBtnSelected {
             guard let foundHeartContent = DatabaseManager.shared.findHeartContent(bookData.isbn) else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookData)
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
             let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())

@@ -58,10 +58,9 @@ class MainSearchResultViewController: UIViewController {
     @objc func onOffHeartBtn(_ sender: UIButton!) {
         let isbnKey = resultList[sender.tag].contents.isbn
         let withBookInfo = resultList[sender.tag].contents.changeToBookInfo()
-        if sender.imageView?.image == UIImage(systemName: "heart.fill") {
+        if let foundHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, withBookInfo)
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, withBookInfo.isbn)
         } else {
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             let newHeartContent = HeartContent(isbn: isbnKey, date: Date())

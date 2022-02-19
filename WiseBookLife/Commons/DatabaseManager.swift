@@ -207,12 +207,14 @@ extension DatabaseManager {
     }
     
     @discardableResult
-    func deleteHeartContentToDB(_ heart: HeartContent, _ book: BookInfo?) -> Bool {
+    func deleteHeartContentToDB(_ heart: HeartContent, _ bookIsbn: String?) -> Bool {
         let foundRecordContents = DatabaseManager.shared.findRecordContents(heart.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count == 0, let book = book {
-            bookDeleteResult = DatabaseManager.shared.deleteBookInfo([book])
+        if Array(foundRecordContents).count == 0, let bookIsbn = bookIsbn {
+            if let foundBookInfo = DatabaseManager.shared.findBookInfo(isbn: bookIsbn) {
+                bookDeleteResult = DatabaseManager.shared.deleteBookInfo([foundBookInfo])
+            }
         }
         let heartDeleteResult = DatabaseManager.shared.deleteHeartContent([heart])
         return bookDeleteResult && heartDeleteResult

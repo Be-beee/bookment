@@ -48,7 +48,7 @@ class HeartListViewController: UIViewController {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
             guard let willDeleteHeartContent = DatabaseManager.shared.findHeartContent(heartList[sender.tag].isbn) else { return }
             let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[sender.tag].isbn)
-            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo)
+            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo?.isbn)
             refreshData()
         }
     }
