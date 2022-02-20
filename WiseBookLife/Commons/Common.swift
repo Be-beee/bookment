@@ -64,6 +64,9 @@ class BookInfo: Object, Codable {
         self.title = title
         self.author = author
     }
+    func changeToBookItem() -> BookItem {
+        return BookItem(title: self.title, link: self.link, image: self.image, author: self.author, price: self.price, publisher: self.publisher, isbn: self.isbn, description: self.descriptionText, pubdate: self.pubdate)
+    }
 }
 
 class RecordContent: Object {

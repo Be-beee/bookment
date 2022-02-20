@@ -12,6 +12,7 @@ import SafariServices
 class BookDetailViewController: UIViewController {
 
     var bookData = BookInfo()
+    var cacheData = BookItem()
     var isHeartBtnSelected = false
     
     @IBOutlet weak var selectedBookView: SelectView!
@@ -28,6 +29,7 @@ class BookDetailViewController: UIViewController {
         }
         configureSelectedBookView()
         bookIntroduction.text = bookData.descriptionText
+        cacheData = bookData.changeToBookItem()
     }
     
     func configureSelectedBookView() {
@@ -36,15 +38,19 @@ class BookDetailViewController: UIViewController {
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if isHeartBtnSelected {
-            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(bookData.isbn) else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookData.isbn)
+            print("executed:: heart will delete")
+            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(cacheData.isbn) else { return }
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, cacheData.isbn)
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookData)
+            print("executed:: heart will add")
+            let dbFormData = cacheData.changeToBookInfo()
+            let newHeartContent = HeartContent(isbn: cacheData.isbn, date: Date())
+            DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         isHeartBtnSelected.toggle()
+//        print(isHeartBtnSelected)
     }
     @IBAction func dismissView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -52,7 +58,7 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func addToMyLibrary(_ sender: UIButton) {
         guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
-        addVC.selectedBookInfo = self.bookData
+        addVC.selectedBookInfo = self.cacheData.changeToBookInfo()
         self.present(addVC, animated: true, completion: nil)
     }
     
