@@ -20,17 +20,14 @@
 		B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5616DD325EE83D900A0103E /* SelectDateController.swift */; };
 		B5616DD725EE83ED00A0103E /* SelectDateController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */; };
 		B56380F827413B1200181008 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56380F727413B1200181008 /* Licenses.plist */; };
-		B563D2BE26C9749200C0ACFD /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */; };
+		B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
 		B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */; };
 		B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */; };
-		B572CE8C24A08BB300702C6E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8B24A08BB300702C6E /* Common.swift */; };
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
-		B57D472D2693281300ADCADE /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472C2693281300ADCADE /* UIExtensions.swift */; };
 		B57D47302693360600ADCADE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* Theme.swift */; };
-		B57D4732269336BD00ADCADE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D4731269336BD00ADCADE /* APIService.swift */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
@@ -44,6 +41,17 @@
 		B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */; };
 		B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */; };
+		B5E870D1284339EE00FB0E3D /* SearchBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D0284339EE00FB0E3D /* SearchBookAPI.swift */; };
+		B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D22843429700FB0E3D /* HeartContent.swift */; };
+		B5E870D5284342E100FB0E3D /* BookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D4284342E100FB0E3D /* BookItem.swift */; };
+		B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfo.swift */; };
+		B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D8284343BB00FB0E3D /* RecordContent.swift */; };
+		B5E870DB28434D5700FB0E3D /* BookSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */; };
+		B5E870DE28434D8F00FB0E3D /* CommonDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */; };
+		B5E870E028434DBD00FB0E3D /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DF28434DBD00FB0E3D /* QueryString.swift */; };
+		B5E870E228434DF600FB0E3D /* HtmlTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E128434DF600FB0E3D /* HtmlTool.swift */; };
+		B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E3284352CB00FB0E3D /* NaverClientData.swift */; };
+		B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E72843536F00FB0E3D /* ImageDownloader.swift */; };
 		B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */; };
 		B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */; };
 		B5EF459825D1781D00165604 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF459625D1781D00165604 /* CustomCell.swift */; };
@@ -69,17 +77,14 @@
 		B5616DD325EE83D900A0103E /* SelectDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateController.swift; sourceTree = "<group>"; };
 		B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectDateController.storyboard; sourceTree = "<group>"; };
 		B56380F727413B1200181008 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
-		B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
 		B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultVC.storyboard; sourceTree = "<group>"; };
 		B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryViewController.swift; sourceTree = "<group>"; };
-		B572CE8B24A08BB300702C6E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
-		B57D472C2693281300ADCADE /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		B57D472F2693360600ADCADE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		B57D4731269336BD00ADCADE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +98,17 @@
 		B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoViewController.storyboard; sourceTree = "<group>"; };
+		B5E870D0284339EE00FB0E3D /* SearchBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookAPI.swift; sourceTree = "<group>"; };
+		B5E870D22843429700FB0E3D /* HeartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContent.swift; sourceTree = "<group>"; };
+		B5E870D4284342E100FB0E3D /* BookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItem.swift; sourceTree = "<group>"; };
+		B5E870D62843432100FB0E3D /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
+		B5E870D8284343BB00FB0E3D /* RecordContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordContent.swift; sourceTree = "<group>"; };
+		B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResult.swift; sourceTree = "<group>"; };
+		B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDateFormat.swift; sourceTree = "<group>"; };
+		B5E870DF28434DBD00FB0E3D /* QueryString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
+		B5E870E128434DF600FB0E3D /* HtmlTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlTool.swift; sourceTree = "<group>"; };
+		B5E870E3284352CB00FB0E3D /* NaverClientData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverClientData.swift; sourceTree = "<group>"; };
+		B5E870E72843536F00FB0E3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLicenseController.swift; sourceTree = "<group>"; };
 		B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLicenseController.storyboard; sourceTree = "<group>"; };
 		B5EF459625D1781D00165604 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -151,17 +167,12 @@
 			path = CommonViews;
 			sourceTree = "<group>";
 		};
-		B57D472E26932EBA00ADCADE /* Commons */ = {
+		B57D472E26932EBA00ADCADE /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
-				B572CE8B24A08BB300702C6E /* Common.swift */,
-				B57D472C2693281300ADCADE /* UIExtensions.swift */,
 				B57D472F2693360600ADCADE /* Theme.swift */,
-				B57D4731269336BD00ADCADE /* APIService.swift */,
-				B563D2BD26C9749200C0ACFD /* MainTabBarController.swift */,
 			);
-			path = Commons;
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		B5909C9125E78B1300AC401A /* Settings_sub */ = {
@@ -198,6 +209,27 @@
 			path = ClientData;
 			sourceTree = "<group>";
 		};
+		B5CEE3A128433287007AEF00 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B5E870E3284352CB00FB0E3D /* NaverClientData.swift */,
+				B5E870D0284339EE00FB0E3D /* SearchBookAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B5CEE3A2284332B7007AEF00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5E870D22843429700FB0E3D /* HeartContent.swift */,
+				B5E870D4284342E100FB0E3D /* BookItem.swift */,
+				B5E870D62843432100FB0E3D /* BookInfo.swift */,
+				B5E870D8284343BB00FB0E3D /* RecordContent.swift */,
+				B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B5D190A924A4A72E00F1DCDB /* LibraryView_sub */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +243,18 @@
 				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
 			);
 			path = LibraryView_sub;
+			sourceTree = "<group>";
+		};
+		B5E870DC28434D7800FB0E3D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */,
+				B5E870DF28434DBD00FB0E3D /* QueryString.swift */,
+				B5E870E128434DF600FB0E3D /* HtmlTool.swift */,
+				B5E870E72843536F00FB0E3D /* ImageDownloader.swift */,
+				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		B5FA8D9C249F666A0009B24B = {
@@ -235,9 +279,13 @@
 			isa = PBXGroup;
 			children = (
 				B5B3F31825B2CC0600A3CC14 /* ClientData */,
-				B57D472E26932EBA00ADCADE /* Commons */,
+				B5E870DC28434D7800FB0E3D /* Utils */,
+				B5CEE3A128433287007AEF00 /* API */,
+				B5CEE3A2284332B7007AEF00 /* Model */,
+				B57D472E26932EBA00ADCADE /* Theme */,
 				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
 				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
+				B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B5909C8D25E7551400AC401A /* SettingsController.swift */,
@@ -404,30 +452,38 @@
 			files = (
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
-				B563D2BE26C9749200C0ACFD /* MainTabBarController.swift in Sources */,
+				B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B57D47302693360600ADCADE /* Theme.swift in Sources */,
-				B57D472D2693281300ADCADE /* UIExtensions.swift in Sources */,
 				B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */,
+				B5E870DB28434D5700FB0E3D /* BookSearchResult.swift in Sources */,
+				B5E870E228434DF600FB0E3D /* HtmlTool.swift in Sources */,
+				B5E870D5284342E100FB0E3D /* BookItem.swift in Sources */,
+				B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
+				B5E870E028434DBD00FB0E3D /* QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
+				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
+				B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */,
+				B5E870D1284339EE00FB0E3D /* SearchBookAPI.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
-				B57D4732269336BD00ADCADE /* APIService.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
+				B5E870DE28434D8F00FB0E3D /* CommonDateFormat.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
-				B572CE8C24A08BB300702C6E /* Common.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
 				B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */,
+				B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */,
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,
+				B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */,
 				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,41 +1,14 @@
 //
-//  Client.swift
+//  SearchBookAPI.swift
 //  WiseBookLife
 //
-//  Created by 서보경 on 2021/07/05.
-//  Copyright © 2021 서보경. All rights reserved.
+//  Created by 서보경 on 2022/05/29.
+//  Copyright © 2022 서보경. All rights reserved.
 //
 
 import UIKit
 
-// MARK:- Client ID/Secret Model
-
-struct ClientData: Codable {
-    var requestURL: String
-    var requestHeader: [String: String]
-    init() {
-        guard let path = Bundle.main.path(forResource: "ApplicationInfo", ofType: "plist") else {
-            requestURL = "None"
-            requestHeader = [:]
-            return
-        }
-        guard let xml = FileManager.default.contents(atPath: path) else {
-            requestURL = "None"
-            requestHeader = [:]
-            return
-        }
-        guard let data = try? PropertyListDecoder().decode(ClientData.self, from: xml) else {
-            requestURL = "None"
-            requestHeader = [:]
-            return
-        }
-        
-        requestURL = data.requestURL
-        requestHeader = data.requestHeader
-    }
-}
-
-// MARK:- Request/Result Model
+// MARK: - Request
 
 struct RequestParam {
     var query: String
@@ -44,16 +17,8 @@ struct RequestParam {
     var sort: String?
 }
 
-struct ResultModel: Codable {
-    var lastBuildDate: String = ""
-    var total: Int = 0
-    var start: Int = 0
-    var display: Int = 0
-    var items: [BookItem] = []
-}
 
-
-// MARK:- API Service
+// MARK: - API Service
 
 class SearchBook {
     var results: [BookItem] = []
@@ -110,27 +75,5 @@ class SearchBook {
             }
         }.resume()
             
-    }
-}
-
-// MARK: - Extensions for Service
-
-extension Dictionary {
-    var queryString: String {
-        var output = ""
-        for (key, value) in self {
-            output += "\(key)=\(value)&"
-        }
-        output = String(output.dropLast())
-        
-        return output
-    }
-}
-
-extension String {
-    func removeHTMLTag() -> String {
-        let rmFirst = self.replacingOccurrences(of: "<b>", with: "")
-        let result = rmFirst.replacingOccurrences(of: "</b>", with: "")
-        return result
     }
 }

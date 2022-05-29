@@ -1,5 +1,5 @@
 //
-//  UI_Extensions.swift
+//  Theme.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2021/07/05.
@@ -8,7 +8,15 @@
 
 import UIKit
 
-// MARK:- Navigation
+// MARK: - Main Theme Color
+
+struct Theme {
+    static let main = Theme()
+    let mainColor = UIColor(red: 255/255, green: 104/255, blue: 53/255, alpha: 1) //#FF6835
+}
+
+
+// MARK: - Navigation
 
 extension UIViewController {
     func removeNavigationBarLine() {
@@ -20,7 +28,7 @@ extension UIViewController {
 }
 
 
-// MARK:- Etc.
+// MARK: - Etc.
 
 extension UIViewController {
     func settingFooterForTableView(for footer: UIView, action selector: Selector, title str: String? = "결과 더보기", image: UIImage? = nil, bgColor: UIColor? = nil, drawBorder: Bool = false) {
@@ -49,13 +57,4 @@ extension UIViewController {
     
 }
 
-class ImageDownloader {
-    static func urlToImage(from url: String) -> UIImage? {
-        if let url = URL(string: url) {
-            if let imgData = try? Data(contentsOf: url) {
-                return UIImage(data: imgData)
-            }
-        }
-        return UIImage(named: "No_Img.png")
-    }
-}
+
