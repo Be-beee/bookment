@@ -250,7 +250,7 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		B5CEE3A2284332B7007AEF00 /* Model */ = {
+		B5CEE3A2284332B7007AEF00 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				B5E870D22843429700FB0E3D /* HeartContent.swift */,
@@ -259,7 +259,7 @@
 				B5E870D8284343BB00FB0E3D /* RecordContent.swift */,
 				B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */,
 			);
-			path = Model;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		B5D190A924A4A72E00F1DCDB /* MyLibrary */ = {
@@ -311,10 +311,10 @@
 			isa = PBXGroup;
 			children = (
 				B5B3F31825B2CC0600A3CC14 /* ClientData */,
-				B5E870DC28434D7800FB0E3D /* Utils */,
-				B5CEE3A2284332B7007AEF00 /* Model */,
+				B5CEE3A2284332B7007AEF00 /* Domain */,
 				B5BB78962955568C00396E66 /* Presentations */,
 				B5BB78942955516B00396E66 /* Resources */,
+				B5E870DC28434D7800FB0E3D /* Utils */,
 			);
 			path = WiseBookLife;
 			sourceTree = "<group>";
