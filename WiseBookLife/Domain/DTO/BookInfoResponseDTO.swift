@@ -1,5 +1,5 @@
 //
-//  BookItem.swift
+//  BookInfoResponseDTO.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2022/05/29.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct BookItem: Codable, Hashable {
+struct BookInfoResponseDTO: Codable, Hashable {
     var title: String = ""
     var link: String = ""
     var image: String = ""

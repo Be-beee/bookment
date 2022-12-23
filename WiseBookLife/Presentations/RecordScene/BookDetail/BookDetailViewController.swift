@@ -12,7 +12,7 @@ import SafariServices
 class BookDetailViewController: UIViewController {
 
     var bookData = BookInfo()
-    var cacheData = BookItem()
+    var cacheData = BookInfoResponseDTO()
     var isHeartBtnSelected = false
     
     @IBOutlet weak var selectedBookView: SelectView!

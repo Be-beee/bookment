@@ -10,7 +10,8 @@ import UIKit
 
 class MainSearchResultViewController: UIViewController {
 
-    var resultList: [(image: UIImage, contents: BookItem)] = []
+    var resultList: [(image: UIImage, contents: BookInfoResponseDTO)] = []
+    
     @IBOutlet var resultView: UITableView!
     @IBOutlet var indicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
