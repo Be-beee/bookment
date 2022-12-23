@@ -1,5 +1,5 @@
 //
-//  CommonDateFormat.swift
+//  Date+Formatter.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2022/05/29.

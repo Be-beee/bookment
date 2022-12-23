@@ -47,9 +47,9 @@
 		B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfo.swift */; };
 		B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D8284343BB00FB0E3D /* RecordContent.swift */; };
 		B5E870DB28434D5700FB0E3D /* BookSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */; };
-		B5E870DE28434D8F00FB0E3D /* CommonDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */; };
-		B5E870E028434DBD00FB0E3D /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DF28434DBD00FB0E3D /* QueryString.swift */; };
-		B5E870E228434DF600FB0E3D /* HtmlTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E128434DF600FB0E3D /* HtmlTool.swift */; };
+		B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */; };
+		B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DF28434DBD00FB0E3D /* Dictionary+QueryString.swift */; };
+		B5E870E228434DF600FB0E3D /* String+RemoveHTMLTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */; };
 		B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E3284352CB00FB0E3D /* NaverClientData.swift */; };
 		B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E72843536F00FB0E3D /* ImageDownloader.swift */; };
 		B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */; };
@@ -104,9 +104,9 @@
 		B5E870D62843432100FB0E3D /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		B5E870D8284343BB00FB0E3D /* RecordContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordContent.swift; sourceTree = "<group>"; };
 		B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResult.swift; sourceTree = "<group>"; };
-		B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDateFormat.swift; sourceTree = "<group>"; };
-		B5E870DF28434DBD00FB0E3D /* QueryString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
-		B5E870E128434DF600FB0E3D /* HtmlTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlTool.swift; sourceTree = "<group>"; };
+		B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		B5E870DF28434DBD00FB0E3D /* Dictionary+QueryString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+QueryString.swift"; sourceTree = "<group>"; };
+		B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RemoveHTMLTag.swift"; sourceTree = "<group>"; };
 		B5E870E3284352CB00FB0E3D /* NaverClientData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverClientData.swift; sourceTree = "<group>"; };
 		B5E870E72843536F00FB0E3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLicenseController.swift; sourceTree = "<group>"; };
@@ -136,27 +136,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B561164F25D37AEE00C0D94B /* Calendar_sub */ = {
-			isa = PBXGroup;
-			children = (
-				B561165025D37B3A00C0D94B /* CalendarListViewController.swift */,
-				B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */,
-				B5616DD325EE83D900A0103E /* SelectDateController.swift */,
-				B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */,
-			);
-			path = Calendar_sub;
-			sourceTree = "<group>";
-		};
-		B56B972024DFB4DA00347D11 /* MainSearch_sub */ = {
+		B56B972024DFB4DA00347D11 /* MainSearch */ = {
 			isa = PBXGroup;
 			children = (
 				B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */,
 				B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */,
 			);
-			path = MainSearch_sub;
+			path = MainSearch;
 			sourceTree = "<group>";
 		};
-		B57BFFA525E210C8009780ED /* CommonViews */ = {
+		B57BFFA525E210C8009780ED /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
@@ -164,20 +153,13 @@
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
 				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
 			);
-			path = CommonViews;
+			path = BookDetail;
 			sourceTree = "<group>";
 		};
-		B57D472E26932EBA00ADCADE /* Theme */ = {
+		B5909C9125E78B1300AC401A /* SettingsScene */ = {
 			isa = PBXGroup;
 			children = (
-				B57D472F2693360600ADCADE /* Theme.swift */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		B5909C9125E78B1300AC401A /* Settings_sub */ = {
-			isa = PBXGroup;
-			children = (
+				B5909C8D25E7551400AC401A /* SettingsController.swift */,
 				B5001AA9278F13FB00219175 /* ExportManagerViewController.swift */,
 				B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */,
 				B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */,
@@ -186,19 +168,22 @@
 				B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */,
 				B56380F727413B1200181008 /* Licenses.plist */,
 			);
-			path = Settings_sub;
+			path = SettingsScene;
 			sourceTree = "<group>";
 		};
-		B5A4AD6825CE70B600DBE58C /* Record_pages */ = {
+		B5A4AD6825CE70B600DBE58C /* RecordScene */ = {
 			isa = PBXGroup;
 			children = (
+				B5D190A924A4A72E00F1DCDB /* MyLibrary */,
+				B56B972024DFB4DA00347D11 /* MainSearch */,
+				B57BFFA525E210C8009780ED /* BookDetail */,
 				B572CE8D24A0908200702C6E /* RecordCell.swift */,
 				B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */,
 				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
 				B5EF459625D1781D00165604 /* CustomCell.swift */,
 				B5EF459725D1781D00165604 /* CustomCell.xib */,
 			);
-			path = Record_pages;
+			path = RecordScene;
 			sourceTree = "<group>";
 		};
 		B5B3F31825B2CC0600A3CC14 /* ClientData */ = {
@@ -209,16 +194,63 @@
 			path = ClientData;
 			sourceTree = "<group>";
 		};
-		B5CEE3A128433287007AEF00 /* API */ = {
+		B5BB78942955516B00396E66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
+				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
+				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
+				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
+				B5FA8DB6249F666B0009B24B /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B5BB7895295552DC00396E66 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */,
+				B5E870DF28434DBD00FB0E3D /* Dictionary+QueryString.swift */,
+				B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B5BB78962955568C00396E66 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */,
+				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
+				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
+				B5A4AD6825CE70B600DBE58C /* RecordScene */,
+				B5BB7897295556EE00396E66 /* CalendarScene */,
+				B5909C9125E78B1300AC401A /* SettingsScene */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		B5BB7897295556EE00396E66 /* CalendarScene */ = {
+			isa = PBXGroup;
+			children = (
+				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
+				B561165025D37B3A00C0D94B /* CalendarListViewController.swift */,
+				B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */,
+				B5616DD325EE83D900A0103E /* SelectDateController.swift */,
+				B5616DD625EE83ED00A0103E /* SelectDateController.storyboard */,
+			);
+			path = CalendarScene;
+			sourceTree = "<group>";
+		};
+		B5CEE3A128433287007AEF00 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
 				B5E870E3284352CB00FB0E3D /* NaverClientData.swift */,
 				B5E870D0284339EE00FB0E3D /* SearchBookAPI.swift */,
 			);
-			path = API;
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		B5CEE3A2284332B7007AEF00 /* Model */ = {
+		B5CEE3A2284332B7007AEF00 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				B5E870D22843429700FB0E3D /* HeartContent.swift */,
@@ -227,10 +259,10 @@
 				B5E870D8284343BB00FB0E3D /* RecordContent.swift */,
 				B5E870DA28434D5700FB0E3D /* BookSearchResult.swift */,
 			);
-			path = Model;
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		B5D190A924A4A72E00F1DCDB /* LibraryView_sub */ = {
+		B5D190A924A4A72E00F1DCDB /* MyLibrary */ = {
 			isa = PBXGroup;
 			children = (
 				B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */,
@@ -242,17 +274,17 @@
 				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
 				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
 			);
-			path = LibraryView_sub;
+			path = MyLibrary;
 			sourceTree = "<group>";
 		};
 		B5E870DC28434D7800FB0E3D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B5E870DD28434D8F00FB0E3D /* CommonDateFormat.swift */,
-				B5E870DF28434DBD00FB0E3D /* QueryString.swift */,
-				B5E870E128434DF600FB0E3D /* HtmlTool.swift */,
+				B5CEE3A128433287007AEF00 /* NetworkManager */,
+				B5BB7895295552DC00396E66 /* Extensions */,
 				B5E870E72843536F00FB0E3D /* ImageDownloader.swift */,
 				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
+				B57D472F2693360600ADCADE /* Theme.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -279,26 +311,10 @@
 			isa = PBXGroup;
 			children = (
 				B5B3F31825B2CC0600A3CC14 /* ClientData */,
+				B5CEE3A2284332B7007AEF00 /* Domain */,
+				B5BB78962955568C00396E66 /* Presentations */,
+				B5BB78942955516B00396E66 /* Resources */,
 				B5E870DC28434D7800FB0E3D /* Utils */,
-				B5CEE3A128433287007AEF00 /* API */,
-				B5CEE3A2284332B7007AEF00 /* Model */,
-				B57D472E26932EBA00ADCADE /* Theme */,
-				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
-				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
-				B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */,
-				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
-				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
-				B5909C8D25E7551400AC401A /* SettingsController.swift */,
-				B5FA8DB6249F666B0009B24B /* Info.plist */,
-				B57BFFA525E210C8009780ED /* CommonViews */,
-				B5A4AD6825CE70B600DBE58C /* Record_pages */,
-				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
-				B5D190A924A4A72E00F1DCDB /* LibraryView_sub */,
-				B561164F25D37AEE00C0D94B /* Calendar_sub */,
-				B5909C9125E78B1300AC401A /* Settings_sub */,
-				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
-				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
-				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
 			);
 			path = WiseBookLife;
 			sourceTree = "<group>";
@@ -457,13 +473,13 @@
 				B57D47302693360600ADCADE /* Theme.swift in Sources */,
 				B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */,
 				B5E870DB28434D5700FB0E3D /* BookSearchResult.swift in Sources */,
-				B5E870E228434DF600FB0E3D /* HtmlTool.swift in Sources */,
+				B5E870E228434DF600FB0E3D /* String+RemoveHTMLTag.swift in Sources */,
 				B5E870D5284342E100FB0E3D /* BookItem.swift in Sources */,
 				B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
-				B5E870E028434DBD00FB0E3D /* QueryString.swift in Sources */,
+				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
@@ -475,7 +491,7 @@
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
-				B5E870DE28434D8F00FB0E3D /* CommonDateFormat.swift in Sources */,
+				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
@@ -634,7 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 202202092;
 				DEVELOPMENT_TEAM = NSCRL9SYQK;
-				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				INFOPLIST_FILE = WiseBookLife/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +671,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 202202092;
 				DEVELOPMENT_TEAM = NSCRL9SYQK;
-				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				INFOPLIST_FILE = WiseBookLife/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
