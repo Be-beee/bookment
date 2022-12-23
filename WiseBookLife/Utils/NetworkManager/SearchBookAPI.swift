@@ -8,20 +8,10 @@
 
 import UIKit
 
-// MARK: - Request
-
-struct RequestParam {
-    var query: String
-    var display: Int?
-    var start: Int?
-    var sort: String?
-}
-
-
 // MARK: - API Service
 
 class SearchBook {
-    var results: [BookItem] = []
+    var results: [BookInfoResponseDTO] = []
     
     func callAPI(additional_param: [String: String], target: UIViewController, completion: @escaping (() -> Void)) {
         let clientData = ClientData()
@@ -51,10 +41,10 @@ class SearchBook {
             let decoder = JSONDecoder()
             
             do {
-                let user = try decoder.decode(ResultModel.self, from: data)
-                var datas: [BookItem] = []
+                let user = try decoder.decode(SearchResponseDTO.self, from: data)
+                var datas: [BookInfoResponseDTO] = []
                 for item in user.items {
-                    let newItem = BookItem(title: item.title.removeHTMLTag(), link: item.link, image: item.image, author: item.author.removeHTMLTag(), price: item.price, publisher: item.publisher, isbn: item.isbn, description: item.description.removeHTMLTag(), pubdate: item.pubdate)
+                    let newItem = BookInfoResponseDTO(title: item.title.removeHTMLTag(), link: item.link, image: item.image, author: item.author.removeHTMLTag(), price: item.price, publisher: item.publisher, isbn: item.isbn, description: item.description.removeHTMLTag(), pubdate: item.pubdate)
                     datas.append(newItem)
                 }
                 self.results = datas
