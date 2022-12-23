@@ -209,6 +209,17 @@
 			path = ClientData;
 			sourceTree = "<group>";
 		};
+		B5BB78942955516B00396E66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
+				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
+				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
+				B5FA8DB6249F666B0009B24B /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B5CEE3A128433287007AEF00 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,22 +294,19 @@
 				B5CEE3A128433287007AEF00 /* API */,
 				B5CEE3A2284332B7007AEF00 /* Model */,
 				B57D472E26932EBA00ADCADE /* Theme */,
-				B5FA8DA8249F666B0009B24B /* AppDelegate.swift */,
-				B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */,
 				B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B5909C8D25E7551400AC401A /* SettingsController.swift */,
-				B5FA8DB6249F666B0009B24B /* Info.plist */,
 				B57BFFA525E210C8009780ED /* CommonViews */,
 				B5A4AD6825CE70B600DBE58C /* Record_pages */,
 				B56B972024DFB4DA00347D11 /* MainSearch_sub */,
 				B5D190A924A4A72E00F1DCDB /* LibraryView_sub */,
 				B561164F25D37AEE00C0D94B /* Calendar_sub */,
 				B5909C9125E78B1300AC401A /* Settings_sub */,
-				B5FA8DB1249F666B0009B24B /* Assets.xcassets */,
 				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
 				B5FA8DB3249F666B0009B24B /* LaunchScreen.storyboard */,
+				B5BB78942955516B00396E66 /* Resources */,
 			);
 			path = WiseBookLife;
 			sourceTree = "<group>";
@@ -634,7 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 202202092;
 				DEVELOPMENT_TEAM = NSCRL9SYQK;
-				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				INFOPLIST_FILE = WiseBookLife/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +663,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 202202092;
 				DEVELOPMENT_TEAM = NSCRL9SYQK;
-				INFOPLIST_FILE = WiseBookLife/Info.plist;
+				INFOPLIST_FILE = WiseBookLife/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
