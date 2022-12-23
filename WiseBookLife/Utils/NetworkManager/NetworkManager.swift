@@ -47,21 +47,19 @@ extension NetworkManager {
 extension NetworkManager {
     
     func createRequest(
-        base: String,
-        path: String,
+        endpoint: Endpoint,
         query: [String: String?]? = nil,
-        method: HTTPMethod,
         header: [String: String]? = nil,
         body: Data? = nil
     ) throws -> URLRequest {
-        var components = URLComponents(string: base + path)
+        var components = URLComponents(string: endpoint.path)
         components?.queryItems = query?.map({ URLQueryItem(name: $0.key, value: $0.value) })
         
         guard let url = components?.url
         else { throw NetworkError.invalidURL }
         
         var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
+        request.httpMethod = endpoint.method.rawValue
         
         header?.forEach({ request.addValue($0.value, forHTTPHeaderField: $0.key) })
         request.httpBody = body

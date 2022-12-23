@@ -1,5 +1,5 @@
 //
-//  BookSearchResult.swift
+//  SearchResponseDTO.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2022/05/29.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct ResultModel: Codable {
+struct SearchResponseDTO: Codable {
     var lastBuildDate: String = ""
     var total: Int = 0
     var start: Int = 0
     var display: Int = 0
-    var items: [BookItem] = []
+    var items: [BookInfoResponseDTO] = []
 }
