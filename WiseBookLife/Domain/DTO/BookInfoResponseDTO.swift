@@ -14,7 +14,7 @@ struct BookInfoResponseDTO: Codable, Hashable {
     var link: String = ""
     var image: String = ""
     var author: String = ""
-    var price: String = ""
+    var discount: String = ""
     var publisher: String = ""
     var isbn: String = ""
     var description: String = ""
@@ -29,6 +29,6 @@ struct BookInfoResponseDTO: Codable, Hashable {
     }
     
     func changeToBookInfo() -> BookInfo {
-        return BookInfo(title: self.title, link: self.link, image: self.image, author: self.author, price: self.price, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
+        return BookInfo(title: self.title, link: self.link, image: self.image, author: self.author, price: self.discount, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
     }
 }

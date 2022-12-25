@@ -41,6 +41,6 @@ class BookInfo: Object, Codable {
         self.author = author
     }
     func changeToBookItem() -> BookInfoResponseDTO {
-        return BookInfoResponseDTO(title: self.title, link: self.link, image: self.image, author: self.author, price: self.price, publisher: self.publisher, isbn: self.isbn, description: self.descriptionText, pubdate: self.pubdate)
+        return BookInfoResponseDTO(title: self.title, link: self.link, image: self.image, author: self.author, discount: self.price, publisher: self.publisher, isbn: self.isbn, description: self.descriptionText, pubdate: self.pubdate)
     }
 }
