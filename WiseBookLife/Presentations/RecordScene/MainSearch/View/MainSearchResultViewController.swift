@@ -105,8 +105,10 @@ extension MainSearchResultViewController: UITableViewDataSource {
         
         let bookInfo = viewModel.searchResult[indexPath.row]
         
-        // TODO: URL -> 이미지 처리
-//        cell.bookCover.image = bookInfo.image
+        let imagePath = bookInfo.image
+        Task {
+            cell.bookCover.image = await ImageDownloader.urlToImage(from: imagePath)
+        }
         if bookInfo.title == "" {
             cell.titleLabel.text = "[NO TITLE]"
             cell.titleLabel.textColor = .lightGray

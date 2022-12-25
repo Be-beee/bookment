@@ -36,7 +36,9 @@ class SelectView: UIView {
     }
     
     func configure(_ bookData: BookInfo) {
-        self.bookCoverView.image = ImageDownloader.urlToImage(from: bookData.image)
+        Task {
+            self.bookCoverView.image = await ImageDownloader.urlToImage(from: bookData.image)
+        }
         self.bookTitle.text = bookData.title
         self.bookAuthor.text = bookData.author
         self.bookPublisher.text = "출판사: " + bookData.publisher

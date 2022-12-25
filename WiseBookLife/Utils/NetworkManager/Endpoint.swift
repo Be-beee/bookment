@@ -10,17 +10,20 @@ import Foundation
 
 enum Endpoint {
     case search
+    case image(String)
     
     var path: String {
         let clientData = ClientData()
         switch self {
         case .search: return clientData.requestURL
+        case .image(let url): return url
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .search: return .GET
+        case .image: return .GET
         }
     }
 }

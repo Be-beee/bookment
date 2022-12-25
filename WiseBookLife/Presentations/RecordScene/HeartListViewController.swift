@@ -74,7 +74,9 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = heartView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as! CommonCell
         
         let loadedBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)!
-        cell.bookCover.image = ImageDownloader.urlToImage(from: loadedBookInfo.image)
+        Task {
+            cell.bookCover.image = await ImageDownloader.urlToImage(from: loadedBookInfo.image)
+        }
         
         if loadedBookInfo.title == "" {
             cell.titleLabel.text = "[NO TITLE]"
