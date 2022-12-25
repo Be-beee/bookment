@@ -16,6 +16,8 @@
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
 		B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */; };
+		B55308D329588957001977B5 /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308D229588957001977B5 /* NSObject+Name.swift */; };
+		B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308D42958A55C001977B5 /* CommonCellDelegate.swift */; };
 		B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72C62955DC67003E5CD1 /* SearchRepository.swift */; };
 		B55A72CB2955E2A8003E5CD1 /* MainSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72CA2955E2A8003E5CD1 /* MainSearchViewModel.swift */; };
 		B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72CD2955E34E003E5CD1 /* SearchUseCases.swift */; };
@@ -82,6 +84,8 @@
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
 		B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentAlert.swift"; sourceTree = "<group>"; };
+		B55308D229588957001977B5 /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
+		B55308D42958A55C001977B5 /* CommonCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellDelegate.swift; sourceTree = "<group>"; };
 		B55A72C62955DC67003E5CD1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		B55A72CA2955E2A8003E5CD1 /* MainSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewModel.swift; sourceTree = "<group>"; };
 		B55A72CD2955E34E003E5CD1 /* SearchUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCases.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		B57BFFA525E210C8009780ED /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B55308D42958A55C001977B5 /* CommonCellDelegate.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
@@ -368,6 +373,7 @@
 				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
 				B57D472F2693360600ADCADE /* Theme.swift */,
 				B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */,
+				B55308D229588957001977B5 /* NSObject+Name.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -571,12 +577,14 @@
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
+				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
 				B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */,
 				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
 				B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
+				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,

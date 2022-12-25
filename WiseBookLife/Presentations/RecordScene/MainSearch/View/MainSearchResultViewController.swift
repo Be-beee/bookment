@@ -18,6 +18,8 @@ final class MainSearchResultViewController: UIViewController {
     @IBOutlet weak var emptyResultView: UIView!
     
     // MARK: - Properties
+    
+    private let cellID = CommonCell.name
 
     var viewModel = MainSearchViewModel()
     
@@ -28,7 +30,7 @@ final class MainSearchResultViewController: UIViewController {
 
         self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
         self.indicator.stopAnimating()
-        resultView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
+        configureTableViewCell()
         
         settingSearchBar()
         settingResultFooter()
@@ -62,17 +64,14 @@ final class MainSearchResultViewController: UIViewController {
         resultView.tableFooterView?.isHidden = true
     }
     
-    @objc func heartButtonDidTouch(_ sender: UIButton!) {
-        let target = viewModel.searchResult[sender.tag]
-        if let foundHeartContent = DatabaseManager.shared.findHeartContent(target.isbn) {
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, target.isbn)
-        } else {
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            let newHeartContent = HeartContent(isbn: target.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, target)
-        }
+    func configureTableViewCell() {
+        resultView.register(
+            UINib(nibName: cellID, bundle: nil),
+            forCellReuseIdentifier: cellID
+        )
     }
+    
+    // MARK: - objc Functions
     
     @objc func showMoreResult() {
         indicator.startAnimating()
@@ -90,7 +89,7 @@ final class MainSearchResultViewController: UIViewController {
 
 extension MainSearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
+        return Metric.cellHeight
     }
 }
 
@@ -100,56 +99,29 @@ extension MainSearchResultViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = resultView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as? CommonCell
+        guard let cell = resultView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CommonCell
         else { return UITableViewCell()}
         
-        let bookInfo = viewModel.searchResult[indexPath.row]
-        
-        let imagePath = bookInfo.image
-        Task {
-            cell.bookCover.image = await ImageDownloader.urlToImage(from: imagePath)
-        }
-        if bookInfo.title == "" {
-            cell.titleLabel.text = "[NO TITLE]"
-            cell.titleLabel.textColor = .lightGray
-        } else {
-            cell.titleLabel.text = bookInfo.title
-        }
-        
-        cell.authorLabel.text = bookInfo.author
-        
-        //heart button, bell button -> add Target
-        cell.heartBtn.tag = indexPath.row
-        cell.heartBtn.addTarget(self, action: #selector(heartButtonDidTouch), for: .touchUpInside)
-        
-        if DatabaseManager.shared.findHeartContent(bookInfo.isbn) != nil {
-            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else {
-            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
-        
-        cell.addLibraryBtn.tag = indexPath.row
-        cell.addLibraryBtn.addTarget(self, action: #selector(addToLibrary), for: .touchUpInside)
+        cell.delegate = self
+        cell.bookInfo = viewModel.searchResult[indexPath.row]
+        cell.readonly = false
         
         return cell
     }
     
-    @objc func addToLibrary(_ sender: UIButton!) {
-        let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
-        
-        let selected = viewModel.searchResult[sender.tag]
-        addLibraryVC.selectedBookInfo = selected
-        
-        self.present(addLibraryVC, animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
+        guard let cell = tableView.cellForRow(at: indexPath) as? CommonCell,
+              let bookInfo = cell.bookInfo
+        else { return }
         
-        let bookInfo = viewModel.searchResult[indexPath.row]
+        // TODO: BookDetailVC <- Storyboard ID 변경
+        guard let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as? BookDetailViewController
+        else { return }
         
         detailVC.bookData = bookInfo
         detailVC.modalPresentationStyle = .fullScreen
+        
+        // TODO: BookDetailViewController 내부에서 수행하도록 수정
         if let _ = DatabaseManager.shared.findBookInfo(isbn: bookInfo.isbn) {
             detailVC.isHeartBtnSelected = true
         } else {
@@ -160,6 +132,14 @@ extension MainSearchResultViewController: UITableViewDataSource {
     }
     
     
+}
+
+// MARK: - CommonCellDelegate
+
+extension MainSearchResultViewController: CommonCellDelegate {
+    func addBookButtonDidTouched(destinationView: UIViewController) {
+        present(destinationView, animated: true)
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -175,8 +155,7 @@ extension MainSearchResultViewController: UISearchBarDelegate {
         
         viewModel.clear()
         
-        guard let hasText = searchBar.text,
-              !hasText.isEmpty
+        guard let hasText = searchBar.text, !hasText.isEmpty
         else {
             indicator.isHidden = true
             emptyResultView.isHidden = false
@@ -219,8 +198,14 @@ extension MainSearchResultViewController: MainSearchViewModelDelegate {
 // MARK: - Namespaces
 
 extension MainSearchResultViewController {
+    
+    enum Metric {
+        static let cellHeight: CGFloat = 135
+    }
+    
     enum StringLiteral {
         static let noMoreResultMessage = "검색 결과가 없습니다."
         static let loadFailedMessage = "검색 결과를 불러오는 데 실패했습니다."
     }
 }
+

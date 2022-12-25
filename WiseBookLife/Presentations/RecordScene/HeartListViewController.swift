@@ -14,10 +14,13 @@ class HeartListViewController: UIViewController {
     @IBOutlet var heartView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
+    private let cellID = CommonCell.name
     var heartList: [HeartContent] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
+        heartView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "CommonCell")
         settingEmptyView()
     }
     
@@ -36,20 +39,6 @@ class HeartListViewController: UIViewController {
             emptyView.isHidden = true
         } else {
             emptyView.isHidden = false
-        }
-    }
-
-    
-    // MARK:- cell button action methods
-    
-    @objc func heartButtonDidTouch(_ sender: UIButton!) {
-//        sender.isSelected = !sender.isSelected
-        if sender.imageView?.image == UIImage(systemName: "heart.fill") {
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            guard let willDeleteHeartContent = DatabaseManager.shared.findHeartContent(heartList[sender.tag].isbn) else { return }
-            let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[sender.tag].isbn)
-            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo?.isbn)
-            refreshData()
         }
     }
     
@@ -71,38 +60,15 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = heartView.dequeueReusableCell(withIdentifier: "commonCell", for: indexPath) as! CommonCell
-        
-        let loadedBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)!
-        Task {
-            cell.bookCover.image = await ImageDownloader.urlToImage(from: loadedBookInfo.image)
+        guard let cell = heartView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CommonCell,
+              let loadedBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn) else {
+            return UITableViewCell()
         }
-        
-        if loadedBookInfo.title == "" {
-            cell.titleLabel.text = "[NO TITLE]"
-            cell.titleLabel.textColor = .lightGray
-        } else {
-            cell.titleLabel.text = loadedBookInfo.title
-        }
-        
-        cell.authorLabel.text = loadedBookInfo.author
-        
-        cell.heartBtn.tag = indexPath.row
-        cell.heartBtn.addTarget(self, action: #selector(heartButtonDidTouch), for: .touchUpInside)
-        cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        
-        cell.addLibraryBtn.tag = indexPath.row
-        cell.addLibraryBtn.addTarget(self, action: #selector(addToLibrary), for: .touchUpInside)
+        cell.delegate = self
+        cell.bookInfo = loadedBookInfo
+        cell.readonly = false
 
         return cell
-    }
-    
-    @objc func addToLibrary(_ sender: UIButton!) {
-        let addLibraryVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as! AddBookViewController
-        let bookInfo = DatabaseManager.shared.findBookInfo(isbn: self.heartList[sender.tag].isbn)!
-        addLibraryVC.selectedBookInfo = bookInfo
-        
-        self.present(addLibraryVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,6 +89,17 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
         return 135
     }
     
-    
 }
 
+
+// MARK: - CommonCellDelegate
+
+extension HeartListViewController: CommonCellDelegate {
+    func heartButtonDidTouch() {
+        refreshData()
+    }
+    
+    func addBookButtonDidTouched(destinationView: UIViewController) {
+        present(destinationView, animated: true)
+    }
+}

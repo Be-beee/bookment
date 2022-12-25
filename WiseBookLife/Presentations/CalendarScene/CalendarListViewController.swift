@@ -20,8 +20,8 @@ class CalendarListViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBarLine()
         
+        configureTableViewCell()
         refreshBookListView()
-        todayBookTableView.register(UINib(nibName: "CommonCell", bundle: nil), forCellReuseIdentifier: "commonCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,59 +38,58 @@ class CalendarListViewController: UIViewController {
         }
     }
     
+    // MARK: - Configure Functions
+    
+    private func configureTableViewCell() {
+        let cellID = CommonCell.name
+        todayBookTableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
+    }
+    
+    // MARK: - IBAction Functions
+    
     @IBAction func dismissListView(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension CalendarListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135
+        return Metric.cellHeight
     }
 }
+
 extension CalendarListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return booklist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = todayBookTableView.dequeueReusableCell(withIdentifier: "commonCell") as? CommonCell else { return UITableViewCell() }
+        guard let cell = todayBookTableView.dequeueReusableCell(withIdentifier: CommonCell.name) as? CommonCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         
-        let item = booklist[indexPath.row]
-        Task {
-            cell.bookCover.image = await ImageDownloader.urlToImage(from: item.image)
-        }
-        cell.titleLabel.text = item.title
-        cell.authorLabel.text = item.author
-        
-        cell.addLibraryBtn.isHidden = true
-        
-        cell.heartBtn.tag = indexPath.row
-        cell.heartBtn.addTarget(self, action: #selector(heartButtonDidTouch), for: .touchUpInside)
-        
-        if let _ = DatabaseManager.shared.findHeartContent(booklist[indexPath.row].isbn) {
-            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else {
-            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
+        cell.delegate = self
+        cell.bookInfo = booklist[indexPath.row]
+        cell.readonly = true
         
         return cell
     }
     
-    @objc func heartButtonDidTouch(_ sender: UIButton!) {
-        let isbnKey = booklist[sender.tag].isbn
-        let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: isbnKey)
-        if sender.imageView?.image == UIImage(systemName: "heart.fill") {
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            guard let willDeleteHeartContent = DatabaseManager.shared.findHeartContent(isbnKey) else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(willDeleteHeartContent, withBookInfo?.isbn)
-        } else {
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            let newHeartContent = HeartContent(isbn: isbnKey, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, withBookInfo)
-        }
+}
+
+// MARK: - CommonCellDelegate
+
+extension CalendarListViewController: CommonCellDelegate {
+    func heartButtonDidTouch() {
+        refreshBookListView()
     }
-    
-    
+}
+
+// MARK: - Namespaces
+
+extension CalendarListViewController {
+    enum Metric {
+        static let cellHeight: CGFloat = 135
+    }
 }
