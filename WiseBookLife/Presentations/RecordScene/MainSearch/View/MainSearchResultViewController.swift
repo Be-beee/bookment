@@ -114,19 +114,12 @@ extension MainSearchResultViewController: UITableViewDataSource {
               let bookInfo = cell.bookInfo
         else { return }
         
-        // TODO: BookDetailVC <- Storyboard ID 변경
-        guard let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as? BookDetailViewController
+        let bookDetailViewID = BookDetailViewController.name
+        guard let detailVC = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController
         else { return }
         
         detailVC.bookData = bookInfo
         detailVC.modalPresentationStyle = .fullScreen
-        
-        // TODO: BookDetailViewController 내부에서 수행하도록 수정
-        if let _ = DatabaseManager.shared.findBookInfo(isbn: bookInfo.isbn) {
-            detailVC.isHeartBtnSelected = true
-        } else {
-            detailVC.isHeartBtnSelected = false
-        }
         
         present(detailVC, animated: true, completion: nil)
     }

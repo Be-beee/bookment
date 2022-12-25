@@ -72,15 +72,13 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = UIStoryboard(name: "BookDetailVC", bundle: nil).instantiateViewController(withIdentifier: "bookDetailVC") as! BookDetailViewController
-        guard let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn) else { return }
+        let bookDetailViewID = BookDetailViewController.name
+        guard let detailVC = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController,
+              let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)
+        else { return }
+        
         detailVC.bookData = fromHeartListISBN
         detailVC.modalPresentationStyle = .fullScreen
-        if let _ = DatabaseManager.shared.findHeartContent(heartList[indexPath.row].isbn) {
-            detailVC.isHeartBtnSelected = true
-        } else {
-            detailVC.isHeartBtnSelected = false
-        }
         
         present(detailVC, animated: true, completion: nil)
     }

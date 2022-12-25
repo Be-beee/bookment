@@ -42,7 +42,7 @@
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
 		B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6925CE70D800DBE58C /* CalendarController.swift */; };
 		B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6F42724F3904F0048000E /* BookDetailViewController.swift */; };
-		B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */; };
+		B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */; };
 		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
 		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB789A295568C700396E66 /* NetworkManager.swift */; };
@@ -110,7 +110,7 @@
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6925CE70D800DBE58C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		B5A6F42724F3904F0048000E /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
-		B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailVC.storyboard; sourceTree = "<group>"; };
+		B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailViewController.storyboard; sourceTree = "<group>"; };
 		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
 		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5BB789A295568C700396E66 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
-				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
+				B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
 				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
-				B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */,
+				B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */,
 				B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
 			);
