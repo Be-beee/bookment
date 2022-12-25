@@ -115,7 +115,7 @@ extension MainSearchResultViewController: UITableViewDataSource {
         else { return }
         
         let bookDetailViewID = BookDetailViewController.name
-        guard let detailVC = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController
+        guard let detailVC = loadViewController(with: bookDetailViewID) as? BookDetailViewController
         else { return }
         
         detailVC.bookData = bookInfo

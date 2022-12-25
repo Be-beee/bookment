@@ -32,6 +32,7 @@ final class CommonCell: UITableViewCell {
     var readonly: Bool = false {
         didSet {
             addLibraryBtn.isHidden = readonly
+            if !readonly { configureAddButtonAction() }
         }
     }
     
@@ -98,8 +99,7 @@ extension CommonCell {
     
     @objc func addLibraryButtonDidTouch() {
         let addBookViewID = AddBookViewController.name
-        guard let addLibraryVC = UIStoryboard(name: addBookViewID, bundle: nil)
-            .instantiateViewController(withIdentifier: addBookViewID) as? AddBookViewController,
+        guard let addLibraryVC = loadViewController(with: addBookViewID) as? AddBookViewController,
               let bookInfo = bookInfo
         else { return }
         

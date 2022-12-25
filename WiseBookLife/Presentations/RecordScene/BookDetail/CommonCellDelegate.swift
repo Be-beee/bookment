@@ -10,6 +10,7 @@ import UIKit
 
 protocol CommonCellDelegate: AnyObject {
     func heartButtonDidTouch()
+    func addBookButtonDidTouched(destinationView: UIViewController)
 }
 
 extension CommonCellDelegate {
