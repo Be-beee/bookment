@@ -42,7 +42,7 @@ class HeartListViewController: UIViewController {
     
     // MARK:- cell button action methods
     
-    @objc func onOffHeartBtn(_ sender: UIButton!) {
+    @objc func heartButtonDidTouch(_ sender: UIButton!) {
 //        sender.isSelected = !sender.isSelected
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -86,7 +86,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.authorLabel.text = loadedBookInfo.author
         
         cell.heartBtn.tag = indexPath.row
-        cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
+        cell.heartBtn.addTarget(self, action: #selector(heartButtonDidTouch), for: .touchUpInside)
         cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         
         cell.addLibraryBtn.tag = indexPath.row

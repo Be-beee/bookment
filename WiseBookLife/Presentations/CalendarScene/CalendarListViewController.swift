@@ -65,7 +65,7 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.addLibraryBtn.isHidden = true
         
         cell.heartBtn.tag = indexPath.row
-        cell.heartBtn.addTarget(self, action: #selector(onOffHeartBtn), for: .touchUpInside)
+        cell.heartBtn.addTarget(self, action: #selector(heartButtonDidTouch), for: .touchUpInside)
         
         if let _ = DatabaseManager.shared.findHeartContent(booklist[indexPath.row].isbn) {
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -76,7 +76,7 @@ extension CalendarListViewController: UITableViewDataSource {
         return cell
     }
     
-    @objc func onOffHeartBtn(_ sender: UIButton!) {
+    @objc func heartButtonDidTouch(_ sender: UIButton!) {
         let isbnKey = booklist[sender.tag].isbn
         let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: isbnKey)
         if sender.imageView?.image == UIImage(systemName: "heart.fill") {

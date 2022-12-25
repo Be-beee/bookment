@@ -16,10 +16,15 @@ final class SearchRemoteRepository: SearchRepository {
  
     // MARK: - Search Functions
     
-    func search(with keyword: String) async throws -> [BookInfoResponseDTO] {
+    func search(with keyword: String, at page: Int) async throws -> [BookInfoResponseDTO] {
         let clientData = ClientData()
+        let query = [
+            "query": keyword,
+            "start": String(page)
+        ]
         let request = try networkManager.createRequest(
             endpoint: Endpoint.search,
+            query: query,
             header: clientData.requestHeader
         )
         
