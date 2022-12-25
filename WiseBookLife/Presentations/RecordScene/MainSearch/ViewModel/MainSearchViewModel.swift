@@ -16,7 +16,9 @@ final class MainSearchViewModel {
     
     weak var delegate: MainSearchViewModelDelegate?
     
-    var currentPage: Int = 1
+    var keyword: String?
+    
+    var currentPage = Metric.initialPage
     
     var searchResult: [BookInfo] = []
     
@@ -32,23 +34,39 @@ final class MainSearchViewModel {
     
     // MARK: - Functions
     
-    func search(with keyword: String, at page: Int) async throws {
+    func search(with keyword: String) async {
+        self.keyword = keyword
+        
         do {
-            let result = try await searchUseCases.search(with: keyword, at: page)
-            print(result)
-            self.currentPage = page
+            let result = try await searchUseCases.search(with: keyword, at: currentPage)
             self.searchResult = result
-            delegate?.searchResultDidChange()
-        } catch let error {
+            self.currentPage += Metric.pageSize
+            await MainActor.run {
+                delegate?.searchResultDidChange()
+            }
+        } catch {
             print(error.localizedDescription)
-            delegate?.searchResultLoadFailed()
+            await MainActor.run {
+                delegate?.searchResultLoadFailed()
+            }
         }
         
     }
     
     func clear() {
-        currentPage = 1
+        keyword = nil
+        currentPage = Metric.initialPage
         searchResult.removeAll()
     }
     
+}
+
+
+// MARK: - Namespaces
+
+extension MainSearchViewModel {
+    enum Metric {
+        static let initialPage = 1
+        static let pageSize = 10
+    }
 }

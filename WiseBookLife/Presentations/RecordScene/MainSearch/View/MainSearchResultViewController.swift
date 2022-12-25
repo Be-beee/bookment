@@ -20,13 +20,6 @@ final class MainSearchResultViewController: UIViewController {
     // MARK: - Properties
 
     var viewModel = MainSearchViewModel()
-    var searchedWord = ""
-    var curPageNo = 1
-    var pageSize = 10
-    
-    var detailSearchQuery: [String: String] = [:]
-    
-    var isSearched = false
     
     // MARK: - Life Cycle
     
@@ -45,7 +38,6 @@ final class MainSearchResultViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        curPageNo = 1
         self.resultView.reloadData()
     }
     
@@ -84,9 +76,10 @@ final class MainSearchResultViewController: UIViewController {
     
     @objc func showMoreResult() {
         indicator.startAnimating()
-        curPageNo += pageSize
+        // FIXME: 마지막 페이지 검색 시 페이지가 무한히 더해지지 않도록 조치 필요
+        guard let keyword = viewModel.keyword else { return }
         Task {
-            try await viewModel.search(with: searchedWord, at: curPageNo)
+            await viewModel.search(with: keyword)
         }
     }
 
@@ -189,11 +182,10 @@ extension MainSearchResultViewController: UISearchBarDelegate {
         }
         
         self.resultView.tableFooterView?.isHidden = false
-        self.searchedWord = hasText
-        searchBar.text = self.searchedWord
         searchBar.enablesReturnKeyAutomatically = true
+        
         Task {
-            try await viewModel.search(with: hasText, at: curPageNo)
+            await viewModel.search(with: hasText)
         }
     }
 }
@@ -204,24 +196,20 @@ extension MainSearchResultViewController: MainSearchViewModelDelegate {
     
     /// 검색 결과를 정상적으로 받아왔을 때의 UI 작업 처리.
     func searchResultDidChange() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            if self.viewModel.searchResult.isEmpty {
-                self.presentNoticeAlert(with: StringLiteral.noMoreResultMessage)
-            } else {
-                self.resultView.reloadData()
-            }
-            self.indicator.stopAnimating()
+        if viewModel.searchResult.isEmpty {
+            presentNoticeAlert(with: StringLiteral.noMoreResultMessage)
+        } else {
+            resultView.reloadData()
         }
+        
+        emptyResultView.isHidden = !viewModel.searchResult.isEmpty
+        indicator.stopAnimating()
     }
     
     /// 네트워크 통신 실패, 디코딩 실패 등으로 검색 결과를 받아오지 못했을 때 이후 처리.
     func searchResultLoadFailed() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.presentNoticeAlert(with: StringLiteral.loadFailedMessage)
-            self.indicator.stopAnimating()
-        }
+        presentNoticeAlert(with: StringLiteral.loadFailedMessage)
+        indicator.stopAnimating()
     }
     
 }
