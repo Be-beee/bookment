@@ -16,18 +16,6 @@ extension UIColor {
     }
 }
 
-// MARK: - Navigation
-
-extension UIViewController {
-    func removeNavigationBarLine() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // navigation bottom line 없애기
-    }
-}
-
-
 // MARK: - Etc.
 
 extension UIViewController {
