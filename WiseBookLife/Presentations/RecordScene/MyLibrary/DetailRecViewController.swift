@@ -21,7 +21,7 @@ class DetailRecViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         let deleteButton = UIBarButtonItem(title: "삭제", style: .done, target: self, action: #selector(deleteThisBookData))
         self.navigationItem.rightBarButtonItem = deleteButton
-        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
+        self.navigationController?.navigationBar.tintColor = .primary
         presentData()
         settingResultFooter()
     }
@@ -45,7 +45,7 @@ class DetailRecViewController: UIViewController {
     
     func settingResultFooter() {
         let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addRecordToBookData), title: nil, image: UIImage(systemName: "plus"), bgColor: Theme.main.mainColor)
+        settingFooterForTableView(for: tableFooter, action: #selector(addRecordToBookData), title: nil, image: UIImage(systemName: "plus"), bgColor: .primary)
         
         bookRecordsView.tableFooterView = tableFooter
     }

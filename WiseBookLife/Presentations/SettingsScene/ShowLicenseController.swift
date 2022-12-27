@@ -14,7 +14,7 @@ class ShowLicenseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
+        self.navigationController?.navigationBar.tintColor = .primary
         self.removeNavigationBarLine()
         self.navigationItem.title = "오픈소스 라이선스 정보"
         self.setLicenseTextView()

@@ -16,12 +16,6 @@ extension UIColor {
     }
 }
 
-struct Theme {
-    static let main = Theme()
-    let mainColor = UIColor(red: 255/255, green: 104/255, blue: 53/255, alpha: 1) //#FF6835
-}
-
-
 // MARK: - Navigation
 
 extension UIViewController {
