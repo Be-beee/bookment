@@ -28,7 +28,7 @@ final class MainSearchResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
+        self.navigationController?.navigationBar.tintColor = .primary
         self.indicator.stopAnimating()
         configureTableViewCell()
         

@@ -15,8 +15,7 @@ class AppInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = Theme.main.mainColor
-        self.removeNavigationBarLine()
+        self.navigationController?.navigationBar.tintColor = .primary
         self.navigationItem.title = "애플리케이션 정보"
         
         settingAppInfoView()

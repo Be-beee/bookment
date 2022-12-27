@@ -19,8 +19,6 @@ class CalendarController: UIViewController {
         super.viewDidLoad()
         settingCalendarHeader()
         calendarView.collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
-        
-        removeNavigationBarLine()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

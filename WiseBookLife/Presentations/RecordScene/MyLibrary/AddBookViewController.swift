@@ -51,7 +51,7 @@ class AddBookViewController: UIViewController {
     
     func settingTextView() {
         recordContents.layer.borderWidth = 0.3
-        recordContents.layer.borderColor = Theme.main.mainColor.cgColor
+        recordContents.layer.borderColor = UIColor.primary?.cgColor
         recordContents.backgroundColor = .systemBackground
         recordContents.text = placeholderText
         recordContents.textColor = .systemGray

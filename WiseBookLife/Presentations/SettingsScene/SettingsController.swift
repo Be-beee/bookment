@@ -30,7 +30,6 @@ class SettingsController: UIViewController {
     @IBOutlet weak var settingsView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeNavigationBarLine()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
     }
 }

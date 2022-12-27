@@ -42,7 +42,7 @@ class AddRecordViewController: UIViewController {
     
     func settingTextView() {
         recordInputView.layer.borderWidth = 0.3
-        recordInputView.layer.borderColor = Theme.main.mainColor.cgColor
+        recordInputView.layer.borderColor = UIColor.primary?.cgColor
         recordInputView.backgroundColor = .systemBackground
         recordInputView.text = self.placeholderText
         recordInputView.textColor = .systemGray

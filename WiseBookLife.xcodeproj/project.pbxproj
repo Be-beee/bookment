@@ -35,7 +35,7 @@
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
-		B57D47302693360600ADCADE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* Theme.swift */; };
+		B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
 		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
@@ -54,6 +54,7 @@
 		B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */; };
 		B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */; };
+		B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */; };
 		B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D22843429700FB0E3D /* HeartContent.swift */; };
 		B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */; };
 		B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfo.swift */; };
@@ -104,7 +105,7 @@
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
-		B57D472F2693360600ADCADE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FooterView.swift"; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoViewController.storyboard; sourceTree = "<group>"; };
+		B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Primary.swift"; sourceTree = "<group>"; };
 		B5E870D22843429700FB0E3D /* HeartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContent.swift; sourceTree = "<group>"; };
 		B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoResponseDTO.swift; sourceTree = "<group>"; };
 		B5E870D62843432100FB0E3D /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
@@ -268,9 +270,14 @@
 		B5BB7895295552DC00396E66 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B55308D82958A9B7001977B5 /* NSObject+LoadViewController.swift */,
+				B55308D229588957001977B5 /* NSObject+Name.swift */,
 				B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */,
 				B5E870DF28434DBD00FB0E3D /* Dictionary+QueryString.swift */,
 				B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */,
+				B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */,
+				B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */,
+				B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,10 +380,6 @@
 				B5BB7895295552DC00396E66 /* Extensions */,
 				B5E870E72843536F00FB0E3D /* ImageDownloader.swift */,
 				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
-				B57D472F2693360600ADCADE /* Theme.swift */,
-				B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */,
-				B55308D82958A9B7001977B5 /* NSObject+LoadViewController.swift */,
-				B55308D229588957001977B5 /* NSObject+Name.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -565,7 +568,7 @@
 				B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */,
-				B57D47302693360600ADCADE /* Theme.swift in Sources */,
+				B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */,
 				B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */,
 				B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */,
 				B5E870DB28434D5700FB0E3D /* SearchResponseDTO.swift in Sources */,
@@ -602,6 +605,7 @@
 				B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */,
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,
+				B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */,
 				B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */,
 				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,
 				B5BB789F295579A100396E66 /* NetworkError.swift in Sources */,

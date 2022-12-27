@@ -18,7 +18,6 @@ class CalendarListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeNavigationBarLine()
         
         configureTableViewCell()
         refreshBookListView()
