@@ -8,16 +8,20 @@
 
 import UIKit
 
-class BaseTabBarController: UITabBarController {
+final class BaseTabBarController: UITabBarController {
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTabBarBackground()
+        
+        configureTabBar()
     }
     
-    func setTabBarBackground() {
+    // MARK: - Configure Functions
+    
+    private func configureTabBar() {
         self.tabBar.barTintColor = .systemBackground
-//        self.tabBar.isTranslucent = false
     }
 
 }
