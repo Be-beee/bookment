@@ -75,9 +75,8 @@ final class MainSearchResultViewController: UIViewController {
     
     @objc func showMoreResult() {
         indicator.startAnimating()
-        guard let keyword = viewModel.keyword else { return }
         Task {
-            await viewModel.search(with: keyword)
+            await viewModel.searchMore()
         }
     }
 

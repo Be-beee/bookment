@@ -20,9 +20,9 @@ final class MainSearchViewModel {
     
     private(set) var searchResult: [BookInfo] = []
     
-    weak var delegate: MainSearchViewModelDelegate?
+    private var keyword: String?
     
-    var keyword: String?
+    weak var delegate: MainSearchViewModelDelegate?
     
     // MARK: - Init(s)
     
@@ -35,6 +35,11 @@ final class MainSearchViewModel {
     }
     
     // MARK: - Functions
+    
+    func searchMore() async {
+        guard let keyword else { return }
+        await search(with: keyword)
+    }
     
     func search(with keyword: String) async {
         if isLastPage {
