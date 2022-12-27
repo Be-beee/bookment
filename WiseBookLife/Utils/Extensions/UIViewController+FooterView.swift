@@ -1,5 +1,5 @@
 //
-//  Theme.swift
+//  UIViewController+FooterView.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2021/07/05.
@@ -7,14 +7,6 @@
 //
 
 import UIKit
-
-// MARK: - Main Theme Color
-
-extension UIColor {
-    static var primary: UIColor? {
-        return UIColor(named: "primary")
-    }
-}
 
 // MARK: - Etc.
 
