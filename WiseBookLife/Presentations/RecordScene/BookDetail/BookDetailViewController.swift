@@ -22,11 +22,14 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isHeartBtnSelected {
+        if let _ = DatabaseManager.shared.findBookInfo(isbn: bookData.isbn) {
+            isHeartBtnSelected = true
             heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
+            isHeartBtnSelected = false
             heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
+        
         configureSelectedBookView()
         bookIntroduction.text = bookData.descriptionText
         cacheData = bookData.changeToBookItem()

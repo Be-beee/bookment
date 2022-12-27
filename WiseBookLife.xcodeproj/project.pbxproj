@@ -15,8 +15,14 @@
 		B52C453C25FA5B0C00EED195 /* AddRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
 		B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B536B8E924BEF9F9005D2F6B /* SelectView.xib */; };
-		B55A72C52955DB77003E5CD1 /* SearchBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72C42955DB77003E5CD1 /* SearchBookAPI.swift */; };
+		B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */; };
+		B55308D329588957001977B5 /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308D229588957001977B5 /* NSObject+Name.swift */; };
+		B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308D42958A55C001977B5 /* CommonCellDelegate.swift */; };
+		B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55308D82958A9B7001977B5 /* NSObject+LoadViewController.swift */; };
 		B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72C62955DC67003E5CD1 /* SearchRepository.swift */; };
+		B55A72CB2955E2A8003E5CD1 /* MainSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72CA2955E2A8003E5CD1 /* MainSearchViewModel.swift */; };
+		B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72CD2955E34E003E5CD1 /* SearchUseCases.swift */; };
+		B55A72D12956086E003E5CD1 /* MainSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A72D02956086E003E5CD1 /* MainSearchViewModelDelegate.swift */; };
 		B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561165025D37B3A00C0D94B /* CalendarListViewController.swift */; };
 		B561165425D37B5300C0D94B /* CalendarListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */; };
 		B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5616DD325EE83D900A0103E /* SelectDateController.swift */; };
@@ -24,7 +30,7 @@
 		B56380F827413B1200181008 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56380F727413B1200181008 /* Licenses.plist */; };
 		B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
-		B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */; };
+		B56B972824DFB97800347D11 /* MainSearchResultViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultViewController.storyboard */; };
 		B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */; };
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
@@ -37,7 +43,7 @@
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
 		B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6925CE70D800DBE58C /* CalendarController.swift */; };
 		B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6F42724F3904F0048000E /* BookDetailViewController.swift */; };
-		B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */; };
+		B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */; };
 		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
 		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB789A295568C700396E66 /* NetworkManager.swift */; };
@@ -78,8 +84,14 @@
 		B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordViewController.storyboard; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B536B8E924BEF9F9005D2F6B /* SelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectView.xib; sourceTree = "<group>"; };
-		B55A72C42955DB77003E5CD1 /* SearchBookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBookAPI.swift; sourceTree = "<group>"; };
+		B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentAlert.swift"; sourceTree = "<group>"; };
+		B55308D229588957001977B5 /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
+		B55308D42958A55C001977B5 /* CommonCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellDelegate.swift; sourceTree = "<group>"; };
+		B55308D82958A9B7001977B5 /* NSObject+LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+LoadViewController.swift"; sourceTree = "<group>"; };
 		B55A72C62955DC67003E5CD1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		B55A72CA2955E2A8003E5CD1 /* MainSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewModel.swift; sourceTree = "<group>"; };
+		B55A72CD2955E34E003E5CD1 /* SearchUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCases.swift; sourceTree = "<group>"; };
+		B55A72D02956086E003E5CD1 /* MainSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewModelDelegate.swift; sourceTree = "<group>"; };
 		B561165025D37B3A00C0D94B /* CalendarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarListViewController.swift; sourceTree = "<group>"; };
 		B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarListViewController.storyboard; sourceTree = "<group>"; };
 		B5616DD325EE83D900A0103E /* SelectDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateController.swift; sourceTree = "<group>"; };
@@ -87,7 +99,7 @@
 		B56380F727413B1200181008 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
-		B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultVC.storyboard; sourceTree = "<group>"; };
+		B56B972724DFB97800347D11 /* MainSearchResultViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultViewController.storyboard; sourceTree = "<group>"; };
 		B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryViewController.swift; sourceTree = "<group>"; };
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
@@ -100,7 +112,7 @@
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6925CE70D800DBE58C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		B5A6F42724F3904F0048000E /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
-		B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailVC.storyboard; sourceTree = "<group>"; };
+		B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailViewController.storyboard; sourceTree = "<group>"; };
 		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
 		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5BB789A295568C700396E66 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -148,11 +160,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B56B972024DFB4DA00347D11 /* MainSearch */ = {
+		B55A72C82955E209003E5CD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */,
-				B56B972724DFB97800347D11 /* MainSearchResultVC.storyboard */,
+				B56B972724DFB97800347D11 /* MainSearchResultViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B55A72C92955E214003E5CD1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B55A72D02956086E003E5CD1 /* MainSearchViewModelDelegate.swift */,
+				B55A72CA2955E2A8003E5CD1 /* MainSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B55A72CC2955E337003E5CD1 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				B55A72CF2955E36B003E5CD1 /* RecordScene */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		B55A72CF2955E36B003E5CD1 /* RecordScene */ = {
+			isa = PBXGroup;
+			children = (
+				B55A72CD2955E34E003E5CD1 /* SearchUseCases.swift */,
+			);
+			path = RecordScene;
+			sourceTree = "<group>";
+		};
+		B56B972024DFB4DA00347D11 /* MainSearch */ = {
+			isa = PBXGroup;
+			children = (
+				B55A72C92955E214003E5CD1 /* ViewModel */,
+				B55A72C82955E209003E5CD1 /* View */,
 			);
 			path = MainSearch;
 			sourceTree = "<group>";
@@ -160,10 +206,11 @@
 		B57BFFA525E210C8009780ED /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B55308D42958A55C001977B5 /* CommonCellDelegate.swift */,
 				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
 				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
-				B5A6F42B24F390D30048000E /* BookDetailVC.storyboard */,
+				B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -285,7 +332,6 @@
 				B5BB789E295579A100396E66 /* NetworkError.swift */,
 				B5BB78A02955845E00396E66 /* HTTPMethod.swift */,
 				B5E870E3284352CB00FB0E3D /* NaverClientData.swift */,
-				B55A72C42955DB77003E5CD1 /* SearchBookAPI.swift */,
 				B5BB789A295568C700396E66 /* NetworkManager.swift */,
 				B5BB78A729559E4B00396E66 /* Endpoint.swift */,
 			);
@@ -297,6 +343,7 @@
 			children = (
 				B5BB78A229558DB700396E66 /* DTO */,
 				B5BB78A329558DBE00396E66 /* Repositories */,
+				B55A72CC2955E337003E5CD1 /* UseCases */,
 				B5E870D62843432100FB0E3D /* BookInfo.swift */,
 				B5E870D22843429700FB0E3D /* HeartContent.swift */,
 				B5E870D8284343BB00FB0E3D /* RecordContent.swift */,
@@ -327,6 +374,9 @@
 				B5E870E72843536F00FB0E3D /* ImageDownloader.swift */,
 				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
 				B57D472F2693360600ADCADE /* Theme.swift */,
+				B55308CC29584A72001977B5 /* UIViewController+PresentAlert.swift */,
+				B55308D82958A9B7001977B5 /* NSObject+LoadViewController.swift */,
+				B55308D229588957001977B5 /* NSObject+Name.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -449,11 +499,11 @@
 				B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */,
 				B5001AAC278F140D00219175 /* ExportManagerViewController.storyboard in Resources */,
 				B5616DD725EE83ED00A0103E /* SelectDateController.storyboard in Resources */,
-				B56B972824DFB97800347D11 /* MainSearchResultVC.storyboard in Resources */,
+				B56B972824DFB97800347D11 /* MainSearchResultViewController.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
 				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
-				B5A6F42C24F390D30048000E /* BookDetailVC.storyboard in Resources */,
+				B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */,
 				B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
 			);
@@ -516,11 +566,13 @@
 				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
 				B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */,
 				B57D47302693360600ADCADE /* Theme.swift in Sources */,
+				B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */,
 				B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */,
 				B5E870DB28434D5700FB0E3D /* SearchResponseDTO.swift in Sources */,
 				B5E870E228434DF600FB0E3D /* String+RemoveHTMLTag.swift in Sources */,
 				B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */,
 				B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */,
+				B55A72CB2955E2A8003E5CD1 /* MainSearchViewModel.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
@@ -528,21 +580,25 @@
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
+				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
 				B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */,
 				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
 				B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
+				B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
+				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
+				B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */,
+				B55A72D12956086E003E5CD1 /* MainSearchViewModelDelegate.swift in Sources */,
 				B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */,
 				B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */,
-				B55A72C52955DB77003E5CD1 /* SearchBookAPI.swift in Sources */,
 				B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */,
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,

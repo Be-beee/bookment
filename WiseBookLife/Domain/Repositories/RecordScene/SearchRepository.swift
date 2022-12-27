@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SearchRepository {
-    func search(with keyword: String) async throws -> [BookInfoResponseDTO]
+    func search(with keyword: String, at page: Int) async throws -> [BookInfoResponseDTO]
 }

@@ -71,7 +71,7 @@ class MainPageViewController: UIViewController {
     
     
     @IBAction func moveToAddContentsView(_ sender: UIButton) {
-        guard let searchVC = UIStoryboard(name: "MainSearchResultVC", bundle: nil).instantiateViewController(withIdentifier: "mainSearchResultVC") as? MainSearchResultViewController else { return }
+        guard let searchVC = UIStoryboard(name: "MainSearchResultViewController", bundle: nil).instantiateViewController(withIdentifier: "MainSearchResultViewController") as? MainSearchResultViewController else { return }
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }

@@ -9,12 +9,15 @@
 import UIKit
 
 class ImageDownloader {
-    static func urlToImage(from url: String) -> UIImage? {
-        if let url = URL(string: url) {
-            if let imgData = try? Data(contentsOf: url) {
-                return UIImage(data: imgData)
-            }
+    
+    static func urlToImage(from url: String) async -> UIImage? {
+        do {
+            let networkManager = NetworkManager.shared
+            let request = try networkManager.createRequest(endpoint: .image(url))
+            let imageData = try await networkManager.fetchData(request: request)
+            return UIImage(data: imageData)
+        } catch {
+            return UIImage(named: "No_Img.png")
         }
-        return UIImage(named: "No_Img.png")
     }
 }

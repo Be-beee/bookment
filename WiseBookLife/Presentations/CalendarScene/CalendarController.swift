@@ -69,19 +69,16 @@ class CalendarController: UIViewController {
 extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
     // 책 표지 표시
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "ko_KR")
-        df.dateFormat = "yyyy-MM-dd"
-
-        let key = df.string(from: date)
+        let key = date.dateToString()
         guard let data = calData[key] else { return nil }
         if data.count > 0 {
-            let bookImg = data[0].image
-            return ImageDownloader.urlToImage(from: bookImg)
-        } else {
-            return nil
+            let imageURL = data[0].image
+            Task {
+                let image = await ImageDownloader.urlToImage(from: imageURL)
+                return image
+            }
         }
-        
+        return nil
     }
     
     // 특정 날짜 선택 시
