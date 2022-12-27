@@ -75,7 +75,6 @@ final class MainSearchResultViewController: UIViewController {
     
     @objc func showMoreResult() {
         indicator.startAnimating()
-        // FIXME: 마지막 페이지 검색 시 페이지가 무한히 더해지지 않도록 조치 필요
         guard let keyword = viewModel.keyword else { return }
         Task {
             await viewModel.search(with: keyword)
@@ -170,13 +169,14 @@ extension MainSearchResultViewController: MainSearchViewModelDelegate {
     
     /// 검색 결과를 정상적으로 받아왔을 때의 UI 작업 처리.
     func searchResultDidChange() {
-        if viewModel.searchResult.isEmpty {
+        if viewModel.isLastPage {
+            // TODO: 추후 FooterView의 버튼을 터치하여 추가적인 검색 결과를 확인하는 방식 대신 무한 스크롤 방식으로 수정하길
             presentNoticeAlert(with: StringLiteral.noMoreResultMessage)
         } else {
+            emptyResultView.isHidden = !viewModel.searchResult.isEmpty
             resultView.reloadData()
         }
         
-        emptyResultView.isHidden = !viewModel.searchResult.isEmpty
         indicator.stopAnimating()
     }
     

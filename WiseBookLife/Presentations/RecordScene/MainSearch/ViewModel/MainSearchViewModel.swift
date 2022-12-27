@@ -14,13 +14,15 @@ final class MainSearchViewModel {
     
     private let searchUseCases: SearchUseCases
     
+    private var currentPage = Metric.initialPage
+    
+    private(set) var isLastPage = false
+    
+    private(set) var searchResult: [BookInfo] = []
+    
     weak var delegate: MainSearchViewModelDelegate?
     
     var keyword: String?
-    
-    var currentPage = Metric.initialPage
-    
-    var searchResult: [BookInfo] = []
     
     // MARK: - Init(s)
     
@@ -35,12 +37,22 @@ final class MainSearchViewModel {
     // MARK: - Functions
     
     func search(with keyword: String) async {
+        if isLastPage {
+            await MainActor.run {
+                delegate?.searchResultDidChange()
+            }
+            return
+        }
         self.keyword = keyword
         
         do {
             let result = try await searchUseCases.search(with: keyword, at: currentPage)
-            self.searchResult = result
-            self.currentPage += Metric.pageSize
+            if result.isEmpty { isLastPage = true }
+            else {
+                self.searchResult.append(contentsOf: result)
+                self.currentPage += Metric.pageSize
+            }
+            
             await MainActor.run {
                 delegate?.searchResultDidChange()
             }
