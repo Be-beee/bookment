@@ -9,5 +9,22 @@
 import Foundation
 
 final class BookDetailViewModel {
+    // MARK: - Properties
+
+    var bookData: BookInfo
+    var isHeartBtnSelected: Bool = false
     
+    // MARK: - Init(s)
+    
+    init(bookData: BookInfo = BookInfo()) {
+        self.bookData = bookData
+        
+        configureHeartButtonStatus()
+    }
+    
+    // MARK: - Functions
+    
+    private func configureHeartButtonStatus() {
+        self.isHeartBtnSelected = DatabaseManager.shared.findBookInfo(isbn: bookData.isbn) != nil
+    }
 }

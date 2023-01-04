@@ -9,66 +9,95 @@
 import UIKit
 import SafariServices
 
-class BookDetailViewController: UIViewController {
+final class BookDetailViewController: UIViewController {
 
-    var bookData = BookInfo()
-    var cacheData = BookInfoResponseDTO()
-    var isHeartBtnSelected = false
+    // MARK: - UI Properties
     
     @IBOutlet weak var selectedBookView: SelectView!
     @IBOutlet weak var bookIntroduction: UILabel!
     @IBOutlet var heartBtn: UIButton!
     
+    // MARK: - Properties
+    
+    var viewModel = BookDetailViewModel()
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let _ = DatabaseManager.shared.findBookInfo(isbn: bookData.isbn) {
-            isHeartBtnSelected = true
-            heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else {
-            isHeartBtnSelected = false
-            heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
-        
+        configureHeartButton()
         configureSelectedBookView()
-        bookIntroduction.text = bookData.descriptionText
-        cacheData = bookData.changeToBookItem()
+        configureBookIntroduction()
     }
     
-    func configureSelectedBookView() {
-        selectedBookView.configure(bookData)
+    // MARK: - Configure Functions
+    
+    private func configureHeartButton() {
+        let heartType = viewModel.isHeartBtnSelected ? StringLiteral.heartFill : StringLiteral.heartEmpty
+        heartBtn.setImage(UIImage(systemName: heartType), for: .normal)
     }
+    
+    private func configureSelectedBookView() {
+        selectedBookView.configure(viewModel.bookData)
+    }
+    
+    private func configureBookIntroduction() {
+        bookIntroduction.text = viewModel.bookData.descriptionText
+    }
+    
+    // MARK: - IBAction Functions
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
-        if isHeartBtnSelected {
+        if viewModel.isHeartBtnSelected {
             print("executed:: heart will delete")
-            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(cacheData.isbn) else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, cacheData.isbn)
-            heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            let willDeleteData = viewModel.bookData
+            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(willDeleteData.isbn)
+            else { return }
+            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, willDeleteData.isbn)
+            heartBtn.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
         } else {
             print("executed:: heart will add")
-            let dbFormData = cacheData.changeToBookInfo()
-            let newHeartContent = HeartContent(isbn: cacheData.isbn, date: Date())
+            
+            // FIXME: 버그 수정 필요
+            let dbFormData = viewModel.bookData
+            let newHeartContent = HeartContent(isbn: viewModel.bookData.isbn, date: Date())
             DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
-            heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartBtn.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
         }
-        isHeartBtnSelected.toggle()
-//        print(isHeartBtnSelected)
+        viewModel.isHeartBtnSelected.toggle()
     }
+    
+    /// 이전 뷰로 돌아간다.
     @IBAction func dismissView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /// 나의 노트 추가 화면을 띄운다.
     @IBAction func addToMyLibrary(_ sender: UIButton) {
-        guard let addVC = UIStoryboard(name: "AddBookViewController", bundle: nil).instantiateViewController(withIdentifier: "AddBookViewController") as? AddBookViewController else { return }
-        addVC.selectedBookInfo = self.cacheData.changeToBookInfo()
+        let addBookViewID = AddBookViewController.name
+        guard let addVC = loadViewController(with: addBookViewID) as? AddBookViewController
+        else { return }
+        
+        addVC.selectedBookInfo = viewModel.bookData
         self.present(addVC, animated: true, completion: nil)
     }
     
+    /// 책 소개 상세 화면을 띄운다.
     @IBAction func showDetailWebSite(_ sender: UIButton) {
-        guard let detailURL = URL(string: bookData.link) else { return }
+        guard let detailURL = URL(string: viewModel.bookData.link) else { return }
         let detailSafariVC = SFSafariViewController(url: detailURL)
 
         self.present(detailSafariVC, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - Namespaces
+
+extension BookDetailViewController {
+    enum StringLiteral {
+        static let heartFill = "heart.fill"
+        static let heartEmpty = "heart"
     }
 }
