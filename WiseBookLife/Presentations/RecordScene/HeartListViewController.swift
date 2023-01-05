@@ -73,14 +73,19 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookDetailViewID = BookDetailViewController.name
-        guard let detailVC = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController,
+        guard let bookDetailViewController = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController,
               let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)
         else { return }
         
-        detailVC.bookData = fromHeartListISBN
-        detailVC.modalPresentationStyle = .fullScreen
+        let bookDetailViewModel = BookDetailViewModel(bookData: fromHeartListISBN)
+        bookDetailViewController.viewModel = bookDetailViewModel
+        bookDetailViewController.modalPresentationStyle = .fullScreen
         
-        present(detailVC, animated: true, completion: nil)
+        present(
+            bookDetailViewController,
+            animated: true,
+            completion: nil
+        )
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

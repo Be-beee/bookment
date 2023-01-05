@@ -116,7 +116,8 @@ extension MainSearchResultViewController: UITableViewDataSource {
         guard let detailVC = loadViewController(with: bookDetailViewID) as? BookDetailViewController
         else { return }
         
-        detailVC.bookData = bookInfo
+        let bookDetailViewModel = BookDetailViewModel(bookData: bookInfo)
+        detailVC.viewModel = bookDetailViewModel
         detailVC.modalPresentationStyle = .fullScreen
         
         present(detailVC, animated: true, completion: nil)
