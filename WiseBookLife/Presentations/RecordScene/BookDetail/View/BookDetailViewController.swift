@@ -29,6 +29,11 @@ final class BookDetailViewController: UIViewController {
         configureHeartButton()
         configureSelectedBookView()
         configureBookIntroduction()
+        bindToViewModel()
+    }
+    
+    private func bindToViewModel() {
+        viewModel.delegate = self
     }
     
     // MARK: - Configure Functions
@@ -50,22 +55,10 @@ final class BookDetailViewController: UIViewController {
 
     @IBAction func addDeleteHeart(_ sender: UIButton) {
         if viewModel.isHeartBtnSelected {
-            print("executed:: heart will delete")
-            let willDeleteData = viewModel.bookData
-            guard let foundHeartContent = DatabaseManager.shared.findHeartContent(willDeleteData.isbn)
-            else { return }
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, willDeleteData.isbn)
-            heartBtn.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
+            viewModel.deleteFromHeartList()
         } else {
-            print("executed:: heart will add")
-            
-            // FIXME: 버그 수정 필요
-            let dbFormData = viewModel.bookData
-            let newHeartContent = HeartContent(isbn: viewModel.bookData.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
-            heartBtn.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
+            viewModel.addToHeartList()
         }
-        viewModel.isHeartBtnSelected.toggle()
     }
     
     /// 이전 뷰로 돌아간다.
@@ -89,6 +82,12 @@ final class BookDetailViewController: UIViewController {
         let detailSafariVC = SFSafariViewController(url: detailURL)
 
         self.present(detailSafariVC, animated: true, completion: nil)
+    }
+}
+
+extension BookDetailViewController: BookDetailViewModelDelegate {
+    func heartButtonStatusChanged() {
+        configureHeartButton()
     }
 }
 
