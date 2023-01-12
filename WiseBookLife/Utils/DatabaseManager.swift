@@ -97,13 +97,13 @@ class DatabaseManager {
     }
     
     // MARK: - Database Management Method, BookInfo
-    func loadBookInfos() -> [BookInfo] {
-        let list = db.objects(BookInfo.self)
+    func loadBookInfos() -> [BookInfoLocalDTO] {
+        let list = db.objects(BookInfoLocalDTO.self)
         return Array(list)
     }
     
     @discardableResult
-    func addBookInfo(data: BookInfo) -> Bool {
+    func addBookInfo(data: BookInfoLocalDTO) -> Bool {
         do {
             try db.write {
                 db.add(data)
@@ -115,7 +115,7 @@ class DatabaseManager {
     }
     
     @discardableResult
-    func deleteBookInfo(_ data: [BookInfo]) -> Bool {
+    func deleteBookInfo(_ data: [BookInfoLocalDTO]) -> Bool {
         do {
             try db.write {
                 db.delete(data)
@@ -131,8 +131,8 @@ class DatabaseManager {
     // heartdict: [HeartContent], records: [RecordContent], AllBookData: [BookInfo]
     // CommonData 하위 메서드가 DatabaseManager 하위 메서드로 이동
     
-    func findBookInfo(isbn: String) -> BookInfo? {
-        guard let found = db.objects(BookInfo.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { return nil }
+    func findBookInfo(isbn: String) -> BookInfoLocalDTO? {
+        guard let found = db.objects(BookInfoLocalDTO.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { return nil }
         return found
     }
     
@@ -142,12 +142,12 @@ class DatabaseManager {
         return result.sorted { $0.date < $1.date }
     }
     
-    func createMyLibraryList() -> [BookInfo] {
+    func createMyLibraryList() -> [BookInfoLocalDTO] {
         let records = Array(db.objects(RecordContent.self))
         let isbnList = records.map { $0.isbn }
-        var libraryList: [BookInfo] = []
+        var libraryList: [BookInfoLocalDTO] = []
         for isbn in isbnList {
-            guard let result = db.objects(BookInfo.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { continue }
+            guard let result = db.objects(BookInfoLocalDTO.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { continue }
             libraryList.append(result)
         }
         // isbnList -> libraryList
@@ -160,7 +160,7 @@ extension DatabaseManager {
     
     // MARK: - RecordContent
     @discardableResult
-    func addRecordToDB(_ record: RecordContent, _ book: BookInfo?) -> Bool {
+    func addRecordToDB(_ record: RecordContent, _ book: BookInfoLocalDTO?) -> Bool {
         let result = DatabaseManager.shared.addRecord(data: record)
         if let _ = DatabaseManager.shared.findBookInfo(isbn: record.isbn) {
             return result
@@ -175,7 +175,7 @@ extension DatabaseManager {
     }
     
     @discardableResult
-    func deleteRecordToDB(_ record: RecordContent, _ book: BookInfo?) -> Bool {
+    func deleteRecordToDB(_ record: RecordContent, _ book: BookInfoLocalDTO?) -> Bool {
         var heartContentCount = 0
         if let _ = DatabaseManager.shared.findHeartContent(record.isbn) {
             heartContentCount += 1
@@ -192,7 +192,7 @@ extension DatabaseManager {
     
     // MARK: - HeartContent
     @discardableResult
-    func addHeartContentToDB(_ heart: HeartContent, _ book: BookInfo?) -> Bool {
+    func addHeartContentToDB(_ heart: HeartContent, _ book: BookInfoLocalDTO?) -> Bool {
         let result = DatabaseManager.shared.addHeartContent(data: heart)
         if let _ = DatabaseManager.shared.findBookInfo(isbn: heart.isbn) {
             return result

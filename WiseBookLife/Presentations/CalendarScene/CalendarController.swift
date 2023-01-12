@@ -114,7 +114,9 @@ extension CalendarController {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd"
             let date_str = df.string(from: item.date)
-            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn) else { continue }
+            
+            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn)?.entity()
+            else { continue }
             
             if var value = calendarData[date_str] {
                 if value.contains(where: { $0.isbn == newBookItem.isbn }) { continue }

@@ -65,7 +65,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.delegate = self
-        cell.bookInfo = loadedBookInfo
+        cell.bookInfo = loadedBookInfo.entity()
         cell.readonly = false
 
         return cell
@@ -77,7 +77,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
               let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)
         else { return }
         
-        let bookDetailViewModel = BookDetailViewModel(bookData: fromHeartListISBN)
+        let bookDetailViewModel = BookDetailViewModel(bookData: fromHeartListISBN.entity())
         bookDetailViewController.viewModel = bookDetailViewModel
         bookDetailViewController.modalPresentationStyle = .fullScreen
         

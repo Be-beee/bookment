@@ -2,45 +2,45 @@
 //  BookInfo.swift
 //  WiseBookLife
 //
-//  Created by 서보경 on 2022/05/29.
-//  Copyright © 2022 서보경. All rights reserved.
+//  Created by 서보경 on 2023/01/12.
+//  Copyright © 2023 서보경. All rights reserved.
 //
 
-import UIKit
-import RealmSwift
+import Foundation
 
-class BookInfo: Object, Codable {
-    @objc dynamic var title: String = ""
-    @objc dynamic var link: String = ""
-    @objc dynamic var image: String = ""
-    @objc dynamic var author: String = ""
-    @objc dynamic var price: String = ""
-    @objc dynamic var publisher: String = ""
-    @objc dynamic var isbn: String = ""
-    @objc dynamic var descriptionText: String = ""
-    @objc dynamic var pubdate: String = ""
+struct BookInfo {
     
-    convenience init(title: String, link: String, image: String, author: String, price: String, publisher: String, isbn: String, descriptionText: String, pubdate: String) {
-        self.init()
-        self.title = title
-        self.link = link
-        self.image = image
-        self.author = author
-        self.price = price
-        self.publisher = publisher
-        self.isbn = isbn
-        self.descriptionText = descriptionText
-        self.pubdate = pubdate
+    // MARK: - Properties
+    
+    private(set) var title: String = ""
+    private(set) var link: String = ""
+    private(set) var image: String = ""
+    private(set) var author: String = ""
+    private(set) var price: String = ""
+    private(set) var publisher: String = ""
+    private(set) var isbn: String = ""
+    private(set) var description: String = ""
+    private(set) var pubdate: String = ""
+    
+    // MARK: - Computed Properties
+    
+    var dto: BookInfoLocalDTO {
+        return BookInfoLocalDTO(
+            title: title, link: link, image: image,
+            author: author, price: price, publisher: publisher,
+            isbn: isbn, descriptionText: description, pubdate: pubdate
+        )
     }
     
-    func modifySearchedData() {
+    // MARK: - Tag Functions
+    
+    mutating func modifySearchedData() {
         let title = self.title.removeHTMLTag()
         let author = self.author.removeHTMLTag()
         
         self.title = title
         self.author = author
     }
-    func changeToBookItem() -> BookInfoResponseDTO {
-        return BookInfoResponseDTO(title: self.title, link: self.link, image: self.image, author: self.author, discount: self.price, publisher: self.publisher, isbn: self.isbn, description: self.descriptionText, pubdate: self.pubdate)
-    }
+    
+    
 }

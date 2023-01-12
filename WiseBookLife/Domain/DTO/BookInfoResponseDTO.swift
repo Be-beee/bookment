@@ -10,6 +10,9 @@ import Foundation
 
 
 struct BookInfoResponseDTO: Codable, Hashable {
+    
+    // MARK: - Properties
+    
     var title: String = ""
     var link: String = ""
     var image: String = ""
@@ -20,15 +23,13 @@ struct BookInfoResponseDTO: Codable, Hashable {
     var description: String = ""
     var pubdate: String = ""
     
-    mutating func modifySearchedData() {
-        let title = self.title.removeHTMLTag()
-        let author = self.author.removeHTMLTag()
-        
-        self.title = title
-        self.author = author
-    }
+    // MARK: - Entity Functions
     
-    func changeToBookInfo() -> BookInfo {
-        return BookInfo(title: self.title, link: self.link, image: self.image, author: self.author, price: self.discount, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
+    func entity() -> BookInfo {
+        return BookInfo(
+            title: title, link: link, image: image,
+            author: author, price: discount, publisher: publisher,
+            isbn: isbn, description: description, pubdate: pubdate
+        )
     }
 }

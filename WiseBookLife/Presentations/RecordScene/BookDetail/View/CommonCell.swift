@@ -90,7 +90,7 @@ extension CommonCell {
         } else {
             sender.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
             let newHeartContent = HeartContent(isbn: bookInfo.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookInfo)
+            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookInfo.dto)
         }
         
         delegate?.heartButtonDidTouch()
