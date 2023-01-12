@@ -61,7 +61,8 @@ class MyLibraryViewController: UIViewController {
         guard let addVC = sender.source as? AddBookViewController else {
             return
         }
-        DatabaseManager.shared.addRecordToDB(addVC.newRecordContent, addVC.selectedBookInfo)
+        let willAddBookInfo = addVC.selectedBookInfo.dto
+        DatabaseManager.shared.addRecordToDB(addVC.newRecordContent, willAddBookInfo)
         self.refreshLibraryView()
     }
 }

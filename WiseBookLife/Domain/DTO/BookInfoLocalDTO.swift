@@ -11,6 +11,9 @@ import UIKit
 import RealmSwift
 
 class BookInfoLocalDTO: Object, Codable {
+    
+    // MARK: - Properties
+    
     @objc dynamic var title: String = ""
     @objc dynamic var link: String = ""
     @objc dynamic var image: String = ""
@@ -20,6 +23,8 @@ class BookInfoLocalDTO: Object, Codable {
     @objc dynamic var isbn: String = ""
     @objc dynamic var descriptionText: String = ""
     @objc dynamic var pubdate: String = ""
+    
+    // MARK: - Init(s)
     
     convenience init(title: String, link: String, image: String, author: String, price: String, publisher: String, isbn: String, descriptionText: String, pubdate: String) {
         self.init()
@@ -34,14 +39,15 @@ class BookInfoLocalDTO: Object, Codable {
         self.pubdate = pubdate
     }
     
-    func modifySearchedData() {
-        let title = self.title.removeHTMLTag()
-        let author = self.author.removeHTMLTag()
-        
-        self.title = title
-        self.author = author
+    // MARK: - Entity Function
+    
+    func entity() -> BookInfo {
+        return BookInfo(
+            title: title, link: link, image: image,
+            author: author, price: price,
+            publisher: publisher, isbn: isbn,
+            description: descriptionText, pubdate: pubdate
+        )
     }
-    func changeToBookItem() -> BookInfoResponseDTO {
-        return BookInfoResponseDTO(title: self.title, link: self.link, image: self.image, author: self.author, discount: self.price, publisher: self.publisher, isbn: self.isbn, description: self.descriptionText, pubdate: self.pubdate)
-    }
+    
 }

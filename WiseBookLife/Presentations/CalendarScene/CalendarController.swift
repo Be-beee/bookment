@@ -13,7 +13,7 @@ class CalendarController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     let datePicker = UIDatePicker()
     
-    var calData: [String: [BookInfoLocalDTO]] = [:]
+    var calData: [String: [BookInfo]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,14 +107,16 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
 extension CalendarController {
     // MARK: - DatabaseManager
     
-    func recordToCaledar() -> [String: [BookInfoLocalDTO]] { // date_string: [BookInfo]
+    func recordToCaledar() -> [String: [BookInfo]] { // date_string: [BookInfo]
         let loaded = DatabaseManager.shared.loadRecords()
-        var calendarData: [String: [BookInfoLocalDTO]] = [:]
+        var calendarData: [String: [BookInfo]] = [:]
         for item in loaded {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd"
             let date_str = df.string(from: item.date)
-            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn) else { continue }
+            
+            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn)?.entity()
+            else { continue }
             
             if var value = calendarData[date_str] {
                 if value.contains(where: { $0.isbn == newBookItem.isbn }) { continue }

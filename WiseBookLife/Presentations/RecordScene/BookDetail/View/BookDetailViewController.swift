@@ -48,7 +48,7 @@ final class BookDetailViewController: UIViewController {
     }
     
     private func configureBookIntroduction() {
-        bookIntroduction.text = viewModel.bookData.descriptionText
+        bookIntroduction.text = viewModel.bookData.description
     }
     
     // MARK: - IBAction Functions

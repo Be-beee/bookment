@@ -13,7 +13,7 @@ final class BookDetailViewModel {
     
     weak var delegate: BookDetailViewModelDelegate?
 
-    var bookData: BookInfoLocalDTO
+    var bookData: BookInfo
     var isHeartBtnSelected: Bool = false {
         didSet {
             delegate?.heartButtonStatusChanged()
@@ -22,7 +22,7 @@ final class BookDetailViewModel {
     
     // MARK: - Init(s)
     
-    init(bookData: BookInfoLocalDTO = BookInfoLocalDTO()) {
+    init(bookData: BookInfo = BookInfo()) {
         self.bookData = bookData
         
         configureHeartButtonStatus()
@@ -40,7 +40,7 @@ final class BookDetailViewModel {
     func addToHeartList() {
         // FIXME: 삭제했던 오브젝트 다시 추가하려고 하면 문제 발생
         // 'RLMException', reason: 'Object has been deleted or invalidated.'
-        let dbFormData = bookData
+        let dbFormData = bookData.dto
         let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
         DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
         isHeartBtnSelected.toggle()

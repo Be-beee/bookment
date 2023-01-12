@@ -26,10 +26,10 @@ final class SearchUseCases {
     
     // MARK: - Functions
     
-    func search(with keyword: String, at page: Int) async throws -> [BookInfoLocalDTO] {
+    func search(with keyword: String, at page: Int) async throws -> [BookInfo] {
         let dto = try await repository.search(with: keyword, at: page)
         
-        return dto.map { $0.changeToBookInfo() }
+        return dto.map { $0.entity() }
     }
     
 }

@@ -35,7 +35,7 @@ class SelectView: UIView {
         self.addSubview(view)
     }
     
-    func configure(_ bookData: BookInfoLocalDTO) {
+    func configure(_ bookData: BookInfo) {
         Task {
             self.bookCoverView.image = await ImageDownloader.urlToImage(from: bookData.image)
         }
