@@ -28,7 +28,7 @@ struct BookInfoResponseDTO: Codable, Hashable {
         self.author = author
     }
     
-    func changeToBookInfo() -> BookInfo {
-        return BookInfo(title: self.title, link: self.link, image: self.image, author: self.author, price: self.discount, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
+    func changeToBookInfo() -> BookInfoLocalDTO {
+        return BookInfoLocalDTO(title: self.title, link: self.link, image: self.image, author: self.author, price: self.discount, publisher: self.publisher, isbn: self.isbn, descriptionText: self.description, pubdate: self.pubdate)
     }
 }

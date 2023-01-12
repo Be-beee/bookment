@@ -11,7 +11,7 @@ import UIKit
 class DetailRecViewController: UIViewController {
 
     var selectedISBN = ""
-    var cachedBookInfo = BookInfo()
+    var cachedBookInfo = BookInfoLocalDTO()
     var selectedBookRecords: [RecordContent] = []
     @IBOutlet var bookInfoView: SelectView!
     @IBOutlet weak var bookRecordsView: UITableView!
@@ -35,7 +35,7 @@ class DetailRecViewController: UIViewController {
         guard let selectedItem = DatabaseManager.shared.findBookInfo(isbn: selectedISBN) else { return }
         bookInfoView.configure(selectedItem)
         
-        self.cachedBookInfo = BookInfo(title: selectedItem.title, link: selectedItem.link, image: selectedItem.image, author: selectedItem.author, price: selectedItem.price, publisher: selectedItem.publisher, isbn: selectedItem.isbn, descriptionText: selectedItem.descriptionText, pubdate: selectedItem.pubdate)
+        self.cachedBookInfo = BookInfoLocalDTO(title: selectedItem.title, link: selectedItem.link, image: selectedItem.image, author: selectedItem.author, price: selectedItem.price, publisher: selectedItem.publisher, isbn: selectedItem.isbn, descriptionText: selectedItem.descriptionText, pubdate: selectedItem.pubdate)
     }
     
     func refreshRecordList() {

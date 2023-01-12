@@ -23,7 +23,7 @@ final class CommonCell: UITableViewCell {
     
     weak var delegate: CommonCellDelegate?
     
-    var bookInfo: BookInfo? {
+    var bookInfo: BookInfoLocalDTO? {
         didSet {
             configure()
         }

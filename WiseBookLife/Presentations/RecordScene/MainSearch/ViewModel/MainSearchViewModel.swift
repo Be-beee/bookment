@@ -18,7 +18,7 @@ final class MainSearchViewModel {
     
     private(set) var isLastPage = false
     
-    private(set) var searchResult: [BookInfo] = []
+    private(set) var searchResult: [BookInfoLocalDTO] = []
     
     private var keyword: String?
     

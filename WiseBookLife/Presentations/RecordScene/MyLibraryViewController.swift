@@ -13,7 +13,7 @@ class MyLibraryViewController: UIViewController {
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
     
-    var myBooks: [BookInfo] = []
+    var myBooks: [BookInfoLocalDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,10 +122,10 @@ extension MyLibraryViewController {
 extension MyLibraryViewController {
     // MARK: DatabaseManager
     
-    func getThumbnailList() -> [BookInfo] {
+    func getThumbnailList() -> [BookInfoLocalDTO] {
         // 아카이빙 되어 있는 책 정보
         let loaded = DatabaseManager.shared.loadRecords().distinct(by: ["isbn"]).map{ $0.isbn }
-        var list: [BookInfo] = []
+        var list: [BookInfoLocalDTO] = []
         for isbn_item in loaded {
             guard let bookinfo = DatabaseManager.shared.findBookInfo(isbn: isbn_item) else { continue }
             list.append(bookinfo)

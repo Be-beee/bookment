@@ -7,9 +7,10 @@
 //
 
 import UIKit
+
 import RealmSwift
 
-class BookInfo: Object, Codable {
+class BookInfoLocalDTO: Object, Codable {
     @objc dynamic var title: String = ""
     @objc dynamic var link: String = ""
     @objc dynamic var image: String = ""

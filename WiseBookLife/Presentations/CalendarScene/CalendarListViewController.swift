@@ -11,7 +11,7 @@ import UIKit
 class CalendarListViewController: UIViewController {
 
     var currentDate: String = "yyyy-MM-dd" // format
-    var booklist: [BookInfo] = []
+    var booklist: [BookInfoLocalDTO] = []
     @IBOutlet weak var todayBookTableView: UITableView!
     @IBOutlet weak var emptyResultView: UIView!
     

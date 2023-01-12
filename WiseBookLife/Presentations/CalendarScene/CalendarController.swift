@@ -13,7 +13,7 @@ class CalendarController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     let datePicker = UIDatePicker()
     
-    var calData: [String: [BookInfo]] = [:]
+    var calData: [String: [BookInfoLocalDTO]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,9 +107,9 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
 extension CalendarController {
     // MARK: - DatabaseManager
     
-    func recordToCaledar() -> [String: [BookInfo]] { // date_string: [BookInfo]
+    func recordToCaledar() -> [String: [BookInfoLocalDTO]] { // date_string: [BookInfo]
         let loaded = DatabaseManager.shared.loadRecords()
-        var calendarData: [String: [BookInfo]] = [:]
+        var calendarData: [String: [BookInfoLocalDTO]] = [:]
         for item in loaded {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd"

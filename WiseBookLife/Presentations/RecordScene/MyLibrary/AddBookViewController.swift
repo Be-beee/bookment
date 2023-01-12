@@ -10,7 +10,7 @@ import UIKit
 
 class AddBookViewController: UIViewController {
     
-    var selectedBookInfo = BookInfo()
+    var selectedBookInfo = BookInfoLocalDTO()
     var newRecordContent = RecordContent()
     
     var placeholderText = "기록을 작성해보세요! (선택)"

@@ -59,7 +59,7 @@
 		B5D5C0FB295B0639005D6341 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */; };
 		B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D22843429700FB0E3D /* HeartContent.swift */; };
 		B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */; };
-		B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfo.swift */; };
+		B5E870D72843432100FB0E3D /* BookInfoLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfoLocalDTO.swift */; };
 		B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D8284343BB00FB0E3D /* RecordContent.swift */; };
 		B5E870DB28434D5700FB0E3D /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DA28434D5700FB0E3D /* SearchResponseDTO.swift */; };
 		B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */; };
@@ -131,7 +131,7 @@
 		B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		B5E870D22843429700FB0E3D /* HeartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContent.swift; sourceTree = "<group>"; };
 		B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoResponseDTO.swift; sourceTree = "<group>"; };
-		B5E870D62843432100FB0E3D /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
+		B5E870D62843432100FB0E3D /* BookInfoLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoLocalDTO.swift; sourceTree = "<group>"; };
 		B5E870D8284343BB00FB0E3D /* RecordContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordContent.swift; sourceTree = "<group>"; };
 		B5E870DA28434D5700FB0E3D /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
 		B5E870DD28434D8F00FB0E3D /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 				B5BB78A229558DB700396E66 /* DTO */,
 				B5BB78A329558DBE00396E66 /* Repositories */,
 				B55A72CC2955E337003E5CD1 /* UseCases */,
-				B5E870D62843432100FB0E3D /* BookInfo.swift */,
+				B5E870D62843432100FB0E3D /* BookInfoLocalDTO.swift */,
 				B5E870D22843429700FB0E3D /* HeartContent.swift */,
 				B5E870D8284343BB00FB0E3D /* RecordContent.swift */,
 			);
@@ -608,7 +608,7 @@
 				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
 				B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */,
 				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
-				B5E870D72843432100FB0E3D /* BookInfo.swift in Sources */,
+				B5E870D72843432100FB0E3D /* BookInfoLocalDTO.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
 				B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
