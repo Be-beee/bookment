@@ -8,16 +8,24 @@
 
 import UIKit
 
-class DetailRecordViewController: UIViewController {
-
-    var selectedISBN = ""
-    var cachedBookInfo = BookInfo()
-    var selectedBookRecords: [RecordContent] = []
+final class DetailRecordViewController: UIViewController {
+    
+    // MARK: - UI Properties
+    
     @IBOutlet var bookInfoView: SelectView!
     @IBOutlet weak var bookRecordsView: UITableView!
     
+    // MARK: - Properties
+    
+    var selectedISBN = ""
+    var cachedBookInfo = BookInfo()
+    var selectedBookRecords: [RecordContent] = []
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.largeTitleDisplayMode = .never
         let deleteButton = UIBarButtonItem(title: "삭제", style: .done, target: self, action: #selector(deleteThisBookData))
         self.navigationItem.rightBarButtonItem = deleteButton
@@ -84,6 +92,8 @@ class DetailRecordViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension DetailRecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedBookRecords.count
@@ -116,7 +126,8 @@ extension DetailRecordViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-class RecordContentCell: UITableViewCell {
-    @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+// MARK: - Namespaces
+
+extension DetailRecordViewController {
+    enum Metric { }
 }

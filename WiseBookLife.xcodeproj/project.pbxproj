@@ -48,6 +48,9 @@
 		B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */; };
 		B5A7731429714B6F00EEC35C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731329714B6F00EEC35C /* RecordViewModel.swift */; };
 		B5A773162971525C00EEC35C /* RecordViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */; };
+		B5A7731A29718BF900EEC35C /* DetailRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */; };
+		B5A7731C29718C7400EEC35C /* DetailRecordViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */; };
+		B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731D29718CE400EEC35C /* RecordContentCell.swift */; };
 		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
 		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB789A295568C700396E66 /* NetworkManager.swift */; };
@@ -123,6 +126,9 @@
 		B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailViewController.storyboard; sourceTree = "<group>"; };
 		B5A7731329714B6F00EEC35C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewModel.swift; sourceTree = "<group>"; };
+		B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5A7731D29718CE400EEC35C /* RecordContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordContentCell.swift; sourceTree = "<group>"; };
 		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
 		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5BB789A295568C700396E66 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -266,8 +272,8 @@
 		B5A7730F2971451D00EEC35C /* RecordDetail */ = {
 			isa = PBXGroup;
 			children = (
-				B59D832324C0215200797D5F /* DetailRecordViewController.swift */,
-				B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */,
+				B5A7731829718BDD00EEC35C /* ViewModel */,
+				B5A7731729718BD600EEC35C /* View */,
 			);
 			path = RecordDetail;
 			sourceTree = "<group>";
@@ -294,6 +300,25 @@
 			children = (
 				B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */,
 				B5A7731329714B6F00EEC35C /* RecordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5A7731729718BD600EEC35C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731D29718CE400EEC35C /* RecordContentCell.swift */,
+				B59D832324C0215200797D5F /* DetailRecordViewController.swift */,
+				B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5A7731829718BDD00EEC35C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */,
+				B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -636,6 +661,7 @@
 				B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */,
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
+				B5A7731C29718C7400EEC35C /* DetailRecordViewModelDelegate.swift in Sources */,
 				B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */,
 				B59D832424C0215200797D5F /* DetailRecordViewController.swift in Sources */,
 				B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */,
@@ -660,12 +686,14 @@
 				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
 				B5E870D72843432100FB0E3D /* BookInfoLocalDTO.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
+				B5A7731A29718BF900EEC35C /* DetailRecordViewModel.swift in Sources */,
 				B5015459297010A9008EDB4F /* BookInfo.swift in Sources */,
 				B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
+				B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
