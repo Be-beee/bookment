@@ -10,88 +10,101 @@ import UIKit
 
 final class RecordViewController: UIViewController {
 
+    // MARK: - UI Properties
+    
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
     
-    var myBooks: [BookInfoLocalDTO] = []
+    // MARK: - Properties
+    
+    private let viewModel = RecordViewModel()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingEmptyRecordView()
+        
+        bindToViewModel()
+        configureEmptyView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setLibraryListData()
-        refreshLibraryView()
+    // MARK: - Configure Functions
+    
+    private func configureEmptyView() {
+        emptyRecordView.isHidden = viewModel.count > .zero
     }
     
-    func settingEmptyRecordView() {
-        emptyRecordView.alpha = 1
+    // MARK: - Bind Function
+    
+    private func bindToViewModel() {
+        viewModel.delegate = self
     }
     
-    func setLibraryListData() {
-        myBooks = getThumbnailList()
+    // MARK: - Refresh Functions
+    
+    private func refreshRecordView() {
+        recordView.reloadData()
+        configureEmptyView()
     }
     
-    func reloadEmptyView() {
-        if myBooks.count > 0 {
-            emptyRecordView.isHidden = true
-        } else {
-            emptyRecordView.isHidden = false
-        }
-    }
-    
-    // MARK:- Unwind Segue
+    // MARK: - Unwind Segue
     
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
-        if let selected = self.recordView.indexPathsForSelectedItems {
-            if selected.count != 0 {
-                let willDeleteISBN = myBooks[selected[0].item].isbn
-                let deleteItems = DatabaseManager.shared.loadRecords().filter { $0.isbn == willDeleteISBN }
-                DatabaseManager.shared.deleteRecord(Array(deleteItems))
-            }
-            self.recordView.reloadData()
+        guard let selected = recordView.indexPathsForSelectedItems
+        else { return }
+        
+        if selected.count != .zero {
+            viewModel.delete(at: selected[0].item)
         }
-        
-        
     }
     
     @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
-        guard let addVC = sender.source as? AddBookViewController else {
-            return
-        }
-        let willAddBookInfo = addVC.selectedBookInfo.dto
-        DatabaseManager.shared.addRecordToDB(addVC.newRecordContent, willAddBookInfo)
-        self.refreshLibraryView()
+        guard let addVC = sender.source as? AddBookViewController
+        else { return }
+        
+        let willAddBookInfo = addVC.selectedBookInfo
+        viewModel.add(
+            record: addVC.newRecordContent,
+            bookInfo: willAddBookInfo
+        )
     }
 }
 
-
-// MARK:- Extensions
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension RecordViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = UIScreen.main.bounds.width/3 - 25
-        let height: CGFloat = width*40/27
+        let screenWidth = UIScreen.main.bounds.width
+        let width: CGFloat = screenWidth / Metric.recordRows - Metric.rowSpacing
+        let height: CGFloat = width * Metric.bookImageRatio
+        
         return CGSize(width: width, height: height)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return Metric.gridSpacing
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return Metric.gridSpacing
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
 extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myBooks.count
+        return viewModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recordView.dequeueReusableCell(withReuseIdentifier: "recordCell", for: indexPath) as! RecordCell
-        let imagePath = myBooks[indexPath.row].image
+        guard let cell = recordView.dequeueReusableCell(
+            withReuseIdentifier: "recordCell",
+            for: indexPath
+        ) as? RecordCell
+        else { return UICollectionViewCell() }
+        
+        let imagePath = viewModel[indexPath.row].image
         Task {
             cell.bookImage.image = await ImageDownloader.urlToImage(from: imagePath)
         }
@@ -100,37 +113,37 @@ extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as! DetailRecViewController
+        guard let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as? DetailRecViewController
+        else { return }
         
-        detailRecVC.selectedISBN = myBooks[indexPath.row].isbn
+        detailRecVC.selectedISBN = viewModel[indexPath.row].isbn
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        return Metric.sectionInset
     }
     
 }
 
-extension RecordViewController {
-    // MARK: Refresh View
-    func refreshLibraryView() {
-        recordView.reloadData()
-        reloadEmptyView()
+// MARK: - RecordViewModelDelegate
+
+extension RecordViewController: RecordViewModelDelegate {
+    func recordsDidChange() {
+        refreshRecordView()
     }
 }
 
+// MARK: - Namespaces
+
 extension RecordViewController {
-    // MARK: DatabaseManager
-    
-    func getThumbnailList() -> [BookInfoLocalDTO] {
-        // 아카이빙 되어 있는 책 정보
-        let loaded = DatabaseManager.shared.loadRecords().distinct(by: ["isbn"]).map{ $0.isbn }
-        var list: [BookInfoLocalDTO] = []
-        for isbn_item in loaded {
-            guard let bookinfo = DatabaseManager.shared.findBookInfo(isbn: isbn_item) else { continue }
-            list.append(bookinfo)
-        }
-        return list
+    enum Metric {
+        static let recordRows: CGFloat = 3
+        
+        static let rowSpacing: CGFloat = 25
+        static let gridSpacing: CGFloat = 15
+        static let sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        
+        static let bookImageRatio: CGFloat = 40 / 27
     }
 }
