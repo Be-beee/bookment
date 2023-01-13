@@ -39,8 +39,8 @@
 		B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
-		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
-		B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecVC.storyboard */; };
+		B59D832424C0215200797D5F /* DetailRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecordViewController.swift */; };
+		B59D832624C0215F00797D5F /* DetailRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */; };
 		B5A2245729668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2245629668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift */; };
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
 		B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6925CE70D800DBE58C /* CalendarController.swift */; };
@@ -114,8 +114,8 @@
 		B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FooterView.swift"; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
-		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
-		B59D832524C0215F00797D5F /* DetailRecVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecVC.storyboard; sourceTree = "<group>"; };
+		B59D832324C0215200797D5F /* DetailRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewController.swift; sourceTree = "<group>"; };
+		B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecordViewController.storyboard; sourceTree = "<group>"; };
 		B5A2245629668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6925CE70D800DBE58C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
@@ -266,8 +266,8 @@
 		B5A7730F2971451D00EEC35C /* RecordDetail */ = {
 			isa = PBXGroup;
 			children = (
-				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
-				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
+				B59D832324C0215200797D5F /* DetailRecordViewController.swift */,
+				B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */,
 			);
 			path = RecordDetail;
 			sourceTree = "<group>";
@@ -576,7 +576,7 @@
 				B56B972824DFB97800347D11 /* MainSearchResultViewController.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
-				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
+				B59D832624C0215F00797D5F /* DetailRecordViewController.storyboard in Resources */,
 				B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */,
 				B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
@@ -637,7 +637,7 @@
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
 				B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */,
-				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
+				B59D832424C0215200797D5F /* DetailRecordViewController.swift in Sources */,
 				B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */,
 				B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */,
 				B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */,

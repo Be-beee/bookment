@@ -1,5 +1,5 @@
 //
-//  DetailRecViewController.swift
+//  DetailRecordViewController.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2020/07/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailRecViewController: UIViewController {
+class DetailRecordViewController: UIViewController {
 
     var selectedISBN = ""
     var cachedBookInfo = BookInfo()
@@ -84,7 +84,7 @@ class DetailRecViewController: UIViewController {
     }
 }
 
-extension DetailRecViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailRecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedBookRecords.count
     }

@@ -50,12 +50,11 @@ final class RecordViewController: UIViewController {
     // MARK: - Unwind Segue
     
     @IBAction func unwindToRecordList(sender: UIStoryboardSegue) {
-        guard let selected = recordView.indexPathsForSelectedItems
+        guard let selected = recordView.indexPathsForSelectedItems,
+              selected.count > .zero
         else { return }
         
-        if selected.count != .zero {
-            viewModel.delete(at: selected[0].item)
-        }
+        viewModel.delete(at: selected[.zero].item)
     }
     
     @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
@@ -98,8 +97,9 @@ extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellName = RecordCell.name
         guard let cell = recordView.dequeueReusableCell(
-            withReuseIdentifier: "recordCell",
+            withReuseIdentifier: cellName,
             for: indexPath
         ) as? RecordCell
         else { return UICollectionViewCell() }
@@ -113,7 +113,8 @@ extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let detailRecVC = UIStoryboard(name: "DetailRecVC", bundle: nil).instantiateViewController(withIdentifier: "detailRecVC") as? DetailRecViewController
+        let detailViewName = DetailRecordViewController.name
+        guard let detailRecVC = UIStoryboard(name: detailViewName, bundle: nil).instantiateViewController(withIdentifier: detailViewName) as? DetailRecordViewController
         else { return }
         
         detailRecVC.selectedISBN = viewModel[indexPath.row].isbn
