@@ -238,16 +238,42 @@
 		B5A4AD6825CE70B600DBE58C /* RecordScene */ = {
 			isa = PBXGroup;
 			children = (
-				B5D190A924A4A72E00F1DCDB /* MyLibrary */,
+				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
+				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
+				B5A7730E2971450200EEC35C /* RecordMain */,
+				B5A7730F2971451D00EEC35C /* RecordDetail */,
+				B5D190A924A4A72E00F1DCDB /* RecordAdd */,
 				B56B972024DFB4DA00347D11 /* MainSearch */,
 				B57BFFA525E210C8009780ED /* BookDetail */,
-				B572CE8D24A0908200702C6E /* RecordCell.swift */,
-				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
-				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
-				B5EF459625D1781D00165604 /* CustomCell.swift */,
-				B5EF459725D1781D00165604 /* CustomCell.xib */,
+				B5A77310297149F700EEC35C /* HeartList */,
 			);
 			path = RecordScene;
+			sourceTree = "<group>";
+		};
+		B5A7730E2971450200EEC35C /* RecordMain */ = {
+			isa = PBXGroup;
+			children = (
+				B572CE8D24A0908200702C6E /* RecordCell.swift */,
+				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
+			);
+			path = RecordMain;
+			sourceTree = "<group>";
+		};
+		B5A7730F2971451D00EEC35C /* RecordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
+				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
+			);
+			path = RecordDetail;
+			sourceTree = "<group>";
+		};
+		B5A77310297149F700EEC35C /* HeartList */ = {
+			isa = PBXGroup;
+			children = (
+				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
+			);
+			path = HeartList;
 			sourceTree = "<group>";
 		};
 		B5B3F31825B2CC0600A3CC14 /* ClientData */ = {
@@ -301,6 +327,8 @@
 		B5BB7897295556EE00396E66 /* CalendarScene */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF459625D1781D00165604 /* CustomCell.swift */,
+				B5EF459725D1781D00165604 /* CustomCell.xib */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B561165025D37B3A00C0D94B /* CalendarListViewController.swift */,
 				B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */,
@@ -362,19 +390,15 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		B5D190A924A4A72E00F1DCDB /* MyLibrary */ = {
+		B5D190A924A4A72E00F1DCDB /* RecordAdd */ = {
 			isa = PBXGroup;
 			children = (
 				B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */,
 				B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */,
-				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
-				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
-				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
-				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
 				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
 				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
 			);
-			path = MyLibrary;
+			path = RecordAdd;
 			sourceTree = "<group>";
 		};
 		B5D5C0F8295B05FB005D6341 /* ViewModel */ = {
