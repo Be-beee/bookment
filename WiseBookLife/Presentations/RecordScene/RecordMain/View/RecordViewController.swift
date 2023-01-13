@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordViewController: UIViewController {
+final class RecordViewController: UIViewController {
 
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
