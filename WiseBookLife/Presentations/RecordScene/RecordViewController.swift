@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyLibraryViewController: UIViewController {
+class RecordViewController: UIViewController {
 
     @IBOutlet weak var recordView: UICollectionView!
     @IBOutlet weak var emptyRecordView: UIView!
@@ -70,7 +70,7 @@ class MyLibraryViewController: UIViewController {
 
 // MARK:- Extensions
 
-extension MyLibraryViewController: UICollectionViewDelegateFlowLayout {
+extension RecordViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = UIScreen.main.bounds.width/3 - 25
         let height: CGFloat = width*40/27
@@ -84,7 +84,7 @@ extension MyLibraryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myBooks.count
     }
@@ -112,7 +112,7 @@ extension MyLibraryViewController: UICollectionViewDelegate, UICollectionViewDat
     
 }
 
-extension MyLibraryViewController {
+extension RecordViewController {
     // MARK: Refresh View
     func refreshLibraryView() {
         recordView.reloadData()
@@ -120,7 +120,7 @@ extension MyLibraryViewController {
     }
 }
 
-extension MyLibraryViewController {
+extension RecordViewController {
     // MARK: DatabaseManager
     
     func getThumbnailList() -> [BookInfoLocalDTO] {
