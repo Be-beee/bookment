@@ -32,20 +32,25 @@
 		B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */; };
 		B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */; };
 		B56B972824DFB97800347D11 /* MainSearchResultViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56B972724DFB97800347D11 /* MainSearchResultViewController.storyboard */; };
-		B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */; };
+		B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8924A0831D00702C6E /* RecordViewController.swift */; };
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
 		B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
-		B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecViewController.swift */; };
-		B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecVC.storyboard */; };
+		B59D832424C0215200797D5F /* DetailRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D832324C0215200797D5F /* DetailRecordViewController.swift */; };
+		B59D832624C0215F00797D5F /* DetailRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */; };
 		B5A2245729668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2245629668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift */; };
 		B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */; };
 		B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4AD6925CE70D800DBE58C /* CalendarController.swift */; };
 		B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6F42724F3904F0048000E /* BookDetailViewController.swift */; };
 		B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */; };
+		B5A7731429714B6F00EEC35C /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731329714B6F00EEC35C /* RecordViewModel.swift */; };
+		B5A773162971525C00EEC35C /* RecordViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */; };
+		B5A7731A29718BF900EEC35C /* DetailRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */; };
+		B5A7731C29718C7400EEC35C /* DetailRecordViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */; };
+		B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A7731D29718CE400EEC35C /* RecordContentCell.swift */; };
 		B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */; };
 		B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */; };
 		B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB789A295568C700396E66 /* NetworkManager.swift */; };
@@ -105,20 +110,25 @@
 		B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B56B972524DFB96C00347D11 /* MainSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchResultViewController.swift; sourceTree = "<group>"; };
 		B56B972724DFB97800347D11 /* MainSearchResultViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSearchResultViewController.storyboard; sourceTree = "<group>"; };
-		B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryViewController.swift; sourceTree = "<group>"; };
+		B572CE8924A0831D00702C6E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
 		B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FooterView.swift"; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
-		B59D832324C0215200797D5F /* DetailRecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecViewController.swift; sourceTree = "<group>"; };
-		B59D832524C0215F00797D5F /* DetailRecVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecVC.storyboard; sourceTree = "<group>"; };
+		B59D832324C0215200797D5F /* DetailRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewController.swift; sourceTree = "<group>"; };
+		B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailRecordViewController.storyboard; sourceTree = "<group>"; };
 		B5A2245629668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5A4AD6925CE70D800DBE58C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		B5A6F42724F3904F0048000E /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailViewController.storyboard; sourceTree = "<group>"; };
+		B5A7731329714B6F00EEC35C /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewModel.swift; sourceTree = "<group>"; };
+		B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecordViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5A7731D29718CE400EEC35C /* RecordContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordContentCell.swift; sourceTree = "<group>"; };
 		B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewController.swift; sourceTree = "<group>"; };
 		B5B3F31925B2CC3800A3CC14 /* ApplicationInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApplicationInfo.plist; sourceTree = "<group>"; };
 		B5BB789A295568C700396E66 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -238,16 +248,79 @@
 		B5A4AD6825CE70B600DBE58C /* RecordScene */ = {
 			isa = PBXGroup;
 			children = (
-				B5D190A924A4A72E00F1DCDB /* MyLibrary */,
+				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
+				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
+				B5A7730E2971450200EEC35C /* RecordMain */,
+				B5A7730F2971451D00EEC35C /* RecordDetail */,
+				B5D190A924A4A72E00F1DCDB /* RecordAdd */,
 				B56B972024DFB4DA00347D11 /* MainSearch */,
 				B57BFFA525E210C8009780ED /* BookDetail */,
-				B572CE8D24A0908200702C6E /* RecordCell.swift */,
-				B572CE8924A0831D00702C6E /* MyLibraryViewController.swift */,
-				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
-				B5EF459625D1781D00165604 /* CustomCell.swift */,
-				B5EF459725D1781D00165604 /* CustomCell.xib */,
+				B5A77310297149F700EEC35C /* HeartList */,
 			);
 			path = RecordScene;
+			sourceTree = "<group>";
+		};
+		B5A7730E2971450200EEC35C /* RecordMain */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731229714A5600EEC35C /* ViewModel */,
+				B5A7731129714A4B00EEC35C /* View */,
+			);
+			path = RecordMain;
+			sourceTree = "<group>";
+		};
+		B5A7730F2971451D00EEC35C /* RecordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731829718BDD00EEC35C /* ViewModel */,
+				B5A7731729718BD600EEC35C /* View */,
+			);
+			path = RecordDetail;
+			sourceTree = "<group>";
+		};
+		B5A77310297149F700EEC35C /* HeartList */ = {
+			isa = PBXGroup;
+			children = (
+				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
+			);
+			path = HeartList;
+			sourceTree = "<group>";
+		};
+		B5A7731129714A4B00EEC35C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B572CE8D24A0908200702C6E /* RecordCell.swift */,
+				B572CE8924A0831D00702C6E /* RecordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5A7731229714A5600EEC35C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5A773152971525C00EEC35C /* RecordViewModelDelegate.swift */,
+				B5A7731329714B6F00EEC35C /* RecordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5A7731729718BD600EEC35C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731D29718CE400EEC35C /* RecordContentCell.swift */,
+				B59D832324C0215200797D5F /* DetailRecordViewController.swift */,
+				B59D832524C0215F00797D5F /* DetailRecordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5A7731829718BDD00EEC35C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5A7731B29718C7400EEC35C /* DetailRecordViewModelDelegate.swift */,
+				B5A7731929718BF900EEC35C /* DetailRecordViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B5B3F31825B2CC0600A3CC14 /* ClientData */ = {
@@ -301,6 +374,8 @@
 		B5BB7897295556EE00396E66 /* CalendarScene */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF459625D1781D00165604 /* CustomCell.swift */,
+				B5EF459725D1781D00165604 /* CustomCell.xib */,
 				B5A4AD6925CE70D800DBE58C /* CalendarController.swift */,
 				B561165025D37B3A00C0D94B /* CalendarListViewController.swift */,
 				B561165325D37B5300C0D94B /* CalendarListViewController.storyboard */,
@@ -362,19 +437,15 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		B5D190A924A4A72E00F1DCDB /* MyLibrary */ = {
+		B5D190A924A4A72E00F1DCDB /* RecordAdd */ = {
 			isa = PBXGroup;
 			children = (
 				B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */,
 				B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */,
-				B59D832324C0215200797D5F /* DetailRecViewController.swift */,
-				B59D832524C0215F00797D5F /* DetailRecVC.storyboard */,
-				B536B8E724BEF9EC005D2F6B /* SelectView.swift */,
-				B536B8E924BEF9F9005D2F6B /* SelectView.xib */,
 				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
 				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
 			);
-			path = MyLibrary;
+			path = RecordAdd;
 			sourceTree = "<group>";
 		};
 		B5D5C0F8295B05FB005D6341 /* ViewModel */ = {
@@ -530,7 +601,7 @@
 				B56B972824DFB97800347D11 /* MainSearchResultViewController.storyboard in Resources */,
 				B5FA8DB2249F666B0009B24B /* Assets.xcassets in Resources */,
 				B536B8EA24BEF9F9005D2F6B /* SelectView.xib in Resources */,
-				B59D832624C0215F00797D5F /* DetailRecVC.storyboard in Resources */,
+				B59D832624C0215F00797D5F /* DetailRecordViewController.storyboard in Resources */,
 				B5A6F42C24F390D30048000E /* BookDetailViewController.storyboard in Resources */,
 				B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */,
 				B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */,
@@ -590,13 +661,15 @@
 				B5BB789B295568C700396E66 /* NetworkManager.swift in Sources */,
 				B56B972624DFB96C00347D11 /* MainSearchResultViewController.swift in Sources */,
 				B5A4AD6A25CE70D800DBE58C /* CalendarController.swift in Sources */,
+				B5A7731C29718C7400EEC35C /* DetailRecordViewModelDelegate.swift in Sources */,
 				B563D2BE26C9749200C0ACFD /* BaseTabBarController.swift in Sources */,
-				B59D832424C0215200797D5F /* DetailRecViewController.swift in Sources */,
+				B59D832424C0215200797D5F /* DetailRecordViewController.swift in Sources */,
 				B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */,
 				B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */,
 				B55308CD29584A72001977B5 /* UIViewController+PresentAlert.swift in Sources */,
 				B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */,
 				B5E870DB28434D5700FB0E3D /* SearchResponseDTO.swift in Sources */,
+				B5A773162971525C00EEC35C /* RecordViewModelDelegate.swift in Sources */,
 				B5E870E228434DF600FB0E3D /* String+RemoveHTMLTag.swift in Sources */,
 				B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */,
 				B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */,
@@ -606,19 +679,21 @@
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
 				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
-				B572CE8A24A0831D00702C6E /* MyLibraryViewController.swift in Sources */,
+				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
 				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
 				B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */,
 				B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */,
 				B5E870D72843432100FB0E3D /* BookInfoLocalDTO.swift in Sources */,
 				B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */,
+				B5A7731A29718BF900EEC35C /* DetailRecordViewModel.swift in Sources */,
 				B5015459297010A9008EDB4F /* BookInfo.swift in Sources */,
 				B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
+				B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
@@ -633,6 +708,7 @@
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,
 				B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */,
+				B5A7731429714B6F00EEC35C /* RecordViewModel.swift in Sources */,
 				B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */,
 				B5A2245729668B5C00C4C8B1 /* BookDetailViewModelDelegate.swift in Sources */,
 				B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */,

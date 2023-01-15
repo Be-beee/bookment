@@ -266,10 +266,10 @@
             </objects>
             <point key="canvasLocation" x="1645" y="1067"/>
         </scene>
-        <!--My Library View Controller-->
+        <!--Record View Controller-->
         <scene sceneID="QVm-AU-rdA">
             <objects>
-                <viewController storyboardIdentifier="MyLibraryViewController" id="3aw-5k-lG0" customClass="MyLibraryViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyLibraryViewController" id="3aw-5k-lG0" customClass="RecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKT-P5-aia">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="661"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,7 +284,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recordCell" id="DpD-OL-ejz" customClass="RecordCell" customModule="WiseBookLife" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecordCell" id="DpD-OL-ejz" customClass="RecordCell" customModule="WiseBookLife" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D1g-Fg-Lpg">
@@ -439,7 +439,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="primary">
-            <color red="1" green="0.40784313725490196" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.40799999237060547" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

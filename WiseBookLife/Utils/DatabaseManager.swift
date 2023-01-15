@@ -175,18 +175,21 @@ extension DatabaseManager {
     }
     
     @discardableResult
-    func deleteRecordToDB(_ record: RecordContent, _ book: BookInfoLocalDTO?) -> Bool {
+    func deleteRecordToDB(_ record: RecordContent) -> Bool {
+        guard let book = findBookInfo(isbn: record.isbn)
+        else { return false }
+        
         var heartContentCount = 0
-        if let _ = DatabaseManager.shared.findHeartContent(record.isbn) {
+        if let _ = findHeartContent(record.isbn) {
             heartContentCount += 1
         }
-        let foundRecordContents = DatabaseManager.shared.findRecordContents(record.isbn)
+        let foundRecordContents = findRecordContents(record.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count + heartContentCount == 1, let book = book {
-            bookDeleteResult = DatabaseManager.shared.deleteBookInfo([book])
+        if Array(foundRecordContents).count + heartContentCount == 1 {
+            bookDeleteResult = deleteBookInfo([book])
         }
-        let recordDeleteResult = DatabaseManager.shared.deleteRecord([record])
+        let recordDeleteResult = deleteRecord([record])
         return bookDeleteResult && recordDeleteResult
     }
     

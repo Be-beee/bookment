@@ -8,6 +8,6 @@
 
 import UIKit
 
-class RecordCell: UICollectionViewCell {
+final class RecordCell: UICollectionViewCell {
     @IBOutlet var bookImage: UIImageView!
 }
