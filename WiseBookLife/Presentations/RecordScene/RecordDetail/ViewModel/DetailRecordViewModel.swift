@@ -56,8 +56,8 @@ final class DetailRecordViewModel {
         let databaseManager = DatabaseManager.shared
         let selectedRecord = records[index]
         
-        // TODO: 오류 생길 수도 있음 확인 필요
-        databaseManager.deleteRecordToDB(selectedRecord, bookInfo.dto)
+        databaseManager.deleteRecordToDB(selectedRecord)
+        reloadRecords()
     }
     
     
