@@ -17,21 +17,17 @@ final class DetailRecordViewController: UIViewController {
     
     // MARK: - Properties
     
-    var selectedISBN = ""
-    var cachedBookInfo = BookInfo()
-    var selectedBookRecords: [RecordContent] = []
+    var viewModel: DetailRecordViewModel?
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.largeTitleDisplayMode = .never
-        let deleteButton = UIBarButtonItem(title: "삭제", style: .done, target: self, action: #selector(deleteThisBookData))
-        self.navigationItem.rightBarButtonItem = deleteButton
-        self.navigationController?.navigationBar.tintColor = .primary
-        presentData()
-        settingResultFooter()
+        bindToViewModel()
+        configureDeleteBarButtonItem()
+        configureBookInfoView()
+        configureAddRecordButtonFooter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,95 +35,147 @@ final class DetailRecordViewController: UIViewController {
         refreshRecordList()
     }
     
-    func presentData() {
-        guard let selectedItem = DatabaseManager.shared.findBookInfo(isbn: selectedISBN)?.entity()
-        else { return }
-        bookInfoView.configure(selectedItem)
+    // MARK: - Bind, Configure Functions
+    
+    private func  bindToViewModel() {
+        viewModel?.delegate = self
+    }
+    
+    private func configureDeleteBarButtonItem() {
+        navigationItem.largeTitleDisplayMode = .never
         
-        self.cachedBookInfo = selectedItem
+        let deleteButton = UIBarButtonItem(
+            title: StringLiteral.recordDeleteButtonName,
+            style: .done,
+            target: self,
+            action: #selector(deleteCurrentBookInfo)
+        )
+        navigationItem.rightBarButtonItem = deleteButton
+        navigationController?.navigationBar.tintColor = .primary
     }
     
-    func refreshRecordList() {
-        selectedBookRecords = DatabaseManager.shared.sortRecords(isbn: selectedISBN)
-        self.bookRecordsView.reloadData()
+    private func configureBookInfoView() {
+        guard let viewModel else { return }
+        bookInfoView.configure(viewModel.bookInfo)
     }
     
-    func settingResultFooter() {
-        let tableFooter = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        settingFooterForTableView(for: tableFooter, action: #selector(addRecordToBookData), title: nil, image: UIImage(systemName: "plus"), bgColor: .primary)
+    private func configureAddRecordButtonFooter() {
+        let tableFooter = UIView(frame: Metric.footerSize)
+        settingFooterForTableView(
+            for: tableFooter,
+            action: #selector(presentAddRecordView),
+            title: nil,
+            image: UIImage(systemName: StringLiteral.footerTitleImageName),
+            bgColor: .primary
+        )
         
         bookRecordsView.tableFooterView = tableFooter
     }
     
-    @objc func addRecordToBookData() {
-        let addRecordVC = UIStoryboard(name: "AddRecordViewController", bundle: nil).instantiateViewController(withIdentifier: "AddRecordViewController") as! AddRecordViewController
-        
-        self.present(addRecordVC, animated: true, completion: nil)
+    // MARK: - Refresh Function
+    
+    private func refreshRecordList() {
+        self.bookRecordsView.reloadData()
     }
     
-    @objc func deleteThisBookData() {
-        let deleteAlert = UIAlertController(title: "경고", message: "정말 삭제하시겠습니까?\n삭제된 책정보와 기록은 복구할 수 없습니다.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            self.performSegue(withIdentifier: "toRecordListByDeleting", sender: self)
+    // MARK: - objc Functions
+    
+    @objc func presentAddRecordView() {
+        let viewName = AddRecordViewController.name
+        guard let addRecordView = UIStoryboard(
+            name: viewName,
+            bundle: nil
+        ).instantiateViewController(withIdentifier: viewName) as? AddRecordViewController
+        else { return }
+        
+        self.present(addRecordView, animated: true)
+    }
+    
+    /// 현재 화면에 보여지고 있는 책 데이터와 관련된 기록 데이터를 모두 삭제한다.
+    @objc func deleteCurrentBookInfo() {
+        presentActionAlert(
+            with: StringLiteral.deleteCautionMessage,
+            using: StringLiteral.recordDeleteButtonName
+        ) { action in
+            self.performSegue(withIdentifier: StringLiteral.unwindSegueID, sender: self)
             return
         }
-        deleteAlert.addAction(cancel)
-        deleteAlert.addAction(ok)
-        
-        self.present(deleteAlert, animated: true, completion: nil)
     }
     
-    // MARK: - unwind segue
+    // MARK: - Unwind segue Function
     
+    // TODO: Delegate 패턴 적용으로 변경..?
     @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
-        let start = sender.source as! AddRecordViewController
-        start.newRecordContent.isbn = selectedISBN
-        if let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: selectedISBN) {
-            DatabaseManager.shared.addRecordToDB(start.newRecordContent, withBookInfo)
-        } else {
-            DatabaseManager.shared.addRecordToDB(start.newRecordContent, cachedBookInfo.dto)
-        }
-        self.bookRecordsView.reloadData()
+        guard let addRecordView = sender.source as? AddRecordViewController,
+              let viewModel
+        else { return }
+        
+        addRecordView.newRecordContent.isbn = viewModel.bookInfo.isbn
+        viewModel.addRecord(addRecordView.newRecordContent)
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension DetailRecordViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedBookRecords.count
+        return viewModel?.recordsCount ?? .zero
     }
     
+    /// 테이블 뷰 셀에 표시할 값 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = bookRecordsView.dequeueReusableCell(withIdentifier: "RecordContentCell", for: indexPath) as? RecordContentCell else {
-            return UITableViewCell()
-        }
-        let df = DateFormatter()
-        df.dateFormat = "yyyy.MM.dd."
+        let cellName = RecordContentCell.name
+        guard let cell = bookRecordsView.dequeueReusableCell(
+            withIdentifier: cellName, for: indexPath
+        ) as? RecordContentCell,
+              let records = viewModel?.records
+        else { return UITableViewCell() }
         
-        cell.contentLabel.text = selectedBookRecords[indexPath.row].text
-        cell.dateLabel.text = df.string(from: selectedBookRecords[indexPath.row].date)
-        
+        cell.configure(with: records[indexPath.row])
         return cell
     }
     
+    /// 테이블 뷰의 섹션 타이틀 표시
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "독서 기록"
+        return StringLiteral.sectionTitle
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let willDelete = selectedBookRecords[indexPath.row]
-            let withBookInfo = DatabaseManager.shared.findBookInfo(isbn: selectedISBN)
-            DatabaseManager.shared.deleteRecordToDB(willDelete, withBookInfo)
-        }
-        self.refreshRecordList()
+    /// 하나의 기록을 삭제하기 위해 셀을 길게 스와이프 하거나 스와이프 후 나오는 삭제 버튼을 터치했을 때, 해당 기록을 삭제한다.
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        guard editingStyle == .delete else { return }
+        viewModel?.deleteRecord(at: indexPath.row)
+    }
+}
+
+// MARK: - DetailRecordViewModelDelegate
+
+extension DetailRecordViewController: DetailRecordViewModelDelegate {
+    func recordDetailDidChange() {
+        refreshRecordList()
     }
 }
 
 // MARK: - Namespaces
 
 extension DetailRecordViewController {
-    enum Metric { }
+    
+    enum Metric {
+        static let footerSize = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
+    }
+    
+    enum StringLiteral {
+        static let footerTitleImageName = "plus"
+        
+        static let sectionTitle = "독서 기록"
+        
+        static let recordDeleteButtonName = "삭제"
+        static let deleteCautionMessage = "정말 삭제하시겠습니까?\n삭제된 책정보와 기록은 복구할 수 없습니다."
+        
+        static let unwindSegueID = "toRecordListByDeleting"
+    }
 }

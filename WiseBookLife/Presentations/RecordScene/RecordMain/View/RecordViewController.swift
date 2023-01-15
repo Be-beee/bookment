@@ -117,7 +117,8 @@ extension RecordViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let detailRecVC = UIStoryboard(name: detailViewName, bundle: nil).instantiateViewController(withIdentifier: detailViewName) as? DetailRecordViewController
         else { return }
         
-        detailRecVC.selectedISBN = viewModel[indexPath.row].isbn
+        let detailRecordViewModel = DetailRecordViewModel(bookInfo: viewModel[indexPath.row])
+        detailRecVC.viewModel = detailRecordViewModel
         self.navigationController?.pushViewController(detailRecVC, animated: true)
     }
     

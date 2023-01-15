@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DetailRecordViewModelDelegate: AnyObject {
-    
+    func recordDetailDidChange()
 }
