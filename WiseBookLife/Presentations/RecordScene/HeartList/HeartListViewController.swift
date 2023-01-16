@@ -8,6 +8,7 @@
 
 import UIKit
 
+import RealmSwift
 
 class HeartListViewController: UIViewController {
 
@@ -43,7 +44,7 @@ class HeartListViewController: UIViewController {
     }
     
     func refreshData() {
-        let loaded = DatabaseManager.shared.loadHeartContent()
+        let loaded: Results<HeartContent> = DatabaseManager.shared.load()
         heartList = Array(loaded)
         // title sorting 생략됨
         heartView.reloadData()
@@ -61,7 +62,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = heartView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CommonCell,
-              let loadedBookInfo = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn) else {
+              let loadedBookInfo: BookInfoLocalDTO = DatabaseManager.shared.find(with: heartList[indexPath.row].isbn).first else {
             return UITableViewCell()
         }
         cell.delegate = self
@@ -72,9 +73,10 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let databaseManager = DatabaseManager.shared
         let bookDetailViewID = BookDetailViewController.name
         guard let bookDetailViewController = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController,
-              let fromHeartListISBN = DatabaseManager.shared.findBookInfo(isbn: heartList[indexPath.row].isbn)
+              let fromHeartListISBN: BookInfoLocalDTO = databaseManager.find(with: heartList[indexPath.row].isbn).first
         else { return }
         
         let bookDetailViewModel = BookDetailViewModel(bookData: fromHeartListISBN.entity())

@@ -22,7 +22,8 @@ final class RecordLocalRepository: RecordRepository {
         let results: Results<RecordContent> = databaseManager.load()
         let loaded = results.distinct(by: ["isbn"]).map{ $0.isbn }
         let thumbnails: [BookInfo] = loaded.compactMap {
-            databaseManager.findBookInfo(isbn: $0)?.entity()
+            let bookInfo: BookInfoLocalDTO? = databaseManager.find(with: $0).first
+            return bookInfo?.entity()
         }
         
         return thumbnails

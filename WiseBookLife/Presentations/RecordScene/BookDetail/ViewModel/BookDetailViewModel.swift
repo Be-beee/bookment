@@ -48,7 +48,7 @@ final class BookDetailViewModel {
     // TODO: UseCase, Repository로 분리
     func deleteFromHeartList() {
         let willDeleteData = bookData
-        guard let foundHeartContent = DatabaseManager.shared.findHeartContent(willDeleteData.isbn)
+        guard let foundHeartContent: HeartContent = DatabaseManager.shared.find(with: willDeleteData.isbn).first
         else { return }
         DatabaseManager.shared.deleteHeartContentToDB(
             foundHeartContent,

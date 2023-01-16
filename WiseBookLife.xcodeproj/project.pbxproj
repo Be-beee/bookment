@@ -58,6 +58,7 @@
 		B5BB78A12955845E00396E66 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A02955845E00396E66 /* HTTPMethod.swift */; };
 		B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */; };
 		B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A729559E4B00396E66 /* Endpoint.swift */; };
+		B5BDDCC52975492B00316F42 /* HeartContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */; };
 		B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */; };
 		B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */; };
@@ -138,6 +139,7 @@
 		B5BB78A02955845E00396E66 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteRepository.swift; sourceTree = "<group>"; };
 		B5BB78A729559E4B00396E66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContentRepository.swift; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
 				B5F600522973F02000CBF9CC /* RecordRepository.swift */,
 				B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */,
+				B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */,
 			);
 			path = RecordScene;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5F600552973F03900CBF9CC /* RecordLocalRepository.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
+				B5BDDCC52975492B00316F42 /* HeartContentRepository.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
 				B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */,

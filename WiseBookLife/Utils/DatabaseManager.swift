@@ -15,7 +15,7 @@ class DatabaseManager {
     
     static let shared = DatabaseManager()
     private let db: Realm!
-
+    
     // MARK: - Init(s)
     
     private init() {
@@ -60,29 +60,9 @@ class DatabaseManager {
     func load<T: Object>() -> Results<T> {
         return db.objects(T.self)
     }
-    
-    // TODO: 제네릭 적용해서 하나의 메서드들만 놔두고 (add, delete, find) 나머지는 다 Repository로 이동 시키기
-    
-    // MARK: - Database Management Method, HeartList
-    func loadHeartContent() -> Results<HeartContent> {
-        let heartContents: Results<HeartContent> = load()
-        return heartContents
-    }
-    
-    func findHeartContent(_ isbn: String) -> HeartContent? {
-        guard let found: HeartContent = find(with: isbn).first
-        else { return nil }
-        
-        return found
-    }
-    
-    // MARK: - Database Management Method, BookInfo
-    
-    func findBookInfo(isbn: String) -> BookInfoLocalDTO? {
-        guard let found = db.objects(BookInfoLocalDTO.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { return nil }
-        return found
-    }
 }
+
+// TODO: 제네릭 적용해서 하나의 메서드들만 놔두고 (add, delete, find) 나머지는 다 Repository로 이동 시키기
 
 extension DatabaseManager {
     
