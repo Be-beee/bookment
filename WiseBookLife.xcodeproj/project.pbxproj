@@ -77,6 +77,8 @@
 		B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */; };
 		B5EF459825D1781D00165604 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF459625D1781D00165604 /* CustomCell.swift */; };
 		B5EF459925D1781D00165604 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5EF459725D1781D00165604 /* CustomCell.xib */; };
+		B5F600532973F02000CBF9CC /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F600522973F02000CBF9CC /* RecordRepository.swift */; };
+		B5F600552973F03900CBF9CC /* RecordLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */; };
 		B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DA8249F666B0009B24B /* AppDelegate.swift */; };
 		B5FA8DAB249F666B0009B24B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */; };
 		B5FA8DB0249F666B0009B24B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FA8DAE249F666B0009B24B /* Main.storyboard */; };
@@ -155,6 +157,8 @@
 		B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLicenseController.storyboard; sourceTree = "<group>"; };
 		B5EF459625D1781D00165604 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		B5EF459725D1781D00165604 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		B5F600522973F02000CBF9CC /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLocalRepository.swift; sourceTree = "<group>"; };
 		B5FA8DA5249F666B0009B24B /* WiseBookLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseBookLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FA8DA8249F666B0009B24B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5FA8DAA249F666B0009B24B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -408,6 +412,8 @@
 			children = (
 				B55A72C62955DC67003E5CD1 /* SearchRepository.swift */,
 				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
+				B5F600522973F02000CBF9CC /* RecordRepository.swift */,
+				B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */,
 			);
 			path = RecordScene;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
+				B5F600532973F02000CBF9CC /* RecordRepository.swift in Sources */,
 				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
@@ -696,6 +703,7 @@
 				B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
+				B5F600552973F03900CBF9CC /* RecordLocalRepository.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
 				B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */,
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,

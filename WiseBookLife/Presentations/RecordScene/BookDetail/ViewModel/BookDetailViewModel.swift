@@ -31,15 +31,14 @@ final class BookDetailViewModel {
     // MARK: - Configure Functions
     
     private func configureHeartButtonStatus() {
-        self.isHeartBtnSelected = DatabaseManager.shared.findBookInfo(isbn: bookData.isbn) != nil
+        let found: [HeartContent] = DatabaseManager.shared.find(with: bookData.isbn)
+        self.isHeartBtnSelected = found.count > 0
     }
     
     // MARK: - Functions
     
     // TODO: UseCase, Repository로 분리
     func addToHeartList() {
-        // FIXME: 삭제했던 오브젝트 다시 추가하려고 하면 문제 발생
-        // 'RLMException', reason: 'Object has been deleted or invalidated.'
         let dbFormData = bookData.dto
         let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
         DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import RealmSwift
 import FSCalendar
 
 class CalendarController: UIViewController {
@@ -108,7 +110,7 @@ extension CalendarController {
     // MARK: - DatabaseManager
     
     func recordToCaledar() -> [String: [BookInfo]] { // date_string: [BookInfo]
-        let loaded = DatabaseManager.shared.loadRecords()
+        let loaded: Results<RecordContent> = DatabaseManager.shared.load()
         var calendarData: [String: [BookInfo]] = [:]
         for item in loaded {
             let df = DateFormatter()
