@@ -11,6 +11,8 @@ import Foundation
 final class BookDetailViewModel {
     // MARK: - Properties
     
+    private let heartContentRepository: HeartContentRepository
+    
     weak var delegate: BookDetailViewModelDelegate?
 
     var bookData: BookInfo
@@ -24,6 +26,7 @@ final class BookDetailViewModel {
     
     init(bookData: BookInfo = BookInfo()) {
         self.bookData = bookData
+        heartContentRepository = HeartContentLocalRepository()
         
         configureHeartButtonStatus()
     }
@@ -39,21 +42,14 @@ final class BookDetailViewModel {
     
     // TODO: UseCase, Repository로 분리
     func addToHeartList() {
-        let dbFormData = bookData.dto
         let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
-        DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
+        heartContentRepository.add(newHeartContent, with: bookData)
         isHeartBtnSelected.toggle()
     }
     
     // TODO: UseCase, Repository로 분리
     func deleteFromHeartList() {
-        let willDeleteData = bookData
-        guard let foundHeartContent: HeartContent = DatabaseManager.shared.find(with: willDeleteData.isbn)
-        else { return }
-        DatabaseManager.shared.deleteHeartContentToDB(
-            foundHeartContent,
-            willDeleteData.isbn
-        )
+        heartContentRepository.delete(with: bookData.isbn)
         isHeartBtnSelected.toggle()
     }
     
