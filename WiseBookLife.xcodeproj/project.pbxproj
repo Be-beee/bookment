@@ -417,20 +417,18 @@
 			children = (
 				B5EC0B2629768E3200E56861 /* BookInfo */,
 				B5EC0B2B2976917200E56861 /* HeartContent */,
-				B5BB78A629558DFF00396E66 /* RecordScene */,
+				B5BB78A629558DFF00396E66 /* RecordContent */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		B5BB78A629558DFF00396E66 /* RecordScene */ = {
+		B5BB78A629558DFF00396E66 /* RecordContent */ = {
 			isa = PBXGroup;
 			children = (
-				B55A72C62955DC67003E5CD1 /* SearchRepository.swift */,
-				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
 				B5F600522973F02000CBF9CC /* RecordRepository.swift */,
 				B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */,
 			);
-			path = RecordScene;
+			path = RecordContent;
 			sourceTree = "<group>";
 		};
 		B5CEE3A128433287007AEF00 /* NetworkManager */ = {
@@ -521,6 +519,8 @@
 		B5EC0B2629768E3200E56861 /* BookInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B55A72C62955DC67003E5CD1 /* SearchRepository.swift */,
+				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
 				B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */,
 				B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */,
 			);
