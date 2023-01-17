@@ -74,6 +74,11 @@
 		B5E870E228434DF600FB0E3D /* String+RemoveHTMLTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */; };
 		B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E3284352CB00FB0E3D /* NaverClientData.swift */; };
 		B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E72843536F00FB0E3D /* ImageDownloader.swift */; };
+		B5EC0B20297679CA00E56861 /* HeartListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */; };
+		B5EC0B22297679DC00E56861 /* HeartListViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B21297679DC00E56861 /* HeartListViewModelDelegate.swift */; };
+		B5EC0B2829768E4600E56861 /* BookInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */; };
+		B5EC0B2A29768E5200E56861 /* BookInfoLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */; };
+		B5EC0B2D2976919200E56861 /* HeartContentLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B2C2976919200E56861 /* HeartContentLocalRepository.swift */; };
 		B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */; };
 		B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */; };
 		B5EF459825D1781D00165604 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF459625D1781D00165604 /* CustomCell.swift */; };
@@ -155,6 +160,11 @@
 		B5E870E128434DF600FB0E3D /* String+RemoveHTMLTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RemoveHTMLTag.swift"; sourceTree = "<group>"; };
 		B5E870E3284352CB00FB0E3D /* NaverClientData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverClientData.swift; sourceTree = "<group>"; };
 		B5E870E72843536F00FB0E3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewModel.swift; sourceTree = "<group>"; };
+		B5EC0B21297679DC00E56861 /* HeartListViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoRepository.swift; sourceTree = "<group>"; };
+		B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoLocalRepository.swift; sourceTree = "<group>"; };
+		B5EC0B2C2976919200E56861 /* HeartContentLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContentLocalRepository.swift; sourceTree = "<group>"; };
 		B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLicenseController.swift; sourceTree = "<group>"; };
 		B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLicenseController.storyboard; sourceTree = "<group>"; };
 		B5EF459625D1781D00165604 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -287,7 +297,8 @@
 		B5A77310297149F700EEC35C /* HeartList */ = {
 			isa = PBXGroup;
 			children = (
-				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
+				B5EC0B1E297679B900E56861 /* ViewModel */,
+				B5EC0B1D297679AF00E56861 /* View */,
 			);
 			path = HeartList;
 			sourceTree = "<group>";
@@ -404,21 +415,20 @@
 		B5BB78A329558DBE00396E66 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				B5BB78A629558DFF00396E66 /* RecordScene */,
+				B5EC0B2629768E3200E56861 /* BookInfo */,
+				B5EC0B2B2976917200E56861 /* HeartContent */,
+				B5BB78A629558DFF00396E66 /* RecordContent */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		B5BB78A629558DFF00396E66 /* RecordScene */ = {
+		B5BB78A629558DFF00396E66 /* RecordContent */ = {
 			isa = PBXGroup;
 			children = (
-				B55A72C62955DC67003E5CD1 /* SearchRepository.swift */,
-				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
 				B5F600522973F02000CBF9CC /* RecordRepository.swift */,
 				B5F600542973F03900CBF9CC /* RecordLocalRepository.swift */,
-				B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */,
 			);
-			path = RecordScene;
+			path = RecordContent;
 			sourceTree = "<group>";
 		};
 		B5CEE3A128433287007AEF00 /* NetworkManager */ = {
@@ -487,6 +497,43 @@
 				B50D93F625C82FA100AAED67 /* DatabaseManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B5EC0B1D297679AF00E56861 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5AFB9F624A360370072DAD8 /* HeartListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5EC0B1E297679B900E56861 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC0B21297679DC00E56861 /* HeartListViewModelDelegate.swift */,
+				B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5EC0B2629768E3200E56861 /* BookInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B55A72C62955DC67003E5CD1 /* SearchRepository.swift */,
+				B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */,
+				B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */,
+				B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */,
+			);
+			path = BookInfo;
+			sourceTree = "<group>";
+		};
+		B5EC0B2B2976917200E56861 /* HeartContent */ = {
+			isa = PBXGroup;
+			children = (
+				B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */,
+				B5EC0B2C2976919200E56861 /* HeartContentLocalRepository.swift */,
+			);
+			path = HeartContent;
 			sourceTree = "<group>";
 		};
 		B5FA8D9C249F666A0009B24B = {
@@ -687,6 +734,7 @@
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
 				B5F600532973F02000CBF9CC /* RecordRepository.swift in Sources */,
+				B5EC0B2A29768E5200E56861 /* BookInfoLocalRepository.swift in Sources */,
 				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
@@ -699,12 +747,14 @@
 				B5A7731A29718BF900EEC35C /* DetailRecordViewModel.swift in Sources */,
 				B5015459297010A9008EDB4F /* BookInfo.swift in Sources */,
 				B55308D92958A9B7001977B5 /* NSObject+LoadViewController.swift in Sources */,
+				B5EC0B2D2976919200E56861 /* HeartContentLocalRepository.swift in Sources */,
 				B5A6F42824F3904F0048000E /* BookDetailViewController.swift in Sources */,
 				B5001AAA278F13FB00219175 /* ExportManagerViewController.swift in Sources */,
 				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
+				B5EC0B22297679DC00E56861 /* HeartListViewModelDelegate.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
 				B5F600552973F03900CBF9CC /* RecordLocalRepository.swift in Sources */,
 				B5A4AD6225CE69A900DBE58C /* MainPageViewController.swift in Sources */,
@@ -713,10 +763,12 @@
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
 				B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */,
 				B55A72D12956086E003E5CD1 /* MainSearchViewModelDelegate.swift in Sources */,
+				B5EC0B2829768E4600E56861 /* BookInfoRepository.swift in Sources */,
 				B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */,
 				B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */,
 				B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */,
 				B5D5C0FB295B0639005D6341 /* BookDetailViewModel.swift in Sources */,
+				B5EC0B20297679CA00E56861 /* HeartListViewModel.swift in Sources */,
 				B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */,
 				B561165125D37B3A00C0D94B /* CalendarListViewController.swift in Sources */,
 				B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */,

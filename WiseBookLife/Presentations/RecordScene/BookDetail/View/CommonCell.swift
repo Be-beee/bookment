@@ -83,15 +83,16 @@ extension CommonCell {
     @objc func heartButtonDidTouch(_ sender: UIButton!) {
         guard let bookInfo else { return }
         
-        let databaseManager = DatabaseManager.shared
+        // TODO: 별도 CommonCellViewModel 만들기
+        let repository = HeartContentLocalRepository()
         
-        if let foundHeartContent: HeartContent = databaseManager.find(with: bookInfo.isbn) {
+        if let _: HeartContent = repository.find(with: bookInfo.isbn) {
             sender.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
-            databaseManager.deleteHeartContentToDB(foundHeartContent, bookInfo.isbn)
+            repository.delete(with: bookInfo.isbn)
         } else {
             sender.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
             let newHeartContent = HeartContent(isbn: bookInfo.isbn, date: Date())
-            databaseManager.addHeartContentToDB(newHeartContent, bookInfo.dto)
+            repository.add(newHeartContent, with: bookInfo)
         }
         
         delegate?.heartButtonDidTouch()
