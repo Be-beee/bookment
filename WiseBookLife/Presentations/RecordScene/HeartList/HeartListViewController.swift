@@ -62,7 +62,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = heartView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? CommonCell,
-              let loadedBookInfo: BookInfoLocalDTO = DatabaseManager.shared.find(with: heartList[indexPath.row].isbn).first else {
+              let loadedBookInfo: BookInfoLocalDTO = DatabaseManager.shared.find(with: heartList[indexPath.row].isbn) else {
             return UITableViewCell()
         }
         cell.delegate = self
@@ -76,7 +76,7 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
         let databaseManager = DatabaseManager.shared
         let bookDetailViewID = BookDetailViewController.name
         guard let bookDetailViewController = UIStoryboard(name: bookDetailViewID, bundle: nil).instantiateViewController(withIdentifier: bookDetailViewID) as? BookDetailViewController,
-              let fromHeartListISBN: BookInfoLocalDTO = databaseManager.find(with: heartList[indexPath.row].isbn).first
+              let fromHeartListISBN: BookInfoLocalDTO = databaseManager.find(with: heartList[indexPath.row].isbn)
         else { return }
         
         let bookDetailViewModel = BookDetailViewModel(bookData: fromHeartListISBN.entity())

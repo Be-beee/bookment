@@ -62,8 +62,8 @@ final class CommonCell: UITableViewCell {
         authorLabel.text = bookInfo.author
         
         let databaseManager = DatabaseManager.shared
-        let foundHeartContents: [HeartContent] = databaseManager.find(with: bookInfo.isbn)
-        let heartType = (foundHeartContents.count > 0) ? StringLiteral.heartFill : StringLiteral.heartEmpty
+        let foundHeartContent: HeartContent? = databaseManager.find(with: bookInfo.isbn)
+        let heartType = (foundHeartContent != nil) ? StringLiteral.heartFill : StringLiteral.heartEmpty
         heartBtn.setImage(UIImage(systemName: heartType), for: .normal)
     }
     
@@ -85,7 +85,7 @@ extension CommonCell {
         
         let databaseManager = DatabaseManager.shared
         
-        if let foundHeartContent: HeartContent = databaseManager.find(with: bookInfo.isbn).first {
+        if let foundHeartContent: HeartContent = databaseManager.find(with: bookInfo.isbn) {
             sender.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
             databaseManager.deleteHeartContentToDB(foundHeartContent, bookInfo.isbn)
         } else {

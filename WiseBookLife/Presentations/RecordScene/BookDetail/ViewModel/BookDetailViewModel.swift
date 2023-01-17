@@ -31,8 +31,8 @@ final class BookDetailViewModel {
     // MARK: - Configure Functions
     
     private func configureHeartButtonStatus() {
-        let found: [HeartContent] = DatabaseManager.shared.find(with: bookData.isbn)
-        self.isHeartBtnSelected = found.count > 0
+        let found: HeartContent? = DatabaseManager.shared.find(with: bookData.isbn)
+        self.isHeartBtnSelected = found != nil
     }
     
     // MARK: - Functions
@@ -48,7 +48,7 @@ final class BookDetailViewModel {
     // TODO: UseCase, Repository로 분리
     func deleteFromHeartList() {
         let willDeleteData = bookData
-        guard let foundHeartContent: HeartContent = DatabaseManager.shared.find(with: willDeleteData.isbn).first
+        guard let foundHeartContent: HeartContent = DatabaseManager.shared.find(with: willDeleteData.isbn)
         else { return }
         DatabaseManager.shared.deleteHeartContentToDB(
             foundHeartContent,

@@ -22,7 +22,7 @@ final class RecordLocalRepository: RecordRepository {
         let results: Results<RecordContent> = databaseManager.load()
         let loaded = results.distinct(by: ["isbn"]).map{ $0.isbn }
         let thumbnails: [BookInfo] = loaded.compactMap {
-            let bookInfo: BookInfoLocalDTO? = databaseManager.find(with: $0).first
+            let bookInfo: BookInfoLocalDTO? = databaseManager.find(with: $0)
             return bookInfo?.entity()
         }
         
@@ -30,7 +30,7 @@ final class RecordLocalRepository: RecordRepository {
     }
     
     func loadRecords(with isbn: String, sorted: Bool = true) -> [RecordContent] {
-        let result: [RecordContent] = databaseManager.find(with: isbn)
+        let result: [RecordContent] = databaseManager.findAll(with: isbn)
         
         if sorted {
             return result.sorted { $0.date < $1.date }
@@ -42,8 +42,8 @@ final class RecordLocalRepository: RecordRepository {
     @discardableResult
     func add(_ record: RecordContent, with book: BookInfoLocalDTO?) -> Bool {
         let result = databaseManager.add(record)
-        let foundBookInfos: [BookInfoLocalDTO] = databaseManager.find(with: record.isbn)
-        if foundBookInfos.count > 0 {
+        
+        if let _: BookInfoLocalDTO = databaseManager.find(with: record.isbn) {
             return result
         } else {
             if let book = book {
@@ -58,15 +58,15 @@ final class RecordLocalRepository: RecordRepository {
     @discardableResult
     func delete(_ record: RecordContent) -> Bool {
         print("delete one record")
-        let book: [BookInfoLocalDTO] = databaseManager.find(with: record.isbn)
+        let book: [BookInfoLocalDTO] = databaseManager.findAll(with: record.isbn)
         
         var heartContentCount = 0
-        let foundHeartContents: [HeartContent] = databaseManager.find(with: record.isbn)
-        if foundHeartContents.count > 0 {
+        
+        if let _: HeartContent = databaseManager.find(with: record.isbn) {
             heartContentCount += 1
         }
         
-        let foundRecordContents: [RecordContent] = databaseManager.find(with: record.isbn)
+        let foundRecordContents: [RecordContent] = databaseManager.findAll(with: record.isbn)
         
         var bookDeleteResult = true
         if foundRecordContents.count + heartContentCount == 1 {

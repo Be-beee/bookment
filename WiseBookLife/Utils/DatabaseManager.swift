@@ -26,7 +26,7 @@ class DatabaseManager {
         }
     }
     
-    // MARK: - Basic Functions
+    // MARK: - Add Function
     
     @discardableResult
     func add<T: Object>(_ content: T) -> Bool {
@@ -40,6 +40,8 @@ class DatabaseManager {
         return true
     }
     
+    // MARK: - Delete Functions
+    
     @discardableResult
     func delete<T: Object>(_ contents: [T]) -> Bool {
         do {
@@ -52,14 +54,36 @@ class DatabaseManager {
         return true
     }
     
-    func find<T: Object>(with key: String) -> [T] {
-        let found = db.objects(T.self).filter(NSPredicate(format: "isbn = %@", key))
-        return Array(found)
+    @discardableResult
+    func delete<T: Object>(_ content: T) -> Bool {
+        do {
+            try db.write {
+                db.delete(content)
+            }
+        } catch {
+            return false
+        }
+        return true
     }
+    
+    // MARK: - Load Function
     
     func load<T: Object>() -> Results<T> {
         return db.objects(T.self)
     }
+    
+    // MARK: - Find Functions
+    
+    func find<T: Object>(with key: String) -> T? {
+        let found = db.objects(T.self).filter(NSPredicate(format: "isbn = %@", key))
+        return Array(found).first
+    }
+    
+    func findAll<T: Object>(with key: String) -> [T] {
+        let found = db.objects(T.self).filter(NSPredicate(format: "isbn = %@", key))
+        return Array(found)
+    }
+    
 }
 
 // TODO: 제네릭 적용해서 하나의 메서드들만 놔두고 (add, delete, find) 나머지는 다 Repository로 이동 시키기
@@ -70,8 +94,8 @@ extension DatabaseManager {
     @discardableResult
     func addHeartContentToDB(_ heart: HeartContent, _ book: BookInfoLocalDTO?) -> Bool {
         let result = add(heart)
-        let foundBookInfos: [BookInfoLocalDTO] = find(with: heart.isbn)
-        if foundBookInfos.count > 0 {
+        
+        if let _: BookInfoLocalDTO = find(with: heart.isbn) {
             return result
         } else {
             if let book = book {
@@ -84,15 +108,17 @@ extension DatabaseManager {
     }
     
     @discardableResult
-    func deleteHeartContentToDB(_ heart: HeartContent, _ bookIsbn: String?) -> Bool {
-        let foundRecordContents: [RecordContent] = find(with: heart.isbn)
+    func deleteHeartContentToDB(_ heartContent: HeartContent, _ bookIsbn: String?) -> Bool {
+        let foundRecord: RecordContent? = find(with: heartContent.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count == 0, let bookIsbn = bookIsbn {
-            let foundBookInfo: [BookInfoLocalDTO] = find(with: bookIsbn)
+        if foundRecord == nil, let bookIsbn = bookIsbn {
+            guard let foundBookInfo: BookInfoLocalDTO = find(with: bookIsbn)
+            else { return false }
+            
             bookDeleteResult = delete(foundBookInfo)
         }
-        let heartDeleteResult = delete([heart])
+        let heartDeleteResult = delete(heartContent)
         return bookDeleteResult && heartDeleteResult
     }
 }

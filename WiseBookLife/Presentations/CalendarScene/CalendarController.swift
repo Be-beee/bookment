@@ -117,15 +117,16 @@ extension CalendarController {
             df.dateFormat = "yyyy-MM-dd"
             let date_str = df.string(from: item.date)
             
-            guard let newBookItem = DatabaseManager.shared.findBookInfo(isbn: item.isbn)?.entity()
+            guard let newBookItem: BookInfoLocalDTO = DatabaseManager.shared.find(with: item.isbn)
             else { continue }
+            let newBookInfo = newBookItem.entity()
             
             if var value = calendarData[date_str] {
                 if value.contains(where: { $0.isbn == newBookItem.isbn }) { continue }
-                value.append(newBookItem)
+                value.append(newBookInfo)
                 calendarData.updateValue(value, forKey: date_str)
             } else {
-                calendarData.updateValue([newBookItem], forKey: date_str)
+                calendarData.updateValue([newBookInfo], forKey: date_str)
             }
         }
         
