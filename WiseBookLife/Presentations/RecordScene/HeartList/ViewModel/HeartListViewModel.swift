@@ -19,6 +19,7 @@ final class HeartListViewModel {
             delegate?.heartListDidChange()
         }
     }
+    private let bookInfoRepository: BookInfoRepository
     
     weak var delegate: HeartListViewModelDelegate?
     
@@ -28,7 +29,9 @@ final class HeartListViewModel {
     
     // MARK: - Init(s)
     
-    init() { }
+    init() {
+        bookInfoRepository = BookInfoLocalRepository()
+    }
     
     // MARK: - Load Functions
     
@@ -40,10 +43,8 @@ final class HeartListViewModel {
     // MARK: - Find Functions
     
     func find(at index: Int) -> BookInfo? {
-        let databaseManager = DatabaseManager.shared
-        let loadedBookInfo: BookInfoLocalDTO? = databaseManager.find(with: heartList[index].isbn)
-        
-        return loadedBookInfo?.entity()
+        let loaded = bookInfoRepository.find(with: heartList[index])
+        return loaded
     }
     
 }

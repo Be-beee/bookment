@@ -76,6 +76,8 @@
 		B5E870E82843536F00FB0E3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870E72843536F00FB0E3D /* ImageDownloader.swift */; };
 		B5EC0B20297679CA00E56861 /* HeartListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */; };
 		B5EC0B22297679DC00E56861 /* HeartListViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B21297679DC00E56861 /* HeartListViewModelDelegate.swift */; };
+		B5EC0B2829768E4600E56861 /* BookInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */; };
+		B5EC0B2A29768E5200E56861 /* BookInfoLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */; };
 		B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */; };
 		B5EDF2E5273C325F009F0F33 /* ShowLicenseController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */; };
 		B5EF459825D1781D00165604 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF459625D1781D00165604 /* CustomCell.swift */; };
@@ -159,6 +161,8 @@
 		B5E870E72843536F00FB0E3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewModel.swift; sourceTree = "<group>"; };
 		B5EC0B21297679DC00E56861 /* HeartListViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartListViewModelDelegate.swift; sourceTree = "<group>"; };
+		B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoRepository.swift; sourceTree = "<group>"; };
+		B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoLocalRepository.swift; sourceTree = "<group>"; };
 		B5EDF2E2273C322B009F0F33 /* ShowLicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLicenseController.swift; sourceTree = "<group>"; };
 		B5EDF2E4273C325F009F0F33 /* ShowLicenseController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowLicenseController.storyboard; sourceTree = "<group>"; };
 		B5EF459625D1781D00165604 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 		B5BB78A329558DBE00396E66 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC0B2629768E3200E56861 /* BookInfo */,
 				B5BB78A629558DFF00396E66 /* RecordScene */,
 			);
 			path = Repositories;
@@ -509,6 +514,15 @@
 				B5EC0B1F297679CA00E56861 /* HeartListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5EC0B2629768E3200E56861 /* BookInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC0B2729768E4600E56861 /* BookInfoRepository.swift */,
+				B5EC0B2929768E5200E56861 /* BookInfoLocalRepository.swift */,
+			);
+			path = BookInfo;
 			sourceTree = "<group>";
 		};
 		B5FA8D9C249F666A0009B24B = {
@@ -709,6 +723,7 @@
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,
 				B5F600532973F02000CBF9CC /* RecordRepository.swift in Sources */,
+				B5EC0B2A29768E5200E56861 /* BookInfoLocalRepository.swift in Sources */,
 				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
@@ -736,6 +751,7 @@
 				B5AFB9F724A360370072DAD8 /* HeartListViewController.swift in Sources */,
 				B55A72CE2955E34E003E5CD1 /* SearchUseCases.swift in Sources */,
 				B55A72D12956086E003E5CD1 /* MainSearchViewModelDelegate.swift in Sources */,
+				B5EC0B2829768E4600E56861 /* BookInfoRepository.swift in Sources */,
 				B5616DD425EE83D900A0103E /* SelectDateController.swift in Sources */,
 				B5E870E4284352CB00FB0E3D /* NaverClientData.swift in Sources */,
 				B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */,
