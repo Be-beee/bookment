@@ -62,8 +62,8 @@ final class CommonCell: UITableViewCell {
         authorLabel.text = bookInfo.author
         
         let databaseManager = DatabaseManager.shared
-        let heartType = (databaseManager.findHeartContent(bookInfo.isbn) != nil)
-                            ? StringLiteral.heartFill : StringLiteral.heartEmpty
+        let foundHeartContent: HeartContent? = databaseManager.find(with: bookInfo.isbn)
+        let heartType = (foundHeartContent != nil) ? StringLiteral.heartFill : StringLiteral.heartEmpty
         heartBtn.setImage(UIImage(systemName: heartType), for: .normal)
     }
     
@@ -81,16 +81,17 @@ final class CommonCell: UITableViewCell {
 extension CommonCell {
     
     @objc func heartButtonDidTouch(_ sender: UIButton!) {
-        // TODO: button이 눌렸는지 아닌지에 따라 이미지 바뀌도록 수정
         guard let bookInfo else { return }
         
-        if let foundHeartContent = DatabaseManager.shared.findHeartContent(bookInfo.isbn) {
+        let databaseManager = DatabaseManager.shared
+        
+        if let foundHeartContent: HeartContent = databaseManager.find(with: bookInfo.isbn) {
             sender.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookInfo.isbn)
+            databaseManager.deleteHeartContentToDB(foundHeartContent, bookInfo.isbn)
         } else {
             sender.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
             let newHeartContent = HeartContent(isbn: bookInfo.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookInfo.dto)
+            databaseManager.addHeartContentToDB(newHeartContent, bookInfo.dto)
         }
         
         delegate?.heartButtonDidTouch()

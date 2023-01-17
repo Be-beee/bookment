@@ -1,5 +1,5 @@
 //
-//  Archive.swift
+//  DatabaseManager.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2021/02/01.
@@ -10,9 +10,14 @@ import UIKit
 import RealmSwift
 
 class DatabaseManager {
+    
+    // MARK: - Properties
+    
     static let shared = DatabaseManager()
     private let db: Realm!
-
+    
+    // MARK: - Init(s)
+    
     private init() {
         do {
             db = try Realm()
@@ -20,36 +25,14 @@ class DatabaseManager {
             fatalError(error.localizedDescription)
         }
     }
-
     
-    // MARK: - Database Management Method, Record
+    // MARK: - Add Function
     
-    func loadRecords() -> Results<RecordContent> {
-        return db.objects(RecordContent.self)
-    }
-
     @discardableResult
-    func addRecord(data: RecordContent) -> Bool {
+    func add<T: Object>(_ content: T) -> Bool {
         do {
             try db.write {
-                db.add(data)
-            }
-        } catch {
-            return false
-        }
-        return true
-    }
-
-    @discardableResult
-    func updateRecord() -> Bool {
-        return false
-    }
-
-    @discardableResult
-    func deleteRecord(_ data: [RecordContent]) -> Bool {
-        do {
-            try db.write {
-                db.delete(data)
+                db.add(content)
             }
         } catch {
             return false
@@ -57,151 +40,66 @@ class DatabaseManager {
         return true
     }
     
-    func findRecordContents(_ isbn: String) -> [RecordContent] {
-        let found = db.objects(RecordContent.self).filter(NSPredicate(format: "isbn = %@", isbn))
+    // MARK: - Delete Functions
+    
+    @discardableResult
+    func delete<T: Object>(_ contents: [T]) -> Bool {
+        do {
+            try db.write {
+                db.delete(contents)
+            }
+        } catch {
+            return false
+        }
+        return true
+    }
+    
+    @discardableResult
+    func delete<T: Object>(_ content: T) -> Bool {
+        do {
+            try db.write {
+                db.delete(content)
+            }
+        } catch {
+            return false
+        }
+        return true
+    }
+    
+    // MARK: - Load Function
+    
+    func load<T: Object>() -> Results<T> {
+        return db.objects(T.self)
+    }
+    
+    // MARK: - Find Functions
+    
+    func find<T: Object>(with key: String) -> T? {
+        let found = db.objects(T.self).filter(NSPredicate(format: "isbn = %@", key))
+        return Array(found).first
+    }
+    
+    func findAll<T: Object>(with key: String) -> [T] {
+        let found = db.objects(T.self).filter(NSPredicate(format: "isbn = %@", key))
         return Array(found)
     }
     
-    // MARK: - Database Management Method, HeartList
-    func loadHeartContent() -> Results<HeartContent> {
-        return db.objects(HeartContent.self)
-    }
-    
-    @discardableResult
-    func addHeartContent(data: HeartContent) -> Bool {
-        do {
-            try db.write {
-                db.add(data)
-            }
-        } catch {
-            return false
-        }
-        return true
-    }
-    
-    @discardableResult
-    func deleteHeartContent(_ data: [HeartContent]) -> Bool {
-        do {
-            try db.write {
-                db.delete(data)
-            }
-        } catch {
-            return false
-        }
-        return true
-    }
-    
-    func findHeartContent(_ isbn: String) -> HeartContent? {
-        guard let found = db.objects(HeartContent.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { return nil }
-        return found
-    }
-    
-    // MARK: - Database Management Method, BookInfo
-    func loadBookInfos() -> [BookInfoLocalDTO] {
-        let list = db.objects(BookInfoLocalDTO.self)
-        return Array(list)
-    }
-    
-    @discardableResult
-    func addBookInfo(data: BookInfoLocalDTO) -> Bool {
-        do {
-            try db.write {
-                db.add(data)
-            }
-        } catch {
-            return false
-        }
-        return true
-    }
-    
-    @discardableResult
-    func deleteBookInfo(_ data: [BookInfoLocalDTO]) -> Bool {
-        do {
-            try db.write {
-                db.delete(data)
-            }
-        } catch {
-            return false
-        }
-        return true
-    }
-    
-    
-    // MARK: - Query Method
-    // heartdict: [HeartContent], records: [RecordContent], AllBookData: [BookInfo]
-    // CommonData 하위 메서드가 DatabaseManager 하위 메서드로 이동
-    
-    func findBookInfo(isbn: String) -> BookInfoLocalDTO? {
-        guard let found = db.objects(BookInfoLocalDTO.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { return nil }
-        return found
-    }
-    
-    func sortRecords(isbn: String) -> [RecordContent] {
-        let result = db.objects(RecordContent.self).filter(NSPredicate(format: "isbn = %@", isbn))
-        
-        return result.sorted { $0.date < $1.date }
-    }
-    
-    func createMyLibraryList() -> [BookInfoLocalDTO] {
-        let records = Array(db.objects(RecordContent.self))
-        let isbnList = records.map { $0.isbn }
-        var libraryList: [BookInfoLocalDTO] = []
-        for isbn in isbnList {
-            guard let result = db.objects(BookInfoLocalDTO.self).filter(NSPredicate(format: "isbn = %@", isbn)).first else { continue }
-            libraryList.append(result)
-        }
-        // isbnList -> libraryList
-        
-        return libraryList
-    }
 }
 
+// TODO: 제네릭 적용해서 하나의 메서드들만 놔두고 (add, delete, find) 나머지는 다 Repository로 이동 시키기
+
 extension DatabaseManager {
-    
-    // MARK: - RecordContent
-    @discardableResult
-    func addRecordToDB(_ record: RecordContent, _ book: BookInfoLocalDTO?) -> Bool {
-        let result = DatabaseManager.shared.addRecord(data: record)
-        if let _ = DatabaseManager.shared.findBookInfo(isbn: record.isbn) {
-            return result
-        } else {
-            if let book = book {
-                let result2 = DatabaseManager.shared.addBookInfo(data: book)
-                return result && result2
-            } else {
-                return result
-            }
-        }
-    }
-    
-    @discardableResult
-    func deleteRecordToDB(_ record: RecordContent) -> Bool {
-        guard let book = findBookInfo(isbn: record.isbn)
-        else { return false }
-        
-        var heartContentCount = 0
-        if let _ = findHeartContent(record.isbn) {
-            heartContentCount += 1
-        }
-        let foundRecordContents = findRecordContents(record.isbn)
-        
-        var bookDeleteResult = true
-        if Array(foundRecordContents).count + heartContentCount == 1 {
-            bookDeleteResult = deleteBookInfo([book])
-        }
-        let recordDeleteResult = deleteRecord([record])
-        return bookDeleteResult && recordDeleteResult
-    }
     
     // MARK: - HeartContent
     @discardableResult
     func addHeartContentToDB(_ heart: HeartContent, _ book: BookInfoLocalDTO?) -> Bool {
-        let result = DatabaseManager.shared.addHeartContent(data: heart)
-        if let _ = DatabaseManager.shared.findBookInfo(isbn: heart.isbn) {
+        let result = add(heart)
+        
+        if let _: BookInfoLocalDTO = find(with: heart.isbn) {
             return result
         } else {
             if let book = book {
-                let result2 = DatabaseManager.shared.addBookInfo(data: book)
+                let result2 = add(book)
                 return result && result2
             } else {
                 return result
@@ -210,16 +108,17 @@ extension DatabaseManager {
     }
     
     @discardableResult
-    func deleteHeartContentToDB(_ heart: HeartContent, _ bookIsbn: String?) -> Bool {
-        let foundRecordContents = DatabaseManager.shared.findRecordContents(heart.isbn)
+    func deleteHeartContentToDB(_ heartContent: HeartContent, _ bookIsbn: String?) -> Bool {
+        let foundRecord: RecordContent? = find(with: heartContent.isbn)
         
         var bookDeleteResult = true
-        if Array(foundRecordContents).count == 0, let bookIsbn = bookIsbn {
-            if let foundBookInfo = DatabaseManager.shared.findBookInfo(isbn: bookIsbn) {
-                bookDeleteResult = DatabaseManager.shared.deleteBookInfo([foundBookInfo])
-            }
+        if foundRecord == nil, let bookIsbn = bookIsbn {
+            guard let foundBookInfo: BookInfoLocalDTO = find(with: bookIsbn)
+            else { return false }
+            
+            bookDeleteResult = delete(foundBookInfo)
         }
-        let heartDeleteResult = DatabaseManager.shared.deleteHeartContent([heart])
+        let heartDeleteResult = delete(heartContent)
         return bookDeleteResult && heartDeleteResult
     }
 }

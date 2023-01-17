@@ -12,14 +12,16 @@ final class DetailRecordViewModel {
     
     // MARK: - Properties
     
-    weak var delegate: DetailRecordViewModelDelegate?
-    
+    private let repository: RecordLocalRepository
     private(set) var records: [RecordContent] = [] {
         didSet {
             delegate?.recordDetailDidChange()
         }
     }
+    
     let bookInfo: BookInfo
+    
+    weak var delegate: DetailRecordViewModelDelegate?
     
     // MARK: - Computed Properties
     
@@ -29,14 +31,15 @@ final class DetailRecordViewModel {
     
     init(bookInfo: BookInfo) {
         self.bookInfo = bookInfo
+        repository = RecordLocalRepository()
+        
         configureRecords()
     }
     
     // MARK: - Configure Functions
     
     private func configureRecords() {
-        let databaseManager = DatabaseManager.shared
-        let records = databaseManager.sortRecords(isbn: bookInfo.isbn)
+        let records = repository.loadRecords(with: bookInfo.isbn)
         
         self.records = records
     }
@@ -44,28 +47,18 @@ final class DetailRecordViewModel {
     // MARK: - Add Function
     
     func addRecord(_ record: RecordContent) {
-        let databaseManager = DatabaseManager.shared
-        databaseManager.addRecordToDB(record, bookInfo.dto)
+        repository.add(record, with: bookInfo.dto)
         
-        reloadRecords()
+        configureRecords()
     }
     
     // MARK: - Delete Function
     
     func deleteRecord(at index: Int) {
-        let databaseManager = DatabaseManager.shared
         let selectedRecord = records[index]
+        repository.delete(selectedRecord)
         
-        databaseManager.deleteRecordToDB(selectedRecord)
-        reloadRecords()
-    }
-    
-    
-    // MARK: - Reload Function
-    
-    func reloadRecords() {
-        let databaseManager = DatabaseManager.shared
-        records = databaseManager.sortRecords(isbn: bookInfo.isbn)
+        configureRecords()
     }
     
 }
