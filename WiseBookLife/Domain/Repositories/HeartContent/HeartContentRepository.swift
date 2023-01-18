@@ -14,4 +14,6 @@ protocol HeartContentRepository {
     
     @discardableResult
     func delete(with isbn: String) -> Bool
+    
+    func find(with isbn: String) -> HeartContent?
 }

@@ -58,12 +58,14 @@
 		B5BB78A12955845E00396E66 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A02955845E00396E66 /* HTTPMethod.swift */; };
 		B5BB78A529558DEB00396E66 /* SearchRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */; };
 		B5BB78A829559E4B00396E66 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB78A729559E4B00396E66 /* Endpoint.swift */; };
+		B5BD448A2977FE7C006D1227 /* CommonCellViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD44892977FE7C006D1227 /* CommonCellViewModelDelegate.swift */; };
 		B5BDDCC52975492B00316F42 /* HeartContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */; };
 		B5D190AB24A4A78200F1DCDB /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */; };
 		B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */; };
 		B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */; };
 		B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */; };
 		B5D5C0FB295B0639005D6341 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */; };
+		B5E48AA02977B2CA00648CA6 /* CommonCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E48A9F2977B2CA00648CA6 /* CommonCellViewModel.swift */; };
 		B5E870D32843429700FB0E3D /* HeartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D22843429700FB0E3D /* HeartContent.swift */; };
 		B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */; };
 		B5E870D72843432100FB0E3D /* BookInfoLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E870D62843432100FB0E3D /* BookInfoLocalDTO.swift */; };
@@ -144,12 +146,14 @@
 		B5BB78A02955845E00396E66 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B5BB78A429558DEB00396E66 /* SearchRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteRepository.swift; sourceTree = "<group>"; };
 		B5BB78A729559E4B00396E66 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B5BD44892977FE7C006D1227 /* CommonCellViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellViewModelDelegate.swift; sourceTree = "<group>"; };
 		B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContentRepository.swift; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
 		B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoViewController.storyboard; sourceTree = "<group>"; };
 		B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Primary.swift"; sourceTree = "<group>"; };
 		B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		B5E48A9F2977B2CA00648CA6 /* CommonCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellViewModel.swift; sourceTree = "<group>"; };
 		B5E870D22843429700FB0E3D /* HeartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContent.swift; sourceTree = "<group>"; };
 		B5E870D4284342E100FB0E3D /* BookInfoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoResponseDTO.swift; sourceTree = "<group>"; };
 		B5E870D62843432100FB0E3D /* BookInfoLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoLocalDTO.swift; sourceTree = "<group>"; };
@@ -381,6 +385,7 @@
 				B563D2BD26C9749200C0ACFD /* BaseTabBarController.swift */,
 				B5A4AD6125CE69A900DBE58C /* MainPageViewController.swift */,
 				B5FA8DAE249F666B0009B24B /* Main.storyboard */,
+				B5E48A9C2977B28700648CA6 /* CommonCell */,
 				B5A4AD6825CE70B600DBE58C /* RecordScene */,
 				B5BB7897295556EE00396E66 /* CalendarScene */,
 				B5909C9125E78B1300AC401A /* SettingsScene */,
@@ -479,13 +484,38 @@
 		B5D5C0F9295B0601005D6341 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B55308D42958A55C001977B5 /* CommonCellDelegate.swift */,
-				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
-				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
 				B5A6F42724F3904F0048000E /* BookDetailViewController.swift */,
 				B5A6F42B24F390D30048000E /* BookDetailViewController.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B5E48A9C2977B28700648CA6 /* CommonCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5E48A9E2977B2A300648CA6 /* ViewModel */,
+				B5E48A9D2977B29D00648CA6 /* View */,
+			);
+			path = CommonCell;
+			sourceTree = "<group>";
+		};
+		B5E48A9D2977B29D00648CA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B55308D42958A55C001977B5 /* CommonCellDelegate.swift */,
+				B57883D624ACC86C00B8D1F0 /* CommonCell.swift */,
+				B57883D724ACC86C00B8D1F0 /* CommonCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5E48A9E2977B2A300648CA6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5BD44892977FE7C006D1227 /* CommonCellViewModelDelegate.swift */,
+				B5E48A9F2977B2CA00648CA6 /* CommonCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B5E870DC28434D7800FB0E3D /* Utils */ = {
@@ -737,6 +767,7 @@
 				B5EC0B2A29768E5200E56861 /* BookInfoLocalRepository.swift in Sources */,
 				B5E870E028434DBD00FB0E3D /* Dictionary+QueryString.swift in Sources */,
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
+				B5BD448A2977FE7C006D1227 /* CommonCellViewModelDelegate.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
 				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
@@ -753,6 +784,7 @@
 				B55308D52958A55C001977B5 /* CommonCellDelegate.swift in Sources */,
 				B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */,
 				B5A7731E29718CE400EEC35C /* RecordContentCell.swift in Sources */,
+				B5E48AA02977B2CA00648CA6 /* CommonCellViewModel.swift in Sources */,
 				B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */,
 				B5EC0B22297679DC00E56861 /* HeartListViewModelDelegate.swift in Sources */,
 				B5E870DE28434D8F00FB0E3D /* Date+Formatter.swift in Sources */,
