@@ -69,8 +69,10 @@ extension CalendarListViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         cell.delegate = self
-        cell.bookInfo = booklist[indexPath.row]
-        cell.readonly = true
+        cell.setupInfo(
+            bookInfo: booklist[indexPath.row],
+            readonly: true
+        )
         
         return cell
     }

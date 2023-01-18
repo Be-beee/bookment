@@ -92,8 +92,10 @@ extension HeartListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.delegate = self
-        cell.bookInfo = foundBookInfo
-        cell.readonly = false
+        cell.setupInfo(
+            bookInfo: foundBookInfo,
+            readonly: false
+        )
 
         return cell
     }
