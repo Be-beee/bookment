@@ -1,5 +1,5 @@
 //
-//  AddRecordViewController.swift
+//  AddNewBookRecordViewController.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2020/06/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AddBookViewController: UIViewController {
+final class AddNewBookRecordViewController: UIViewController {
     
     // MARK: - UI Properties
     
@@ -20,7 +20,7 @@ final class AddBookViewController: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel: AddBookViewModel?
+    var viewModel: AddNewBookRecordViewModel?
     
     // MARK: - Life Cycle
     
@@ -92,7 +92,7 @@ final class AddBookViewController: UIViewController {
 
 // MARK: - Keyboard
 
-extension AddBookViewController {
+extension AddNewBookRecordViewController {
     
     @objc func keyboardWillShow(_ noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -108,7 +108,7 @@ extension AddBookViewController {
 
 // MARK: - UITextViewDelegate
 
-extension AddBookViewController: UITextViewDelegate {
+extension AddNewBookRecordViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == StringLiteral.placeholderText {
@@ -129,7 +129,7 @@ extension AddBookViewController: UITextViewDelegate {
 
 // MARK: - Namespaces
 
-extension AddBookViewController {
+extension AddNewBookRecordViewController {
     enum Metric {
         static let bottomSpacing: CGFloat = 20
         static let textViewBorderWidth: CGFloat = 0.3

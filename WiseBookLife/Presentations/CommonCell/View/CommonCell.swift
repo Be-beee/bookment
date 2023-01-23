@@ -100,12 +100,12 @@ extension CommonCell {
     
     
     @objc func addLibraryButtonDidTouch() {
-        let addBookViewID = AddBookViewController.name
-        guard let addBookView = loadViewController(with: addBookViewID) as? AddBookViewController,
+        let addBookViewID = AddNewBookRecordViewController.name
+        guard let addBookView = loadViewController(with: addBookViewID) as? AddNewBookRecordViewController,
               let bookInfo = bookInfo
         else { return }
         
-        let addBookViewModel = AddBookViewModel(bookInfo: bookInfo)
+        let addBookViewModel = AddNewBookRecordViewModel(bookInfo: bookInfo)
         addBookView.viewModel = addBookViewModel
         delegate?.addBookButtonDidTouched(destinationView: addBookView)
     }

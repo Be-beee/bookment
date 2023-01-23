@@ -1,5 +1,5 @@
 //
-//  AddBookViewModel.swift
+//  AddNewBookRecordViewModel.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2023/01/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class AddBookViewModel {
+final class AddNewBookRecordViewModel {
     
     // MARK: - Properties
     
