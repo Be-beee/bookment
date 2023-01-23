@@ -12,6 +12,7 @@
 		B5001AAC278F140D00219175 /* ExportManagerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */; };
 		B5015459297010A9008EDB4F /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5015458297010A9008EDB4F /* BookInfo.swift */; };
 		B50D93F725C82FA100AAED67 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D93F625C82FA100AAED67 /* DatabaseManager.swift */; };
+		B5123150297E95B700111A19 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512314F297E95B700111A19 /* AddBookViewModel.swift */; };
 		B52C453925FA5AFA00EED195 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */; };
 		B52C453C25FA5B0C00EED195 /* AddRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */; };
 		B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536B8E724BEF9EC005D2F6B /* SelectView.swift */; };
@@ -100,6 +101,7 @@
 		B5001AAB278F140D00219175 /* ExportManagerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExportManagerViewController.storyboard; sourceTree = "<group>"; };
 		B5015458297010A9008EDB4F /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		B50D93F625C82FA100AAED67 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		B512314F297E95B700111A19 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRecordViewController.storyboard; sourceTree = "<group>"; };
 		B536B8E724BEF9EC005D2F6B /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B512314D297E94E300111A19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */,
+				B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */,
+				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
+				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B512314E297E94E900111A19 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B512314F297E95B700111A19 /* AddBookViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B55A72C82955E209003E5CD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,10 +485,8 @@
 		B5D190A924A4A72E00F1DCDB /* RecordAdd */ = {
 			isa = PBXGroup;
 			children = (
-				B5D190AA24A4A78200F1DCDB /* AddBookViewController.swift */,
-				B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */,
-				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
-				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
+				B512314E297E94E900111A19 /* ViewModel */,
+				B512314D297E94E300111A19 /* View */,
 			);
 			path = RecordAdd;
 			sourceTree = "<group>";
@@ -760,6 +779,7 @@
 				B5E870D5284342E100FB0E3D /* BookInfoResponseDTO.swift in Sources */,
 				B5E870D9284343BB00FB0E3D /* RecordContent.swift in Sources */,
 				B55A72CB2955E2A8003E5CD1 /* MainSearchViewModel.swift in Sources */,
+				B5123150297E95B700111A19 /* AddBookViewModel.swift in Sources */,
 				B5FA8DA9249F666B0009B24B /* AppDelegate.swift in Sources */,
 				B5EDF2E3273C322B009F0F33 /* ShowLicenseController.swift in Sources */,
 				B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */,

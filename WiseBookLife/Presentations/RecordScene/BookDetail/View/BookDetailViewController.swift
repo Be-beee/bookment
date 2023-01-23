@@ -72,7 +72,9 @@ final class BookDetailViewController: UIViewController {
         guard let addVC = loadViewController(with: addBookViewID) as? AddBookViewController
         else { return }
         
-        addVC.selectedBookInfo = viewModel.bookData
+        let addBookViewModel = AddBookViewModel(bookInfo: viewModel.bookData)
+        
+        addVC.viewModel = addBookViewModel
         self.present(addVC, animated: true, completion: nil)
     }
     
