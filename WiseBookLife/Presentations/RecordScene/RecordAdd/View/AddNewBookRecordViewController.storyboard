@@ -12,7 +12,7 @@
         <!--Add New Book Record View Controller-->
         <scene sceneID="hOb-3m-23N">
             <objects>
-                <viewController storyboardIdentifier="AddBookViewController" modalPresentationStyle="fullScreen" id="taT-N4-ig5" customClass="AddNewBookRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewBookRecordViewController" modalPresentationStyle="fullScreen" id="taT-N4-ig5" customClass="AddNewBookRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Te-Us-y5D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

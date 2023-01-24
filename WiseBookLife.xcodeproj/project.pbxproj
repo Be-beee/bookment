@@ -62,7 +62,7 @@
 		B5BD448A2977FE7C006D1227 /* CommonCellViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BD44892977FE7C006D1227 /* CommonCellViewModelDelegate.swift */; };
 		B5BDDCC52975492B00316F42 /* HeartContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */; };
 		B5D190AB24A4A78200F1DCDB /* AddNewBookRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D190AA24A4A78200F1DCDB /* AddNewBookRecordViewController.swift */; };
-		B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */; };
+		B5D190AD24A4A78E00F1DCDB /* AddNewBookRecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D190AC24A4A78E00F1DCDB /* AddNewBookRecordViewController.storyboard */; };
 		B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */; };
 		B5D5C0F6295B00A1005D6341 /* UIColor+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */; };
 		B5D5C0FB295B0639005D6341 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */; };
@@ -151,7 +151,7 @@
 		B5BD44892977FE7C006D1227 /* CommonCellViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellViewModelDelegate.swift; sourceTree = "<group>"; };
 		B5BDDCC42975492B00316F42 /* HeartContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartContentRepository.swift; sourceTree = "<group>"; };
 		B5D190AA24A4A78200F1DCDB /* AddNewBookRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBookRecordViewController.swift; sourceTree = "<group>"; };
-		B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookViewController.storyboard; sourceTree = "<group>"; };
+		B5D190AC24A4A78E00F1DCDB /* AddNewBookRecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewBookRecordViewController.storyboard; sourceTree = "<group>"; };
 		B5D2346625E7C7F5004AC964 /* AppInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfoViewController.storyboard; sourceTree = "<group>"; };
 		B5D5C0F5295B00A1005D6341 /* UIColor+Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Primary.swift"; sourceTree = "<group>"; };
 		B5D5C0FA295B0639005D6341 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D190AA24A4A78200F1DCDB /* AddNewBookRecordViewController.swift */,
-				B5D190AC24A4A78E00F1DCDB /* AddBookViewController.storyboard */,
+				B5D190AC24A4A78E00F1DCDB /* AddNewBookRecordViewController.storyboard */,
 				B52C453825FA5AFA00EED195 /* AddRecordViewController.swift */,
 				B52C453B25FA5B0C00EED195 /* AddRecordViewController.storyboard */,
 			);
@@ -696,7 +696,7 @@
 				B561165425D37B5300C0D94B /* CalendarListViewController.storyboard in Resources */,
 				B5EF459925D1781D00165604 /* CustomCell.xib in Resources */,
 				B5FA8DB5249F666B0009B24B /* LaunchScreen.storyboard in Resources */,
-				B5D190AD24A4A78E00F1DCDB /* AddBookViewController.storyboard in Resources */,
+				B5D190AD24A4A78E00F1DCDB /* AddNewBookRecordViewController.storyboard in Resources */,
 				B56380F827413B1200181008 /* Licenses.plist in Resources */,
 				B5D2346725E7C7F5004AC964 /* AppInfoViewController.storyboard in Resources */,
 				B5B3F31A25B2CC3800A3CC14 /* ApplicationInfo.plist in Resources */,
