@@ -37,6 +37,7 @@
 		B572CE8E24A0908200702C6E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CE8D24A0908200702C6E /* RecordCell.swift */; };
 		B57883D824ACC86C00B8D1F0 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57883D624ACC86C00B8D1F0 /* CommonCell.swift */; };
 		B57883D924ACC86C00B8D1F0 /* CommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57883D724ACC86C00B8D1F0 /* CommonCell.xib */; };
+		B57A9D25297FD36900895A79 /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57A9D24297FD36900895A79 /* AddRecordViewModel.swift */; };
 		B57D47302693360600ADCADE /* UIViewController+FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */; };
 		B5909C8E25E7551400AC401A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C8D25E7551400AC401A /* SettingsController.swift */; };
 		B5909C9325E78C6E00AC401A /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */; };
@@ -126,6 +127,7 @@
 		B572CE8D24A0908200702C6E /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		B57883D624ACC86C00B8D1F0 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		B57883D724ACC86C00B8D1F0 /* CommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCell.xib; sourceTree = "<group>"; };
+		B57A9D24297FD36900895A79 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
 		B57D472F2693360600ADCADE /* UIViewController+FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FooterView.swift"; sourceTree = "<group>"; };
 		B5909C8D25E7551400AC401A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B5909C9225E78C6E00AC401A /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				B512314F297E95B700111A19 /* AddNewBookRecordViewModel.swift */,
+				B57A9D24297FD36900895A79 /* AddRecordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				B5EF459825D1781D00165604 /* CustomCell.swift in Sources */,
 				B5BD448A2977FE7C006D1227 /* CommonCellViewModelDelegate.swift in Sources */,
 				B572CE8A24A0831D00702C6E /* RecordViewController.swift in Sources */,
+				B57A9D25297FD36900895A79 /* AddRecordViewModel.swift in Sources */,
 				B536B8E824BEF9EC005D2F6B /* SelectView.swift in Sources */,
 				B55308D329588957001977B5 /* NSObject+Name.swift in Sources */,
 				B55A72C72955DC67003E5CD1 /* SearchRepository.swift in Sources */,
