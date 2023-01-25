@@ -81,8 +81,10 @@ final class AddRecordViewController: UIViewController {
     
     @IBAction func saveRecord(_ sender: UIButton) {
         // TODO: ViewModel로 옮기고 presentAlert 부분은 delegate로 전달
-        self.newRecordContent.date = recordDatePicker.date
-        self.newRecordContent.text = recordInputView.text
+        
+        viewModel?.add(date: recordDatePicker.date, text: recordInputView.text)
+        
+        // Delegate
         if !newRecordContent.text.isEmpty, recordInputView.textColor == .label {
             self.performSegue(withIdentifier: "toDetailViewFromAddView", sender: self)
         } else {
