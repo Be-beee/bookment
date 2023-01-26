@@ -44,11 +44,9 @@ final class DetailRecordViewModel {
         self.records = records
     }
     
-    // MARK: - Add Function
+    // MARK: - Reload Function
     
-    func addRecord(_ record: RecordContent) {
-        repository.add(record, with: bookInfo.dto)
-        
+    func reloadRecords() {
         configureRecords()
     }
     

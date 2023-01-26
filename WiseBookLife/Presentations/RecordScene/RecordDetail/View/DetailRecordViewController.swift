@@ -32,12 +32,13 @@ final class DetailRecordViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshRecordList()
+        
+        viewModel?.reloadRecords()
     }
     
     // MARK: - Bind, Configure Functions
     
-    private func  bindToViewModel() {
+    private func bindToViewModel() {
         viewModel?.delegate = self
     }
     
@@ -85,8 +86,11 @@ final class DetailRecordViewController: UIViewController {
         guard let addRecordView = UIStoryboard(
             name: viewName,
             bundle: nil
-        ).instantiateViewController(withIdentifier: viewName) as? AddRecordViewController
+        ).instantiateViewController(withIdentifier: viewName) as? AddRecordViewController,
+              let viewModel = viewModel
         else { return }
+        let addRecordViewModel = AddRecordViewModel(isbn: viewModel.bookInfo.isbn)
+        addRecordView.viewModel = addRecordViewModel
         
         self.present(addRecordView, animated: true)
     }
@@ -102,17 +106,6 @@ final class DetailRecordViewController: UIViewController {
         }
     }
     
-    // MARK: - Unwind segue Function
-    
-    // TODO: Delegate 패턴 적용으로 변경..?
-    @IBAction func saveRecordsToLibrary(sender: UIStoryboardSegue) {
-        guard let addRecordView = sender.source as? AddRecordViewController,
-              let viewModel
-        else { return }
-        
-        addRecordView.newRecordContent.isbn = viewModel.bookInfo.isbn
-        viewModel.addRecord(addRecordView.newRecordContent)
-    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
