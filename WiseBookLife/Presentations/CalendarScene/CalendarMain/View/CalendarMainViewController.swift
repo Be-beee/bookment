@@ -1,5 +1,5 @@
 //
-//  CalendarController.swift
+//  CalendarMainViewController.swift
 //  WiseBookLife
 //
 //  Created by 서보경 on 2021/02/06.
@@ -11,16 +11,17 @@ import UIKit
 import RealmSwift
 import FSCalendar
 
-class CalendarController: UIViewController {
+class CalendarMainViewController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     let datePicker = UIDatePicker()
     
     var calData: [String: [BookInfo]] = [:]
+    private let cellName = CustomCell.name
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingCalendarHeader()
-        calendarView.collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "CustomCell")
+        calendarView.collectionView.register(UINib(nibName: cellName, bundle: nil), forCellWithReuseIdentifier: cellName)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,7 +67,7 @@ class CalendarController: UIViewController {
     }
 }
 
-extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarMainViewController: FSCalendarDelegate, FSCalendarDataSource {
     // 책 표지 표시
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let key = date.dateToString()
@@ -98,7 +99,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        guard let cell = calendarView.dequeueReusableCell(withIdentifier: "CustomCell", for: date, at: position) as? CustomCell else {
+        guard let cell = calendarView.dequeueReusableCell(withIdentifier: cellName, for: date, at: position) as? CustomCell else {
             return FSCalendarCell()
         }
         cell.imageView.contentMode = .scaleAspectFit
@@ -106,7 +107,7 @@ extension CalendarController: FSCalendarDelegate, FSCalendarDataSource {
     }
 }
 
-extension CalendarController {
+extension CalendarMainViewController {
     // MARK: - DatabaseManager
     
     func recordToCaledar() -> [String: [BookInfo]] { // date_string: [BookInfo]
