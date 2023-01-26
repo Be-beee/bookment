@@ -80,7 +80,7 @@ final class AddNewBookRecordViewController: UIViewController {
         let recordText = (!recordContents.text.isEmpty && recordContents.textColor == .label) ?
                         recordContents.text : nil
         viewModel.saveRecord(date: readDatePicker.date, text: recordText)
-        // TODO: 기존에 나의 노트에 책 정보가 등록 되어 있다면 추가한 노트가 갱신되어 표시되지만, 아예 새로운 책 정보에 대한 노트를 등록하면 나의 노트 화면에 바로 나타나지 않음(기록 정보 저장은 잘 됨)
+        // FIXME: 기존에 나의 노트에 책 정보가 등록 되어 있다면 추가한 노트가 갱신되어 표시되지만, 아예 새로운 책 정보에 대한 노트를 등록하면 나의 노트 화면에 바로 나타나지 않음(기록 정보 저장은 잘 됨)
         
         self.dismiss(animated: true)
     }

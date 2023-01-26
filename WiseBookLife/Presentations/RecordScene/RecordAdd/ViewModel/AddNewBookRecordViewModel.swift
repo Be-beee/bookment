@@ -36,7 +36,6 @@ final class AddNewBookRecordViewModel {
         )
         self.newRecordContent = recordContent
         
-        // TODO: Realm에 저장하는 로직 추가
         repository.add(newRecordContent, with: selectedBookInfo.dto)
     }
 }
