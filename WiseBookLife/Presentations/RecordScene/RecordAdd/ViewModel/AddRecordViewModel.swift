@@ -16,11 +16,15 @@ final class AddRecordViewModel {
     private var recordContent: RecordContent? {
         didSet {
             guard let recordContent else { return }
+            
             repository.add(recordContent, with: nil)
+            delegate?.recordsDidChange()
         }
     }
     
     private let repository: RecordRepository
+    
+    weak var delegate: AddRecordViewModelDelegate?
     
     // MARK: - Init(s)
     

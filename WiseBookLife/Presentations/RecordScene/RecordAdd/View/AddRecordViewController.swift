@@ -21,8 +21,6 @@ final class AddRecordViewController: UIViewController {
     
     var viewModel: AddRecordViewModel?
     
-    var newRecordContent = RecordContent()
-    
     // MARK: - Life Cycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -32,6 +30,7 @@ final class AddRecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindToViewModel()
         configureTextView()
         configureTextViewDelegate()
     }
@@ -49,6 +48,10 @@ final class AddRecordViewController: UIViewController {
     }
     
     // MARK: - Configure Functions
+    
+    private func bindToViewModel() {
+        viewModel?.delegate = self
+    }
     
     private func configureTextView() {
         recordInputView.layer.borderWidth = Metric.textViewBorderWidth
@@ -80,16 +83,22 @@ final class AddRecordViewController: UIViewController {
     }
     
     @IBAction func saveRecord(_ sender: UIButton) {
-        // TODO: ViewModel로 옮기고 presentAlert 부분은 delegate로 전달
+        let content = recordInputView.text ?? StringLiteral.emptyText
+        let contentTextColor = recordInputView.textColor
         
-        viewModel?.add(date: recordDatePicker.date, text: recordInputView.text)
-        
-        // Delegate
-        if !newRecordContent.text.isEmpty, recordInputView.textColor == .label {
-            self.performSegue(withIdentifier: "toDetailViewFromAddView", sender: self)
+        if !content.isEmpty, contentTextColor == .label {
+            viewModel?.add(date: recordDatePicker.date, text: recordInputView.text)
         } else {
             presentNoticeAlert(with: StringLiteral.noticeMessage)
         }
+    }
+}
+
+// MARK: - AddRecordViewModelDelegate
+
+extension AddRecordViewController: AddRecordViewModelDelegate {
+    func recordsDidChange() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
