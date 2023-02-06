@@ -2,6 +2,8 @@
 # platform :ios, '9.0'
 
 target 'WiseBookLife' do
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
 	pod 'FSCalendar'
   pod 'RealmSwift', '~>10'
   post_install do |installer|
