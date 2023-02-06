@@ -10,6 +10,9 @@ import UIKit
 import FSCalendar
 
 class CustomCell: FSCalendarCell {
+    
+    // FIXME: 책표지 이미지뷰 사라짐
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
