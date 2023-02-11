@@ -8,6 +8,8 @@
 
 import Foundation
 
+import RxSwift
+
 final class SearchRemoteRepository: SearchRepository {
     
     // MARK: - Properties
@@ -31,6 +33,28 @@ final class SearchRemoteRepository: SearchRepository {
         let result: SearchResponseDTO = try await networkManager.fetch(request: request)
         
         return result.items
+    }
+    
+    // MARK: - Search Functions (RxSwift)
+    
+    func searchRx(
+        with keyword: String,
+        at page: Int
+    ) throws -> Observable<[BookInfoResponseDTO]> {
+        let clientData = ClientData()
+        let query = [
+            "query": keyword,
+            "start": String(page)
+        ]
+        let request = try networkManager.createRequest(
+            endpoint: Endpoint.search,
+            query: query,
+            header: clientData.requestHeader
+        )
+        
+        let result: Observable<SearchResponseDTO> = networkManager.fetchRx(request: request)
+        
+        return result.map { $0.items }
     }
     
 }

@@ -8,7 +8,10 @@
 
 import Foundation
 
+import RxSwift
+
 // TODO: BookInfoRepository와 통합 및 옵셔널 메서드 정의하기
 protocol SearchRepository {
     func search(with keyword: String, at page: Int) async throws -> [BookInfoResponseDTO]
+    func searchRx(with keyword: String, at page: Int) throws -> Observable<[BookInfoResponseDTO]>
 }

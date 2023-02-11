@@ -8,6 +8,8 @@
 
 import Foundation
 
+import RxSwift
+
 final class NetworkManager {
     
     // MARK: - Properties
@@ -40,6 +42,43 @@ extension NetworkManager {
         return data
     }
     
+}
+
+// MARK: - Fetch Functions (RxSwift)
+
+extension NetworkManager {
+    func fetchRx<T: Codable>(request: URLRequest) -> Observable<T> {
+        let fetchedData = fetchDataRx(request: request)
+        
+        return fetchedData.map({ data in
+            do {
+                let decoded: T = try JSONDecoder().decode(T.self, from: data)
+                return decoded
+            } catch {
+                throw NetworkError.decodingFailed
+            }
+        })
+    }
+    
+    func fetchDataRx(request: URLRequest) -> Observable<Data> {
+        return Observable<Data>.create { emitter in
+            let task = URLSession.shared.dataTask(with: request) { data, _, _ in
+
+                guard let data = data else {
+                    emitter.onError(NetworkError.invalidResponse)
+                    return
+                }
+                
+                emitter.onNext(data)
+                emitter.onCompleted()
+            }
+            task.resume()
+
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
 }
 
 // MARK: - Create Request Functions

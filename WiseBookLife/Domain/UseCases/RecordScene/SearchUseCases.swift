@@ -8,6 +8,8 @@
 
 import Foundation
 
+import RxSwift
+
 final class SearchUseCases {
     
     // MARK: - Properties
@@ -30,6 +32,14 @@ final class SearchUseCases {
         let dto = try await repository.search(with: keyword, at: page)
         
         return dto.map { $0.entity() }
+    }
+    
+    func searchRx(with keyword: String, at page: Int) throws -> Observable<[BookInfo]> {
+        let observable = try repository.searchRx(with: keyword, at: page)
+        
+        return observable.map { dto in
+            dto.map { $0.entity() }
+        }
     }
     
 }
