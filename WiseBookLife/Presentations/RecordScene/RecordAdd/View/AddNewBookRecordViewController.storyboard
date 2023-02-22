@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Book View Controller-->
+        <!--Add New Book Record View Controller-->
         <scene sceneID="hOb-3m-23N">
             <objects>
-                <viewController storyboardIdentifier="AddBookViewController" modalPresentationStyle="fullScreen" id="taT-N4-ig5" customClass="AddBookViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewBookRecordViewController" modalPresentationStyle="fullScreen" id="taT-N4-ig5" customClass="AddNewBookRecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Te-Us-y5D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yk-1g-Mhl">
-                                <rect key="frame" x="371" y="61" width="23" height="21.5"/>
+                                <rect key="frame" x="371" y="65" width="23" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="23" id="dj3-ou-BsS"/>
                                     <constraint firstAttribute="height" constant="25" id="fP0-np-WCN"/>
@@ -31,13 +31,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 서재에 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKr-eH-vJf">
-                                <rect key="frame" x="158.5" y="59" width="97" height="20.5"/>
+                                <rect key="frame" x="158.5" y="63" width="97" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-G4-b2j">
-                                <rect key="frame" x="20" y="61" width="23" height="20.5"/>
+                                <rect key="frame" x="20" y="65" width="23" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="IPY-Po-UUx"/>
                                     <constraint firstAttribute="width" constant="23" id="twg-AQ-p3j"/>
@@ -49,27 +49,27 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUs-IZ-h1q" customClass="SelectView" customModule="WiseBookLife" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="200"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="G2z-HL-4zl"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽은 날" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kih-QM-JJ3">
-                                <rect key="frame" x="20" y="336" width="49" height="21"/>
+                                <rect key="frame" x="20" y="340" width="49" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-ff-a6Q">
-                                <rect key="frame" x="89" y="327" width="305" height="40"/>
+                                <rect key="frame" x="89" y="330.5" width="305" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="iMa-Zl-XJd"/>
                                 </constraints>
                                 <locale key="locale" localeIdentifier="ko_KR"/>
                             </datePicker>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Tc7-1V-BLI">
-                                <rect key="frame" x="20" y="386.5" width="374" height="455.5"/>
+                                <rect key="frame" x="20" y="390.5" width="374" height="451.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -105,11 +105,9 @@
                         <outlet property="recordContents" destination="Tc7-1V-BLI" id="ykx-uQ-RBg"/>
                         <outlet property="recordContentsBottom" destination="pg1-Ky-AE8" id="xBa-qp-m2b"/>
                         <outlet property="selectedBookView" destination="XUs-IZ-h1q" id="he8-Kc-T5z"/>
-                        <segue destination="XKb-3n-25c" kind="unwind" identifier="toRecordView" unwindAction="unwindToRecordWithSender:" id="srg-cN-C6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvi-I4-mU6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="XKb-3n-25c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-81.159420289855078" y="152.67857142857142"/>
         </scene>
@@ -118,7 +116,7 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

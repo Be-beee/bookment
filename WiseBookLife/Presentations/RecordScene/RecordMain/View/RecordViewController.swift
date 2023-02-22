@@ -28,6 +28,10 @@ final class RecordViewController: UIViewController {
         configureEmptyView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     // MARK: - Configure Functions
     
     private func configureEmptyView() {
@@ -57,16 +61,6 @@ final class RecordViewController: UIViewController {
         viewModel.delete(at: selected[.zero].item)
     }
     
-    @IBAction func unwindToRecord(sender: UIStoryboardSegue) {
-        guard let addVC = sender.source as? AddBookViewController
-        else { return }
-        
-        let willAddBookInfo = addVC.selectedBookInfo
-        viewModel.add(
-            record: addVC.newRecordContent,
-            bookInfo: willAddBookInfo
-        )
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

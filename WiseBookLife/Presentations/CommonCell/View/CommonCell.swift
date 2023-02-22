@@ -21,22 +21,13 @@ final class CommonCell: UITableViewCell {
     
     // MARK: - Properties
     
+    private let viewModel = CommonCellViewModel()
+    
     weak var delegate: CommonCellDelegate?
     
-    var bookInfo: BookInfo? {
-        didSet {
-            configure()
-        }
-    }
+    // MARK: - Computed Properties
     
-    var readonly: Bool = false {
-        didSet {
-            addLibraryBtn.isHidden = readonly
-            if !readonly { configureAddButtonAction() }
-        }
-    }
-    
-    var isHeartOn = false
+    var bookInfo: BookInfo? { viewModel.bookInfo }
     
     // MARK: - Configure Functions
     
@@ -46,7 +37,7 @@ final class CommonCell: UITableViewCell {
     }
     
     private func configureViews() {
-        guard let bookInfo else { return }
+        guard let bookInfo = bookInfo else { return }
         
         let imagePath = bookInfo.image
         Task {
@@ -61,9 +52,8 @@ final class CommonCell: UITableViewCell {
         
         authorLabel.text = bookInfo.author
         
-        let databaseManager = DatabaseManager.shared
-        let heartType = (databaseManager.findHeartContent(bookInfo.isbn) != nil)
-                            ? StringLiteral.heartFill : StringLiteral.heartEmpty
+        let heartType = (viewModel.checkHeartList(isbn: bookInfo.isbn)) ?
+                            StringLiteral.heartFill : StringLiteral.heartEmpty
         heartBtn.setImage(UIImage(systemName: heartType), for: .normal)
     }
     
@@ -74,6 +64,19 @@ final class CommonCell: UITableViewCell {
     private func configureAddButtonAction() {
         addLibraryBtn.addTarget(self, action: #selector(addLibraryButtonDidTouch), for: .touchUpInside)
     }
+    
+    // MARK: - Bind Functions
+    
+    private func bindToViewModel() {
+        viewModel.delegate = self
+    }
+    
+    // MARK: - Setup Functions
+    
+    func setupInfo(bookInfo: BookInfo, readonly: Bool? = nil) {
+        bindToViewModel()
+        viewModel.configure(bookInfo: bookInfo, readonly: readonly)
+    }
 }
 
 // MARK: - objc Functions
@@ -81,16 +84,15 @@ final class CommonCell: UITableViewCell {
 extension CommonCell {
     
     @objc func heartButtonDidTouch(_ sender: UIButton!) {
-        // TODO: button이 눌렸는지 아닌지에 따라 이미지 바뀌도록 수정
-        guard let bookInfo else { return }
+        guard let bookInfo = bookInfo else { return }
         
-        if let foundHeartContent = DatabaseManager.shared.findHeartContent(bookInfo.isbn) {
+        if viewModel.checkHeartList(isbn: bookInfo.isbn) {
             sender.setImage(UIImage(systemName: StringLiteral.heartEmpty), for: .normal)
-            DatabaseManager.shared.deleteHeartContentToDB(foundHeartContent, bookInfo.isbn)
+            viewModel.deleteFromHeartList(with: bookInfo.isbn)
         } else {
             sender.setImage(UIImage(systemName: StringLiteral.heartFill), for: .normal)
             let newHeartContent = HeartContent(isbn: bookInfo.isbn, date: Date())
-            DatabaseManager.shared.addHeartContentToDB(newHeartContent, bookInfo.dto)
+            viewModel.addToHeartList(newHeartContent, with: bookInfo)
         }
         
         delegate?.heartButtonDidTouch()
@@ -98,13 +100,27 @@ extension CommonCell {
     
     
     @objc func addLibraryButtonDidTouch() {
-        let addBookViewID = AddBookViewController.name
-        guard let addLibraryVC = loadViewController(with: addBookViewID) as? AddBookViewController,
+        let addBookViewID = AddNewBookRecordViewController.name
+        guard let addBookView = loadViewController(with: addBookViewID) as? AddNewBookRecordViewController,
               let bookInfo = bookInfo
         else { return }
         
-        addLibraryVC.selectedBookInfo = bookInfo
-        delegate?.addBookButtonDidTouched(destinationView: addLibraryVC)
+        let addBookViewModel = AddNewBookRecordViewModel(bookInfo: bookInfo)
+        addBookView.viewModel = addBookViewModel
+        delegate?.addBookButtonDidTouched(destinationView: addBookView)
+    }
+}
+
+// MARK: - CommonCellViewModelDelegate
+
+extension CommonCell: CommonCellViewModelDelegate {
+    func bookInfoDidChange() {
+        configure()
+    }
+    
+    func commonCellModeDidChange() {
+        addLibraryBtn.isHidden = viewModel.readonly
+        if !viewModel.readonly { configureAddButtonAction() }
     }
 }
 

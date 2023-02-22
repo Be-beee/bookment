@@ -68,11 +68,13 @@ final class BookDetailViewController: UIViewController {
     
     /// 나의 노트 추가 화면을 띄운다.
     @IBAction func addToMyLibrary(_ sender: UIButton) {
-        let addBookViewID = AddBookViewController.name
-        guard let addVC = loadViewController(with: addBookViewID) as? AddBookViewController
+        let addBookViewID = AddNewBookRecordViewController.name
+        guard let addVC = loadViewController(with: addBookViewID) as? AddNewBookRecordViewController
         else { return }
         
-        addVC.selectedBookInfo = viewModel.bookData
+        let addBookViewModel = AddNewBookRecordViewModel(bookInfo: viewModel.bookData)
+        
+        addVC.viewModel = addBookViewModel
         self.present(addVC, animated: true, completion: nil)
     }
     

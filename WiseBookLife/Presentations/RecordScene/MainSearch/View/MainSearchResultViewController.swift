@@ -101,8 +101,10 @@ extension MainSearchResultViewController: UITableViewDataSource {
         else { return UITableViewCell()}
         
         cell.delegate = self
-        cell.bookInfo = viewModel.searchResult[indexPath.row]
-        cell.readonly = false
+        cell.setupInfo(
+            bookInfo: viewModel.searchResult[indexPath.row],
+            readonly: false
+        )
         
         return cell
     }

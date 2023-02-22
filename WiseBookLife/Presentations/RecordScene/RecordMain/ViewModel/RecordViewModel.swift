@@ -8,11 +8,15 @@
 
 import Foundation
 
+import RealmSwift
+
 final class RecordViewModel {
     
     // MARK: - Properties
     
-    private(set) var records: [BookInfo] = [] {
+    private let recordRepository: RecordRepository
+    
+    private var books: [BookInfo] = [] {
         didSet {
             delegate?.recordsDidChange()
         }
@@ -20,58 +24,41 @@ final class RecordViewModel {
     
     weak var delegate: RecordViewModelDelegate?
     
+    
     // MARK: - Computed Properties
     
-    var count: Int { records.count }
+    var count: Int { books.count }
     
     // MARK: - Subscript
     
     subscript(_ index: Int) -> BookInfo {
-        return records[index]
+        return books[index]
     }
     
     // MARK: - Init(s)
     
     init() {
+        recordRepository = RecordLocalRepository()
         configureThumbnailList()
     }
     
     // MARK: - Configure Function
     
-    // TODO: Repository, UseCase로 분리
     private func configureThumbnailList() {
-        // 아카이빙 되어 있는 책 정보 불러오기
-        let databaseManager = DatabaseManager.shared
-        let loaded = DatabaseManager.shared.loadRecords().distinct(by: ["isbn"]).map{ $0.isbn }
-        let list: [BookInfo] = loaded.compactMap {
-            databaseManager.findBookInfo(isbn: $0)?.entity()
-        }
-        
-        self.records = list
+        self.books = recordRepository.loadThumbnails()
     }
     
     // MARK: - Add Function
     
     func add(record: RecordContent, bookInfo: BookInfo) {
-        let databaseManager = DatabaseManager.shared
-        databaseManager.addRecordToDB(record, bookInfo.dto)
-        
+        recordRepository.add(record, with: bookInfo.dto)
         configureThumbnailList()
     }
     
-    
-    // MARK: - Delete Function
+    // MARK: - Delete Functions
     
     func delete(at index: Int) {
-        let databaseManager = DatabaseManager.shared
-        
-        let willDeleteISBN = records[index].isbn
-        let deleteItems = databaseManager.loadRecords().filter {
-            $0.isbn == willDeleteISBN
-        }
-        
-        databaseManager.deleteRecord(Array(deleteItems))
-        
+        recordRepository.deleteAll(with: books[index].isbn)
         configureThumbnailList()
     }
     

@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="899" y="-240"/>
         </scene>
-        <!--Calendar Controller-->
+        <!--Calendar Main View Controller-->
         <scene sceneID="jpR-aR-esl">
             <objects>
-                <viewController storyboardIdentifier="CalendarController" id="1S2-fP-dsF" customClass="CalendarController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarController" id="1S2-fP-dsF" customClass="CalendarMainViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVp-Ce-pQB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,11 +271,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyLibraryViewController" id="3aw-5k-lG0" customClass="RecordViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKT-P5-aia">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="661"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0j6-Jh-f7i">
-                                <rect key="frame" x="20" y="48" width="374" height="613"/>
+                                <rect key="frame" x="20" y="48" width="560" height="365"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hCv-2b-q1e">
                                     <size key="itemSize" width="108" height="165"/>
@@ -317,10 +317,10 @@
                                 </connections>
                             </collectionView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUI-K5-93n">
-                                <rect key="frame" x="0.0" y="48" width="414" height="613"/>
+                                <rect key="frame" x="0.0" y="48" width="600" height="365"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 책을 추가해보세요!🥰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VP-nP-DRb">
-                                        <rect key="frame" x="107.5" y="250" width="199" height="21"/>
+                                        <rect key="frame" x="200.5" y="144.5" width="199" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -360,11 +360,11 @@
             <objects>
                 <viewController storyboardIdentifier="HeartListViewController" id="4uD-3D-Lhv" customClass="HeartListViewController" customModule="WiseBookLife" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A67-cb-EUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="661"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="isN-1i-GK0">
-                                <rect key="frame" x="0.0" y="48" width="414" height="613"/>
+                                <rect key="frame" x="0.0" y="48" width="600" height="365"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="4uD-3D-Lhv" id="cYh-lg-uba"/>
@@ -372,10 +372,10 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WE3-bd-z2I">
-                                <rect key="frame" x="0.0" y="48" width="414" height="613"/>
+                                <rect key="frame" x="0.0" y="48" width="600" height="365"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyh-wE-ZUT">
-                                        <rect key="frame" x="97.5" y="240" width="219.5" height="41"/>
+                                        <rect key="frame" x="190.5" y="134.5" width="219.5" height="41"/>
                                         <string key="text">아직 등록된 책이 없어요😢
 책을 위시리스트에 추가해보세요!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>

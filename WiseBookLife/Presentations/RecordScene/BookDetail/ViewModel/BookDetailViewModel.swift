@@ -11,6 +11,8 @@ import Foundation
 final class BookDetailViewModel {
     // MARK: - Properties
     
+    private let heartContentRepository: HeartContentRepository
+    
     weak var delegate: BookDetailViewModelDelegate?
 
     var bookData: BookInfo
@@ -24,6 +26,7 @@ final class BookDetailViewModel {
     
     init(bookData: BookInfo = BookInfo()) {
         self.bookData = bookData
+        heartContentRepository = HeartContentLocalRepository()
         
         configureHeartButtonStatus()
     }
@@ -31,30 +34,22 @@ final class BookDetailViewModel {
     // MARK: - Configure Functions
     
     private func configureHeartButtonStatus() {
-        self.isHeartBtnSelected = DatabaseManager.shared.findBookInfo(isbn: bookData.isbn) != nil
+        let found: HeartContent? = DatabaseManager.shared.find(with: bookData.isbn)
+        self.isHeartBtnSelected = found != nil
     }
     
     // MARK: - Functions
     
     // TODO: UseCase, Repository로 분리
     func addToHeartList() {
-        // FIXME: 삭제했던 오브젝트 다시 추가하려고 하면 문제 발생
-        // 'RLMException', reason: 'Object has been deleted or invalidated.'
-        let dbFormData = bookData.dto
         let newHeartContent = HeartContent(isbn: bookData.isbn, date: Date())
-        DatabaseManager.shared.addHeartContentToDB(newHeartContent, dbFormData)
+        heartContentRepository.add(newHeartContent, with: bookData)
         isHeartBtnSelected.toggle()
     }
     
     // TODO: UseCase, Repository로 분리
     func deleteFromHeartList() {
-        let willDeleteData = bookData
-        guard let foundHeartContent = DatabaseManager.shared.findHeartContent(willDeleteData.isbn)
-        else { return }
-        DatabaseManager.shared.deleteHeartContentToDB(
-            foundHeartContent,
-            willDeleteData.isbn
-        )
+        heartContentRepository.delete(with: bookData.isbn)
         isHeartBtnSelected.toggle()
     }
     
