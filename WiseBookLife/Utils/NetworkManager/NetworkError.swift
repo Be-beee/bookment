@@ -9,12 +9,15 @@
 import Foundation
 
 enum NetworkError: String, LocalizedError {
+    case noData
     case invalidURL
     case invalidResponse
     case decodingFailed
     
     public var errorDescription: String? {
         switch self {
+        case .noData:
+            return NSLocalizedString("응답 데이터가 없습니다.", comment: "No Data")
         case .invalidURL:
             return NSLocalizedString("엔드포인트 설정이 잘못되었습니다.", comment: "Invalid URL")
         case .invalidResponse:

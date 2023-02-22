@@ -62,11 +62,13 @@ extension NetworkManager {
     
     func fetchDataRx(request: URLRequest) -> Observable<Data> {
         return Observable<Data>.create { emitter in
-            let task = URLSession.shared.dataTask(with: request) { data, _, _ in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard (response as? HTTPURLResponse)?.statusCode == 200, error == nil else {
+                    return emitter.onError(NetworkError.invalidResponse)
+                }
 
                 guard let data = data else {
-                    emitter.onError(NetworkError.invalidResponse)
-                    return
+                    return emitter.onError(NetworkError.noData)
                 }
                 
                 emitter.onNext(data)
